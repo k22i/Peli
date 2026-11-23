@@ -37,6 +37,7 @@ import (
 	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
+	"github.com/k22i/Peli/internal/subsync"
 )
 
 // Hardware decoding modes (ADR-0058). The picture always reaches OpenGL ES
@@ -89,7 +90,12 @@ type Engine struct {
 
 	ops sync.Mutex // Load, Stop, AddSubtitle
 
-	mu         sync.Mutex
+	mu sync.Mutex
+	// syncRef reads the file playing's own subtitle timing, for lining
+	// addon subtitles up with it (Subtitle.AutoSync); synced is how each
+	// added track went. A Load replaces both.
+	syncRef    *subsync.Pending
+	synced     map[int]playback.SubtitleSync
 	s          *session
 	state      playback.State
 	stateDirty bool
@@ -278,6 +284,8 @@ func (e *Engine) Load(source streams.Source, opts playback.LoadOptions) error {
 	}
 	e.send(e.stopReport())
 	ses.retried = false
+	// A retry in software (loadFile again) keeps the file's reference.
+	e.startSync(source)
 	return e.loadFile(ses, source, opts, mode)
 }
 
@@ -478,6 +486,7 @@ func (e *Engine) Stop() error {
 // here, so no look for bars is left with a handle going away.
 func (e *Engine) closeSession(ses *session) {
 	e.stopAutoCrop()
+	e.stopSync()
 	ses.closing.Store(true)
 	ses.m.wakeup()
 	<-ses.done
@@ -742,10 +751,26 @@ func (e *Engine) AddSubtitle(ctx context.Context, sub playback.Subtitle) (int, e
 	if err != nil {
 		return 0, err
 	}
+	// Lined up with the file's own subtitles first (before ops: it may
+	// wait a few seconds for their timing).
+	var synced playback.SubtitleSync
+	e.mu.Lock()
+	ref := e.syncRef
+	e.mu.Unlock()
+	if sub.AutoSync {
+		data, synced = playback.SyncSubtitle(ctx, ref, data, sub.Lang)
+	}
 	e.ops.Lock()
 	defer e.ops.Unlock()
 	ses := e.current()
 	if ses == nil {
+		return 0, playback.ErrNotPlaying
+	}
+	e.mu.Lock()
+	stale := e.syncRef != ref
+	e.mu.Unlock()
+	if stale {
+		// Another file loaded meanwhile: these were for the last one.
 		return 0, playback.ErrNotPlaying
 	}
 	if ses.subDir == "" {
@@ -779,6 +804,14 @@ func (e *Engine) AddSubtitle(ctx context.Context, sub playback.Subtitle) (int, e
 	id, err := addedTrack(ses.m, f.Name())
 	if err != nil {
 		return 0, fmt.Errorf("%w: %w", playback.ErrSubtitles, err)
+	}
+	if sub.AutoSync {
+		e.mu.Lock()
+		if e.synced == nil {
+			e.synced = map[int]playback.SubtitleSync{}
+		}
+		e.synced[id] = synced
+		e.mu.Unlock()
 	}
 	if sub.Secondary {
 		if err := ses.m.setProperty("secondary-sid", strconv.Itoa(id)); err != nil {

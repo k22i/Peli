@@ -11,10 +11,39 @@ import {
   smartSubtitle,
   subtitleLanguage,
   subtitleTarget,
+  syncSummary,
   textInstead,
   wantedSubtitleLanguage,
   type AddonSubtitle,
 } from "@/lib/subtitles";
+
+describe("syncSummary", () => {
+  it("says how far synced subtitles moved", () => {
+    expect(syncSummary({ status: "synced", firstShift: 3.21, lastShift: 3.3 })).toEqual({
+      title: "Synced to this video",
+      detail: "Moved 3.2 s later, to match the subtitles this video comes with.",
+      synced: true,
+    });
+  });
+
+  it("names a frame-rate fix by its two ends", () => {
+    expect(syncSummary({ status: "synced", firstShift: -1, lastShift: 6.8 })?.detail).toBe(
+      "Moved 1.0 s earlier at the start and 6.8 s later by the end: they were made for another frame rate.",
+    );
+  });
+
+  it("says why nothing moved, and nothing for a track that wasn't tried", () => {
+    const none = { firstShift: 0, lastShift: 0 };
+    expect(syncSummary({ status: "inSync", ...none })?.title).toBe("Already in sync");
+    expect(syncSummary({ status: "noMatch", ...none })?.title).toBe("Couldn’t sync these");
+    expect(syncSummary({ status: "noReference", ...none })?.detail).toMatch(
+      /no subtitles of its own/,
+    );
+    expect(syncSummary({ status: "unchecked", ...none })?.synced).toBe(false);
+    expect(syncSummary({ status: "", ...none })).toBeUndefined();
+    expect(syncSummary(undefined)).toBeUndefined();
+  });
+});
 
 const subtitle = (key: string, lang: string): AddonSubtitle => ({
   key,

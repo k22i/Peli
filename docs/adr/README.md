@@ -67,5 +67,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0061](0061-device-pairing.md) | Device pairing: copying SIMKL, AniList and the TMDB key to another device by QR code, end to end encrypted | 2026-11-17 |
 | [0062](0062-anime-tab-follows-poster-addon.md) | The Anime tab follows the poster addon: one card per IMDb title, opening that title | 2026-11-20 |
 | [0063](0063-watch-parties-on-ios.md) | Watch parties on iOS: the party joins the build, suspension closes its socket and not its seat | 2026-11-21 |
+| [0065](0065-subtitle-autosync.md) | Subtitle AutoSync: addon subtitles lined up with the video's own subtitle timing from its Matroska index | 2026-11-24 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

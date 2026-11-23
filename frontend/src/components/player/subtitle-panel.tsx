@@ -10,8 +10,10 @@ import {
   isTextSubtitle,
   languageLabel,
   subtitleLanguage,
+  syncSummary,
   textInstead,
   type AddonSubtitle,
+  type SubtitleSync,
 } from "@/lib/subtitles";
 import { cn } from "@/lib/utils";
 import type { Track } from "@bindings/playback";
@@ -95,6 +97,8 @@ export function SubtitlePanel({
   onDelayChange,
   position,
   subtitleText,
+  sync,
+  onOriginalTiming,
 }: {
   open: boolean;
   tab: PanelTab;
@@ -127,6 +131,10 @@ export function SubtitlePanel({
   onDelayChange: (delay: number) => void;
   position: number;
   subtitleText: string;
+  // How the addon subtitles showing were lined up with the video, and
+  // going back to the addon's own timing (only once they were moved).
+  sync?: SubtitleSync | undefined;
+  onOriginalTiming?: (() => void) | undefined;
 }) {
   const panel = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -229,6 +237,7 @@ export function SubtitlePanel({
             onPickSecondaryTrack={onPickSecondaryTrack}
             onPickSecondaryAddon={onPickSecondaryAddon}
             preferredLanguage={preferredLanguage}
+            addonSynced={sync?.status === "synced"}
           />
         )}
         {tab === "audio" && (
@@ -244,6 +253,8 @@ export function SubtitlePanel({
             position={position}
             subtitleText={subtitleText}
             hasSubtitles={subtitleId > 0}
+            sync={sync}
+            onOriginalTiming={onOriginalTiming}
           />
         )}
       </div>
@@ -268,6 +279,7 @@ function SubtitlesTab({
   onPickSecondaryTrack,
   onPickSecondaryAddon,
   preferredLanguage,
+  addonSynced,
 }: {
   subtitleTracks: Track[];
   addedIds: ReadonlySet<number>;
@@ -283,6 +295,8 @@ function SubtitlesTab({
   onPickSecondaryTrack: (id: number) => void;
   onPickSecondaryAddon: (subtitle: AddonSubtitle) => void;
   preferredLanguage: string;
+  // The addon file showing (addonKey) was moved to match the video.
+  addonSynced: boolean;
 }) {
   const choices: Choice[] = subtitleTracks
     .filter((track) => !addedIds.has(track.id))
@@ -411,7 +425,18 @@ function SubtitlesTab({
                           : onPickAddon(choice.subtitle)
                       }
                       title={choice.subtitle.name || `${languageLabel(language)} ${choice.number}`}
-                      detail={whyNot(choice) ?? choice.subtitle.addon}
+                      detail={
+                        addonSynced && !second && choice.key === addonKey ? (
+                          <>
+                            <Badge title="Lined up with the subtitles this video comes with: see Timing">
+                              Synced
+                            </Badge>
+                            <span className="truncate">{choice.subtitle.addon}</span>
+                          </>
+                        ) : (
+                          (whyNot(choice) ?? choice.subtitle.addon)
+                        )
+                      }
                     />
                   )}
                 </li>
@@ -867,13 +892,18 @@ function TimingTab({
   position,
   subtitleText,
   hasSubtitles,
+  sync,
+  onOriginalTiming,
 }: {
   delay: number;
   onDelayChange: (delay: number) => void;
   position: number;
   subtitleText: string;
   hasSubtitles: boolean;
+  sync?: SubtitleSync | undefined;
+  onOriginalTiming?: (() => void) | undefined;
 }) {
+  const summary = syncSummary(sync);
   const nudge = (by: number) => onDelayChange(clamp(delay + by));
   // Sync by ear: when the line was heard, by the player's clock.
   const [heard, setHeard] = useState<number>();
@@ -911,6 +941,32 @@ function TimingTab({
   const inSync = Math.abs(delay) < 0.005;
   return (
     <div className="flex flex-col gap-6 px-5 pb-6">
+      {/* What AutoSync did, here and never over the subtitles. The delay
+          below adds to it. */}
+      {summary && (
+        <section
+          aria-label="Automatic sync"
+          className="flex flex-col gap-2 rounded-2xl bg-white/5 p-4"
+        >
+          <h3 className="flex items-center gap-2 text-[0.875rem] font-[650] text-white">
+            {summary.synced && (
+              <Check aria-hidden className="size-4 shrink-0 text-[#7ee2a8]" strokeWidth={2.5} />
+            )}
+            {summary.title}
+          </h3>
+          <p className="text-tiny leading-snug text-white/60">{summary.detail}</p>
+          {summary.synced && onOriginalTiming && (
+            <button
+              type="button"
+              onClick={onOriginalTiming}
+              className="flex h-9 items-center justify-center gap-1.5 self-start rounded-full bg-white/10 px-3.5 text-small font-[620] text-white outline-none transition-colors hover:bg-white/16 focus-visible:ring-2 focus-visible:ring-ring [&_svg]:size-3.5"
+            >
+              <RotateCcw aria-hidden />
+              Use original timing
+            </button>
+          )}
+        </section>
+      )}
       <div className="flex flex-col items-center gap-1 pt-2 text-center">
         <p
           aria-live="polite"

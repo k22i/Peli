@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/k22i/Peli/internal/playback"
+	"github.com/k22i/Peli/internal/streams"
 	"io"
 	"net/http"
 	"net/url"
@@ -53,11 +54,27 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 	if err != nil {
 		return 0, err
 	}
+	// Lined up with the file's own subtitles first (before ops: it may
+	// wait a few seconds for their timing).
+	var synced playback.SubtitleSync
+	s.mu.Lock()
+	ref := s.syncRef
+	s.mu.Unlock()
+	if sub.AutoSync {
+		data, synced = playback.SyncSubtitle(ctx, ref, data, sub.Lang)
+	}
 
 	s.ops.Lock()
 	defer s.ops.Unlock()
 	ses := s.current()
 	if ses == nil {
+		return 0, ErrNotPlaying
+	}
+	s.mu.Lock()
+	stale := s.syncRef != ref
+	s.mu.Unlock()
+	if stale {
+		// Another file loaded meanwhile: these were for the last one.
 		return 0, ErrNotPlaying
 	}
 	// mpv reads the file when it's added, but an ASS file's fonts and a
@@ -96,6 +113,14 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 	if err != nil {
 		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 	}
+	if sub.AutoSync {
+		s.mu.Lock()
+		if s.synced == nil {
+			s.synced = map[int]playback.SubtitleSync{}
+		}
+		s.synced[id] = synced
+		s.mu.Unlock()
+	}
 	if sub.Secondary {
 		if err := ses.m.setProperty("secondary-sid", strconv.Itoa(id)); err != nil {
 			return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
@@ -107,6 +132,38 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 		return 0, fmt.Errorf("%w: %w", ErrSubtitles, err)
 	}
 	return id, nil
+}
+
+// SubtitleSync is how AddSubtitle lined the added track id up with the
+// file playing (Subtitle.AutoSync): the zero value for any other track.
+func (s *Service) SubtitleSync(id int) playback.SubtitleSync {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return s.synced[id]
+}
+
+// startSync starts reading the new file's own subtitle timing, in place of
+// the last file's. ops must be held (Load).
+func (s *Service) startSync(source streams.Source) {
+	ref := playback.StartSync(s.http, source, s.userAgent)
+	s.mu.Lock()
+	old := s.syncRef
+	s.syncRef, s.synced = ref, nil
+	s.mu.Unlock()
+	if old != nil {
+		old.Cancel()
+	}
+}
+
+// stopSync stops the read when playback ends.
+func (s *Service) stopSync() {
+	s.mu.Lock()
+	old := s.syncRef
+	s.syncRef, s.synced = nil, nil
+	s.mu.Unlock()
+	if old != nil {
+		old.Cancel()
+	}
 }
 
 // addLocalSubtitle adds a subtitle saved with a download (ADR-0064): a

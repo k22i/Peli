@@ -197,7 +197,23 @@ import {
   useAddonSubtitles,
   wantedSubtitleLanguage,
   type AddonSubtitle,
+  type SubtitleSync,
 } from "@/lib/subtitles";
+
+// The addon subtitles added to this load of the file (see `added`).
+type Added = {
+  load: number;
+  ids: ReadonlyMap<string, number>;
+  syncs: ReadonlyMap<number, SubtitleSync>;
+  retired: ReadonlySet<number>;
+};
+
+// How Go synced the added track id. Nothing to say when it can't be asked:
+// the subtitles show either way.
+const syncOf = (id: number): Promise<SubtitleSync> =>
+  Promise.resolve()
+    .then(() => Player.SubtitleSync(id))
+    .catch(() => ({ status: "", firstShift: 0, lastShift: 0 }));
 import { invalidateWatching, useConnection } from "@/lib/sync";
 import {
   cachedTitleMeta,
@@ -445,10 +461,17 @@ function PlayerFile({
   // Each time this screen loads the file again (a retry, a fresh link), mpv
   // drops the subtitles added to it: the addon ones added to this load, by
   // key, and the one showing, to add again to the next.
-  const [added, setAdded] = useState<{ load: number; ids: ReadonlyMap<string, number> }>({
+  // With them, how each was lined up with the video (Player.SubtitleSync),
+  // and the synced copies set aside for the addon's own timing ("Use
+  // original timing"): still mpv's tracks, so not listed as the file's.
+  const [added, setAdded] = useState<Added>({
     load: 0,
     ids: new Map(),
+    syncs: new Map(),
+    retired: new Set(),
   });
+  // The addon files to keep in their own timing, for this file's reloads.
+  const originalTiming = useRef(new Set<string>());
   const showingAddon = useRef<AddonSubtitle>(undefined);
   const autoDone = useRef(false);
   const readdedFor = useRef(0);
@@ -587,7 +610,13 @@ function PlayerFile({
     Player.SetNowPlaying({ title: heading.title, subtitle: heading.subtitle }).catch(() => {});
   }, [heading.title, heading.subtitle]);
 
-  const reloaded = () => setAdded(({ load }) => ({ load: load + 1, ids: new Map() }));
+  const reloaded = () =>
+    setAdded(({ load }) => ({
+      load: load + 1,
+      ids: new Map(),
+      syncs: new Map(),
+      retired: new Set(),
+    }));
   const leave = () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
 
   // The series' details, as its page asked for them, for the next episode.
@@ -1406,14 +1435,30 @@ function PlayerFile({
     const track = subtitleTracks.find((each) => each.id === id);
     if (track && !track.forced) rememberLanguage(subtitleLanguage(track.lang).code);
   };
-  // Adds an addon's subtitles, or shows them if they were added already.
-  const addSubtitles = (subtitle: AddonSubtitle, picked: boolean) => {
+  // Go lines addon subtitles up with the video first, unless the profile
+  // turned it off or the user went back to this file's own timing.
+  const autoSync = (subtitle: AddonSubtitle) =>
+    settings?.autoSyncSubtitles !== false && !originalTiming.current.has(subtitle.key);
+  // The track Go added for subtitle, and how it was synced.
+  const remember = (load: number, subtitle: AddonSubtitle, newId: number, sync: SubtitleSync) =>
+    setAdded((current) =>
+      current.load === load
+        ? {
+            ...current,
+            ids: new Map(current.ids).set(subtitle.key, newId),
+            syncs: new Map(current.syncs).set(newId, sync),
+          }
+        : current,
+    );
+  // Adds an addon's subtitles, or shows them if they were added already
+  // (unless `fresh`: added again, in the timing autoSync says).
+  const addSubtitles = (subtitle: AddonSubtitle, picked: boolean, fresh = false) => {
     if (picked) {
       autoDone.current = true;
       autoSecondDone.current = true;
       rememberLanguage(subtitle.code);
     }
-    const id = added.ids.get(subtitle.key);
+    const id = fresh ? undefined : added.ids.get(subtitle.key);
     if (id) {
       setSubtitleId(id);
       Player.SetSubtitleTrack(id).catch(() => {});
@@ -1426,13 +1471,10 @@ function PlayerFile({
       lang: subtitle.code,
       title: subtitle.addon,
       secondary: false,
+      autoSync: autoSync(subtitle),
     }).then(
-      (newId) => {
-        setAdded((current) =>
-          current.load === load
-            ? { load, ids: new Map(current.ids).set(subtitle.key, newId) }
-            : current,
-        );
+      async (newId) => {
+        remember(load, subtitle, newId, await syncOf(newId));
         setSubtitleId(newId);
         if (picked) setLoadingKey(undefined);
       },
@@ -1466,13 +1508,10 @@ function PlayerFile({
       lang: subtitle.code,
       title: subtitle.addon,
       secondary: true,
+      autoSync: autoSync(subtitle),
     }).then(
-      (newId) => {
-        setAdded((current) =>
-          current.load === load
-            ? { load, ids: new Map(current.ids).set(subtitle.key, newId) }
-            : current,
-        );
+      async (newId) => {
+        remember(load, subtitle, newId, await syncOf(newId));
         setSecondaryId(newId);
         setLoadingKey(undefined);
       },
@@ -1551,6 +1590,19 @@ function PlayerFile({
   // the effect above, which reads the last load's.
   const addonKey = [...added.ids].find(([, id]) => id === subtitleId)?.[0];
   const secondaryAddonKey = [...added.ids].find(([, id]) => id === secondaryId)?.[0];
+  // Tracks that are addon files: listed as the addon's row, or not at all.
+  const addedIds: ReadonlySet<number> = new Set([...added.ids.values(), ...added.retired]);
+  const addonSync = addonKey ? added.syncs.get(subtitleId) : undefined;
+  // The addon file showing again, as the addon timed it; the synced copy
+  // stays in mpv's list, out of sight.
+  const useOriginalTiming = () => {
+    const subtitle = addonSubtitles.subtitles.find((each) => each.key === addonKey);
+    if (!subtitle) return;
+    originalTiming.current.add(subtitle.key);
+    const old = subtitleId;
+    setAdded((current) => ({ ...current, retired: new Set(current.retired).add(old) }));
+    addSubtitles(subtitle, true, true);
+  };
   useEffect(() => {
     if (tracks.length === 0) return;
     showingAddon.current = addonKey
@@ -3254,7 +3306,7 @@ function PlayerFile({
         onTabChange={setPanel}
         onClose={() => setPanel(undefined)}
         subtitleTracks={subtitleTracks}
-        addedIds={new Set(added.ids.values())}
+        addedIds={addedIds}
         subtitleId={subtitleId}
         onPickTrack={pickSubtitles}
         addonSubtitles={addonSubtitles.subtitles}
@@ -3277,6 +3329,8 @@ function PlayerFile({
         onDelayChange={timeSubtitles}
         position={position}
         subtitleText={state.subtitleText ?? ""}
+        sync={addonSync}
+        onOriginalTiming={useOriginalTiming}
       />
       {touchLayout && !failure && (panel === "subtitles" || panel === "audio") && (
         <TracksSheet
@@ -3285,7 +3339,7 @@ function PlayerFile({
           audioId={audioId}
           onPickAudio={pickAudio}
           subtitleTracks={subtitleTracks}
-          addedIds={new Set(added.ids.values())}
+          addedIds={addedIds}
           subtitleId={subtitleId}
           onPickTrack={pickSubtitles}
           addonSubtitles={addonSubtitles.subtitles}
@@ -3297,6 +3351,8 @@ function PlayerFile({
           delay={subtitleDelay}
           onDelayChange={(by) => timeSubtitlesBy(by)}
           onStyle={() => setPanel("style")}
+          sync={addonSync}
+          onOriginalTiming={useOriginalTiming}
         />
       )}
       {touchLayout && !failure && episodesOpen && meta && series && (

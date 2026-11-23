@@ -46,6 +46,9 @@ type Engine interface {
 	// AddSubtitle downloads sub, adds it as an external track and shows
 	// it. It returns the new track's id.
 	AddSubtitle(ctx context.Context, sub Subtitle) (int, error)
+	// SubtitleSync is how the added track id was lined up with the video
+	// (Subtitle.AutoSync); the zero value for any other track.
+	SubtitleSync(id int) SubtitleSync
 
 	// SetNowPlaying names what plays, for the OS's media controls.
 	SetNowPlaying(np NowPlaying) error

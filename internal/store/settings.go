@@ -33,6 +33,10 @@ type ProfileSettings struct {
 	SubtitleStyle SubtitleStyle `json:"subtitleStyle"`
 	// "system" follows the OS's captions preference; "on" and "off" override it.
 	Captions string `json:"captions"`
+	// AutoSyncSubtitles lines addon subtitles up with the video's own
+	// subtitles before showing them, when the video has some
+	// (internal/subsync). On by default.
+	AutoSyncSubtitles bool `json:"autoSyncSubtitles"`
 	// SkipIntros skips intros and recaps without asking, where their times
 	// are known (#69). Credits are always the user's to skip.
 	SkipIntros bool `json:"skipIntros"`
@@ -229,6 +233,7 @@ var DownloadCaps = []int{10, 25, 50, 100, 250, 500}
 func DefaultProfileSettings() ProfileSettings {
 	return ProfileSettings{
 		AudioLanguages: []string{}, SubtitleSize: "medium", SubtitleStyle: DefaultSubtitleStyle(), Captions: "system",
+		AutoSyncSubtitles:  true,
 		PreferredQuality:   "best",
 		StillWatchingAfter: 3,
 		SimklScrobble:      true, SimklImport: true, SimklAnime: true,

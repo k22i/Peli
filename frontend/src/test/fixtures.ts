@@ -28,6 +28,7 @@ export const profileSettings = (changes: Partial<ProfileSettings> = {}): Profile
     override: false,
   },
   captions: "system",
+  autoSyncSubtitles: true,
   skipIntros: false,
   preferredQuality: "best",
   autoplayTopPick: false,

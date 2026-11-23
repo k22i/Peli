@@ -285,6 +285,13 @@ func (s *Service) AddSubtitle(ctx context.Context, sub Subtitle) (int, error) {
 	return e.AddSubtitle(ctx, sub)
 }
 
+func (s *Service) SubtitleSync(id int) playback.SubtitleSync {
+	if e := s.engine_(); e != nil {
+		return e.SubtitleSync(id)
+	}
+	return playback.SubtitleSync{}
+}
+
 func (s *Service) SystemCaptions() bool {
 	if e := s.engine_(); e != nil {
 		return e.SystemCaptions()

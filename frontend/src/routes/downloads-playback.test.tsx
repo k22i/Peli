@@ -73,6 +73,7 @@ vi.mock("@bindings/player", () => ({
     Load: mocks.load,
     Stop: mocks.stop,
     AddSubtitle: mocks.addSubtitle,
+    SubtitleSync: () => Promise.resolve({ status: "", firstShift: 0, lastShift: 0 }),
     SystemCaptions: () => Promise.resolve(false),
     SetPaused: () => Promise.resolve(),
     Seek: () => Promise.resolve(),
@@ -451,6 +452,7 @@ describe("the player with a download", () => {
         lang: "en",
         title: "Downloaded",
         secondary: false,
+        autoSync: true,
       }),
     );
     expect(mocks.resolve).not.toHaveBeenCalled();

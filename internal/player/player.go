@@ -35,6 +35,7 @@ import (
 	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/store"
 	"github.com/k22i/Peli/internal/streams"
+	"github.com/k22i/Peli/internal/subsync"
 )
 
 // systemCaptions reports whether the OS asks for captions; a variable so
@@ -179,6 +180,12 @@ type Service struct {
 	// are off while hidden.
 	trackList any
 	subHidden bool
+
+	// syncRef reads the file playing's own subtitle timing, for lining
+	// addon subtitles up with it (Subtitle.AutoSync); synced is how each
+	// added track went. Both are the file's: a Load replaces them.
+	syncRef *subsync.Pending
+	synced  map[int]playback.SubtitleSync
 
 	// subScale holds sub-scale at 1 while the main subtitles are pictures,
 	// which it would only blur (playback.SubScale).
@@ -381,6 +388,7 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	s.framing, s.videoW, s.videoH = framing, 0, 0
 	s.file++
 	s.mu.Unlock()
+	s.startSync(source)
 	s.mu.Lock()
 	props := s.subScale.Load(trackProps(opts))
 	s.mu.Unlock()
@@ -573,6 +581,7 @@ func (s *Service) Stop() error {
 // libmpv needs.
 func (s *Service) closeSession(ses *session) {
 	s.stopAutoCrop()
+	s.stopSync()
 	ses.closing.Store(true)
 	ses.m.wakeup()
 	<-ses.done

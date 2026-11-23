@@ -319,3 +319,59 @@ function fileName(subtitle: Subtitle): string {
   }
   return "";
 }
+
+// How Go lined an addon's subtitles up with the video (Player.SubtitleSync,
+// Subtitle.autoSync): status "synced", "inSync", "noMatch", "noReference",
+// "unchecked", or "" when not tried. Shifts in seconds, later positive.
+export type SubtitleSync = { status: string; firstShift: number; lastShift: number };
+
+// "2.4 s later", "0.8 s earlier".
+function moved(by: number): string {
+  return `${Math.abs(by).toFixed(1)} s ${by > 0 ? "later" : "earlier"}`;
+}
+
+// What the panel says about it, or nothing for a track that wasn't tried.
+export function syncSummary(
+  sync: SubtitleSync | undefined,
+): { title: string; detail: string; synced: boolean } | undefined {
+  switch (sync?.status) {
+    case "synced": {
+      // A frame-rate fix moves the end further than the start.
+      const stretched = Math.abs(sync.lastShift - sync.firstShift) >= 0.5;
+      return {
+        title: "Synced to this video",
+        detail: stretched
+          ? `Moved ${moved(sync.firstShift)} at the start and ${moved(sync.lastShift)} by the end: they were made for another frame rate.`
+          : `Moved ${moved(sync.firstShift)}, to match the subtitles this video comes with.`,
+        synced: true,
+      };
+    }
+    case "inSync":
+      return {
+        title: "Already in sync",
+        detail: "Checked against the subtitles this video comes with.",
+        synced: false,
+      };
+    case "noMatch":
+      return {
+        title: "Couldn’t sync these",
+        detail:
+          "They don’t line up with the subtitles this video comes with, so they keep the addon’s timing. They may be for another cut.",
+        synced: false,
+      };
+    case "noReference":
+      return {
+        title: "Not synced",
+        detail: "This video has no subtitles of its own to line them up with.",
+        synced: false,
+      };
+    case "unchecked":
+      return {
+        title: "Not synced",
+        detail: "This video’s own subtitles couldn’t be read in time.",
+        synced: false,
+      };
+    default:
+      return undefined;
+  }
+}

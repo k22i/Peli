@@ -1225,6 +1225,20 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
                     onChange={(captions) => setProfile({ captions })}
                   />
                 </SettingRow>
+                {/* After Nuvio's AutoSync: timing from the video's own
+                    subtitles, no audio (docs/spikes/subtitle-autosync.md). */}
+                <SettingRow
+                  id="auto-sync-subtitles"
+                  label="Sync addon subtitles"
+                  description="Lines up subtitles from addons with the video, using the subtitles it comes with. Most remuxes and web releases have some; when one doesn’t, the timing is left as it was."
+                >
+                  <Switch
+                    aria-labelledby="auto-sync-subtitles-label"
+                    aria-describedby="auto-sync-subtitles-description"
+                    checked={settings.autoSyncSubtitles}
+                    onCheckedChange={(autoSyncSubtitles) => setProfile({ autoSyncSubtitles })}
+                  />
+                </SettingRow>
               </SettingsGroup>
               {/* Subtitles for everyone on this device, whatever profile is
                   watching (W4). Each profile's language still picks the

@@ -40,7 +40,7 @@ import type { Meta } from "@/lib/addon-protocol";
 import { formatTime, subtitleDelayText, trackLabel, type Track } from "@/lib/player";
 import { sleepChoices } from "@/lib/sleep-timer";
 import { normalSpeed, sameSpeed, speedLabel, speeds } from "@/lib/speed";
-import { byLanguage, type AddonSubtitle } from "@/lib/subtitles";
+import { byLanguage, syncSummary, type AddonSubtitle, type SubtitleSync } from "@/lib/subtitles";
 import {
   episodeCode,
   episodes as episodesOf,
@@ -643,6 +643,8 @@ export function TracksSheet({
   delay,
   onDelayChange,
   onStyle,
+  sync,
+  onOriginalTiming,
 }: {
   onClose: () => void;
   audioTracks: Track[];
@@ -662,8 +664,12 @@ export function TracksSheet({
   // A step of the timing: −0.1 or +0.1 s.
   onDelayChange: (by: number) => void;
   onStyle: () => void;
+  // How the addon subtitles showing were lined up with the video.
+  sync?: SubtitleSync | undefined;
+  onOriginalTiming?: (() => void) | undefined;
 }) {
   const [timing, setTiming] = useState(false);
+  const summary = syncSummary(sync);
   const fileTracks = subtitleTracks.filter((track) => !addedIds.has(track.id));
   const groups = byLanguage(addonSubtitles, preferredLanguage);
   const hasSubtitles = subtitleTracks.length > 0 || addonSubtitles.length > 0 || addonLoading;
@@ -713,7 +719,11 @@ export function TracksSheet({
                     loading={loadingKey === subtitle.key}
                     onPick={() => onPickAddon(subtitle)}
                     title={subtitle.name || `${group.label} ${index + 1}`}
-                    detail={subtitle.addon}
+                    detail={
+                      addonKey === subtitle.key && summary?.synced
+                        ? `Synced · ${subtitle.addon}`
+                        : subtitle.addon
+                    }
                   />
                 ))}
               </fieldset>
@@ -747,6 +757,21 @@ export function TracksSheet({
                 <Plus />
               </GlassButton>
             </fieldset>
+          )}
+          {timing && summary && (
+            <div className="flex flex-col gap-1 px-2.5 pb-1">
+              <p className="text-[0.75rem] font-[650] text-white">{summary.title}</p>
+              <p className="text-[0.6875rem] leading-snug text-white/55">{summary.detail}</p>
+              {summary.synced && onOriginalTiming && (
+                <button
+                  type="button"
+                  onClick={onOriginalTiming}
+                  className="mt-1 flex h-9 items-center self-start rounded-full bg-white/10 px-3 text-[0.75rem] font-[620] text-white outline-none focus-visible:ring-2 focus-visible:ring-ring active:bg-white/16"
+                >
+                  Use original timing
+                </button>
+              )}
+            </div>
           )}
         </footer>
       )}

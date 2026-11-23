@@ -349,6 +349,10 @@ type Subtitle struct {
 	// Secondary adds it as the second line (dual subtitles) and leaves the
 	// main subtitles as they are.
 	Secondary bool `json:"secondary"`
+	// AutoSync lines the file up with the video's own subtitles first
+	// (internal/subsync), when the video has some; SubtitleSync says how
+	// it went.
+	AutoSync bool `json:"autoSync"`
 }
 
 // Stats is what the stats overlay (Shift+I) shows of the file playing and

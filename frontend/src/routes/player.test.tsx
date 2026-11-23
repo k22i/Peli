@@ -59,6 +59,8 @@ const mocks = vi.hoisted(() => ({
   setSubtitleDelay: vi.fn<(delay: number) => Promise<void>>(),
   setSubtitleSize: vi.fn<(size: string) => Promise<void>>(),
   addSubtitle: vi.fn<(sub: { url: string; lang: string; title: string }) => Promise<number>>(),
+  subtitleSync:
+    vi.fn<(id: number) => Promise<{ status: string; firstShift: number; lastShift: number }>>(),
   systemCaptions: vi.fn<() => Promise<boolean>>(),
   addons: vi.fn<() => Promise<Addon[]>>(),
   visibleAddons: vi.fn<() => Promise<Addon[]>>(),
@@ -126,6 +128,7 @@ vi.mock("@bindings/player", () => ({
     SetSubtitleStyle: () => Promise.resolve(),
     SetSecondarySubtitleTrack: () => Promise.resolve(),
     AddSubtitle: mocks.addSubtitle,
+    SubtitleSync: mocks.subtitleSync,
     SystemCaptions: mocks.systemCaptions,
     // The touch chrome reads the screen's brightness and the system volume (#131).
     Brightness: () => Promise.resolve(0.5),
@@ -313,6 +316,7 @@ beforeEach(() => {
     call.mockReset().mockResolvedValue(undefined);
   }
   mocks.addSubtitle.mockReset().mockResolvedValue(10);
+  mocks.subtitleSync.mockReset().mockResolvedValue({ status: "", firstShift: 0, lastShift: 0 });
   mocks.systemCaptions.mockReset().mockResolvedValue(false);
   mocks.addons.mockReset().mockResolvedValue([]);
   mocks.visibleAddons.mockReset().mockResolvedValue([]);
@@ -1014,6 +1018,7 @@ describe("addon subtitles", () => {
         lang: "en",
         title: "OpenSubtitles v3",
         secondary: false,
+        autoSync: true,
       }),
     );
     expect(fetch).toHaveBeenCalledWith(asked, expect.anything());
@@ -1118,12 +1123,60 @@ describe("addon subtitles", () => {
       lang: "pt",
       title: "OpenSubtitles v3",
       secondary: false,
+      autoSync: true,
     });
     await waitFor(() =>
       expect(mocks.saveSettings).toHaveBeenLastCalledWith(1, {
         ...japanese,
         subtitleLanguage: "pt",
       }),
+    );
+  });
+
+  it("says how an addon's subtitles were synced, and goes back to their own timing", async () => {
+    serve();
+    mocks.subtitleSync.mockResolvedValueOnce({
+      status: "synced",
+      firstShift: -2.4,
+      lastShift: -2.4,
+    });
+    await openPlayer(undefined, source, target);
+    emit("player:state", japaneseOnly);
+    await waitFor(() => expect(mocks.addSubtitle).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mocks.subtitleSync).toHaveBeenCalledWith(10));
+    const user = userEvent.setup();
+    await user.click(await screen.findByRole("button", { name: "Subtitles" }));
+    const panel = await screen.findByRole("dialog", { name: "Audio and subtitles" });
+    expect(await within(panel).findByText("Synced")).toBeInTheDocument();
+
+    await user.click(within(panel).getByRole("tab", { name: "Timing" }));
+    const note = within(panel).getByRole("region", { name: "Automatic sync" });
+    expect(note).toHaveTextContent("Synced to this video");
+    expect(note).toHaveTextContent("Moved 2.4 s earlier");
+    mocks.addSubtitle.mockResolvedValueOnce(11);
+    await user.click(within(note).getByRole("button", { name: "Use original timing" }));
+    await waitFor(() =>
+      expect(mocks.addSubtitle).toHaveBeenLastCalledWith({
+        url: firstEnglish,
+        lang: "en",
+        title: "OpenSubtitles v3",
+        secondary: false,
+        autoSync: false,
+      }),
+    );
+    // The new track wasn't synced: nothing to say.
+    await waitFor(() =>
+      expect(within(panel).queryByRole("region", { name: "Automatic sync" })).toBeNull(),
+    );
+  });
+
+  it("adds them as the addon timed them when the profile doesn't sync", async () => {
+    serve();
+    mocks.settings.mockResolvedValue({ ...japanese, autoSyncSubtitles: false });
+    await openPlayer(undefined, source, target);
+    emit("player:state", japaneseOnly);
+    await waitFor(() =>
+      expect(mocks.addSubtitle).toHaveBeenCalledWith(expect.objectContaining({ autoSync: false })),
     );
   });
 
