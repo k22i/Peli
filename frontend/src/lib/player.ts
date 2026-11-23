@@ -10,7 +10,7 @@ import {
   type DeviceSettings,
   type ProfileSettings,
 } from "@/lib/settings";
-import { wantedSubtitleLanguage } from "@/lib/subtitles";
+import { isPictureSubtitle, wantedSubtitleLanguage } from "@/lib/subtitles";
 
 // The player (#60, ADR-0039): libmpv in Go, under the webview, driven
 // through internal/player's Service. Its state comes back as events:
@@ -153,12 +153,18 @@ const languageCode = (lang = "") => (/^[a-z]{2,3}$/.test(lang) ? lang : "");
 const languageCodes = (lang = ""): string[] => (languageCode(lang) ? [lang] : []);
 
 // A track as the pickers show it: its language (or title) as the name, and
-// what tells it apart: "English", "Commentary · AC3 · 5.1".
-export function trackLabel(track: Track): { name: string; detail: string } {
+// what tells it apart: "English", "Commentary · AC3 · 5.1". A picture
+// subtitle track (a Blu-ray's or a DVD's) says "Image", since no style reaches
+// it; the player's panel shows that as a badge instead (image false).
+export function trackLabel(
+  track: Track,
+  { image = true }: { image?: boolean } = {},
+): { name: string; detail: string } {
   const language = track.lang && track.lang !== "und" ? languageName(track.lang) : "";
   const name = language || track.title || `Track ${track.id}`;
   const detail = [
     language && track.title !== language ? track.title : "",
+    image && isPictureSubtitle(track) ? "Image" : "",
     track.type === "audio" ? track.codec.toUpperCase() : "",
     track.type === "audio" ? channelsLabel(track.channels ?? 0) : "",
     track.forced ? "Forced" : "",

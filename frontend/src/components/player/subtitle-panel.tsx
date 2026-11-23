@@ -5,9 +5,11 @@ import { Field, PanelSlider, Segmented, Stepper, Toggle } from "@/components/pla
 import { Spinner } from "@/components/ui/spinner";
 import { maxSubtitleDelay, trackLabel } from "@/lib/player";
 import {
+  isPictureSubtitle,
   isTextSubtitle,
   languageLabel,
   subtitleLanguage,
+  textInstead,
   type AddonSubtitle,
 } from "@/lib/subtitles";
 import { cn } from "@/lib/utils";
@@ -41,6 +43,14 @@ export type PanelTab = "subtitles" | "audio" | "style" | "timing";
 // Keeping the live style as the profile's: whether it differs from the saved
 // one, and saving it. Settings has its own save, so doesn't pass this.
 export type StyleSave = { unsaved: boolean; onSave: () => void };
+
+// The main subtitles are pictures (a Blu-ray's or a DVD's track), which the
+// style can't reach: the Style tab says so, and offers text subtitles in the
+// same language when there are some.
+type PictureNote = {
+  language: string;
+  instead?: { label: string; onPick: () => void } | undefined;
+};
 
 // One subtitle the user can pick: a track in the file, or an addon's file
 // (added to the player when picked).
@@ -127,6 +137,28 @@ export function SubtitlePanel({
   }, [open]);
   if (!open) return null;
 
+  const mainTrack = addedIds.has(subtitleId)
+    ? undefined
+    : subtitleTracks.find((track) => track.id === subtitleId);
+  const picture = mainTrack && isPictureSubtitle(mainTrack) ? mainTrack : undefined;
+  const instead = picture && textInstead(picture, subtitleTracks, addonSubtitles);
+  const pictureNote: PictureNote | undefined = picture && {
+    language: languageLabel(subtitleLanguage(picture.lang ?? "").language),
+    instead:
+      instead &&
+      ("track" in instead
+        ? {
+            label: addedIds.has(instead.track.id)
+              ? "Use the added text subtitles"
+              : "Use the text track in this file",
+            onPick: () => onPickTrack(instead.track.id),
+          }
+        : {
+            label: `Use ${instead.addon.addon || "an addon"}’s text subtitles`,
+            onPick: () => onPickAddon(instead.addon),
+          }),
+  };
+
   const tabs: { id: PanelTab; label: string }[] = [
     { id: "subtitles", label: "Subtitles" },
     ...(audioTracks.length > 1 ? [{ id: "audio" as const, label: "Audio" }] : []),
@@ -201,7 +233,9 @@ export function SubtitlePanel({
         {tab === "audio" && (
           <AudioTab audioTracks={audioTracks} audioId={audioId} onPickAudio={onPickAudio} />
         )}
-        {tab === "style" && <StyleTab style={style} onStyleChange={onStyleChange} save={save} />}
+        {tab === "style" && (
+          <StyleTab style={style} onStyleChange={onStyleChange} save={save} picture={pictureNote} />
+        )}
         {tab === "timing" && (
           <TimingTab
             delay={delay}
@@ -415,7 +449,7 @@ function TrackRow({
   disabledWhy?: string | undefined;
   onPick: () => void;
 }) {
-  const { name, detail } = trackLabel(track);
+  const { name, detail } = trackLabel(track, { image: false });
   return (
     <ChoiceRow
       selected={selected}
@@ -424,13 +458,27 @@ function TrackRow({
       title={name}
       detail={
         <>
-          <span className="rounded-[4px] bg-white/12 px-1.5 py-px text-[0.625rem] font-[700] tracking-[0.06em] text-white/75 uppercase">
-            In file
-          </span>
+          <Badge>In file</Badge>
+          {isPictureSubtitle(track) && (
+            <Badge title="A picture of the text, from a Blu-ray or DVD: your style can’t change it">
+              Image
+            </Badge>
+          )}
           <span className="truncate">{disabledWhy ?? detail}</span>
         </>
       }
     />
+  );
+}
+
+function Badge({ title, children }: { title?: string; children: ReactNode }) {
+  return (
+    <span
+      title={title}
+      className="shrink-0 rounded-[4px] bg-white/12 px-1.5 py-px text-[0.625rem] font-[700] tracking-[0.06em] text-white/75 uppercase"
+    >
+      {children}
+    </span>
   );
 }
 
@@ -607,10 +655,12 @@ function StyleTab({
   style,
   onStyleChange,
   save,
+  picture,
 }: {
   style: SubtitleStyle;
   onStyleChange: (style: SubtitleStyle) => void;
   save?: StyleSave | undefined;
+  picture?: PictureNote | undefined;
 }) {
   const set = (patch: Partial<SubtitleStyle>) => onStyleChange({ ...style, ...patch });
   const isDefault = JSON.stringify(style) === JSON.stringify(defaultSubtitleStyle);
@@ -639,6 +689,27 @@ function StyleTab({
           </span>
         </p>
       </div>
+
+      {picture && (
+        <section
+          aria-label="Picture subtitles"
+          className="flex flex-col gap-3 rounded-2xl bg-white/5 p-4 ring-1 ring-white/8"
+        >
+          <p className="text-small leading-snug text-white/75">
+            These {picture.language} subtitles are pictures, from the disc, so this style can’t
+            change them. They show as they were made; only Position moves them.
+          </p>
+          {picture.instead && (
+            <button
+              type="button"
+              onClick={picture.instead.onPick}
+              className="h-10 self-start rounded-full bg-white px-4 text-small font-[620] text-black outline-none transition-[background-color,scale] hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-95"
+            >
+              {picture.instead.label}
+            </button>
+          )}
+        </section>
+      )}
 
       <Field label="Font">
         <Segmented
@@ -729,7 +800,7 @@ function StyleTab({
         <Toggle label="Bold" checked={style.bold} onChange={(bold) => set({ bold })} />
         <Toggle
           label="Restyle styled subtitles"
-          hint="Anime and some films bring their own fonts and colours. On, they take yours."
+          hint="Anime and some films bring their own fonts and colours. On, they take yours. Image subtitles (from a disc) are pictures and stay as they are."
           checked={style.override}
           onChange={(override) => set({ override })}
         />

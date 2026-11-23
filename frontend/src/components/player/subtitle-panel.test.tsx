@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vite-plus/test";
 
 import type { Track } from "@/lib/player";
-import type { AddonSubtitle } from "@/lib/subtitles";
+import { subtitleLanguage, type AddonSubtitle } from "@/lib/subtitles";
 import { hasFocusRing, keyboardReachable } from "@/test/focus";
 
 import {
@@ -35,6 +35,7 @@ function renderPanel(
     secondaryId?: number;
     tab?: PanelTab;
     unsaved?: boolean;
+    addons?: AddonSubtitle[];
   } = {},
 ) {
   const tracks = options.tracks ?? [
@@ -44,6 +45,7 @@ function renderPanel(
   ];
   const props = {
     onPickTrack: vi.fn<(id: number) => void>(),
+    onPickAddon: vi.fn<(subtitle: AddonSubtitle) => void>(),
     onPickSecondaryTrack: vi.fn<(id: number) => void>(),
     onPickSecondaryAddon: vi.fn<(subtitle: AddonSubtitle) => void>(),
     onSave: vi.fn<() => void>(),
@@ -60,11 +62,11 @@ function renderPanel(
       addedIds={new Set()}
       subtitleId={options.subtitleId ?? 1}
       onPickTrack={props.onPickTrack}
-      addonSubtitles={[]}
+      addonSubtitles={options.addons ?? []}
       addonLoading={false}
       addonKey={undefined}
       loadingKey={undefined}
-      onPickAddon={vi.fn<(subtitle: AddonSubtitle) => void>()}
+      onPickAddon={props.onPickAddon}
       secondaryId={options.secondaryId ?? 0}
       secondaryAddonKey={undefined}
       onPickSecondaryTrack={props.onPickSecondaryTrack}
@@ -163,5 +165,56 @@ describe("SubtitlePanel › Style", () => {
   it("reaches every control by keyboard, each with a focus ring", () => {
     renderPanel({ tab: "style", unsaved: true });
     for (const element of keyboardReachable()) expect(hasFocusRing(element)).toBe(true);
+  });
+});
+
+describe("SubtitlePanel › picture subtitles", () => {
+  const pictures = [
+    track(1, "en", { selected: true }),
+    track(3, "fr", { codec: "hdmv_pgs_subtitle", hearingImpaired: true }),
+  ];
+  const addon: AddonSubtitle = {
+    key: "fr1",
+    url: "https://subs.example/fr1.srt",
+    ...subtitleLanguage("fre"),
+    name: "",
+    addon: "OpenSubtitles v3",
+  };
+
+  it("marks a picture track in the list", () => {
+    renderPanel({ tracks: pictures });
+    expect(row(/^French/).textContent).toContain("Image");
+    expect(row(/^English/).textContent).not.toContain("Image");
+  });
+
+  it("says the style can't reach pictures, and offers the file's text track", async () => {
+    const tracks = [...pictures, track(4, "fr")];
+    const { onPickTrack } = renderPanel({ tracks, subtitleId: 3, tab: "style" });
+    expect(screen.getByRole("region", { name: "Picture subtitles" }).textContent).toContain(
+      "These French subtitles are pictures",
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Use the text track in this file" }));
+    expect(onPickTrack).toHaveBeenCalledWith(4);
+  });
+
+  it("offers an addon's text when the file has none", async () => {
+    const { onPickAddon } = renderPanel({
+      tracks: pictures,
+      subtitleId: 3,
+      tab: "style",
+      addons: [addon],
+    });
+    await userEvent.click(
+      screen.getByRole("button", { name: "Use OpenSubtitles v3’s text subtitles" }),
+    );
+    expect(onPickAddon).toHaveBeenCalledWith(addon);
+  });
+
+  it("says nothing for text subtitles, and offers nothing without text", () => {
+    renderPanel({ tracks: pictures, subtitleId: 1, tab: "style" });
+    expect(screen.queryByRole("region", { name: "Picture subtitles" })).toBeNull();
+    renderPanel({ tracks: pictures, subtitleId: 3, tab: "style" });
+    expect(screen.getByRole("region", { name: "Picture subtitles" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /^Use / })).toBeNull();
   });
 });

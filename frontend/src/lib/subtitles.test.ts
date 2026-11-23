@@ -5,11 +5,13 @@ import {
   autoSecondary,
   autoSubtitle,
   byLanguage,
+  isPictureSubtitle,
   isTextSubtitle,
   secondChoices,
   smartSubtitle,
   subtitleLanguage,
   subtitleTarget,
+  textInstead,
   wantedSubtitleLanguage,
   type AddonSubtitle,
 } from "@/lib/subtitles";
@@ -84,6 +86,49 @@ describe("autoSubtitle", () => {
     expect(autoSubtitle(list, [], "", true)).toBeUndefined();
     expect(autoSubtitle(list, [sub("eng")], "en", true)).toBeUndefined();
     expect(autoSubtitle(list, [], "fr", true)).toBeUndefined();
+  });
+
+  it("adds text when the file's own in the language are only pictures", () => {
+    const pgs = sub("eng", { codec: "hdmv_pgs_subtitle", hearingImpaired: true });
+    expect(autoSubtitle(list, [pgs], "en", true)?.key).toBe("en1");
+    expect(autoSubtitle(list, [pgs, sub("eng", { id: 2 })], "en", true)).toBeUndefined();
+  });
+});
+
+describe("picture subtitles", () => {
+  const pgs = sub("eng", { id: 1, codec: "hdmv_pgs_subtitle", hearingImpaired: true });
+
+  it("tells pictures from text", () => {
+    expect(isPictureSubtitle(pgs)).toBe(true);
+    expect(isPictureSubtitle(sub("en", { codec: "dvd_subtitle" }))).toBe(true);
+    expect(isPictureSubtitle(sub("en"))).toBe(false);
+    expect(isPictureSubtitle(sub("en", { codec: "ass" }))).toBe(false);
+    expect(isPictureSubtitle(sub("en", { type: "audio", codec: "hdmv_pgs_subtitle" }))).toBe(false);
+  });
+
+  describe("textInstead", () => {
+    it("is the file's own text track in the language, as hearing-impaired as the picture", () => {
+      const plain = sub("en", { id: 2 });
+      const sdh = sub("en", { id: 3, hearingImpaired: true });
+      expect(textInstead(pgs, [pgs, plain, sdh], [])).toEqual({ track: sdh });
+      expect(textInstead(pgs, [pgs, plain], [subtitle("a", "eng")])).toEqual({ track: plain });
+    });
+
+    it("else an addon's in the language", () => {
+      const addon = subtitle("b", "eng");
+      expect(textInstead(pgs, [pgs, sub("fr", { id: 2 })], [subtitle("a", "hrv"), addon])).toEqual({
+        addon,
+      });
+    });
+
+    it("is nothing for text, signs, an untagged picture, or no text to offer", () => {
+      expect(textInstead(sub("en"), [sub("en", { id: 2 })], [])).toBeUndefined();
+      const signs = sub("en", { codec: "hdmv_pgs_subtitle", forced: true });
+      expect(textInstead(signs, [sub("en", { id: 2 })], [])).toBeUndefined();
+      const untagged = sub("", { codec: "hdmv_pgs_subtitle" });
+      expect(textInstead(untagged, [sub("", { id: 2 })], [])).toBeUndefined();
+      expect(textInstead(pgs, [pgs, sub("en", { id: 4, forced: true })], [])).toBeUndefined();
+    });
   });
 });
 
@@ -191,6 +236,13 @@ describe("subtitles always on", () => {
       const other = sub("en", { id: 3 });
       const flagged = sub("en", { id: 4, default: true });
       expect(smartSubtitle([other, flagged], [], "en")).toEqual({ track: flagged });
+    });
+
+    it("picks an addon's text over the file's own picture track, and the picture over none", () => {
+      const pgs = sub("en", { id: 1, codec: "hdmv_pgs_subtitle", default: true });
+      const addon = subtitle("a", "eng");
+      expect(smartSubtitle([pgs], [addon], "en")).toEqual({ addon });
+      expect(smartSubtitle([pgs], [subtitle("b", "hrv")], "en")).toEqual({ track: pgs });
     });
 
     it("falls back to an addon's subtitles in the wanted language", () => {

@@ -188,10 +188,12 @@ import {
 import {
   autoSecondary,
   autoSubtitle,
+  isTextSubtitle,
   secondChoices,
   smartSubtitle,
   subtitleLanguage,
   subtitleTarget,
+  textInstead,
   useAddonSubtitles,
   wantedSubtitleLanguage,
   type AddonSubtitle,
@@ -1497,8 +1499,9 @@ function PlayerFile({
     }
     if (always) {
       // Every file starts with the subtitles it should have, chosen well
-      // enough that nobody has to pick them. The file's own track is known
-      // at once; an addon's waits for the addons to answer.
+      // enough that nobody has to pick them. The file's own text track is
+      // known at once; an addon's waits for the addons to answer, and so does
+      // the file's own picture track, which an addon's text beats.
       if (autoDone.current) return;
       const pick = smartSubtitle(
         tracks,
@@ -1506,6 +1509,7 @@ function PlayerFile({
         wantedSubtitleLanguage(settings),
       );
       if (pick && "track" in pick) {
+        if (!isTextSubtitle(pick.track) && addonSubtitles.loading) return;
         autoDone.current = true;
         // An automatic pick is nobody's choice: the language isn't saved.
         if (!pick.track.selected) {
@@ -1527,7 +1531,20 @@ function PlayerFile({
       captionsOn,
     );
     if (auto || !addonSubtitles.loading) autoDone.current = true;
-    if (auto) addSubtitles(auto, false);
+    if (auto) {
+      addSubtitles(auto, false);
+      return;
+    }
+    // mpv may have picked a picture track (a Blu-ray's) with a text one in
+    // the same language beside it: the text one takes the profile's style.
+    // Nobody's choice either, so the language isn't saved.
+    const main = tracks.find((track) => track.type === "sub" && track.selected);
+    const instead = captionsOn && main ? textInstead(main, tracks, []) : undefined;
+    if (instead && "track" in instead) {
+      autoDone.current = true;
+      setSubtitleId(instead.track.id);
+      Player.SetSubtitleTrack(instead.track.id).catch(() => {});
+    }
   });
   // Which addon subtitles are showing, to add again after a reload. After
   // the effect above, which reads the last load's.

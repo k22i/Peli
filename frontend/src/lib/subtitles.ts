@@ -164,8 +164,10 @@ export function byLanguage(subtitles: AddonSubtitle[], preferred: string): Langu
 }
 
 // The addon subtitles to show when a file starts: the first in the profile's
-// language (preferred), when captions are on and the file has no full
-// subtitles in it. mpv picks the file's own when it has them (#62).
+// language (preferred), when captions are on and the file has no full text
+// subtitles in it. mpv picks the file's own when it has them (#62); a file
+// whose only ones in that language are pictures (a Blu-ray's) gets the
+// addon's text instead, which takes the profile's style.
 export function autoSubtitle(
   subtitles: AddonSubtitle[],
   tracks: Track[],
@@ -175,7 +177,7 @@ export function autoSubtitle(
   const want = subtitleLanguage(preferred).code;
   if (!captions || !want) return undefined;
   const own = tracks.some(
-    (track) => track.type === "sub" && !track.forced && subtitleLanguage(track.lang).code === want,
+    (track) => isTextSubtitle(track) && !track.forced && subtitleLanguage(track.lang).code === want,
   );
   if (own) return undefined;
   return byLanguage(subtitles, want)[0]?.subtitles.find((subtitle) => subtitle.code === want);
@@ -194,6 +196,37 @@ const pictureCodecs = new Set([
 // Whether a track is subtitles made of text, which the second line can show.
 export const isTextSubtitle = (track: Track): boolean =>
   track.type === "sub" && !pictureCodecs.has(track.codec);
+
+// Whether a track is subtitles made of pictures (Blu-ray, DVD): drawn as they
+// were made, since no style reaches a picture.
+export const isPictureSubtitle = (track: Track): boolean =>
+  track.type === "sub" && pictureCodecs.has(track.codec);
+
+// Text subtitles to show instead of a picture track, which can't take the
+// profile's style: the file's own full text track in its language (as
+// hearing-impaired as it, then the default-flagged one), else an addon's.
+// Nothing for a text track, a forced one (signs), or one with no language.
+export function textInstead(
+  track: Track,
+  tracks: Track[],
+  subtitles: AddonSubtitle[],
+): { track: Track } | { addon: AddonSubtitle } | undefined {
+  const want = subtitleLanguage(track.lang).code;
+  if (!isPictureSubtitle(track) || track.forced || !want) return undefined;
+  const own = tracks
+    .filter(
+      (each) => isTextSubtitle(each) && !each.forced && subtitleLanguage(each.lang).code === want,
+    )
+    .toSorted(
+      (a, b) =>
+        Number(a.hearingImpaired !== track.hearingImpaired) -
+          Number(b.hearingImpaired !== track.hearingImpaired) ||
+        Number(!a.default) - Number(!b.default),
+    )[0];
+  if (own) return { track: own };
+  const addon = byLanguage(subtitles, want)[0]?.subtitles.find((each) => each.code === want);
+  return addon && { addon };
+}
 
 // The tracks the second line can show: text, and not the one showing as the
 // main subtitles.
@@ -242,10 +275,11 @@ export function wantedSubtitleLanguage(
 }
 
 // What to show when a file starts with subtitles always on: the file's own
-// full track in the wanted language (text over picture, not hearing-impaired
-// over hearing-impaired, the default-flagged one first), else an addon's in
-// that language, else the file's only full track when it has exactly one
-// with no language tag. Forced tracks (signs) never count.
+// full text track in the wanted language (not hearing-impaired over
+// hearing-impaired, the default-flagged one first), else an addon's in that
+// language, else the file's own picture track in it (a Blu-ray's, which
+// the style can't reach), else the file's only full track when it has
+// exactly one with no language tag. Forced tracks (signs) never count.
 export function smartSubtitle(
   tracks: Track[],
   subtitles: AddonSubtitle[],
@@ -261,9 +295,10 @@ export function smartSubtitle(
           Number(a.hearingImpaired) - Number(b.hearingImpaired) ||
           Number(!a.default) - Number(!b.default),
       )[0];
-    if (own) return { track: own };
+    if (own && isTextSubtitle(own)) return { track: own };
     const addon = byLanguage(subtitles, want)[0]?.subtitles.find((each) => each.code === want);
     if (addon) return { addon };
+    if (own) return { track: own };
   }
   // A file that tags none of its tracks has only the one to show.
   const untagged = full.filter((track) => !track.lang || track.lang === "und");

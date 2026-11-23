@@ -1021,6 +1021,41 @@ describe("addon subtitles", () => {
     expect(mocks.saveSettings).not.toHaveBeenCalled();
   });
 
+  // A Blu-ray remux: its English subtitles are pictures (PGS), which the
+  // profile's style can't reach.
+  const pgs = track({
+    id: 2,
+    type: "sub",
+    lang: "eng",
+    title: "English [SDH]",
+    codec: "hdmv_pgs_subtitle",
+    hearingImpaired: true,
+    default: true,
+    selected: true,
+  });
+
+  it("adds an addon's text when the file's own in the language are pictures", async () => {
+    serve();
+    await openPlayer(undefined, source, target);
+    emit("player:state", { ...playing, tracks: [...japaneseAudio, pgs] });
+    await waitFor(() =>
+      expect(mocks.addSubtitle).toHaveBeenCalledExactlyOnceWith(
+        expect.objectContaining({ url: firstEnglish, lang: "en" }),
+      ),
+    );
+    expect(mocks.saveSettings).not.toHaveBeenCalled();
+  });
+
+  it("switches from the file's picture track to its text one in the language", async () => {
+    serve();
+    await openPlayer(undefined, source, target);
+    const text = track({ id: 3, type: "sub", lang: "eng", codec: "subrip" });
+    emit("player:state", { ...playing, tracks: [...japaneseAudio, pgs, text] });
+    await waitFor(() => expect(mocks.setSubtitleTrack).toHaveBeenCalledWith(3));
+    expect(mocks.addSubtitle).not.toHaveBeenCalled();
+    expect(mocks.saveSettings).not.toHaveBeenCalled();
+  });
+
   it("leaves the file's own subtitles in the language alone", async () => {
     serve();
     await openPlayer(undefined, source, target);
