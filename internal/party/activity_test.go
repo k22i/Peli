@@ -212,3 +212,39 @@ func TestActivityLogIsMerged(t *testing.T) {
 		t.Errorf("%d entries, %d events after the same log again", n, len(got()))
 	}
 }
+
+func TestActivityClearedWhenThePartyStops(t *testing.T) {
+	r := newRig(t, false)
+	got := collectActivity(r)
+	if err := r.s.Join("ABCDEF"); err != nil {
+		t.Fatal(err)
+	}
+	ch := r.connect(t)
+	ch.broadcast("state", backend.PartyPlayback{
+		Seq: 5, MemberID: "other", PositionMs: 300_000, Rate: 1, At: r.time().UnixMilli(), MediaKey: episode.Key(),
+	})
+	r.advance(10 * time.Second)
+	ch.broadcast("state", backend.PartyPlayback{
+		Seq: 6, MemberID: "other", Paused: true, PositionMs: 305_000, Rate: 1,
+		At: r.time().UnixMilli(), MediaKey: episode.Key(),
+	})
+	if list := r.s.Activity().Entries; len(list) < 2 || list[1].Kind != ActivityPaused {
+		t.Fatalf("log before leaving = %+v", list)
+	}
+
+	// Leaving sends an empty log, as it sends an empty chat, so the party's
+	// log isn't left on screen.
+	r.s.Leave()
+
+	if list := r.s.Activity().Entries; list == nil || len(list) != 0 {
+		t.Errorf("log after leaving = %#v", list)
+	}
+	events := got()
+	if len(events) == 0 {
+		t.Fatal("no activity events")
+	}
+	last := events[len(events)-1]
+	if last.Entries == nil || len(last.Entries) != 0 {
+		t.Errorf("last event = %#v", last.Entries)
+	}
+}
