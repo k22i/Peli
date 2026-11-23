@@ -26,7 +26,7 @@ import { Party } from "@/lib/party";
 import { deviceSettingsQuery } from "@/lib/settings";
 import { keepForSession, noFilters } from "@/lib/stream-filters";
 import { sizeLabel } from "@/lib/stream-labels";
-import { partyMember, partyState } from "@/test/fixtures";
+import { partyMember, partyState, profileSettings } from "@/test/fixtures";
 import { onCompactIOS } from "@/test/ios";
 import { renderApp } from "@/test/render-app";
 
@@ -239,6 +239,8 @@ const shownStreams = () =>
     .queryAllByRole("button")
     .filter((button) => !button.hasAttribute("aria-expanded"));
 const topPick = () => shownStreams()[0]!;
+// The player's pause button: the picker hands off to the player when it opens.
+const playing = () => screen.queryByRole("button", { name: "Pause" });
 
 const resolved = ({ url }: Request): Source => ({
   url: `${url}#cdn`,
@@ -279,20 +281,22 @@ const device: DeviceSettings = {
   audio: defaultAudio,
 };
 
-// What the profile's settings are until a test changes them.
-const profileSettings: ProfileSettings = {
+// What the profile's settings are until a test changes them: the shared
+// fixture, with the picker's own values said out loud.
+const defaultProfileSettings = (): ProfileSettings => ({
+  ...profileSettings(),
   audioLanguages: [],
   subtitleLanguage: "",
   subtitleSize: "medium",
   captions: "system",
   preferredQuality: "best",
   autoplayTopPick: false,
-};
+});
 
 beforeEach(() => {
   mocks.device.mockReset().mockResolvedValue(device);
   mocks.saveDevice.mockReset().mockResolvedValue(undefined);
-  mocks.profile.mockReset().mockResolvedValue(profileSettings);
+  mocks.profile.mockReset().mockResolvedValue(defaultProfileSettings());
   // The filters last for the session: each test starts with none.
   keepForSession(noFilters);
   mocks.resolve.mockImplementation(async (request) => resolved(request));
@@ -1700,10 +1704,9 @@ describe("with a watch party", () => {
 describe("autoplay", () => {
   const shawshank = "The.Shawshank.Redemption.1994.1080p.BluRay.x264-GRP.mkv";
   const cached = debrid(shawshank, "+");
-  const playing = () => screen.queryByRole("button", { name: "Pause" });
 
   it("plays the top pick by itself when the profile asks for it", async () => {
-    mocks.profile.mockResolvedValue({ ...profileSettings, autoplayTopPick: true });
+    mocks.profile.mockResolvedValue({ ...defaultProfileSettings(), autoplayTopPick: true });
     serve({
       [movieStreams("torrentio.strem.fun")]: { streams: [cached] },
       [movieStreams("peerflix.example")]: peerflixMovie,
@@ -1720,7 +1723,7 @@ describe("autoplay", () => {
   });
 
   it("shows the list instead when the address asks for it", async () => {
-    mocks.profile.mockResolvedValue({ ...profileSettings, autoplayTopPick: true });
+    mocks.profile.mockResolvedValue({ ...defaultProfileSettings(), autoplayTopPick: true });
     serve({
       [movieStreams("torrentio.strem.fun")]: { streams: [cached] },
       [movieStreams("peerflix.example")]: peerflixMovie,

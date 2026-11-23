@@ -311,10 +311,11 @@ function Picker({
     sourceFilter,
   } = useStreamChoices(profile.id, type, target.id, video, target.title);
   // Autoplay stands down when the user gets there first: `pin` is what the
-  // list calls as soon as the user moves into it, or plays something.
-  const autoplayStopped = useRef(false);
+  // list calls as soon as the user moves into it, or plays something. State,
+  // not a ref: the status line has to follow it.
+  const [autoplayStopped, setAutoplayStopped] = useState(false);
   const pin = () => {
-    autoplayStopped.current = true;
+    if (!autoplayStopped) setAutoplayStopped(true);
     pinRanked();
   };
   const client = useQueryClient();
@@ -592,7 +593,8 @@ function Picker({
     answered,
     top: view.top,
     pick,
-    stoppedRef: autoplayStopped,
+    stopped: autoplayStopped,
+    onStop: () => setAutoplayStopped(true),
   });
 
   // The guest's page, in every state: no list, no filters, no jump strip, and
@@ -659,7 +661,7 @@ function Picker({
           coming in: say so, and give the user a way out of it. */}
       {autoplay.waiting && (
         <div className="flex flex-wrap items-center gap-3 px-page">
-          <output role="status" className="text-body text-muted-foreground">
+          <output className="text-body text-muted-foreground">
             Playing the top pick when the streams are in
           </output>
           <Button
@@ -885,7 +887,8 @@ function useAutoplay({
   answered,
   top,
   pick,
-  stoppedRef,
+  stopped,
+  onStop,
 }: {
   enabled: boolean;
   answered: boolean;
@@ -893,7 +896,9 @@ function useAutoplay({
   pick: (candidate: Candidate) => void;
   // Set when the user gets there first: a key or a click in the list, as
   // `pin` reports, or "Choose myself".
-  stoppedRef: { current: boolean };
+  stopped: boolean;
+  // "Choose myself": the user is choosing, so the profile stands down.
+  onStop: () => void;
 }) {
   const navigate = useNavigate();
   // The latest of both, as `usePlayKey` keeps its own: the effect fires
@@ -903,12 +908,13 @@ function useAutoplay({
     latest.current = { pick, navigate };
   });
   const fired = useRef(false);
-  // "Choose myself" re-renders the page, so the status line goes with it.
-  const [chosen, setChosen] = useState(false);
+  // Fired or stopped: the status line goes with it.
+  const [done, setDone] = useState(false);
   useEffect(() => {
-    if (!enabled || !answered || !top) return;
-    if (fired.current || stoppedRef.current) return;
+    if (!enabled || !answered || !top || stopped) return;
+    if (fired.current) return;
     fired.current = true;
+    setDone(true);
     const { pick: play, navigate: go } = latest.current;
     // The list stays reachable, and doesn't autoplay again on the way back.
     void go({
@@ -917,13 +923,13 @@ function useAutoplay({
       replace: true,
     });
     play(top);
-  }, [enabled, answered, top]);
+  }, [enabled, answered, top, stopped]);
   return {
     // Waiting on the streams, and still going to play the top pick.
-    waiting: enabled && !answered && !fired.current && !stoppedRef.current && !chosen,
+    waiting: enabled && !answered && !stopped && !done,
     chooseMyself: () => {
-      stoppedRef.current = true;
-      setChosen(true);
+      setDone(true);
+      onStop();
     },
   };
 }
