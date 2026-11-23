@@ -650,14 +650,15 @@ describe("stream picker", () => {
       url: "https://debrid.example/KEY/0",
       headers: { Referer: "https://addon.example/" },
     });
-    // In the profile's languages and subtitle size (#62), keeping the
-    // film's progress (#64).
+    // In the profile's languages and subtitle size and style (#62), keeping
+    // the film's progress (#64).
     expect(mocks.load).toHaveBeenCalledExactlyOnceWith(await mocks.resolve.mock.results[0]!.value, {
       start: 0,
       audioLanguages: [],
       subtitleLanguage: "",
       captions: "system",
       subtitleSize: "medium",
+      subtitleStyle: profileSettings().subtitleStyle,
       watching: {
         profileId: 1,
         contentId: "tt0111161",
