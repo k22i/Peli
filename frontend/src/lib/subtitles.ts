@@ -9,7 +9,7 @@ import {
   type Subtitle,
 } from "@/lib/addon-protocol";
 import type { Track } from "@/lib/player";
-import { languageName } from "@/lib/settings";
+import { languageName, type ProfileSettings } from "@/lib/settings";
 import { useStreamAddons } from "@/lib/streams";
 
 // Addon subtitles in the player (#63, ADR-0039): every enabled addon that
@@ -219,6 +219,55 @@ export function autoSecondary(
   if (own) return { track: own };
   const addon = byLanguage(subtitles, want)[0]?.subtitles.find((each) => each.code === want);
   return addon && { addon };
+}
+
+// The language subtitles should be in: the profile's subtitle language, else
+// its first audio language, else the system's (navigator.language), else
+// English. The profile's own choice can be empty, and a device whose
+// subtitles are always on still needs one to look for.
+export function wantedSubtitleLanguage(
+  settings: Pick<ProfileSettings, "subtitleLanguage" | "audioLanguages"> | undefined,
+): string {
+  const wanted = [
+    settings?.subtitleLanguage ?? "",
+    settings?.audioLanguages?.[0] ?? "",
+    navigator.language,
+    "en",
+  ];
+  for (const lang of wanted) {
+    const code = subtitleLanguage(lang).code;
+    if (code) return code;
+  }
+  return "";
+}
+
+// What to show when a file starts with subtitles always on: the file's own
+// full track in the wanted language (text over picture, not hearing-impaired
+// over hearing-impaired, the default-flagged one first), else an addon's in
+// that language, else the file's only full track when it has exactly one
+// with no language tag. Forced tracks (signs) never count.
+export function smartSubtitle(
+  tracks: Track[],
+  subtitles: AddonSubtitle[],
+  want: string,
+): { track: Track } | { addon: AddonSubtitle } | undefined {
+  const full = tracks.filter((track) => track.type === "sub" && !track.forced);
+  if (want) {
+    const own = full
+      .filter((track) => subtitleLanguage(track.lang).code === want)
+      .toSorted(
+        (a, b) =>
+          Number(!isTextSubtitle(a)) - Number(!isTextSubtitle(b)) ||
+          Number(a.hearingImpaired) - Number(b.hearingImpaired) ||
+          Number(!a.default) - Number(!b.default),
+      )[0];
+    if (own) return { track: own };
+    const addon = byLanguage(subtitles, want)[0]?.subtitles.find((each) => each.code === want);
+    if (addon) return { addon };
+  }
+  // A file that tags none of its tracks has only the one to show.
+  const untagged = full.filter((track) => !track.lang || track.lang === "und");
+  return untagged.length === 1 ? { track: untagged[0]! } : undefined;
 }
 
 function fileName(subtitle: Subtitle): string {

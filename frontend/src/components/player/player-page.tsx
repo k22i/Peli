@@ -189,9 +189,11 @@ import {
   autoSecondary,
   autoSubtitle,
   secondChoices,
+  smartSubtitle,
   subtitleLanguage,
   subtitleTarget,
   useAddonSubtitles,
+  wantedSubtitleLanguage,
   type AddonSubtitle,
 } from "@/lib/subtitles";
 import { invalidateWatching, useConnection } from "@/lib/sync";
@@ -394,6 +396,10 @@ function PlayerFile({
   const profileId = useCurrentProfile().id ?? 0;
   const settings = useQuery({ ...profileSettingsQuery(profileId), enabled: profileId > 0 }).data;
   const saveSettings = useSaveProfileSettings(profileId);
+  // This device's settings: how hard the renderer works, its output, and its
+  // subtitles when they're always on.
+  const device = useQuery(deviceSettingsQuery).data;
+  const saveDevice = useSaveDeviceSettings();
   // The tracks last playing: mpv empties the list when a file fails, and
   // trying it again should keep what the user picked.
   const lastTracks = useRef<Track[]>([]);
@@ -740,7 +746,7 @@ function PlayerFile({
       reloadedAt.current = Date.now();
       reloadExpired(
         expired,
-        loadOptions(state.position, settings, lastTracks.current, watching),
+        loadOptions(state.position, settings, lastTracks.current, watching, device),
       ).then(
         (fresh) => {
           source.current = fresh;
@@ -757,7 +763,13 @@ function PlayerFile({
     if (!current) return;
     setRetrying(true);
     try {
-      const options = loadOptions(stoppedAt.current, settings, lastTracks.current, watching);
+      const options = loadOptions(
+        stoppedAt.current,
+        settings,
+        lastTracks.current,
+        watching,
+        device,
+      );
       if (ended.code === "expired" && !isTorrentSource(current) && !isDownloadSource(current))
         source.current = await reloadExpired(current, options);
       else await Player.Load(current, options);
@@ -850,7 +862,10 @@ function PlayerFile({
       controller.signal.throwIfAborted();
       const nextWatching = watchingFor(profileId, nextTarget, meta, progress ?? []);
       const start = progress ? resumePoint(progress, nextWatching) : 0;
-      await Player.Load(nextSource, loadOptions(start, settings, lastTracks.current, nextWatching));
+      await Player.Load(
+        nextSource,
+        loadOptions(start, settings, lastTracks.current, nextWatching, device),
+      );
       // The show's source (#58), as it played this time.
       rememberSource(queryClient, profileId, meta.type, meta.id, prepared.candidate, attempt);
       // A torrent playing that the next episode doesn't come from.
@@ -900,7 +915,7 @@ function PlayerFile({
     if (!watching) return false;
     switching.current = true;
     try {
-      await Player.Load(picked, loadOptions(at, settings, lastTracks.current, watching));
+      await Player.Load(picked, loadOptions(at, settings, lastTracks.current, watching, device));
     } catch {
       switching.current = false;
       return false;
@@ -1038,7 +1053,10 @@ function PlayerFile({
       const at = error ? stoppedAt.current : (await Player.Snapshot()).position;
       switching.current = true;
       try {
-        await Player.Load(playable.source, loadOptions(at, settings, lastTracks.current, watching));
+        await Player.Load(
+          playable.source,
+          loadOptions(at, settings, lastTracks.current, watching, device),
+        );
       } catch {
         switching.current = false;
         return setSwitchStatus({
@@ -1462,8 +1480,12 @@ function PlayerFile({
     );
   };
   const fileReady = ready && !state.loading && tracks.length > 0;
+  // This device has subtitles on for every file, in its own style.
+  const always = device?.subtitles?.always === true;
   const captionsOn =
-    settings?.captions === "on" || (settings?.captions !== "off" && systemCaptions === true);
+    always ||
+    settings?.captions === "on" ||
+    (settings?.captions !== "off" && systemCaptions === true);
   useEffect(() => {
     if (!fileReady || !settings) return;
     if (added.load > 0) {
@@ -1471,6 +1493,30 @@ function PlayerFile({
       if (readdedFor.current === added.load) return;
       readdedFor.current = added.load;
       if (showingAddon.current) addSubtitles(showingAddon.current, false);
+      return;
+    }
+    if (always) {
+      // Every file starts with the subtitles it should have, chosen well
+      // enough that nobody has to pick them. The file's own track is known
+      // at once; an addon's waits for the addons to answer.
+      if (autoDone.current) return;
+      const pick = smartSubtitle(
+        tracks,
+        addonSubtitles.subtitles,
+        wantedSubtitleLanguage(settings),
+      );
+      if (pick && "track" in pick) {
+        autoDone.current = true;
+        // An automatic pick is nobody's choice: the language isn't saved.
+        if (!pick.track.selected) {
+          setSubtitleId(pick.track.id);
+          Player.SetSubtitleTrack(pick.track.id).catch(() => {});
+        }
+        return;
+      }
+      if (addonSubtitles.loading) return;
+      autoDone.current = true;
+      if (pick) addSubtitles(pick.addon, false);
       return;
     }
     if (autoDone.current || systemCaptions === undefined) return;
@@ -1582,11 +1628,17 @@ function PlayerFile({
     setNotice({ text: `Volume ${to} %` });
   };
 
-  // How subtitles look: the profile's, changed live from the panel or by
-  // keys (R and G nudge their place and size). A change lasts until this
-  // video ends; "Save as my style" is what makes it the profile's.
+  // How subtitles look: the profile's, or this device's when its subtitles
+  // are always on; changed live from the panel or by keys (R and G nudge
+  // their place and size). A change lasts until this video ends; "Save as my
+  // style" is what makes it the profile's (or, always on, the device's).
   const [subStyle, setSubStyle] = useState<SubtitleStyle>();
-  const savedStyle = settings?.subtitleStyle?.font ? settings.subtitleStyle : defaultSubtitleStyle;
+  const savedStyle =
+    always && device?.subtitles?.style?.font
+      ? device.subtitles.style
+      : settings?.subtitleStyle?.font
+        ? settings.subtitleStyle
+        : defaultSubtitleStyle;
   const style = subStyle ?? savedStyle;
   const [styler] = useState(() => latestOnly(Player.SetSubtitleStyle));
   const restyle = setSubStyle;
@@ -1600,8 +1652,14 @@ function PlayerFile({
   }, [nudgedAt]);
   const styleUnsaved = JSON.stringify(style) !== JSON.stringify(savedStyle);
   const saveStyle = () => {
-    if (!settings) return;
-    saveSettings.mutate({ ...settings, subtitleStyle: style } satisfies ProfileSettings);
+    // Always on, the style belongs to the device: it's in the device's
+    // subtitles, not the profile's.
+    if (always) {
+      if (!device) return;
+      saveDevice.mutate({ ...device, subtitles: { ...device.subtitles, style } });
+    } else if (settings) {
+      saveSettings.mutate({ ...settings, subtitleStyle: style } satisfies ProfileSettings);
+    } else return;
     setSubStyle(undefined);
     setNotice({ text: "Saved as your subtitle style" });
   };
@@ -1740,8 +1798,6 @@ function PlayerFile({
   const dragged = useRef(false);
   // How hard the renderer works (the sheet's Quality tab): the title's own,
   // else this device's.
-  const device = useQuery(deviceSettingsQuery).data;
-  const saveDevice = useSaveDeviceSettings();
   const [unsavedQuality, setUnsavedQuality] = useState<Quality>();
   const quality = unsavedQuality ?? qualityOf(device, adjustments);
   const [qualifier] = useState(() => latestOnly(Player.SetQuality));

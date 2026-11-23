@@ -3,9 +3,14 @@ import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 import { Service as Player, type Ended, type LoadOptions, type State } from "@bindings/player";
 import type { Track, Watching } from "@bindings/playback";
-import type { ProfileSettings } from "@bindings/store";
 import { Service as Streams, type Source } from "@bindings/streams";
-import { audioLanguagesOf, languageName } from "@/lib/settings";
+import {
+  audioLanguagesOf,
+  languageName,
+  type DeviceSettings,
+  type ProfileSettings,
+} from "@/lib/settings";
+import { wantedSubtitleLanguage } from "@/lib/subtitles";
 
 // The player (#60, ADR-0039): libmpv in Go, under the webview, driven
 // through internal/player's Service. Its state comes back as events:
@@ -98,17 +103,19 @@ export async function reloadExpired(source: Source, options: LoadOptions): Promi
 }
 
 // Load's options from start (#62): the profile's languages, captions and
-// subtitle size. For the same file again (a retry, a fresh link), the
-// tracks it was playing, as the user may have picked others: their
-// languages, and subtitles on if a full track was showing. With watching,
-// Go keeps the profile's progress in it as it plays (#64); every Load of it,
-// retries too, has to pass it.
+// subtitle size, or this device's subtitles when they're always on. For the
+// same file again (a retry, a fresh link), the tracks it was playing, as the
+// user may have picked others: their languages, and subtitles on if a full
+// track was showing. With watching, Go keeps the profile's progress in it as
+// it plays (#64); every Load of it, retries too, has to pass it.
 export function loadOptions(
   start: number,
   settings: ProfileSettings | undefined,
   playing: Track[] = [],
   watching?: Watching,
+  device?: Pick<DeviceSettings, "subtitles">,
 ): LoadOptions {
+  const always = device?.subtitles?.always === true;
   const options = {
     start,
     audioLanguages: audioLanguagesOf(settings),
@@ -118,11 +125,21 @@ export function loadOptions(
     ...(settings?.subtitleStyle?.font && { subtitleStyle: settings.subtitleStyle }),
     ...(watching && { watching }),
   };
+  // The device's subtitles are on for every file, in its own style, and in a
+  // language the profile may never have picked.
+  const wanted = always
+    ? {
+        captions: "on" as const,
+        subtitleLanguage: options.subtitleLanguage || wantedSubtitleLanguage(settings),
+        ...(device?.subtitles?.style?.font && { subtitleStyle: device.subtitles.style }),
+      }
+    : {};
   const audio = playing.find((track) => track.type === "audio" && track.selected);
-  if (!audio) return options;
+  if (!audio) return { ...options, ...wanted };
   const sub = playing.find((track) => track.type === "sub" && track.selected);
   return {
     ...options,
+    ...wanted,
     audioLanguages: languageCodes(audio.lang),
     subtitleLanguage: languageCode(sub?.lang),
     captions: sub && !sub.forced ? "on" : "off",

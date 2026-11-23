@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vite-plus/test";
+import { describe, expect, it, vi } from "vite-plus/test";
 
 import type { Track } from "@/lib/player";
 import {
@@ -7,8 +7,10 @@ import {
   byLanguage,
   isTextSubtitle,
   secondChoices,
+  smartSubtitle,
   subtitleLanguage,
   subtitleTarget,
+  wantedSubtitleLanguage,
   type AddonSubtitle,
 } from "@/lib/subtitles";
 
@@ -163,6 +165,80 @@ describe("the second line of subtitles", () => {
     it("is for full subtitles: nothing next to forced signs", () => {
       const signs = [sub("en", { id: 1, forced: true }), sub("ja", { id: 3 })];
       expect(autoSecondary(signs, [], "ja", 1)).toBeUndefined();
+    });
+  });
+});
+
+describe("subtitles always on", () => {
+  describe("smartSubtitle", () => {
+    it("picks the file's own text track in the wanted language over a picture one", () => {
+      const pgs = sub("en", { id: 1, codec: "hdmv_pgs_subtitle" });
+      const text = sub("eng", { id: 2 });
+      expect(smartSubtitle([pgs, text], [], "en")).toEqual({ track: text });
+    });
+
+    it("skips forced tracks, which only translate signs", () => {
+      const signs = sub("en", { id: 1, forced: true });
+      const full = sub("en", { id: 2 });
+      expect(smartSubtitle([signs, full], [], "en")).toEqual({ track: full });
+      expect(smartSubtitle([signs], [], "en")).toBeUndefined();
+    });
+
+    it("prefers full subtitles over hearing-impaired ones, and the default-flagged first", () => {
+      const sdh = sub("en", { id: 1, hearingImpaired: true });
+      const plain = sub("en", { id: 2 });
+      expect(smartSubtitle([sdh, plain], [], "en")).toEqual({ track: plain });
+      const other = sub("en", { id: 3 });
+      const flagged = sub("en", { id: 4, default: true });
+      expect(smartSubtitle([other, flagged], [], "en")).toEqual({ track: flagged });
+    });
+
+    it("falls back to an addon's subtitles in the wanted language", () => {
+      const addon = subtitle("a", "pob");
+      const tracks = [sub("eng", { id: 1 })];
+      expect(smartSubtitle(tracks, [subtitle("b", "eng"), addon], "pt")).toEqual({ addon });
+    });
+
+    it("falls back to the file's only full track with no language tag", () => {
+      const untagged = sub("", { id: 1 });
+      expect(smartSubtitle([sub("eng", { id: 2 }), untagged], [], "pt")).toEqual({
+        track: untagged,
+      });
+      // Two of them are no choice at all.
+      expect(smartSubtitle([untagged, sub("und", { id: 3 })], [], "pt")).toBeUndefined();
+    });
+
+    it("has nothing when nothing fits", () => {
+      expect(smartSubtitle([sub("eng")], [], "pt")).toBeUndefined();
+      expect(smartSubtitle([], [], "en")).toBeUndefined();
+      expect(
+        smartSubtitle([sub("en", { forced: true })], [subtitle("a", "hrv")], "en"),
+      ).toBeUndefined();
+      expect(smartSubtitle([sub("en", { id: 1 })], [subtitle("a", "eng")], "")).toBeUndefined();
+    });
+  });
+
+  describe("wantedSubtitleLanguage", () => {
+    const nothing = { subtitleLanguage: "", audioLanguages: [] };
+
+    it("is the profile's subtitle language first, then its first audio language", () => {
+      expect(wantedSubtitleLanguage({ subtitleLanguage: "ja", audioLanguages: ["fr", "de"] })).toBe(
+        "ja",
+      );
+      expect(wantedSubtitleLanguage({ subtitleLanguage: "", audioLanguages: ["pt"] })).toBe("pt");
+    });
+
+    it("falls back to the system's language, then English", () => {
+      const language = vi.spyOn(navigator, "language", "get").mockReturnValue("vi-VN");
+      try {
+        expect(wantedSubtitleLanguage(nothing)).toBe("vi");
+        // A system language that isn't an ISO 639 code leaves English.
+        language.mockReturnValue("");
+        expect(wantedSubtitleLanguage(nothing)).toBe("en");
+        expect(wantedSubtitleLanguage(undefined)).toBe("en");
+      } finally {
+        language.mockRestore();
+      }
     });
   });
 });
