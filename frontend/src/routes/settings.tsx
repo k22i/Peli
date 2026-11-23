@@ -515,11 +515,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                 />
               </SettingRow>
             </SettingsGroup>
-            <PictureDefaults
-              profileId={profileId}
-              settings={settings}
-              setProfile={setProfile}
-            />
+            <PictureDefaults profileId={profileId} settings={settings} setProfile={setProfile} />
             <SettingsGroup title="Framing">
               <SettingRow
                 id="framing-fit"
