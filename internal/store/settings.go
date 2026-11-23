@@ -36,6 +36,15 @@ type ProfileSettings struct {
 	// SkipIntros skips intros and recaps without asking, where their times
 	// are known (#69). Credits are always the user's to skip.
 	SkipIntros bool `json:"skipIntros"`
+	// PreferredQuality is the resolution the stream ranking puts first,
+	// for every title: one of PreferredQualities. "best" prefers the
+	// highest the device allows. Streams above it still rank, just after
+	// the preferred one; the device's MaxResolution cap still wins.
+	PreferredQuality string `json:"preferredQuality"`
+	// AutoplayTopPick plays the stream picker's top pick by itself once the
+	// streams are in, instead of waiting for a choice. Off unless the
+	// profile turns it on.
+	AutoplayTopPick bool `json:"autoplayTopPick"`
 	// StillWatchingAfter is how many episodes play in a row, with no key
 	// or pointer input, before the player asks "Still watching?" rather
 	// than playing the next one; 0 never asks. Up to MaxStillWatchingAfter.
@@ -188,8 +197,10 @@ var (
 	CaptionsModes     = []string{"system", "on", "off"}
 	TorrentCacheSizes = []int{2, 5, 10, 20, 50}
 	MaxResolutions    = []string{"auto", "2160p", "1080p", "720p"}
-	DisplayModes      = []string{"auto", "on", "off"}
-	StreamSorts       = []string{"best", "size-desc", "size-asc", "seeders"}
+	// PreferredQualities are the resolutions a profile can rank first.
+	PreferredQualities = []string{"best", "2160p", "1080p", "720p"}
+	DisplayModes       = []string{"auto", "on", "off"}
+	StreamSorts        = []string{"best", "size-desc", "size-asc", "seeders"}
 	// MaxAudioLanguages is how many audio languages a profile can list.
 	MaxAudioLanguages = 8
 	// MaxStillWatchingAfter is the most episodes a profile can let play in
@@ -208,6 +219,7 @@ var DownloadCaps = []int{10, 25, 50, 100, 250, 500}
 func DefaultProfileSettings() ProfileSettings {
 	return ProfileSettings{
 		AudioLanguages: []string{}, SubtitleSize: "medium", SubtitleStyle: DefaultSubtitleStyle(), Captions: "system",
+		PreferredQuality:   "best",
 		StillWatchingAfter: 3,
 		SimklScrobble:      true, SimklImport: true, SimklAnime: true,
 		AniListProgress: true, AniListImport: true,
@@ -424,6 +436,9 @@ func validateProfileSettings(settings ProfileSettings) error {
 	}
 	if !slices.Contains(CaptionsModes, settings.Captions) {
 		return fmt.Errorf("%w: captions %q", ErrInvalidSettings, settings.Captions)
+	}
+	if !slices.Contains(PreferredQualities, settings.PreferredQuality) {
+		return fmt.Errorf("%w: preferred quality %q", ErrInvalidSettings, settings.PreferredQuality)
 	}
 	if settings.StillWatchingAfter < 0 || settings.StillWatchingAfter > MaxStillWatchingAfter {
 		return fmt.Errorf("%w: still watching after %d episodes", ErrInvalidSettings, settings.StillWatchingAfter)

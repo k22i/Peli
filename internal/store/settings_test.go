@@ -12,9 +12,10 @@ import (
 
 var japanese = ProfileSettings{
 	AudioLanguages: []string{"jpn"}, SubtitleLanguage: "en", SecondSubtitleLanguage: "ja", SubtitleSize: "large", Captions: "on",
-	SubtitleStyle:  SubtitleStyle{Font: "sans", Size: 135, Color: "#FFFFFF", Edge: "outline", Backdrop: 60},
-	Picture:        Picture{Preset: "cinema", Brightness: -4, Contrast: 6, Saturation: -6, Gamma: -4},
-	PicturePresets: []NamedPicture{}, Framing: Framing{Fit: "fill", Aspect: "auto", AutoCrop: true},
+	PreferredQuality: "best",
+	SubtitleStyle:   SubtitleStyle{Font: "sans", Size: 135, Color: "#FFFFFF", Edge: "outline", Backdrop: 60},
+	Picture:          Picture{Preset: "cinema", Brightness: -4, Contrast: 6, Saturation: -6, Gamma: -4},
+	PicturePresets:   []NamedPicture{}, Framing: Framing{Fit: "fill", Aspect: "auto", AutoCrop: true},
 	Sound: Sound{DialogueBoost: true, NightMode: true, Equalizer: "voice"}, HideSpoilers: true,
 	Gestures: Gestures{LevelSwipes: true, SeekSwipe: false, HoldForSpeed: true, DoubleTapSkip: 5},
 }
@@ -214,11 +215,18 @@ func TestProfileSettingsValidation(t *testing.T) {
 		"unknown captions":  {SubtitleSize: "medium", Captions: "sometimes"},
 		"still watching -1": {SubtitleSize: "medium", Captions: "system", StillWatchingAfter: -1},
 		"still watching 11": {SubtitleSize: "medium", Captions: "system", StillWatchingAfter: 11},
+		"4k quality":        {SubtitleSize: "medium", Captions: "system", PreferredQuality: "4k"},
 	} {
 		if err := s.SaveProfileSettings(p.ID, settings); !errors.Is(err, ErrInvalidSettings) {
 			t.Errorf("%s: err = %v, want ErrInvalidSettings", name, err)
 		}
 	}
+	// The preferred quality is one of PreferredQualities, and 1080p is one.
+	settings := DefaultProfileSettings()
+	settings.PreferredQuality = "1080p"
+	check(t, s.SaveProfileSettings(p.ID, settings))
+	equal(t, must[ProfileSettings](t)(s.ProfileSettings(p.ID)).PreferredQuality, "1080p")
+
 	if err := s.SaveProfileSettings(99, DefaultProfileSettings()); !errors.Is(err, ErrProfileNotFound) {
 		t.Fatalf("unknown profile err = %v", err)
 	}
@@ -234,6 +242,19 @@ func TestSettingsDecodeOverDefaults(t *testing.T) {
 	want := DefaultProfileSettings()
 	want.AudioLanguages = []string{"fr"}
 	equal(t, must[ProfileSettings](t)(s.ProfileSettings(p.ID)), want)
+}
+
+// A profile saved before the stream settings has no preferred quality: it
+// reads as the default, and the top pick doesn't play by itself.
+func TestStreamSettingsDecodeOverDefaults(t *testing.T) {
+	s, _ := openTemp(t)
+	p := must[Profile](t)(s.CreateProfile(Profile{Name: "P"}))
+	check(t, s.update(p.ID, func(b *bolt.Bucket) error {
+		return b.Put(keySettings, []byte(`{"audioLanguages":["en"],"subtitleSize":"medium","captions":"system"}`))
+	}))
+	settings := must[ProfileSettings](t)(s.ProfileSettings(p.ID))
+	equal(t, settings.PreferredQuality, "best")
+	equal(t, settings.AutoplayTopPick, false)
 }
 
 // The audio languages are a list (#98): the order is kept, and a record saved
