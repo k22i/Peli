@@ -105,6 +105,13 @@ type Engine struct {
 	videoW  int
 	videoH  int
 
+	// loads counts the Loads, so the auto-crop of a file that has gone stops
+	// finding bars in the next one (autocrop.go). autoCrop cancels the look
+	// at the load autoCropLoad names.
+	loads        uint64
+	autoCrop     context.CancelFunc
+	autoCropLoad uint64
+
 	// trackList is mpv's last raw track-list, and subHidden whether
 	// sub-visibility hides the main subtitles: a change to either rebuilds
 	// State.Tracks (showTracks), so the tracks reported say the subtitles
@@ -323,6 +330,10 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 	}
 	ses.hw, ses.hwSwitched, ses.firstFrame = hw, false, false
 	ses.source, ses.opts, ses.loadedAt = source, opts, time.Now()
+	// The last file's look for bars goes before this one loads; the new
+	// file's framing starts one again once its size is known (applyCrop).
+	// Not inside the update below, which holds e.mu.
+	e.stopAutoCrop()
 	e.update(func(st *playback.State) {
 		st.Loading, st.Buffering, st.BufferPercent, st.Seeking = true, false, 0, false
 		st.Time = playback.Time{Position: opts.Start}
@@ -333,6 +344,10 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 		// So the last file's size can't crop this one: mpv reports the new
 		// size before its first frame.
 		e.videoW, e.videoH = 0, 0
+		// Nor can its auto-crop: the bars found belong to the file that
+		// went.
+		e.loads++
+		st.AutoCrop = nil
 		e.watching, e.reportWhy, e.lastReport = watching, "", time.Now()
 	})
 	args := []string{"loadfile", source.URL, "replace"}
@@ -453,8 +468,10 @@ func (e *Engine) Stop() error {
 }
 
 // closeSession follows the binding rules from M0: stop the event loop, free
-// the render context (detach), then destroy the handle.
+// the render context (detach), then destroy the handle. Stop goes through
+// here, so no look for bars is left with a handle going away.
 func (e *Engine) closeSession(ses *session) {
+	e.stopAutoCrop()
 	ses.closing.Store(true)
 	ses.m.wakeup()
 	<-ses.done

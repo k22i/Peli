@@ -18,9 +18,10 @@ import (
 // What iOS leaves out, and why: panscan, which the touch player's pinch owns
 // (SetPanscan); the crop, which is video-crop (applyCrop), not a filter, mpv's
 // vf being where the flips are a filter and where the decoding mode's 8-bit
-// chain lives (filterFor); auto-crop, which is the desktop's; motion
-// smoothing, deinterlacing and the shaders (glsl-shaders carries the chroma
-// fix, chroma.go); and the audio device, a phone having one output.
+// chain lives (filterFor); motion smoothing, deinterlacing and the shaders
+// (glsl-shaders carries the chroma fix, chroma.go); and the audio device, a
+// phone having one output. Auto-crop is the desktop's (autocrop.go), the same
+// schedule and measuring over this engine's frames.
 
 // adjustments is where a Load finds a title's picture, framing, quality and
 // sound when the call doesn't name them: the store, which the app hands the
@@ -103,15 +104,21 @@ func (e *Engine) adjustProps(opts playback.LoadOptions) [][2]string {
 		[2]string{"video-crop", ""})
 }
 
-// applyCrop sets the manual crop the framing asks for, once the video's size
-// is known. iOS has no auto-crop: the crop is the framing's own.
+// applyCrop sets the crop the framing asks for, once the video's size is
+// known: the manual one, or what auto-crop finds (it starts looking).
 func (e *Engine) applyCrop(ses *session) {
 	e.mu.Lock()
-	f, w, h := e.framing, e.videoW, e.videoH
+	f, w, h, load := e.framing, e.videoW, e.videoH, e.loads
 	e.mu.Unlock()
 	if w <= 0 || h <= 0 {
 		return
 	}
+	if f.AutoCrop {
+		e.startAutoCrop(ses, load)
+		return
+	}
+	e.stopAutoCrop()
+	e.update(func(st *playback.State) { st.AutoCrop = nil })
 	if err := ses.m.setProperty("video-crop", playback.CropProp(f.Crop, w, h)); err != nil {
 		slog.Warn("iosplayer: crop not set", "error", err)
 	}
