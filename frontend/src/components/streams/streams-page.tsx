@@ -17,7 +17,7 @@ import {
   RotateCw,
   Users,
 } from "lucide-react";
-import { useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
 import type { Profile } from "@bindings/store";
 import { Service as Sync } from "@bindings/syncer";
@@ -101,6 +101,10 @@ export function StreamsPage() {
           type={type}
           video={video}
           target={target}
+          // The profile autoplays the top pick; `choose` in the address is
+          // how the user asked for the list instead (and how Back from the
+          // player lands on it).
+          choose={search.choose === true}
         />
       ) : (
         <>
@@ -279,11 +283,14 @@ function Picker({
   type,
   video,
   target,
+  choose,
 }: {
   profile: Profile;
   type: ContentType;
   video: string;
   target: PlayTarget;
+  // The list was asked for: the profile's autoplay stands down.
+  choose: boolean;
 }) {
   const {
     loading,
@@ -295,7 +302,7 @@ function Picker({
     device,
     view,
     ranked,
-    pin,
+    pin: pinRanked,
     rows,
     toggleGroup,
     refresh,
@@ -303,6 +310,13 @@ function Picker({
     filtering,
     sourceFilter,
   } = useStreamChoices(profile.id, type, target.id, video, target.title);
+  // Autoplay stands down when the user gets there first: `pin` is what the
+  // list calls as soon as the user moves into it, or plays something.
+  const autoplayStopped = useRef(false);
+  const pin = () => {
+    autoplayStopped.current = true;
+    pinRanked();
+  };
   const client = useQueryClient();
   // "Start cached streams sooner" (#101, ADR-0060): the top pick resolves
   // while the user looks, when it's a cached debrid stream. Never for a
@@ -568,6 +582,19 @@ function Picker({
   // place.
   usePlayKey(guest ? null : view.top, pick);
 
+  // Autoplay (profile setting): once every source has answered, the top
+  // pick plays by itself, once per visit. The address gets `choose` first
+  // (replace), so Back from the player shows the list instead of
+  // autoplaying again. Not for a guest (the party picks), nor when the
+  // user has already started choosing.
+  const autoplay = useAutoplay({
+    enabled: settings?.autoplayTopPick === true && !choose && !guest,
+    answered,
+    top: view.top,
+    pick,
+    stoppedRef: autoplayStopped,
+  });
+
   // The guest's page, in every state: no list, no filters, no jump strip, and
   // no addons notice either — the status says when nothing opened.
   if (guest) return <GuestPick header={header} pick={guestPick} />;
@@ -628,6 +655,23 @@ function Picker({
         shown={view.total}
         filter={sourceFilter}
       />
+      {/* The profile autoplays the top pick, and the streams are still
+          coming in: say so, and give the user a way out of it. */}
+      {autoplay.waiting && (
+        <div className="flex flex-wrap items-center gap-3 px-page">
+          <output role="status" className="text-body text-muted-foreground">
+            Playing the top pick when the streams are in
+          </output>
+          <Button
+            size="sm"
+            variant="secondary"
+            className="rounded-full"
+            onClick={autoplay.chooseMyself}
+          >
+            Choose myself
+          </Button>
+        </div>
+      )}
       <StreamList
         rows={rows}
         runtime={runtimeMinutes(meta?.runtime) ?? null}
@@ -830,6 +874,59 @@ export function usePlayKey(top: Candidate | null, play: (candidate: Candidate) =
 const typing = (target: EventTarget | null) =>
   target instanceof HTMLElement &&
   (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+
+// Autoplay (profile setting): once every source has answered, the top
+// pick plays by itself, once per visit. The address gets `choose` first
+// (replace), so Back from the player shows the list instead of
+// autoplaying again. Not for a guest (the party picks), nor when the
+// user has already started choosing.
+function useAutoplay({
+  enabled,
+  answered,
+  top,
+  pick,
+  stoppedRef,
+}: {
+  enabled: boolean;
+  answered: boolean;
+  top: Candidate | null;
+  pick: (candidate: Candidate) => void;
+  // Set when the user gets there first: a key or a click in the list, as
+  // `pin` reports, or "Choose myself".
+  stoppedRef: { current: boolean };
+}) {
+  const navigate = useNavigate();
+  // The latest of both, as `usePlayKey` keeps its own: the effect fires
+  // once, so it must play what pick is now, not what it was then.
+  const latest = useRef({ pick, navigate });
+  useLayoutEffect(() => {
+    latest.current = { pick, navigate };
+  });
+  const fired = useRef(false);
+  // "Choose myself" re-renders the page, so the status line goes with it.
+  const [chosen, setChosen] = useState(false);
+  useEffect(() => {
+    if (!enabled || !answered || !top) return;
+    if (fired.current || stoppedRef.current) return;
+    fired.current = true;
+    const { pick: play, navigate: go } = latest.current;
+    // The list stays reachable, and doesn't autoplay again on the way back.
+    void go({
+      to: ".",
+      search: (previous: StreamsSearch): StreamsSearch => ({ ...previous, choose: true }),
+      replace: true,
+    });
+    play(top);
+  }, [enabled, answered, top]);
+  return {
+    // Waiting on the streams, and still going to play the top pick.
+    waiting: enabled && !answered && !fired.current && !stoppedRef.current && !chosen,
+    chooseMyself: () => {
+      stoppedRef.current = true;
+      setChosen(true);
+    },
+  };
+}
 
 // An addon's answer. Once it has streams, and others do too, it's a toggle
 // that keeps only its streams (with any other chosen).
