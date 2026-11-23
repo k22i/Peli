@@ -158,7 +158,7 @@ export function tierOrder(prefs: Prefs): readonly Tier[] {
       const rank = resolutionOrder.indexOf(lowest);
       return rank > resolutionOrder.indexOf(preferred) && rank <= cap;
     })
-    .sort(byTierResolution);
+    .toSorted(byTierResolution);
   const anchor = ordered.findIndex((tier) => tierLowest[tier] === preferred);
   if (!above.length || anchor < 0) return ordered;
   const rest = ordered.filter((tier) => !above.includes(tier));
