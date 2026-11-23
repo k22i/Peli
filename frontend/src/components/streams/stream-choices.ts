@@ -102,7 +102,7 @@ export function useStreamChoices(
   const aliases = useTmdbAliases(tmdbRef(type, id, meta));
   const ctx = titleContext(type, video, meta, title, { map, aliases });
   const prefs = rankingPrefs(settings, device, last);
-  const { view: ranked, pin: pinRanked } = useRankedStreams(sources, ctx, prefs);
+  const { view: ranked, caughtUp, pin: pinRanked } = useRankedStreams(sources, ctx, prefs);
 
   // The filters and the sort (the sort is the device's, the filters the
   // session's), applied to the ranked view before its rows are listed.
@@ -155,9 +155,11 @@ export function useStreamChoices(
       if (!next.delete(tier)) next.add(tier);
       return next;
     });
-  // Every source has answered, and what ranks them has loaded: the top
-  // pick only changes now if the user moves it.
+  // Every source has answered, what ranks them has loaded, and the ranking
+  // has caught up with both: the top pick only changes now if the user
+  // moves it.
   const answered =
+    caughtUp &&
     !loading &&
     sources.every((source) => source.status !== "pending") &&
     !browsing.loading &&

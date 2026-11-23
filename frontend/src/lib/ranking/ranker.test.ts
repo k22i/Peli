@@ -48,6 +48,18 @@ describe("RankingSession", () => {
     ranking.close();
   });
 
+  it("says how many added slices its view hasn't ranked yet, pins aside", async () => {
+    const { ranking, views } = session();
+    expect(ranking.waiting).toBe(0);
+    ranking.add("a", [stream("Some.Film.2024.720p.WEB-DL.H264-GRP.mkv", hash(1))]);
+    ranking.add("b", [stream("Some.Film.2024.1080p.WEB-DL.H264-GRP.mkv", hash(2))]);
+    ranking.pin();
+    expect(ranking.waiting).toBe(2);
+    await vi.waitFor(() => expect(views).toHaveLength(3));
+    expect(ranking.waiting).toBe(0);
+    ranking.close();
+  });
+
   it("keeps the top pick once pinned", async () => {
     const { ranking, latest } = session();
     ranking.add("a", [stream("Some.Film.2024.720p.WEB-DL.H264-GRP.mkv", hash(1))]);

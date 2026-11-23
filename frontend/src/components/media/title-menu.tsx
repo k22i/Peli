@@ -267,13 +267,15 @@ function ProfileItems({
     }
   };
 
+  // "Choose a stream…" asks for the list: a profile that autoplays stands
+  // down (`choose`).
   const chooseStream = () => {
     if (!choice) return;
     const { target } = choice;
     void navigate({
       to: streamsPath,
       params: { type: target.type, id: target.id },
-      search: streamsSearch({ video: target.videoId, at: target.resumeAt }),
+      search: streamsSearch({ video: target.videoId, at: target.resumeAt, choose: true }),
       state: (previous) => ({ ...previous, play: target }),
     });
   };

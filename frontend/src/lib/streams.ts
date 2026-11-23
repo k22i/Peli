@@ -133,22 +133,30 @@ export function slices(streams: readonly Stream[], size = sliceSize): (readonly 
   return out;
 }
 
+// What of an answer is ranked at all: a torrent with no link can't play on
+// iOS (ADR-0055), so it isn't offered.
+const offered = (streams: readonly Stream[]) =>
+  feature("torrent") ? streams : streams.filter((stream) => stream.url || !stream.infoHash);
+
 // Hands each source's answer on once, in the order they arrive, cut into
 // slices. A source that answers again (a refetch) isn't handed on twice; one
 // that failed is, once a retry answers.
 export class StreamFeed {
   readonly #fed = new Set<string>();
 
+  // Whether `take` has anything new: a source that answered since.
+  has(sources: readonly StreamSource[]): boolean {
+    return sources.some(
+      ({ key, status, streams }) => status === "success" && streams && !this.#fed.has(key),
+    );
+  }
+
   take(sources: readonly StreamSource[]): StreamSlice[] {
     const out: StreamSlice[] = [];
     for (const { key, status, streams } of sources) {
       if (status !== "success" || !streams || this.#fed.has(key)) continue;
       this.#fed.add(key);
-      // A torrent with no link can't play on iOS (ADR-0055): it isn't offered.
-      const playable = feature("torrent")
-        ? streams
-        : streams.filter((stream) => stream.url || !stream.infoHash);
-      for (const slice of slices(playable)) out.push({ source: key, streams: slice });
+      for (const slice of slices(offered(streams))) out.push({ source: key, streams: slice });
     }
     return out;
   }
@@ -156,15 +164,19 @@ export class StreamFeed {
 
 // Calls `onSlice` with each new slice once its addon answers. One feed per
 // mount: key the component by the video, so another video starts afresh.
+// True while a source has answered that isn't fed yet (it is, after this
+// render).
 export function useStreamFeed(
   sources: readonly StreamSource[],
   onSlice: (slice: StreamSlice) => void,
-) {
-  const feed = useRef<StreamFeed>(null);
-  feed.current ??= new StreamFeed();
+): boolean {
+  // State, not a ref, so the render can ask it what's new; it's never set.
+  const [feed] = useState(() => new StreamFeed());
+  const behind = feed.has(sources);
   useEffect(() => {
-    for (const slice of feed.current!.take(sources)) onSlice(slice);
+    for (const slice of feed.take(sources)) onSlice(slice);
   });
+  return behind;
 }
 
 // What ranking prefers: the profile's audio language and the quality it asked
@@ -223,22 +235,36 @@ const displayShowsHdr = () =>
 // title's details or the profile's settings arrive), it starts again with
 // every slice so far, keeping a pin. `pin` keeps the top pick where it is
 // once the user starts navigating. One session per mount: key the component
-// by the video.
+// by the video. `caughtUp` says the view has ranked every stream that has
+// come in, with the current `ctx` and `prefs`: until then, its top pick may
+// still change by itself.
 export function useRankedStreams(
   sources: readonly StreamSource[],
   ctx: TitleContext,
   prefs: Prefs,
 ) {
-  const [view, setView] = useState<RankedView>(emptyView);
+  // The view, which session (by its settings) it came from, and how many
+  // views that session still owes.
+  const [ranked, setRanked] = useState<{ view: RankedView; settings: string; waiting: number }>({
+    view: emptyView,
+    settings: "",
+    waiting: 0,
+  });
   const session = useRef<RankingSession>(null);
   const fed = useRef<StreamSlice[]>([]);
   const pinned = useRef(false);
+  const owed = () => {
+    const waiting = session.current?.waiting ?? 0;
+    setRanked((current) => (current.waiting === waiting ? current : { ...current, waiting }));
+  };
 
   // By value: a new object each render is the same session.
   const settings = JSON.stringify([ctx, prefs]);
   useEffect(() => {
     const [context, preferences]: [TitleContext, Prefs] = JSON.parse(settings);
-    const ranking = new RankingSession(context, preferences, setView);
+    const ranking = new RankingSession(context, preferences, (view) =>
+      setRanked({ view, settings, waiting: ranking.waiting }),
+    );
     for (const slice of fed.current) ranking.add(slice.source, slice.streams);
     if (pinned.current) ranking.pin();
     session.current = ranking;
@@ -248,16 +274,24 @@ export function useRankedStreams(
     };
   }, [settings]);
 
-  useStreamFeed(sources, (slice) => {
+  const behind = useStreamFeed(sources, (slice) => {
     fed.current.push(slice);
     session.current?.add(slice.source, slice.streams);
+    owed();
   });
 
+  // With nothing to rank, no session ever answers, and the empty view is
+  // as caught up as it gets.
+  const nothing = !sources.some(
+    ({ status, streams }) => status === "success" && streams && offered(streams).length > 0,
+  );
   return {
-    view,
+    view: ranked.view,
+    caughtUp: !behind && ranked.waiting === 0 && (nothing || ranked.settings === settings),
     pin: () => {
       pinned.current = true;
       session.current?.pin();
+      owed();
     },
   };
 }

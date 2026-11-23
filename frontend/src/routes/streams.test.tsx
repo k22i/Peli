@@ -1713,6 +1713,33 @@ describe("with a watch party", () => {
   });
 });
 
+// Records whether the list ever mounted, between any two renders: the
+// autoplay must never flash it.
+const watchForList = () => {
+  let seen = false;
+  const look = () => {
+    seen ||= document.querySelector('ol[aria-label="Streams"]') !== null;
+  };
+  const observer = new MutationObserver(look);
+  observer.observe(document.body, { childList: true, subtree: true });
+  look();
+  return {
+    seen: () => {
+      look();
+      return seen;
+    },
+    stop: () => observer.disconnect(),
+  };
+};
+// The autoplay's status, an <output> on its screen.
+const autoplayStatus = () => {
+  const page = document.querySelector('[data-slot="autoplay"]');
+  if (!(page instanceof HTMLElement)) throw new Error("no autoplay screen");
+  return within(page).getByRole("status");
+};
+const autoplayOn = () =>
+  mocks.profile.mockResolvedValue({ ...defaultProfileSettings(), autoplayTopPick: true });
+
 // The profile's autoplay: the top pick plays by itself once the streams are
 // in, unless the address asks for the list.
 describe("autoplay", () => {
@@ -1754,6 +1781,156 @@ describe("autoplay", () => {
     expect(playing()).toBeNull();
     expect(mocks.resolve).not.toHaveBeenCalled();
     expect(mocks.load).not.toHaveBeenCalled();
-    expect(screen.queryByText("Playing the top pick when the streams are in")).toBeNull();
+    expect(screen.queryByText(/^Finding the best stream/)).toBeNull();
+  });
+
+  it("shows what it's doing instead of the list, from Play to the player", async () => {
+    autoplayOn();
+    const slow = later<unknown>();
+    serve({
+      [movieStreams("torrentio.strem.fun")]: slow.promise,
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    const opened = later<Source>();
+    mocks.resolve.mockImplementation(() => opened.promise);
+    const list = watchForList();
+    const user = userEvent.setup();
+    // Play, as the title page has it (usePlay).
+    const { router } = await renderApp("/title/movie/tt0111161");
+    await user.click(await screen.findByRole("button", { name: "Play" }));
+    expect(router.state.location.pathname).toBe(pickerPath);
+
+    expect(await screen.findByText("Finding the best stream…")).toBeInTheDocument();
+    expect(autoplayStatus().tagName).toBe("OUTPUT");
+    expect(
+      await screen.findByRole("heading", { level: 1, name: "The Shawshank Redemption" }),
+    ).toBeInTheDocument();
+    await waitFor(() =>
+      expect(autoplayStatus()).toHaveTextContent(/streams so far, 1 of 2 addons still answering/),
+    );
+    expect(screen.getByRole("button", { name: "Choose myself" })).toBeInTheDocument();
+
+    // The last answer has the best stream: the autoplay waits for it, and
+    // for the ranking to take it in.
+    slow.resolve({ streams: [cached] });
+    await waitFor(() =>
+      expect(autoplayStatus()).toHaveTextContent("Opening 1080p from Torrentio…"),
+    );
+    expect(mocks.resolve).toHaveBeenCalledOnce();
+    expect(mocks.resolve.mock.calls[0]![0].url).toBe(cached.url);
+    expect(screen.queryByRole("button", { name: "Choose myself" })).toBeNull();
+    expect(screen.getByRole("button", { name: "Cancel" })).toBeInTheDocument();
+    // Back from the player lands on the list.
+    expect(router.state.location.search).toMatchObject({ choose: true });
+
+    opened.resolve(resolved({ url: cached.url, headers: {} }));
+    await opensThePlayer(4000);
+    expect(list.seen()).toBe(false);
+    list.stop();
+  });
+
+  it("shows the list on Choose myself, and plays nothing", async () => {
+    autoplayOn();
+    const slow = later<unknown>();
+    serve({
+      [movieStreams("torrentio.strem.fun")]: slow.promise,
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    const user = userEvent.setup();
+    await renderApp(pickerPath);
+
+    await user.click(await screen.findByRole("button", { name: "Choose myself" }));
+    await waitFor(() => expect(shownStreams().length).toBeGreaterThan(0));
+    expect(document.querySelector('[data-slot="autoplay"]')).toBeNull();
+
+    slow.resolve({ streams: [cached] });
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    await looking();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+    expect(mocks.load).not.toHaveBeenCalled();
+  });
+
+  it("shows the list on Cancel while the top pick opens", async () => {
+    autoplayOn();
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cached] },
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    mocks.resolve.mockImplementation(() => new Promise(() => {}));
+    const user = userEvent.setup();
+    const { router } = await renderApp(pickerPath);
+
+    await waitFor(() =>
+      expect(autoplayStatus()).toHaveTextContent("Opening 1080p from Torrentio…"),
+    );
+    await user.click(screen.getByRole("button", { name: "Cancel" }));
+    await waitFor(() => expect(topPick()).toHaveTextContent("Cached · TorBox"));
+    expect(mocks.cancel).toHaveBeenCalled();
+    expect(router.state.location.search).toMatchObject({ choose: true });
+    // No notice: the user stopped it.
+    expect(screen.queryByText("Nothing to play by itself")).toBeNull();
+    await looking();
+    expect(mocks.load).not.toHaveBeenCalled();
+    expect(playing()).toBeNull();
+  });
+
+  it("falls back to the list, saying why, when the top pick won't open", async () => {
+    autoplayOn();
+    serve({
+      [movieStreams("torrentio.strem.fun")]: { streams: [cached] },
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    mocks.resolve.mockRejectedValue(new Error("no link"));
+    await renderApp(pickerPath);
+
+    await waitFor(() => expect(shownStreams().length).toBeGreaterThan(0), { timeout: 3000 });
+    const notice = screen.getByText("Couldn’t reach the stream").closest("output");
+    expect(notice).not.toBeNull();
+    expect(notice).toHaveTextContent("Check your connection");
+    expect(mocks.resolve.mock.calls[0]![0].url).toBe(cached.url);
+    expect(mocks.load).not.toHaveBeenCalled();
+    expect(document.querySelector('[data-slot="autoplay"]')).toBeNull();
+  });
+
+  it("falls back to the list when no source answers", async () => {
+    autoplayOn();
+    // Neither stream addon answers: serve() answers 503 to both.
+    serve();
+    await renderApp(pickerPath);
+
+    expect(
+      await screen.findByText("Nothing to play by itself", {}, { timeout: 3000 }),
+    ).toBeInTheDocument();
+    expect(addonStatus("Torrentio")).toBeInTheDocument();
+    expect(document.querySelector('[data-slot="autoplay"]')).toBeNull();
+    expect(mocks.resolve).not.toHaveBeenCalled();
+  });
+
+  it("shows the same status on the iPhone, its buttons at 44 pt", async () => {
+    restoreMatchMedia = onCompactIOS();
+    autoplayOn();
+    const slow = later<unknown>();
+    serve({
+      [movieStreams("torrentio.strem.fun")]: slow.promise,
+      [movieStreams("peerflix.example")]: peerflixMovie,
+    });
+    // The player's iPhone screen needs more mocks than this file has: the
+    // pick opening is as far as it goes.
+    mocks.resolve.mockImplementation(() => new Promise(() => {}));
+    const list = watchForList();
+    await renderApp(pickerPath);
+
+    expect(await screen.findByText("Finding the best stream…")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: /^Streams/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Choose myself" })).toHaveClass(
+      "pointer-coarse:min-h-11",
+    );
+    slow.resolve({ streams: [cached] });
+    await waitFor(() =>
+      expect(autoplayStatus()).toHaveTextContent("Opening 1080p from Torrentio…"),
+    );
+    expect(screen.getByRole("button", { name: "Cancel" })).toHaveClass("pointer-coarse:min-h-11");
+    expect(list.seen()).toBe(false);
+    list.stop();
   });
 });

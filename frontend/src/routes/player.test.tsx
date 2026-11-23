@@ -1388,7 +1388,8 @@ describe("next episode", () => {
     expect(await within(next).findByText("No stream found yet")).toBeInTheDocument();
     await userEvent.setup().click(within(next).getByRole("button", { name: "Choose a stream" }));
     await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
-    expect(router.state.location.search).toEqual({ video: "tt0903747:1:2" });
+    // The list, even for a profile that autoplays: there was nothing to play.
+    expect(router.state.location.search).toEqual({ video: "tt0903747:1:2", choose: true });
     expect(mocks.load).not.toHaveBeenCalled();
   });
 
