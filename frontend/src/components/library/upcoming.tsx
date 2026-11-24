@@ -1,37 +1,37 @@
 import { useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link } from "@tanstack/react-router";
-import { CalendarDays, ChevronDown } from "lucide-react";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { CalendarDays, ChevronDown, List } from "lucide-react";
 import { useState } from "react";
 
+import { EpisodeEntry } from "@/components/library/episode-entry";
 import { LibraryNotice } from "@/components/library/notice";
-import { Artwork } from "@/components/media/artwork";
-import { openOnContextKey, TitleMenu } from "@/components/media/title-menu";
+import { UpcomingCalendar } from "@/components/library/upcoming-calendar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Spinner } from "@/components/ui/spinner";
+import { Tabs, TabsList, TabsTab } from "@/components/ui/tabs";
 import {
-  airDate,
-  airTime,
   calendar,
   calendarShows,
   dayLabel,
-  entryCode,
   type CalendarEntry,
   type CalendarShow,
 } from "@/lib/calendar";
 import { useLoadedAddons } from "@/lib/home";
-import { libraryPreview, libraryQuery } from "@/lib/library";
-import { cachedTitleMeta, titleMetaQuery, useOpenTitle } from "@/lib/title";
-import { libraryMenuTitle } from "@/lib/title-actions";
+import { libraryQuery, type LibrarySearch } from "@/lib/library";
 import { useCompactShell } from "@/lib/shell-mode";
+import { cachedTitleMeta, titleMetaQuery } from "@/lib/title";
 import { cn } from "@/lib/utils";
 import type { Profile } from "@bindings/store";
 
 // The Library page's Upcoming view (#48): the episodes of the library's
 // shows that air from today on, by day (ADR-0032). Each show's details come
 // from the title page's query, so a show seen before paints from the cache,
-// offline too, and each fills in as its addon answers.
+// offline too, and each fills in as its addon answers. Two layouts, the list
+// of days and the month's calendar (?layout=calendar).
 export function Upcoming({ profile }: { profile: Profile }) {
+  const search: LibrarySearch = useSearch({ strict: false });
+  const layout = search.layout ?? "list";
   const client = useQueryClient();
   const library = useQuery(libraryQuery(profile.id));
   const { visible, addons, loading } = useLoadedAddons(profile.id);
@@ -69,34 +69,47 @@ export function Upcoming({ profile }: { profile: Profile }) {
   const failed = details.filter((query) => query.isError && !query.data);
   const { days, later } = calendar(loaded);
 
-  if (days.length === 0 && later.length === 0 && checking) return <UpcomingSkeleton />;
+  // Only the list waits on a skeleton: the calendar paints its days (empty
+  // ones too) while the shows load.
+  if (layout === "list" && days.length === 0 && later.length === 0 && checking) {
+    return <UpcomingSkeleton />;
+  }
 
   return (
     <div className="flex flex-col gap-8 px-page">
-      {(checking || failed.length > 0) && (
-        <div className="flex items-center gap-3 text-body text-muted-foreground">
-          {checking ? (
-            <>
-              <Spinner className="size-4" />
-              Checking your shows for new episodes…
-            </>
-          ) : (
-            <>
-              {failed.length === 1
-                ? "Couldn’t check one show."
-                : `Couldn’t check ${failed.length} shows.`}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => failed.forEach((query) => void query.refetch())}
-              >
-                Try again
-              </Button>
-            </>
-          )}
-        </div>
-      )}
-      {days.length === 0 && later.length === 0 && !checking ? (
+      {/* The status and the layout switch share the first row, so the switch
+          stays put whether or not there is anything to report. */}
+      <div className="flex items-center justify-between gap-4">
+        {checking || failed.length > 0 ? (
+          <div className="flex items-center gap-3 text-body text-muted-foreground">
+            {checking ? (
+              <>
+                <Spinner className="size-4" />
+                Checking your shows for new episodes…
+              </>
+            ) : (
+              <>
+                {failed.length === 1
+                  ? "Couldn’t check one show."
+                  : `Couldn’t check ${failed.length} shows.`}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => failed.forEach((query) => void query.refetch())}
+                >
+                  Try again
+                </Button>
+              </>
+            )}
+          </div>
+        ) : (
+          <span />
+        )}
+        <LayoutSwitch />
+      </div>
+      {layout === "calendar" ? (
+        <UpcomingCalendar shows={loaded} />
+      ) : days.length === 0 && later.length === 0 && !checking ? (
         <LibraryNotice
           icon={CalendarDays}
           title="Nothing coming up"
@@ -111,6 +124,62 @@ export function Upcoming({ profile }: { profile: Profile }) {
         </div>
       )}
     </div>
+  );
+}
+
+// The list or the calendar: coss Tabs as a segmented control on an ink tint,
+// the Library page's view switch at the end of its header, so the two read as
+// one family. The pill is a wrapper here too, since a tier sets its own
+// background; the tab list inside it is bare.
+//
+// `compact` (#132, iPhone): the icons alone, as the words plus their icons
+// would crowd the status message beside them.
+function LayoutSwitch() {
+  const search: LibrarySearch = useSearch({ strict: false });
+  const navigate = useNavigate();
+  const compact = useCompactShell();
+  return (
+    // Replaced, as the view switch is: the layout is a preference, not a place
+    // to come back to.
+    <Tabs
+      // Kept whole beside a long status message on an iPhone.
+      className="shrink-0"
+      value={search.layout ?? "list"}
+      onValueChange={(next: string) =>
+        void navigate({
+          to: ".",
+          search: (previous: LibrarySearch): LibrarySearch => ({
+            ...previous,
+            layout: next === "calendar" ? "calendar" : undefined,
+          }),
+          replace: true,
+        })
+      }
+    >
+      <span className="inline-flex rounded-full bg-foreground/7 p-1">
+        <TabsList
+          aria-label="Layout"
+          className="gap-x-1 rounded-full bg-transparent p-0 text-muted-foreground *:data-[slot=tab-indicator]:rounded-full *:data-[slot=tab-indicator]:bg-background *:data-[slot=tab-indicator]:shadow-card dark:*:data-[slot=tab-indicator]:bg-foreground/16 dark:*:data-[slot=tab-indicator]:shadow-none"
+        >
+          <TabsTab
+            value="list"
+            aria-label={compact ? "List" : undefined}
+            className={compact ? "rounded-full px-2.5" : "gap-1.5 rounded-full px-3"}
+          >
+            <List aria-hidden className="size-4" />
+            {compact ? null : "List"}
+          </TabsTab>
+          <TabsTab
+            value="calendar"
+            aria-label={compact ? "Calendar" : undefined}
+            className={compact ? "rounded-full px-2.5" : "gap-1.5 rounded-full px-3"}
+          >
+            <CalendarDays aria-hidden className="size-4" />
+            {compact ? null : "Calendar"}
+          </TabsTab>
+        </TabsList>
+      </span>
+    </Tabs>
   );
 }
 
@@ -212,82 +281,6 @@ function DaySection({
         ))}
       </ul>
     </section>
-  );
-}
-
-// An episode on the calendar. It opens its show's page on its season.
-//
-// `compact` (#132, iPhone): Apple TV's Up Next density, a 44×66 pt poster,
-// the show in 15 pt semibold over "S2 · E5 · Episode title" in 13 pt (two
-// lines at most), and the time at the end; about 82 pt a row.
-function EpisodeEntry({
-  entry,
-  dated,
-  compact,
-}: {
-  entry: CalendarEntry;
-  dated: boolean;
-  compact: boolean;
-}) {
-  const open = useOpenTitle();
-  const { item, episode, episodes } = entry;
-  const code = entryCode(entry);
-  const title =
-    episodes.length > 1
-      ? `${episodes.length} episodes`
-      : episode.title || `Episode ${episode.episode}`;
-  // At the end: the day's rows show the time (when the addon gives one),
-  // Later's the date.
-  const end = dated ? airDate(entry.airs) : airTime(entry);
-  if (compact) {
-    return (
-      <TitleMenu title={libraryMenuTitle(item)}>
-        <button
-          type="button"
-          aria-label={`${item.name}, ${code}: ${title}${dated ? `, ${airDate(entry.airs)}` : ""}`}
-          onClick={() => open(libraryPreview(item), { season: episode.season })}
-          onKeyDown={openOnContextKey}
-          className="-mx-3 flex w-[calc(100%+1.5rem)] cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-start outline-none transition-colors active:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          <span className="relative h-[4.125rem] w-11 shrink-0 overflow-hidden rounded-md shadow-card">
-            <Artwork src={item.poster} use="poster" title={item.name} />
-          </span>
-          <span className="flex min-w-0 flex-1 flex-col gap-0.5">
-            <span className="truncate text-[0.9375rem] leading-[1.25] font-semibold text-foreground">
-              {item.name}
-            </span>
-            <span className="line-clamp-2 text-[0.8125rem] leading-[1.3] text-muted-foreground">
-              <span className="tnum">{code}</span> · {title}
-            </span>
-          </span>
-          {end && (
-            <span className="shrink-0 text-[0.8125rem] text-muted-foreground tnum">{end}</span>
-          )}
-        </button>
-      </TitleMenu>
-    );
-  }
-  return (
-    <TitleMenu title={libraryMenuTitle(item)}>
-      <button
-        type="button"
-        aria-label={`${item.name}, ${code}: ${title}${dated ? `, ${airDate(entry.airs)}` : ""}`}
-        onClick={() => open(libraryPreview(item), { season: episode.season })}
-        onKeyDown={openOnContextKey}
-        className="flex w-full cursor-pointer items-center gap-5 rounded-2xl p-3 text-start outline-none transition-colors hover:bg-accent/60 focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        <span className="relative aspect-[2/3] w-24 shrink-0 overflow-hidden rounded-lg shadow-card">
-          <Artwork src={item.poster} use="poster" title={item.name} />
-        </span>
-        <span className="flex min-w-0 flex-1 flex-col gap-1">
-          <span className="truncate type-item text-foreground">{item.name}</span>
-          <span className="truncate text-body text-muted-foreground">
-            <span className="tnum text-small">{code}</span> · {title}
-          </span>
-        </span>
-        {end && <span className="shrink-0 tnum text-small text-muted-foreground">{end}</span>}
-      </button>
-    </TitleMenu>
   );
 }
 
