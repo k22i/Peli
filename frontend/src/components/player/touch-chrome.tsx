@@ -25,6 +25,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
 
 import { sheetSurface } from "@/components/player/panel-controls";
+import { PreviewFrame } from "@/components/player/preview-frame";
 import {
   PlayerMenu,
   PlayerMenuCheckboxItem,
@@ -513,16 +514,10 @@ export function ScrubLabel({
     >
       <div className="flex flex-col items-center gap-1 drop-shadow-[0_2px_16px_rgb(0_0_0/0.7)]">
         {thumb && (
-          <img
-            src={thumb.url}
-            alt=""
-            data-testid="scrub-thumb"
-            width={thumb.w}
-            height={thumb.h}
-            className={cn(
-              "mb-2 w-56 h-auto rounded-2xl shadow-float",
-              !thumb.exact && "opacity-60",
-            )}
+          <PreviewFrame
+            preview={thumb}
+            testId="scrub-thumb"
+            className="mb-2 w-56 rounded-2xl shadow-float"
           />
         )}
         <p className="text-[2.75rem] leading-none font-[650] text-white tnum">{formatTime(to)}</p>

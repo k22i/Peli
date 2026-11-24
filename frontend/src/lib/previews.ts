@@ -35,7 +35,18 @@ const nearestWithin = 60;
 
 // One thumbnail as the seek bar shows it. `exact` is false for a
 // neighbouring bucket's, which the bar dims: the picture is close, not right.
-export type PreviewImage = { url: string; w: number; h: number; exact: boolean };
+// `url` is undefined before any thumbnail near the time is made: the bar
+// shows a placeholder of the same shape. `loading` says Go is still making
+// this bucket's, `failed` that it can't (previews stopped for the file, or
+// this bucket's keyframe failed), so the bar never spins for nothing.
+export type PreviewImage = {
+  url: string | undefined;
+  w: number;
+  h: number;
+  exact: boolean;
+  loading?: boolean;
+  failed?: boolean;
+};
 
 // What the seek bar asks for and shows. `want` asks for the bucket a time
 // falls in, and does nothing when previews are off; `near` is what to show
@@ -155,6 +166,19 @@ const noSources: readonly Source[] = [];
 type ThumbsForKey = { key: string; map: ReadonlyMap<number, Thumb> };
 type CopiesForKey = { key: string; sources: readonly Source[] };
 const noThumbsForKey: ThumbsForKey = { key: "", map: noThumbs };
+type FailedForKey = { key: string; all: boolean; buckets: ReadonlySet<number> };
+const noFailedForKey: FailedForKey = { key: "", all: false, buckets: new Set() };
+
+// The size a placeholder takes before any thumbnail tells the real one: the
+// 320 px width Go makes, at 16:9.
+const placeholder = { w: 320, h: 180 };
+
+// Whether an At rejection means previews stopped for the file (Go's
+// ErrUnavailable), rather than this ask being replaced by a newer one
+// (ErrStale), which is no failure at all.
+const errorText = (error: unknown) => (error instanceof Error ? error.message : String(error));
+const isStopped = (error: unknown) => /unavailable/i.test(errorText(error));
+const isStale = (error: unknown) => /replaced by a newer request/i.test(errorText(error));
 const noCopiesForKey: CopiesForKey = { key: "", sources: noSources };
 
 // Go's event for a thumbnail the background fill made, carrying a Thumb.
@@ -247,12 +271,18 @@ export function useSeekPreviews(input: {
   const [thumbsForKey, setThumbsForKey] = useState<ThumbsForKey>(noThumbsForKey);
   const thumbs = thumbsForKey.key === beginKey ? thumbsForKey.map : noThumbs;
 
+  // What can't be made, for the same key: every bucket once Go stopped the
+  // file's previews (ErrUnavailable: the debrid server pushed back, or the
+  // decoder couldn't open it), else the buckets whose keyframe failed.
+  const [failedForKey, setFailedForKey] = useState<FailedForKey>(noFailedForKey);
+  const failed = failedForKey.key === beginKey ? failedForKey : noFailedForKey;
+
   // What the effects and a hover read, as the last render had it. Pages hand
   // these in afresh each render, and a new object with the same file in it
   // must not restart Go's work or queue the same bucket twice.
-  const newest = useRef({ beginKey, source, duration, smaller, found, on, thumbs });
+  const newest = useRef({ beginKey, source, duration, smaller, found, on, thumbs, failed });
   useLayoutEffect(() => {
-    newest.current = { beginKey, source, duration, smaller, found, on, thumbs };
+    newest.current = { beginKey, source, duration, smaller, found, on, thumbs, failed };
   });
 
   // Resolve the copies into links, which Go reads frames from in place of the
@@ -312,7 +342,10 @@ export function useSeekPreviews(input: {
       // player's (docs/spikes/seek-previews.md).
       fill: !isIOS(),
     }).catch(() => {
-      // Previews are a nicety: the bar then shows the time alone.
+      // Go refused the file: the bar says there's no preview rather than
+      // spinning, and asks nothing more.
+      const key = newest.current.beginKey;
+      setFailedForKey({ ...noFailedForKey, key, all: true });
     });
     return () => {
       void Previews.End().catch(() => {});
@@ -336,19 +369,33 @@ export function useSeekPreviews(input: {
   // and the bar keeps the nearest thumbnail it has either way.
   const [ask] = useState(() =>
     latestOnly<number>((bucket) =>
-      Previews.At(bucket).then((thumb) => {
-        // Go's session when it arrives is the file playing then, whatever
-        // this ask was for, so it is that file's thumbnail.
-        const key = newest.current.beginKey;
-        setThumbsForKey((held) => withThumb(held, key, thumb));
-      }),
+      Previews.At(bucket).then(
+        (thumb) => {
+          // Go's session when it arrives is the file playing then, whatever
+          // this ask was for, so it is that file's thumbnail.
+          const key = newest.current.beginKey;
+          setThumbsForKey((held) => withThumb(held, key, thumb));
+        },
+        (error: unknown) => {
+          if (isStale(error)) return;
+          const key = newest.current.beginKey;
+          setFailedForKey((held) => {
+            const mine = held.key === key ? held : { ...noFailedForKey, key };
+            if (isStopped(error)) return { ...mine, all: true };
+            return { ...mine, buckets: new Set(mine.buckets).add(bucket) };
+          });
+        },
+      ),
     ),
   );
   const want = useCallback(
     (seconds: number) => {
-      const { on: live, thumbs: made } = newest.current;
-      if (!live) return;
+      const { on: live, thumbs: made, failed: refused } = newest.current;
+      // Off, or Go stopped this file's previews: nothing to ask.
+      if (!live || refused.all) return;
       const bucket = bucketOf(seconds);
+      // Its keyframe failed: the bar says so rather than spinning again.
+      if (refused.buckets.has(bucket)) return;
       // Made already, or the one asked for last: nothing to queue.
       if (made.has(bucket) || bucket === lastAsked.current) return;
       lastAsked.current = bucket;
@@ -357,6 +404,20 @@ export function useSeekPreviews(input: {
     [ask],
   );
 
-  const near = useCallback((seconds: number) => nearestThumb(thumbs, seconds), [thumbs]);
+  // The shape a placeholder takes: any thumbnail made so far has the file's.
+  const first = thumbs.values().next().value;
+  const w = first?.w ?? placeholder.w;
+  const h = first?.h ?? placeholder.h;
+  const near = useCallback(
+    (seconds: number): PreviewImage | undefined => {
+      if (!on) return undefined;
+      const image = nearestThumb(thumbs, seconds);
+      if (image?.exact) return image;
+      const shown = image ?? { url: undefined, w, h, exact: false };
+      if (failed.all || failed.buckets.has(bucketOf(seconds))) return { ...shown, failed: true };
+      return { ...shown, loading: true };
+    },
+    [on, thumbs, failed, w, h],
+  );
   return { near, want };
 }

@@ -1,10 +1,15 @@
-import { describe, expect, it } from "vite-plus/test";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { act, renderHook, waitFor } from "@testing-library/react";
+import type { ReactNode } from "react";
+import { describe, expect, it, vi } from "vite-plus/test";
 
 import type { Thumb } from "@bindings/previews";
+import { Service as Previews } from "@bindings/previews";
+import { CancellablePromise } from "@wailsio/runtime";
 import type { Source } from "@bindings/streams";
 import type { Stream } from "@/lib/addon-protocol";
 
-import { bucketOf, isPreviewable, nearestThumb, smallerCopies } from "./previews";
+import { bucketOf, isPreviewable, nearestThumb, smallerCopies, useSeekPreviews } from "./previews";
 
 const hash = "c3da9a3dc2ce14d0d4fc0e87d1b2023502f8dcd6";
 
@@ -204,5 +209,81 @@ describe("smallerCopies", () => {
       "1.2 GB",
     );
     expect(smallerCopies([hdr, mid, low, tiny], remux)).toEqual([tiny, low, mid]);
+  });
+});
+
+const wrapper = ({ children }: { children: ReactNode }) => (
+  <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+    {children}
+  </QueryClientProvider>
+);
+// Go's answers to At: refused with its error, or still being made.
+const rejects = (message: string) => CancellablePromise.reject<Thumb>(new Error(message));
+const pending = () => new CancellablePromise<Thumb>(() => {});
+
+// The hook on a cached TorBox remux, with nothing from settings.
+const render = () =>
+  renderHook(
+    () =>
+      useSeekPreviews({
+        source: source("https://torrentio.example/resolve/torbox/KEY/x"),
+        stream: remux,
+        duration: 600,
+        watching: undefined,
+        device: undefined,
+        enabled: true,
+      }),
+    { wrapper },
+  );
+
+describe("useSeekPreviews", () => {
+  it("shows a loading placeholder while a thumbnail is made", () => {
+    vi.mocked(Previews.At).mockReturnValueOnce(pending());
+    const { result } = render();
+    act(() => result.current.want(125));
+    expect(result.current.near(125)).toEqual({
+      url: undefined,
+      w: 320,
+      h: 180,
+      exact: false,
+      loading: true,
+    });
+  });
+
+  it("says no preview, and asks no more, once Go stops the file's previews", async () => {
+    vi.mocked(Previews.At).mockReturnValueOnce(rejects("previews: unavailable"));
+    const { result } = render();
+    act(() => result.current.want(125));
+    await waitFor(() => expect(result.current.near(125)?.failed).toBe(true));
+    expect(result.current.near(400)).toMatchObject({ failed: true });
+    expect(result.current.near(400)?.loading).toBeUndefined();
+    vi.mocked(Previews.At).mockClear();
+    act(() => result.current.want(400));
+    expect(Previews.At).not.toHaveBeenCalled();
+  });
+
+  it("isn't a failure when a newer ask replaced this one", async () => {
+    vi.mocked(Previews.At).mockReturnValueOnce(rejects("previews: replaced by a newer request"));
+    const { result } = render();
+    act(() => result.current.want(125));
+    await act(async () => {});
+    expect(result.current.near(125)).toMatchObject({ loading: true });
+    expect(result.current.near(125)?.failed).toBeUndefined();
+  });
+
+  it("shows nothing when previews are off", () => {
+    const { result } = renderHook(
+      () =>
+        useSeekPreviews({
+          source: undefined,
+          stream: undefined,
+          duration: 600,
+          watching: undefined,
+          device: undefined,
+          enabled: true,
+        }),
+      { wrapper },
+    );
+    expect(result.current.near(125)).toBeUndefined();
   });
 });

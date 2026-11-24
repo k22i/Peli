@@ -88,10 +88,12 @@ describe("SeekBar's previews", () => {
 
     hover(screen.getByTestId("seek-bar"));
     const thumb = screen.getByTestId("seek-thumb");
-    expect(thumb).toHaveAttribute("src", exact.url);
-    expect(thumb).toHaveAttribute("width", "320");
-    expect(thumb).toHaveAttribute("height", "180");
+    const image = thumb.querySelector("img");
+    expect(image).toHaveAttribute("src", exact.url);
+    expect(image).toHaveAttribute("width", "320");
+    expect(image).toHaveAttribute("height", "180");
     expect(thumb).toHaveAttribute("data-exact");
+    expect(thumb).toHaveAttribute("data-state", "ready");
     // The bubble holds the thumbnail, so it's padded all round, not just
     // across.
     expect(screen.getByTestId("seek-time")).toHaveClass("p-1.5");
@@ -110,6 +112,25 @@ describe("SeekBar's previews", () => {
     hover(screen.getByTestId("seek-bar"));
     const thumb = screen.getByTestId("seek-thumb");
     expect(thumb).not.toHaveAttribute("data-exact");
-    expect(thumb).toHaveClass("opacity-60");
+    expect(thumb.querySelector("img")).toHaveClass("opacity-60");
+  });
+
+  it("shows a placeholder with a spinner while the first thumbnail loads", () => {
+    renderPreviewBar(() => ({ url: undefined, w: 320, h: 180, exact: false, loading: true }));
+    hover(screen.getByTestId("seek-bar"));
+    const thumb = screen.getByTestId("seek-thumb");
+    expect(thumb).toHaveAttribute("data-state", "loading");
+    expect(thumb.querySelector("img")).toBeNull();
+    expect(thumb.querySelector("svg.animate-spin")).not.toBeNull();
+    expect(thumb).not.toHaveTextContent("No preview");
+  });
+
+  it("says there's no preview when one can't be made, without a spinner", () => {
+    renderPreviewBar(() => ({ url: undefined, w: 320, h: 180, exact: false, failed: true }));
+    hover(screen.getByTestId("seek-bar"));
+    const thumb = screen.getByTestId("seek-thumb");
+    expect(thumb).toHaveAttribute("data-state", "failed");
+    expect(thumb).toHaveTextContent("No preview");
+    expect(thumb.querySelector("svg.animate-spin")).toBeNull();
   });
 });

@@ -3,6 +3,7 @@ import { useEffect, useEffectEvent, useRef, useState, type PointerEvent } from "
 
 import type { Loop } from "@/lib/ab-loop";
 import { segmentNames, type Segment } from "@/lib/markers";
+import { PreviewFrame } from "@/components/player/preview-frame";
 import { formatTime } from "@/lib/player";
 import type { PreviewImage } from "@/lib/previews";
 import { cn } from "@/lib/utils";
@@ -156,15 +157,7 @@ export function SeekBar({
           >
             {/* 192 px wide: the 320 px JPEG at 1.67× density. */}
             {thumb && (
-              <img
-                src={thumb.url}
-                alt=""
-                data-testid="seek-thumb"
-                data-exact={thumb.exact || undefined}
-                width={thumb.w}
-                height={thumb.h}
-                className={cn("mb-1 w-48 h-auto rounded-lg", !thumb.exact && "opacity-60")}
-              />
+              <PreviewFrame preview={thumb} testId="seek-thumb" className="mb-1 w-48 rounded-lg" />
             )}
             {labelSegment && (
               <span className="type-eyebrow text-[0.625rem] text-[#ffc46b]">
