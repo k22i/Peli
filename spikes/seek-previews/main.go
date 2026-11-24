@@ -20,6 +20,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"time"
 )
 
@@ -71,6 +72,7 @@ func main() {
 	out := flag.String("out", "out", "where sprite sheets go")
 	chunk := flag.Int64("chunk", 0, "HTTP request size in bytes (0: open-ended)")
 	queue := flag.String("queue", "4MiB", "demuxer-max-bytes")
+	extra := flag.String("opts", "", "more mpv options: \"name=value name=value\"")
 	tonemap := flag.Bool("tonemap", true, "tone map PQ/HLG frames in Go")
 	flag.Parse()
 
@@ -107,7 +109,7 @@ func main() {
 	local, stop := serve(c, "video")
 	defer stop()
 
-	t, openTook, err := openThumbnailer(local, Options{Width: *width, Hwdec: *hwdec, Chunk: *chunk, Queue: *queue})
+	t, openTook, err := openThumbnailer(local, Options{Width: *width, Hwdec: *hwdec, Chunk: *chunk, Queue: *queue, Extra: parseOpts(*extra)})
 	check(err)
 	defer t.Close()
 	run.OpenMs = openTook.Milliseconds()
@@ -245,4 +247,13 @@ func check(err error) {
 		fmt.Fprintln(os.Stderr, "error:", err)
 		os.Exit(1)
 	}
+}
+
+func parseOpts(s string) [][2]string {
+	var out [][2]string
+	for _, f := range strings.Fields(s) {
+		k, v, _ := strings.Cut(f, "=")
+		out = append(out, [2]string{k, v})
+	}
+	return out
 }

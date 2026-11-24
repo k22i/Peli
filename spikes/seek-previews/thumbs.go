@@ -26,6 +26,7 @@ type Options struct {
 	Header string // http-header-fields
 	Chunk  int64  // FFmpeg http request_size: 0 = open-ended requests
 	Queue  string // demuxer-max-bytes
+	Extra  [][2]string
 }
 
 func openThumbnailer(url string, o Options) (*Thumbnailer, time.Duration, error) {
@@ -61,6 +62,7 @@ func openThumbnailer(url string, o Options) (*Thumbnailer, time.Duration, error)
 	if o.Header != "" {
 		opts = append(opts, [2]string{"http-header-fields", o.Header})
 	}
+	opts = append(opts, o.Extra...)
 	m, err := newMpv(opts)
 	if err != nil {
 		return nil, 0, err
