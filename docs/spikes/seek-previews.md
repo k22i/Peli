@@ -33,6 +33,19 @@ M1 Pro, our LGPL libmpv (`build/libmpv`, mpv 0.41, FFmpeg 9.0.2). The tool goes 
 
 `vo=null` works for `screenshot-raw` (the frame comes from the decoder, not a renderer), so the second mpv needs no window, render context or GPU output.
 
+## Resource use
+
+Measured on the M1 Pro with the spike process (`/usr/bin/time -l`, local 4K HEVC 10-bit file, 60 thumbnails). The numbers include the spike's own Go buffers, so they're upper bounds:
+
+| | CPU per thumbnail | Peak memory |
+|---|---|---|
+| `videotoolbox-copy` | ~30 ms | ~210 MB open, ~250 MB after 60 |
+| software decode | ~500 ms (4 cores busy ~0.25 s) | ~300–370 MB |
+
+- Most of the memory is the 4K decoder's frame pool, not the thumbnails. The second mpv should close after ~30 s with no hover and no fill, which gives it all back. Try `hwdec-extra-frames=0` and fewer decoder threads to shrink it.
+- A coarse fill of 100 thumbnails is ~3 s of CPU in total, spread over minutes. The thumbnails are ~10 KB each, so 1 MB for 100 and ~9 MB for a 10-second grid of a whole film. Network is the real cost: 2–4 MB per thumbnail.
+- **iOS (not measured):** expect a similar ~200 MB on a device with VideoToolbox, on top of the player. This is the main risk there (jetsam), so open it only on scrub, close it soon after, and never run it while the app is in the background. No fill on cellular or in Low Data Mode, because the radio costs more battery than the decoding. Keep the thumbnails out of the webview's memory (asset URLs, a small cap), given the WebContent kills in #128.
+
 ## What Peli builds from this
 
 **Go: `internal/previews`** (desktop first, the same code on iOS later):
