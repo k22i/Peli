@@ -5,7 +5,6 @@ import { ChevronRight, Info, Play, RotateCcw } from "lucide-react";
 import {
   useEffect,
   useEffectEvent,
-  useLayoutEffect,
   useRef,
   useState,
   type PointerEvent as ReactPointerEvent,
@@ -306,13 +305,12 @@ function CatalogHero({
   const [index, setIndex] = useState(0);
   const [held, setHeld] = useState(false);
   const count = metas.length;
-  // ← and → page the marquee while focus is in it. The hero remounts per
-  // title, so the focused control's place is kept and refocused; from a dash,
-  // focus follows to the new title's dash.
+  // ← and → page the marquee while focus is in it. The buttons and dashes
+  // are one set over the slides, not part of them, so focus never moves.
   const frame = useRef<HTMLDivElement>(null);
-  const refocus = useRef<number | "dot" | undefined>(undefined);
-  const pendingFocus = useRef<number | "dot" | undefined>(undefined);
-  const current = useRef<HTMLDivElement>(null);
+  // The title the buttons and dashes show: the one arriving, while a turn runs.
+  const [arriving, setArriving] = useState<number>();
+  const followDash = useRef(false);
   const [announced, setAnnounced] = useState("");
   // A carousel: the previous, current and next titles sit side by side on a
   // track, so the neighbours slide in under the pointer as you drag (mouse,
@@ -339,16 +337,24 @@ function CatalogHero({
     const element = track.current;
     if (!element || count < 2 || settling.current) return;
     const ms = ease();
+    setArriving((index + by + count) % count);
     element.style.transition = ms ? `transform ${ms}ms var(--ease-out-soft)` : "none";
     element.style.transform = `translateX(${-100 - by * 100}%)`;
     settling.current = setTimeout(() => {
       settling.current = undefined;
-      refocus.current = pendingFocus.current;
-      pendingFocus.current = undefined;
       const to = (index + by + count) % count;
       // Swap the titles and put the track back in one go, before a paint.
-      flushSync(() => setIndex(to));
+      flushSync(() => {
+        setIndex(to);
+        setArriving(undefined);
+      });
       place(0);
+      if (followDash.current) {
+        frame.current
+          ?.querySelector<HTMLElement>("[data-marquee-dot][aria-current]")
+          ?.focus({ preventScroll: true });
+      }
+      followDash.current = false;
       setAnnounced(`${to + 1} of ${count}: ${metas[to]?.name ?? ""}`);
     }, ms);
   };
@@ -357,10 +363,8 @@ function CatalogHero({
     const by = heroArrowStep(event, count);
     if (!by) return;
     event.preventDefault();
-    const focusable = [...(current.current?.querySelectorAll<HTMLElement>(heroFocusable) ?? [])];
-    const at = focusable.findIndex((element) => element === document.activeElement);
-    const onDot = document.activeElement?.hasAttribute("data-marquee-dot") === true;
-    pendingFocus.current = onDot ? "dot" : Math.max(at, 0);
+    // From a dash, focus follows to the dash of the title that arrives.
+    followDash.current = document.activeElement?.hasAttribute("data-marquee-dot") === true;
     go(by);
   });
   // A listener on the frame, as it's no control itself. Attached after each
@@ -370,18 +374,6 @@ function CatalogHero({
     if (!element) return undefined;
     element.addEventListener("keydown", page);
     return () => element.removeEventListener("keydown", page);
-  });
-  // After every render, cheaply: only a keyboard page leaves a place to refocus.
-  useLayoutEffect(() => {
-    const at = refocus.current;
-    if (at === undefined) return;
-    refocus.current = undefined;
-    const focusable = current.current?.querySelectorAll<HTMLElement>(heroFocusable);
-    const target =
-      at === "dot"
-        ? current.current?.querySelector<HTMLElement>("[data-marquee-dot][aria-current]")
-        : focusable?.[at];
-    (target ?? focusable?.[0])?.focus({ preventScroll: true });
   });
 
   useEffect(() => () => clearTimeout(settling.current), []);
@@ -444,18 +436,36 @@ function CatalogHero({
   useEffect(() => {
     if (held || count < 2 || prefersReducedMotion()) return undefined;
     // From the title on show now, so picking a dot restarts its turn.
-    const timer = setTimeout(() => goLater(1), marqueeMs);
+    const timer = setTimeout(() => goLater(1), marqueeMs - ease());
     return () => clearTimeout(timer);
     // oxlint-disable-next-line react/exhaustive-deps -- `index` restarts the turn.
   }, [held, count, index]);
 
   if (catalogData.isPending) return <HeroSkeleton size="feature" />;
-  const meta = metas[index % Math.max(count, 1)];
+  const shown = arriving ?? index;
+  const meta = metas[shown % Math.max(count, 1)];
   if (!meta) {
     return context.watching[0] ? (
       <WatchingHero entry={context.watching[0]} surprise={surprise} {...context} />
     ) : null;
   }
+  const entry = context.watching.find((progress) => progress.contentId === meta.id);
+  const actions = (
+    <>
+      <PlayButton
+        resume={entry !== undefined}
+        onClick={() =>
+          play(
+            entry
+              ? resumeTarget(entry, meta.name)
+              : { type: meta.type, id: meta.id, title: meta.name },
+          )
+        }
+      />
+      <DetailsButton title={meta} />
+      {surprise}
+    </>
+  );
   return (
     <div
       ref={frame}
@@ -498,7 +508,7 @@ function CatalogHero({
         event.stopPropagation();
       }}
       onDragStart={(event) => event.preventDefault()}
-      className="touch-pan-y overflow-x-clip select-none"
+      className="relative touch-pan-y overflow-x-clip select-none"
     >
       <p aria-live="polite" className="sr-only">
         {announced}
@@ -514,11 +524,9 @@ function CatalogHero({
             const item = metas[at];
             if (!item) return null;
             const here = slot === 0;
-            const watched = context.watching.find((progress) => progress.contentId === item.id);
             return (
               <div
                 key={count > 2 ? item.id : slot}
-                ref={here ? current : undefined}
                 inert={!here}
                 aria-hidden={!here || undefined}
                 className="w-full shrink-0"
@@ -531,32 +539,11 @@ function CatalogHero({
                   meta={metaLine(item)}
                   synopsis={item.description}
                   backdrop={item.background}
+                  // Only keeps the room the real buttons, over the slides, take.
                   actions={
-                    <>
-                      <PlayButton
-                        resume={watched !== undefined}
-                        onClick={() =>
-                          play(
-                            watched
-                              ? resumeTarget(watched, item.name)
-                              : { type: item.type, id: item.id, title: item.name },
-                          )
-                        }
-                      />
-                      <DetailsButton title={item} />
-                      {surprise}
-                    </>
-                  }
-                  aside={
-                    count > 1 && (
-                      <MarqueeDots
-                        count={count}
-                        index={at}
-                        onPick={pick}
-                        titles={metas}
-                        held={held || !here}
-                      />
-                    )
+                    <span className="contents invisible" inert aria-hidden>
+                      {actions}
+                    </span>
                   }
                 />
               </div>
@@ -564,11 +551,24 @@ function CatalogHero({
           })}
         </div>
       </EagerArtwork>
+      {/* The buttons and dashes stay put over the slides; only what they
+          show changes (the dashes animate between titles). Laid out like
+          the Hero's own bottom row, so they sit where its actions would. */}
+      <div className="dark pointer-events-none absolute inset-x-0 bottom-0 z-10">
+        <div className="flex w-full items-end justify-between gap-8 px-page pb-14 ios-compact:flex-col ios-compact:items-start ios-compact:gap-5 ios-compact:pb-10">
+          <div className="pointer-events-auto flex max-w-2xl flex-wrap items-center gap-2.5 ios-compact:w-full ios-compact:flex-nowrap">
+            {actions}
+          </div>
+          {count > 1 && (
+            <div className="pointer-events-auto shrink-0 pb-1">
+              <MarqueeDots count={count} index={shown} onPick={pick} titles={metas} held={held} />
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
-
-const heroFocusable = "a[href], button:not(:disabled), [tabindex]:not([tabindex='-1'])";
 
 // One dash per title; the current one is long and fills with sunlight as
 // its turn runs out.

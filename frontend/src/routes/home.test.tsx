@@ -276,7 +276,7 @@ describe("catalogs", () => {
     const hero = await screen.findByRole("region", { name: theInvite.name });
     expect(hero).toHaveTextContent("Popular · Movies");
     expect(hero).toHaveTextContent("IMDb 7.5");
-    await user.click(within(hero).getByRole("button", { name: "Play" }));
+    await user.click(screen.getByRole("button", { name: "Play" }));
     expect(
       await screen.findByRole("heading", { level: 1, name: theInvite.name }),
     ).toBeInTheDocument();
@@ -312,8 +312,8 @@ describe("catalogs", () => {
     mocks.continueWatching.mockResolvedValue([progressOn(theInvite.id)]);
     await renderApp("/");
 
-    const hero = await screen.findByRole("region", { name: theInvite.name });
-    expect(within(hero).getByRole("button", { name: "Resume" })).toBeInTheDocument();
+    await screen.findByRole("region", { name: theInvite.name });
+    expect(screen.getByRole("button", { name: "Resume" })).toBeInTheDocument();
   });
 
   // ← and → page the rotating hero while focus is in it; focus stays on the
@@ -323,16 +323,16 @@ describe("catalogs", () => {
     const [first, second] = cinemetaMovies.metas.filter((meta) => meta.background);
     await renderApp("/");
 
-    const hero = await screen.findByRole("region", { name: first!.name });
-    within(hero).getByRole("button", { name: "Play" }).focus();
+    await screen.findByRole("region", { name: first!.name });
+    screen.getByRole("button", { name: "Play" }).focus();
     await user.keyboard("{ArrowRight}");
-    const next = await screen.findByRole("region", { name: second!.name });
-    expect(within(next).getByRole("button", { name: "Play" })).toHaveFocus();
+    await screen.findByRole("region", { name: second!.name });
+    expect(screen.getByRole("button", { name: "Play" })).toHaveFocus();
     expect(screen.getByText(new RegExp(`^2 of \\d: ${second!.name}$`))).toBeInTheDocument();
 
     await user.keyboard("{ArrowLeft}");
-    const back = await screen.findByRole("region", { name: first!.name });
-    expect(within(back).getByRole("button", { name: "Play" })).toHaveFocus();
+    await screen.findByRole("region", { name: first!.name });
+    expect(screen.getByRole("button", { name: "Play" })).toHaveFocus();
 
     // From the first, ← wraps to the last.
     await user.keyboard("{ArrowLeft}");
@@ -389,7 +389,7 @@ describe("catalogs", () => {
       await vi.advanceTimersByTimeAsync(30_000);
       expect(screen.getByRole("region", { name: first!.name })).toBe(hero);
 
-      within(hero).getByRole("button", { name: "Play" }).focus();
+      screen.getByRole("button", { name: "Play" }).focus();
       await user.keyboard("{ArrowRight}");
       expect(await screen.findByRole("region", { name: second!.name })).toBeInTheDocument();
     } finally {
