@@ -80,6 +80,9 @@ export const deviceSettings = (changes: Partial<DeviceSettings> = {}): DeviceSet
   torrentStreaming: false,
   torrentCacheGB: 5,
   preResolve: false,
+  // Seek-bar previews: on, from the playing file alone.
+  seekPreviews: true,
+  previewsFromSmaller: false,
   streamSort: "best",
   quality: {
     scaling: "balanced",

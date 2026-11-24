@@ -154,6 +154,20 @@ vi.mock("@bindings/downloads", () => {
   };
 });
 
+// Seek-bar previews: nothing begun, and an ask for a bucket answers
+// with an empty JPEG at the file's start, unless a test says otherwise. The
+// player screen asks as the pointer moves; each call resolves with a `cancel`
+// too.
+vi.mock("@bindings/previews", () => ({
+  Service: {
+    Begin: vi.fn<() => Promise<void>>(() => cancels(undefined)),
+    End: vi.fn<() => Promise<void>>(() => cancels(undefined)),
+    At: vi.fn<() => Promise<unknown>>(() =>
+      cancels({ at: 0, url: "data:image/jpeg;base64,", w: 320, h: 180 }),
+    ),
+  },
+}));
+
 // jsdom does not implement scrolling; the router's scroll restoration and
 // Base UI's menus call it.
 window.scrollTo = () => {};
