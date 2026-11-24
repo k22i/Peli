@@ -83,6 +83,8 @@ const device = (changes: Partial<DeviceSettings> = {}): DeviceSettings => ({
   torrentStreaming: false,
   torrentCacheGB: 5,
   preResolve: false,
+  seekPreviews: true,
+  previewsFromSmaller: false,
   streamSort: "best",
   partyDock: false,
   downloadsDir: "",

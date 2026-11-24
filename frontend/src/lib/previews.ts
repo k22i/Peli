@@ -194,7 +194,10 @@ export function useSeekPreviews(input: {
   const waiting = sources.some((asked) => asked.status === "pending");
   const found =
     fromSmaller && !waiting && stream
-      ? smallerCopies(sources.flatMap((asked) => asked.streams ?? []), stream)
+      ? smallerCopies(
+          sources.flatMap((asked) => asked.streams ?? []),
+          stream,
+        )
       : noStreams;
   const copiesKey =
     found.length === 0 ? "" : `${source?.url ?? ""}\n${found.map((copy) => copy.url).join("\n")}`;
