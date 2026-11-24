@@ -132,13 +132,10 @@ export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }):
     // A day that has aired, but not today: its rows step back.
     const dim = cell.past && !cell.today;
     return (
-      <td
-        key={cell.day}
-        aria-selected={isSelected}
-        className={cn("p-0 align-top", !compact && "border border-border/60")}
-      >
+      <td key={cell.day} className={cn("p-0 align-top", !compact && "border border-border/60")}>
         <button
           type="button"
+          aria-pressed={isSelected}
           ref={(element) => {
             if (element) cellRefs.current.set(cell.day, element);
             else cellRefs.current.delete(cell.day);
@@ -215,8 +212,8 @@ export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }):
   const dayEntries = byDay.get(selected) ?? [];
   const dayHeading = day.date ? `${day.title} · ${day.date}` : day.title;
 
-  // A real table, so the grid's rows and cells need no roles of their own. A
-  // table may carry `role="grid"`; it changes nothing for the browser.
+  // A real table, so the rows and cells need no roles of their own. The
+  // chosen day is the pressed button.
   const head = (
     <thead>
       <tr>
@@ -279,7 +276,6 @@ export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }):
       </div>
       {compact ? (
         <table
-          role="grid"
           aria-label={monthLabel(month)}
           className="w-full table-fixed border-separate border-spacing-y-1"
         >
@@ -292,7 +288,6 @@ export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }):
         // border and the rounded corners stay clean.
         <div className="overflow-hidden rounded-2xl border border-border/60">
           <table
-            role="grid"
             aria-label={monthLabel(month)}
             className="-m-px w-[calc(100%+2px)] table-fixed border-collapse"
           >

@@ -460,7 +460,7 @@ describe("Upcoming calendar", () => {
     await waitFor(() =>
       expect(router.state.location.search).toEqual({ view: "upcoming", layout: "calendar" }),
     );
-    expect(await screen.findByRole("grid")).toBeInTheDocument();
+    expect(await screen.findByRole("table")).toBeInTheDocument();
   });
 
   it("shows today's episode in the day panel under the grid", async () => {
