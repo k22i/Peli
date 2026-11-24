@@ -143,7 +143,7 @@ function PageHeader({
     return (
       <header
         className={cn(
-          "relative isolate [--fade:var(--background)]",
+          "relative isolate overflow-x-clip [--fade:var(--background)]",
           backdrop && "dark under-bar text-foreground",
         )}
       >

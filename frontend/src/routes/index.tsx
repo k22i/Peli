@@ -18,7 +18,7 @@ import { DownloadedRow, finishedDownloads } from "@/components/home/downloaded-r
 import { NewEpisodes, SurpriseButton } from "@/components/home/home-extras";
 import { refreshSynced, usePullToRefresh } from "@/components/shell/pull-to-refresh";
 import { AnimeTitleCard } from "@/components/media/anime-title-card";
-import { preloadArtwork, useArtworkDevice } from "@/components/media/artwork";
+import { EagerArtwork, preloadArtwork, useArtworkDevice } from "@/components/media/artwork";
 import { DeferredRow } from "@/components/media/deferred-row";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
 import { Hero, HeroSkeleton, ImdbScore } from "@/components/media/hero";
@@ -323,18 +323,24 @@ function CatalogHero({
   const drag = useRef<{ id: number; x: number; y: number; at: number; on: boolean } | null>(null);
   const dragged = useRef(false);
   const settling = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const wheel = useRef<{ sum: number; at: number; reset?: number }>({ sum: 0, at: 0 });
-  const move = (offset: string, ms: number) => {
+  // Where the track is dragged to, in px from rest: negative shows the next title.
+  const offset = useRef(0);
+  const wheel = useRef<{ locked: boolean; idle?: number }>({ locked: false });
+  const place = (px: number, ms = 0) => {
     const element = track.current;
     if (!element) return;
+    offset.current = px;
     element.style.transition = ms ? `transform ${ms}ms var(--ease-out-soft)` : "none";
-    element.style.transform = offset;
+    element.style.transform = px ? `translateX(calc(-100% + ${px}px))` : "";
   };
-  // One title on (by = 1) or back (-1), animated; the index changes once the
-  // track has arrived.
+  // One title on (by = 1) or back (-1), animated from wherever the track is;
+  // the index changes once it has arrived.
   const go = (by: number) => {
-    if (count < 2 || settling.current) return;
-    move(`translateX(${-100 - by * 100}%)`, ease());
+    const element = track.current;
+    if (!element || count < 2 || settling.current) return;
+    const ms = ease();
+    element.style.transition = ms ? `transform ${ms}ms var(--ease-out-soft)` : "none";
+    element.style.transform = `translateX(${-100 - by * 100}%)`;
     settling.current = setTimeout(() => {
       settling.current = undefined;
       refocus.current = pendingFocus.current;
@@ -342,9 +348,9 @@ function CatalogHero({
       const to = (index + by + count) % count;
       // Swap the titles and put the track back in one go, before a paint.
       flushSync(() => setIndex(to));
-      move("", 0);
+      place(0);
       setAnnounced(`${to + 1} of ${count}: ${metas[to]?.name ?? ""}`);
-    }, ease());
+    }, ms);
   };
   const goLater = useEffectEvent((by: number) => go(by));
   const page = useEffectEvent((event: KeyboardEvent) => {
@@ -385,49 +391,55 @@ function CatalogHero({
     else if (by === count - 1) go(-1);
     else setIndex(dot);
   };
+  // Let go of a drag: turn when it went a fifth of the way or was flicked.
+  const release = (dx: number, flick: boolean) => {
+    const width = frame.current?.clientWidth ?? 1;
+    if (Math.abs(dx) > width / 5 || (flick && Math.abs(dx) > 30)) go(dx < 0 ? 1 : -1);
+    else place(0, ease());
+  };
   const finish = (event: ReactPointerEvent<HTMLDivElement>) => {
     const state = drag.current;
     if (!state || state.id !== event.pointerId) return;
     drag.current = null;
     if (!state.on) return;
     const dx = event.clientX - state.x;
-    const width = frame.current?.clientWidth ?? 1;
-    const flick = Math.abs(dx) / Math.max(performance.now() - state.at, 1) > 0.45;
-    if (
-      event.type !== "pointercancel" &&
-      (Math.abs(dx) > width / 5 || (flick && Math.abs(dx) > 30))
-    ) {
-      go(dx < 0 ? 1 : -1);
-    } else {
-      move("", ease());
-    }
+    if (event.type === "pointercancel") place(0, ease());
+    else release(dx, Math.abs(dx) / Math.max(performance.now() - state.at, 1) > 0.45);
   };
-  // A sideways trackpad swipe turns one title, and only once it's clearly
-  // meant: the sum must pass a long way, and its inertia tail is ignored.
+  // A sideways trackpad swipe drags the track like a finger does, a bit
+  // slower than the pointer; it settles when the swipe (and its momentum) is
+  // over, and that tail never starts a second turn.
+  const onWheel = useEffectEvent((event: WheelEvent) => {
+    if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+    event.preventDefault();
+    const width = frame.current?.clientWidth ?? 0;
+    if (count < 2 || !width) return;
+    window.clearTimeout(wheel.current.idle);
+    wheel.current.idle = window.setTimeout(() => {
+      if (wheel.current.locked) wheel.current.locked = false;
+      else if (!settling.current && offset.current) release(offset.current, false);
+    }, 110);
+    if (settling.current || wheel.current.locked) return;
+    const next = Math.max(-width, Math.min(width, offset.current - event.deltaX * 0.8));
+    place(next);
+    // Carried past halfway by momentum: turn now rather than wait for it to die.
+    if (Math.abs(next) > width / 2) {
+      wheel.current.locked = true;
+      go(next < 0 ? 1 : -1);
+    }
+  });
   useEffect(() => {
     const element = frame.current;
     if (!element) return undefined;
-    const onWheel = (event: WheelEvent) => {
-      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY) * 1.5) return;
-      event.preventDefault();
-      const now = performance.now();
-      if (now < wheel.current.at) {
-        // Still inside the pause after a turn: keep it going while the tail lasts.
-        wheel.current.at = now + 250;
-        return;
-      }
-      wheel.current.sum += event.deltaX;
-      wheel.current.at = now;
-      window.clearTimeout(wheel.current.reset);
-      wheel.current.reset = window.setTimeout(() => (wheel.current.sum = 0), 200);
-      if (Math.abs(wheel.current.sum) < 320) return;
-      goLater(wheel.current.sum > 0 ? 1 : -1);
-      wheel.current.sum = 0;
-      wheel.current.at = now + 250;
-    };
     element.addEventListener("wheel", onWheel, { passive: false });
     return () => element.removeEventListener("wheel", onWheel);
   });
+  // The neighbours' art is fetched ahead, so a drag shows them, not a blank.
+  const device = useArtworkDevice();
+  const backdrops = metas.map((item) => item.background).join("\n");
+  useEffect(() => {
+    for (const url of backdrops.split("\n")) preloadArtwork(url, "backdrop", device);
+  }, [backdrops, device]);
 
   useEffect(() => {
     if (held || count < 2 || prefersReducedMotion()) return undefined;
@@ -473,7 +485,8 @@ function CatalogHero({
           dragged.current = true;
           event.currentTarget.setPointerCapture(event.pointerId);
         }
-        move(`translateX(calc(-100% + ${dx}px))`, 0);
+        const width = frame.current?.clientWidth ?? 0;
+        place(Math.max(-width, Math.min(width, dx)));
       }}
       onPointerUp={finish}
       onPointerCancel={finish}
@@ -490,61 +503,63 @@ function CatalogHero({
       <p aria-live="polite" className="sr-only">
         {announced}
       </p>
-      <div ref={track} className="flex -translate-x-full will-change-transform">
-        {([-1, 0, 1] as const).map((offset) => {
-          const at = (index + offset + count) % count;
-          const item = metas[at];
-          if (!item) return null;
-          const here = offset === 0;
-          const watched = context.watching.find((progress) => progress.contentId === item.id);
-          return (
-            <div
-              key={count > 2 ? item.id : offset}
-              ref={here ? current : undefined}
-              inert={!here}
-              aria-hidden={!here || undefined}
-              className="w-full shrink-0"
-            >
-              <Hero
-                size="feature"
-                title={item.name}
-                logo={item.logo}
-                eyebrow={row.title}
-                meta={metaLine(item)}
-                synopsis={item.description}
-                backdrop={item.background}
-                actions={
-                  <>
-                    <PlayButton
-                      resume={watched !== undefined}
-                      onClick={() =>
-                        play(
-                          watched
-                            ? resumeTarget(watched, item.name)
-                            : { type: item.type, id: item.id, title: item.name },
-                        )
-                      }
-                    />
-                    <DetailsButton title={item} />
-                    {surprise}
-                  </>
-                }
-                aside={
-                  count > 1 && (
-                    <MarqueeDots
-                      count={count}
-                      index={at}
-                      onPick={pick}
-                      titles={metas}
-                      held={held || !here}
-                    />
-                  )
-                }
-              />
-            </div>
-          );
-        })}
-      </div>
+      <EagerArtwork value>
+        <div ref={track} className="flex -translate-x-full will-change-transform">
+          {([-1, 0, 1] as const).map((slot) => {
+            const at = (index + slot + count) % count;
+            const item = metas[at];
+            if (!item) return null;
+            const here = slot === 0;
+            const watched = context.watching.find((progress) => progress.contentId === item.id);
+            return (
+              <div
+                key={count > 2 ? item.id : slot}
+                ref={here ? current : undefined}
+                inert={!here}
+                aria-hidden={!here || undefined}
+                className="w-full shrink-0"
+              >
+                <Hero
+                  size="feature"
+                  title={item.name}
+                  logo={item.logo}
+                  eyebrow={row.title}
+                  meta={metaLine(item)}
+                  synopsis={item.description}
+                  backdrop={item.background}
+                  actions={
+                    <>
+                      <PlayButton
+                        resume={watched !== undefined}
+                        onClick={() =>
+                          play(
+                            watched
+                              ? resumeTarget(watched, item.name)
+                              : { type: item.type, id: item.id, title: item.name },
+                          )
+                        }
+                      />
+                      <DetailsButton title={item} />
+                      {surprise}
+                    </>
+                  }
+                  aside={
+                    count > 1 && (
+                      <MarqueeDots
+                        count={count}
+                        index={at}
+                        onPick={pick}
+                        titles={metas}
+                        held={held || !here}
+                      />
+                    )
+                  }
+                />
+              </div>
+            );
+          })}
+        </div>
+      </EagerArtwork>
     </div>
   );
 }
