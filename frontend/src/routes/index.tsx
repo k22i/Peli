@@ -7,6 +7,7 @@ import {
   useLayoutEffect,
   useRef,
   useState,
+  type PointerEvent as ReactPointerEvent,
   type ReactNode,
 } from "react";
 
@@ -342,6 +343,67 @@ function CatalogHero({
     (target ?? focusable?.[0])?.focus({ preventScroll: true });
   });
 
+  // Drag (mouse, pen or touch) or a sideways trackpad swipe pages the marquee
+  // like a carousel. The hero follows the pointer while it's down; past a
+  // third of a stride (or a quick flick) it turns, otherwise it springs back.
+  // Vertical moves stay the page's own scroll (touch-action: pan-y).
+  const slide = useRef<HTMLDivElement>(null);
+  const drag = useRef<{ id: number; x: number; y: number; at: number; on: boolean } | null>(null);
+  const dragged = useRef(false);
+  const wheel = useRef({ sum: 0, at: 0 });
+  const turn = useEffectEvent((by: number) => {
+    if (count < 2) return;
+    const to = (index + by + count) % count;
+    setIndex(to);
+    setAnnounced(`${to + 1} of ${count}: ${metas[to]?.name ?? ""}`);
+  });
+  const follow = (dx: number, animate: boolean) => {
+    const element = slide.current;
+    if (!element) return;
+    element.style.transition = animate
+      ? "transform 220ms ease-out, opacity 220ms ease-out"
+      : "none";
+    element.style.transform = dx ? `translateX(${dx}px)` : "";
+    element.style.opacity = dx ? String(1 - Math.min(Math.abs(dx) / 900, 0.4)) : "";
+  };
+  const finish = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const state = drag.current;
+    if (!state || state.id !== event.pointerId) return;
+    drag.current = null;
+    if (!state.on) return;
+    const dx = event.clientX - state.x;
+    const width = frame.current?.clientWidth ?? 1;
+    const flick = Math.abs(dx) / Math.max(performance.now() - state.at, 1) > 0.5;
+    if (
+      event.type !== "pointercancel" &&
+      (Math.abs(dx) > width / 3 || (flick && Math.abs(dx) > 40))
+    ) {
+      follow(0, false);
+      turn(dx < 0 ? 1 : -1);
+    } else {
+      follow(0, true);
+    }
+  };
+  useEffect(() => {
+    const element = frame.current;
+    if (!element) return undefined;
+    const onWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+      event.preventDefault();
+      const now = performance.now();
+      if (now - wheel.current.at > 400) wheel.current.sum = 0;
+      wheel.current.at = now;
+      wheel.current.sum += event.deltaX;
+      if (Math.abs(wheel.current.sum) < 120) return;
+      turn(wheel.current.sum > 0 ? 1 : -1);
+      wheel.current.sum = 0;
+      // One page per swipe: ignore the inertia tail.
+      wheel.current.at = now + 600;
+    };
+    element.addEventListener("wheel", onWheel, { passive: false });
+    return () => element.removeEventListener("wheel", onWheel);
+  });
+
   useEffect(() => {
     if (held || count < 2 || prefersReducedMotion()) return undefined;
     // From the title on show now, so picking a dot restarts its turn.
@@ -365,41 +427,83 @@ function CatalogHero({
       onPointerLeave={() => setHeld(false)}
       onFocus={() => setHeld(true)}
       onBlur={() => setHeld(false)}
+      onPointerDown={(event) => {
+        if (count < 2 || (event.pointerType === "mouse" && event.button !== 0)) return;
+        drag.current = {
+          id: event.pointerId,
+          x: event.clientX,
+          y: event.clientY,
+          at: performance.now(),
+          on: false,
+        };
+        dragged.current = false;
+      }}
+      onPointerMove={(event) => {
+        const state = drag.current;
+        if (!state || state.id !== event.pointerId) return;
+        const dx = event.clientX - state.x;
+        if (!state.on) {
+          if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(event.clientY - state.y)) return;
+          state.on = true;
+          dragged.current = true;
+          event.currentTarget.setPointerCapture(event.pointerId);
+        }
+        follow(dx, false);
+      }}
+      onPointerUp={finish}
+      onPointerCancel={finish}
+      onClickCapture={(event) => {
+        // A drag that ends on a button isn't a press.
+        if (!dragged.current) return;
+        dragged.current = false;
+        event.preventDefault();
+        event.stopPropagation();
+      }}
+      onDragStart={(event) => event.preventDefault()}
+      className="touch-pan-y select-none"
     >
       <p aria-live="polite" className="sr-only">
         {announced}
       </p>
-      <Hero
-        key={meta.id}
-        size="feature"
-        title={meta.name}
-        logo={meta.logo}
-        eyebrow={row.title}
-        meta={metaLine(meta)}
-        synopsis={meta.description}
-        backdrop={meta.background}
-        actions={
-          <>
-            <PlayButton
-              resume={entry !== undefined}
-              onClick={() =>
-                play(
-                  entry
-                    ? resumeTarget(entry, meta.name)
-                    : { type: meta.type, id: meta.id, title: meta.name },
-                )
-              }
-            />
-            <DetailsButton title={meta} />
-            {surprise}
-          </>
-        }
-        aside={
-          count > 1 && (
-            <MarqueeDots count={count} index={index} onPick={setIndex} titles={metas} held={held} />
-          )
-        }
-      />
+      <div ref={slide} className="will-change-transform">
+        <Hero
+          key={meta.id}
+          size="feature"
+          title={meta.name}
+          logo={meta.logo}
+          eyebrow={row.title}
+          meta={metaLine(meta)}
+          synopsis={meta.description}
+          backdrop={meta.background}
+          actions={
+            <>
+              <PlayButton
+                resume={entry !== undefined}
+                onClick={() =>
+                  play(
+                    entry
+                      ? resumeTarget(entry, meta.name)
+                      : { type: meta.type, id: meta.id, title: meta.name },
+                  )
+                }
+              />
+              <DetailsButton title={meta} />
+              {surprise}
+            </>
+          }
+          aside={
+            count > 1 && (
+              <MarqueeDots
+                count={count}
+                index={index}
+                onPick={setIndex}
+                titles={metas}
+                held={held}
+              />
+            )
+          }
+        />
+      </div>
     </div>
   );
 }
