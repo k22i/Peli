@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactElement } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent, type ReactElement } from "react";
 
 import { EpisodeEntry } from "@/components/library/episode-entry";
 import { Artwork } from "@/components/media/artwork";
@@ -30,22 +30,22 @@ export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }):
   const compact = useCompactShell();
   // One reading of the clock for the render, so the grid, the labels and the
   // Today button all agree on what today is.
-  const now = Date.now();
+  const [now] = useState(() => Date.now());
   const [month, setMonth] = useState(() => monthKey(now));
   const [selected, setSelected] = useState(() => dayKey(now));
   // The locale decides which day starts the week (Sunday here, Monday in much
   // of Europe); it can't change while the app runs.
-  const weekStart = useMemo(() => firstWeekday(), []);
+  const [weekStart] = useState(firstWeekday);
 
   const weeks = monthGrid(month, now, weekStart);
   // The grid's own range, edges included, so a day of the next month that
   // shows in the last row still lists its episodes.
   const from = weeks[0]?.[0]?.day;
   const until = weeks.at(-1)?.[6]?.day;
-  const byDay = useMemo(
-    () => (from && until ? scheduleByDay(shows, from, until) : new Map<string, CalendarEntry[]>()),
-    [shows, from, until],
-  );
+  // The compiler memoizes this render, so the schedule is built as a plain
+  // value rather than behind a useMemo it can't preserve.
+  const byDay =
+    from && until ? scheduleByDay(shows, from, until) : new Map<string, CalendarEntry[]>();
 
   const days = weeks.flat();
   const today = dayKey(now);
@@ -132,7 +132,11 @@ export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }):
     // A day that has aired, but not today: its rows step back.
     const dim = cell.past && !cell.today;
     return (
-      <div key={cell.day} role="gridcell" aria-selected={isSelected}>
+      <td
+        key={cell.day}
+        aria-selected={isSelected}
+        className={cn("p-0 align-top", !compact && "border border-border/60")}
+      >
         <button
           type="button"
           ref={(element) => {
@@ -203,13 +207,44 @@ export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }):
             </>
           )}
         </button>
-      </div>
+      </td>
     );
   };
 
   const day = dayLabel(selected, now);
   const dayEntries = byDay.get(selected) ?? [];
   const dayHeading = day.date ? `${day.title} · ${day.date}` : day.title;
+
+  // A real table, so the grid's rows and cells need no roles of their own. A
+  // table may carry `role="grid"`; it changes nothing for the browser.
+  const head = (
+    <thead>
+      <tr>
+        {weekdayNames(weekStart, compact ? "narrow" : "short").map((name) => (
+          <th
+            key={name}
+            scope="col"
+            className={cn(
+              "text-center text-muted-foreground",
+              compact
+                ? "py-1 text-[0.6875rem] font-[590]"
+                : "border border-border/60 bg-background py-2 text-[0.75rem] font-[590] tracking-[0.06em] uppercase",
+            )}
+          >
+            {name}
+          </th>
+        ))}
+      </tr>
+    </thead>
+  );
+
+  const body = (
+    <tbody>
+      {weeks.map((week) => (
+        <tr key={week[0]?.day ?? ""}>{week.map(renderCell)}</tr>
+      ))}
+    </tbody>
+  );
 
   return (
     <div className={cn("flex flex-col gap-6", !compact && "max-w-5xl")}>
@@ -242,40 +277,30 @@ export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }):
           </Button>
         </div>
       </div>
-      <div
-        role="grid"
-        aria-label={monthLabel(month)}
-        className={cn(
-          "grid grid-cols-7",
-          // The 1px gaps let the wrapper's colour through, which draws the
-          // hairlines between cells without a border on each one.
-          compact
-            ? "gap-y-1"
-            : "gap-px overflow-hidden rounded-2xl border border-border/60 bg-border/60",
-        )}
-      >
-        <div role="row" className="contents">
-          {weekdayNames(weekStart, compact ? "narrow" : "short").map((name) => (
-            <div
-              key={name}
-              role="columnheader"
-              className={cn(
-                "text-center text-muted-foreground",
-                compact
-                  ? "py-1 text-[0.6875rem] font-[590]"
-                  : "bg-background py-2 text-[0.75rem] font-[590] tracking-[0.06em] uppercase",
-              )}
-            >
-              {name}
-            </div>
-          ))}
+      {compact ? (
+        <table
+          role="grid"
+          aria-label={monthLabel(month)}
+          className="w-full table-fixed border-separate border-spacing-y-1"
+        >
+          {head}
+          {body}
+        </table>
+      ) : (
+        // The table is a hair wider than its wrapper and pulled a hair up and
+        // left, so the outermost cell borders sit under the wrapper's own
+        // border and the rounded corners stay clean.
+        <div className="overflow-hidden rounded-2xl border border-border/60">
+          <table
+            role="grid"
+            aria-label={monthLabel(month)}
+            className="-m-px w-[calc(100%+2px)] table-fixed border-collapse"
+          >
+            {head}
+            {body}
+          </table>
         </div>
-        {weeks.map((week) => (
-          <div key={week[0]?.day ?? ""} role="row" className="contents">
-            {week.map(renderCell)}
-          </div>
-        ))}
-      </div>
+      )}
       <section aria-label={day.title} className="flex flex-col gap-1">
         {compact ? (
           <h3 className="flex min-h-9 items-center text-[0.8125rem] font-[590] tracking-[0.06em] text-muted-foreground uppercase">
