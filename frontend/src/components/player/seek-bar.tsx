@@ -1,5 +1,5 @@
 import { Slider } from "@base-ui/react/slider";
-import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useEffectEvent, useRef, useState, type PointerEvent } from "react";
 
 import type { Loop } from "@/lib/ab-loop";
 import { segmentNames, type Segment } from "@/lib/markers";
@@ -77,12 +77,12 @@ export function SeekBar({
   const thumb = label === undefined ? undefined : preview?.(label);
   // Ask for the time under the pointer as it moves: the nearest thumbnail
   // already made shows at once, and the right one swaps in when it lands.
-  // Through a ref, so asking happens once per time and not once more for
-  // every render that hands over a new function.
-  const wantPreview = useRef(onPreviewWant);
-  wantPreview.current = onPreviewWant;
+  // An effect event, so the effect is keyed on the time alone and asking
+  // happens once per time, not once more for every render that hands over a
+  // new function.
+  const wantPreview = useEffectEvent((at: number) => onPreviewWant?.(at));
   useEffect(() => {
-    if (label !== undefined) wantPreview.current?.(label);
+    if (label !== undefined) wantPreview(label);
   }, [label]);
   const start = (value: number) => {
     if (dragging.current === undefined) onDraggingChange(true);
