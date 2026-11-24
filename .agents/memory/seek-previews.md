@@ -5,7 +5,7 @@ metadata:
   type: project
 ---
 
-Spike in `docs/spikes/seek-previews.md` + `spikes/seek-previews/`. Verdict: Peli makes previews itself, on hover plus a small coarse fill, for HTTP/debrid only (torrents off). Seekr (TMDB/IMDb-keyed sprites, one person's free service, per-user key, sees what you watch) is at most an opt-in fallback.
+Spike in `docs/spikes/seek-previews.md` + `spikes/seek-previews/`. Verdict: Peli makes previews itself, on hover plus a small coarse fill. **Debrid streams only** (user's decision 2026-11-24: no torrents, no plain HTTP links). The source may be a smaller **cached** release on the same debrid service, used only if its duration is within **±2 s** of the playing file (decided from data: gaps of a minute or more were sometimes credits-only and sometimes cuts through the film, e.g. "Cropped" AV1 encodes); otherwise the playing file. Seekr (TMDB/IMDb-keyed sprites, one person's free service, per-user key, sees what you watch) is at most an opt-in fallback.
 
 **Why:** measured on a 75 GB TorBox remux: 1.3 s with mpv's open-ended reads, 0.48 s with `stream-lavf-o=request_size=1048576`; VideoToolbox-copy decodes a 4K keyframe in ~70 ms; `screenshot-raw` works with `vo=null`; PQ frames need the Go tone map in `tonemap.go`.
 

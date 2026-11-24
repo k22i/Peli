@@ -74,7 +74,13 @@ func main() {
 	queue := flag.String("queue", "4MiB", "demuxer-max-bytes")
 	extra := flag.String("opts", "", "more mpv options: \"name=value name=value\"")
 	tonemap := flag.Bool("tonemap", true, "tone map PQ/HLG frames in Go")
+	at := flag.String("at", "", "comma-separated times in seconds (overrides -every)")
+	pairsMode := flag.Bool("pairs", false, "compare releases of the same title offline (subtitle spike refs)")
 	flag.Parse()
+	if *pairsMode {
+		runPairs()
+		return
+	}
 
 	ctx := context.Background()
 	c := &counter{ua: "Peli-spike/0.1", client: &http.Client{}}
@@ -119,6 +125,14 @@ func main() {
 	fmt.Fprintf(os.Stderr, "%s: %s %s %.0f s, open %d ms, %d KB\n", run.Name, run.Video, t.Gamma, t.Duration, run.OpenMs, run.OpenBytes>>10)
 
 	times := schedule(t.Duration, *every, *order)
+	if *at != "" {
+		times = nil
+		for _, f := range strings.Split(*at, ",") {
+			var v float64
+			fmt.Sscan(f, &v)
+			times = append(times, v)
+		}
+	}
 	if *maxN > 0 && len(times) > *maxN {
 		times = times[:*maxN]
 	}

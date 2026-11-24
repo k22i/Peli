@@ -8,7 +8,9 @@ Question: can the player show a thumbnail over the seek bar (not frame-exact, on
 
 **Go: Peli makes them itself, from the stream that's playing, on demand.** A second libmpv on the same link (headless, paused, keyframe seeks) returns a 320-pixel thumbnail in about half a second over a debrid CDN, with the picture always matching the release being watched. It must be gentle with the CDN: one connection, 1 MiB requests, thumbnails made when the seek bar is hovered (plus a small, slow fill), never a 10-second grid of a whole remux.
 
-**Seekr: not as the main source.** It works, but it is keyed by TMDB/IMDb id rather than by file, so it's made from one release and is off by a constant amount on others. Every user needs their own key, it's one person's free side project ("may break, change or shut down at any time"), and every lookup tells it what the user is watching. At most it's an opt-in fallback for torrents, where Peli shouldn't seek a second reader (below).
+**Seekr: not as the main source.** It works, but it is keyed by TMDB/IMDb id rather than by file, so it's made from one release and is off by a constant amount on others. Every user needs their own key, it's one person's free side project ("may break, change or shut down at any time"), and every lookup tells it what the user is watching. Not used.
+
+**Debrid streams only (the user's call, 2026-11-24).** No previews while streaming a torrent, and the preview source is always a debrid link too.
 
 ## What was measured
 
@@ -60,7 +62,18 @@ Asked after the first pass: make the previews from the smallest release of the s
 - **Side benefits:** an SDR source needs no tone mapping and sidesteps the Dolby Vision profile 5 question.
 - **Costs:** the duration is only known once the file is open, so check it before using a candidate (~1–2 s, a few hundred KB), and fall back to the playing file on a mismatch. With Torrentio + TorBox, resolving another release **adds it to the user's TorBox list**, and if it isn't cached, starts a download. So only use candidates marked cached, or links that need no resolving, and say so in the setting. Series packs need the right file inside the pack (the picker already does this).
 
-How Peli would pick it: from the streams already fetched for the picker (`useStreams`, ranking's parsed size and resolution), take the smallest **cached** HTTP candidate at 720p or above, with H.264 or HEVC (M1 has no AV1 hardware decoding) and SDR preferred. Open it in the preview mpv, check its duration against the player's (±1 s) and use it, or try the next one, then fall back to the playing file. It's worth it for remuxes and big 4K files. When the playing file is already small (under ~5 GB), just use it.
+### How much duration difference to allow: ±2 s
+
+Asked next: allow a few seconds or minutes of difference? Two checks:
+
+- **Offline, from subtitle timing** (`go run . -pairs`, [`release-pairs.json`](../../spikes/seek-previews/results/release-pairs.json)): the subtitle spike's embedded-subtitle times for every release, aligned pair by pair with its aligner. Of 138 pairs, 86 lined up confidently and **all 86 had zero offset, no frame-rate change and no cuts**, including the two big gaps it could check: Dune +28.7 s and Thunderbolts −68.5 s. There the extra length is all at the end (credits), so the shared part is frame-exact.
+- **By picture, for gaps with no shared subtitles** (5 thumbnails per release at the same times): Thunderbolts 1.5 GB "Light Cropped" AV1 (−61 s against the 25 GB release) differs at 2 min, matches at 25 and 58 min, and is several seconds off by 92 min: small cuts spread through the film. Black Panther "Cropped" AV1 (−240 s against the remux) shows similar but different scenes at every point: the offset grows through the film. Slow Horses 1.0 GB (+160 s) couldn't be opened (the unreachable node).
+
+So a duration gap alone can't tell "extra credits" (harmless) from "cut through the film" (wrong thumbnails everywhere), and both kinds showed up at a minute or more. **Decision: accept a candidate automatically only if it's within ±2 s of the playing file.** That's within a keyframe's own error, so nothing a user would see. Releases a few seconds or minutes apart get the playing file instead. Later, if the ±2 s rule finds a candidate too rarely: accept bigger gaps (up to ~3 min) only after a picture check. Take 3 thumbnails from the playing file (at ~10 %, 50 %, 90 %), compare each with the candidate's at the same time by a small perceptual hash, and require all three to match. That costs ~10 MB on a remux and would pass the credits-only cases above while rejecting both cropped AV1 releases.
+
+### How Peli picks the source
+
+Only while playing a **debrid** stream. From the streams already fetched for the picker (`useStreams`, ranking's parsed size and resolution), take the smallest candidate that is **cached on the same debrid service**, at 720p or above, H.264 or HEVC (M1 has no AV1 hardware decoding; AV1 "cropped" encodes were also the worst offenders above), SDR preferred. Never a torrent, and never an uncached one (resolving it would start a download). Open it in the preview mpv, check its duration against the player's (±2 s) and use it, or try the next one (at most 2–3 candidates), then fall back to the playing file. It's worth it for remuxes and big 4K files. When the playing file is already small (under ~5 GB), just use it.
 
 ## What Peli builds from this
 
@@ -72,7 +85,7 @@ How Peli would pick it: from the streams already fetched for the picker (`useStr
 - **Coarse fill:** after 30 s of steady playback, fill in "coarse" order (every prefix spans the film: the halves, then the quarters, …) at one thumbnail per ~2 s, pausing while the player buffers. Cap it at ~100 thumbnails or a byte budget, and skip it on cellular on iOS and when Low Data Mode is on.
 - **Free thumbnails from what's played:** the main player can take one every 10 s of playback (`screenshot-raw` as auto-crop does), so seeking back over watched parts costs no data. Check first that a 4K readback every 10 s drops no frames.
 - **Back-off:** a 429, refused connection, timeout or two failures in a row stops the previews for that file (no retries against a CDN that is pushing back). The player is unaffected.
-- **Torrents: off.** A second reader seeking across the file makes anacrolix fetch those pieces from the swarm, competing with playback and churning the FIFO cache. Previews there could come later from pieces already downloaded, or from an opt-in Seekr key.
+- **Debrid only.** No previews while streaming a torrent (a second reader seeking across the file makes anacrolix fetch those pieces from the swarm, competing with playback and churning the FIFO cache) and none for plain HTTP addon links. The seek bar shows just the time.
 
 **Frontend:** over the seek bar on hover and while dragging, show the nearest thumbnail already made at once (dimmed if it isn't the bucket asked for), then swap in the right one. Show the time either way, so there's no empty box when previews are off or failed. On iOS show it above the scrub (#131's `scrubTo`). Seeking still goes to the exact time the user picked, not the keyframe.
 
