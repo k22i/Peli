@@ -26,11 +26,7 @@ import { cn } from "@/lib/utils";
 // listed underneath. Past days stay in the grid, dimmed, because a season's
 // episodes read better in place than as a gap. Days without episodes stay
 // empty rather than hidden, so the weeks keep their shape.
-export function UpcomingCalendar({
-  shows,
-}: {
-  shows: readonly CalendarShow[];
-}): ReactElement {
+export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }): ReactElement {
   const compact = useCompactShell();
   // One reading of the clock for the render, so the grid, the labels and the
   // Today button all agree on what today is.
@@ -131,8 +127,7 @@ export function UpcomingCalendar({
     const count = entries.reduce((total, entry) => total + entry.episodes.length, 0);
     const label = dayLabel(cell.day, now);
     const when = label.date ? ` ${label.date}` : "";
-    const airs =
-      count === 0 ? "nothing airs" : count === 1 ? "1 episode" : `${count} episodes`;
+    const airs = count === 0 ? "nothing airs" : count === 1 ? "1 episode" : `${count} episodes`;
     const isSelected = cell.day === selected;
     // A day that has aired, but not today: its rows step back.
     const dim = cell.past && !cell.today;
@@ -158,9 +153,7 @@ export function UpcomingCalendar({
               ? "h-12 items-center justify-start gap-1 rounded-lg pt-1 focus-visible:ring-2 focus-visible:ring-ring"
               : "min-h-32 gap-1.5 bg-background p-2 text-start hover:bg-accent/40 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset",
             !cell.inMonth &&
-              (compact
-                ? "text-muted-foreground/50"
-                : "bg-foreground/2 text-muted-foreground/60"),
+              (compact ? "text-muted-foreground/50" : "bg-foreground/2 text-muted-foreground/60"),
             !compact && isSelected && "bg-accent/60 hover:bg-accent/60",
           )}
         >
@@ -180,10 +173,7 @@ export function UpcomingCalendar({
               {entries.slice(0, 3).map((entry) => (
                 <span
                   key={`${entry.item.contentId}:${entry.episode.id}`}
-                  className={cn(
-                    "size-1.5 rounded-full",
-                    dim ? "bg-muted-foreground/50" : "bg-sun",
-                  )}
+                  className={cn("size-1.5 rounded-full", dim ? "bg-muted-foreground/50" : "bg-sun")}
                 />
               ))}
             </span>
