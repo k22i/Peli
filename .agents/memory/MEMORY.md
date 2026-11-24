@@ -17,7 +17,7 @@
 - [Title page](title-page.md) — #45 /title/$type/$id, titleMetaQuery fallback, Nuvio watched rules (90 %, clears progress, series mark), Store.SetWatched, useOpenTitle
 - [Library page](library-page.md) — #46 lib/library.ts rules, Store.LastWatched + ["last-watched"] key, context menu/Delete + Undo, All chip value, test gotchas
 - [TMDB key](tmdb-key.md) — #47 tmdb.api-key in keychain, lib/tmdb.ts mapping + useTmdbArt, Artwork fallback, mock @bindings/secrets in route tests
-- [Upcoming episodes](upcoming-episodes.md) — #48 Library ?view=upcoming, lib/calendar.ts (28 days + Later, same-day rows), cachedTitleMeta, useOpenTitle season; ?layout=calendar month table + recentDayLabel
+- [Upcoming episodes](upcoming-episodes.md) — #48 Library ?view=upcoming, lib/calendar.ts (28 days + Later, same-day rows), cachedTitleMeta, useOpenTitle season; calendar month table by default (?layout=list), side by side when wide, recentDayLabel
 - [Collection folders](collection-folders.md) — #96 /folder route, folderSources, round-robin mergeSources (append-only depth), useFolderPages observers, stub harness config
 - [Stream requests](stream-requests.md) — #50 useStreamAddons (enabled, not visible), useStreams per-addon state, StreamFeed 150-slices, /streams picker that usePlay opens
 - [Stream ranking](stream-ranking.md) — #51 lib/ranking (parse, fakes, score, engine), shared worker + RankingSession, useRankedStreams restarts on ctx/prefs, accuracy.md snapshot gate, timing test
