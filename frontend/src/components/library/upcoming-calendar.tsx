@@ -344,7 +344,9 @@ export function UpcomingCalendar({ shows }: { shows: readonly CalendarShow[] }):
           ) : (
             <h3 className="flex items-baseline gap-3 py-2.5 font-display text-[1.75rem] leading-none @[68rem]:pt-0">
               {day.title}
-              {day.date && <span className="tnum text-small text-muted-foreground">{day.date}</span>}
+              {day.date && (
+                <span className="tnum text-small text-muted-foreground">{day.date}</span>
+              )}
             </h3>
           )}
           {dayEntries.length === 0 ? (
