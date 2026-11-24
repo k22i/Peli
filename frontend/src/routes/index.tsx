@@ -449,6 +449,18 @@ function CatalogHero({
       <WatchingHero entry={context.watching[0]} surprise={surprise} {...context} />
     ) : null;
   }
+  // Past two titles, every slide stays mounted (see below); with two, the
+  // other one is both neighbours, so the slots take turns.
+  const slides =
+    count > 2
+      ? metas.map((item, at) => {
+          const rel = (at - index + count) % count;
+          return { item, key: item.id, rel: rel > count / 2 ? rel - count : rel };
+        })
+      : ([-1, 0, 1] as const).flatMap((slot) => {
+          const item = metas[(index + slot + count) % count];
+          return item ? [{ item, key: String(slot), rel: slot }] : [];
+        });
   const entry = context.watching.find((progress) => progress.contentId === meta.id);
   const actions = (
     <>
@@ -519,17 +531,18 @@ function CatalogHero({
           className="flex will-change-transform"
           style={{ transform: "translateX(-100%)" }}
         >
-          {([-1, 0, 1] as const).map((slot) => {
-            const at = (index + slot + count) % count;
-            const item = metas[at];
-            if (!item) return null;
-            const here = slot === 0;
+          {slides.map(({ item, key, rel }) => {
+            const here = rel === 0;
             return (
               <div
-                key={count > 2 ? item.id : slot}
+                key={key}
                 inert={!here}
                 aria-hidden={!here || undefined}
-                className="w-full shrink-0"
+                // Slides keep their place in the DOM and are lined up with CSS
+                // `order`: moving a node restarts its animations and reloads
+                // its image, which flashed. Those out of reach wait, unseen, at the end.
+                style={{ order: Math.abs(rel) <= 1 ? rel : 10 }}
+                className={cn("w-full shrink-0", Math.abs(rel) > 1 && "invisible")}
               >
                 <Hero
                   size="feature"
