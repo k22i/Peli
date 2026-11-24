@@ -828,13 +828,13 @@ function PlayerFile({
     enabled: ready && !torrent && !downloaded && !mini,
   });
   // The scrub in flight asks for its own thumbnail: on touch the big label
-  // shows it instead of the seek bar's bubble. Through a ref, as the bar does,
-  // so it asks once per time the scrub reaches and not once per render.
+  // shows it instead of the seek bar's bubble. An effect event, as the bar
+  // uses, so the effect is keyed on the scrub's time alone and it asks once
+  // per time the scrub reaches, not once per render.
   const previewAt = scrub?.to;
-  const wantPreview = useRef(previews.want);
-  wantPreview.current = previews.want;
+  const wantPreview = useEffectEvent((at: number) => previews.want(at));
   useEffect(() => {
-    if (previewAt !== undefined) wantPreview.current(previewAt);
+    if (previewAt !== undefined) wantPreview(previewAt);
   }, [previewAt]);
   // A menu the dock no longer shows (the mini player, a failure) is closed.
   const dockMenuOpen = (speedOpen || moreOpen) && ready && !mini;
