@@ -331,7 +331,7 @@ function CatalogHero({
     if (!element) return;
     offset.current = px;
     element.style.transition = ms ? `transform ${ms}ms var(--ease-out-soft)` : "none";
-    element.style.transform = px ? `translateX(calc(-100% + ${px}px))` : "";
+    element.style.transform = `translateX(calc(-100% + ${px}px))`;
   };
   // One title on (by = 1) or back (-1), animated from wherever the track is;
   // the index changes once it has arrived.
@@ -504,7 +504,11 @@ function CatalogHero({
         {announced}
       </p>
       <EagerArtwork value>
-        <div ref={track} className="flex -translate-x-full will-change-transform">
+        <div
+          ref={track}
+          className="flex will-change-transform"
+          style={{ transform: "translateX(-100%)" }}
+        >
           {([-1, 0, 1] as const).map((slot) => {
             const at = (index + slot + count) % count;
             const item = metas[at];
