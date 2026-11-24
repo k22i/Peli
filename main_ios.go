@@ -219,3 +219,6 @@ func recoverWebview(diag *diagnostics.Service) {
 // background: not on mobile data (#128). Opening a title that needs it
 // still downloads it.
 var animeListDownloads = func() bool { return !iosshell.Cellular() }
+
+// openPreview is the seek-bar thumbnails' decoder (docs/spikes/seek-previews.md).
+var openPreview = iosplayer.OpenPreview

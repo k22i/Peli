@@ -173,6 +173,15 @@ type DeviceSettings struct {
 	// unless the user turns it on: resolving adds the file to the debrid
 	// service's list, even if it never plays.
 	PreResolve bool `json:"preResolve"`
+	// Thumbnails over the player's seek bar, for debrid streams only
+	// (docs/spikes/seek-previews.md). On unless the user turns it off: each
+	// costs 1–4 MB of the stream.
+	SeekPreviews bool `json:"seekPreviews"`
+	// Making those thumbnails from a smaller cached copy of the same film
+	// or episode, when one runs the same length. Off unless the user turns
+	// it on: like PreResolve, resolving the copy adds it to the debrid
+	// service's list.
+	PreviewsFromSmaller bool `json:"previewsFromSmaller"`
 	// How the stream picker sorts within each quality group: one of
 	// StreamSorts. Filters last for the session; the sort stays.
 	StreamSort string `json:"streamSort"`
@@ -255,6 +264,7 @@ func DefaultDeviceSettings() DeviceSettings {
 		// Downloads: the default folder, 50 GB of them, and the phone's data
 		// left alone.
 		DownloadsCapGB: 50, DownloadsWiFiOnly: true,
+		SeekPreviews: true,
 	}
 }
 

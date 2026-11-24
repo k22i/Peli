@@ -26,6 +26,7 @@ import (
 	"github.com/k22i/Peli/internal/party"
 	"github.com/k22i/Peli/internal/playback"
 	"github.com/k22i/Peli/internal/player"
+	"github.com/k22i/Peli/internal/previews"
 	"github.com/k22i/Peli/internal/quickactions"
 	"github.com/k22i/Peli/internal/safego"
 	"github.com/k22i/Peli/internal/secrets"
@@ -75,6 +76,8 @@ type peli struct {
 	// players is the libmpv Service on the desktop and the stub or iOS engine
 	// host on iOS: the same bound methods either way.
 	players *player.Service
+	// previews makes the player's seek-bar thumbnails.
+	previews *previews.Service
 	// parties is the watch party (ADR-0051): it follows the player and the
 	// user's pauses and seeks go through it first (party.UsePlayer and
 	// player.GateWith, below). Nuvio's backend keeps the membership, so the
@@ -108,6 +111,7 @@ func newPeli(dbPath string) *peli {
 	// Profiles deleted, added or re-PINned elsewhere show at the next sync.
 	syncer.RefreshProfilesWith(syncer.PullerOf(p.sync), account.ProfileRefresher(p.accounts))
 	p.players = player.NewService(appinfo.Version)
+	p.previews = previews.NewService(openPreview, appinfo.Version)
 	// Watch parties with Nuvio's apps (ADR-0051): the party keeps the player
 	// in step, and the user's pauses, seeks and speed changes go through it
 	// first, so it can publish them or refuse them.
@@ -225,6 +229,8 @@ func (p *peli) services(x extras) []application.Service {
 		application.NewService(p.skipTimes),
 		application.NewServiceWithOptions(p.players,
 			application.ServiceOptions{MarshalError: player.MarshalError}),
+		// Seek-bar thumbnails for the player.
+		application.NewService(p.previews),
 	)
 	// After the player, so it leaves the party first on the way out.
 	list = append(list, application.NewServiceWithOptions(p.parties,

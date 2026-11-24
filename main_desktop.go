@@ -128,3 +128,6 @@ func main() {
 // animeListDownloads is when the anime list may download in the background:
 // any time on the desktop.
 var animeListDownloads func() bool
+
+// openPreview is the seek-bar thumbnails' decoder (docs/spikes/seek-previews.md).
+var openPreview = player.OpenPreview
