@@ -27,11 +27,13 @@ import type { Profile } from "@bindings/store";
 // The Library page's Upcoming view (#48): the episodes of the library's
 // shows that air from today on, by day (ADR-0032). Each show's details come
 // from the title page's query, so a show seen before paints from the cache,
-// offline too, and each fills in as its addon answers. Two layouts, the list
-// of days and the month's calendar (?layout=calendar).
+// offline too, and each fills in as its addon answers. Two layouts, the
+// month's calendar and the list of days (?layout=list). The calendar is the
+// default: it answers "what's on this month" at a glance, and the list is the
+// closer read.
 export function Upcoming({ profile }: { profile: Profile }) {
   const search: LibrarySearch = useSearch({ strict: false });
-  const layout = search.layout ?? "list";
+  const layout = search.layout ?? "calendar";
   const client = useQueryClient();
   const library = useQuery(libraryQuery(profile.id));
   const { visible, addons, loading } = useLoadedAddons(profile.id);
@@ -77,60 +79,67 @@ export function Upcoming({ profile }: { profile: Profile }) {
 
   return (
     <div className="flex flex-col gap-8 px-page">
-      {/* The status and the layout switch share the first row, so the switch
-          stays put whether or not there is anything to report. */}
-      <div className="flex items-center justify-between gap-4">
-        {checking || failed.length > 0 ? (
-          <div className="flex items-center gap-3 text-body text-muted-foreground">
-            {checking ? (
-              <>
-                <Spinner className="size-4" />
-                Checking your shows for new episodes…
-              </>
-            ) : (
-              <>
-                {failed.length === 1
-                  ? "Couldn’t check one show."
-                  : `Couldn’t check ${failed.length} shows.`}
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => failed.forEach((query) => void query.refetch())}
-                >
-                  Try again
-                </Button>
-              </>
-            )}
-          </div>
-        ) : (
-          <span />
+      <div
+        className={cn(
+          "mx-auto flex w-full flex-col gap-8",
+          layout === "list" ? "max-w-4xl" : "max-w-[100rem]",
         )}
-        <LayoutSwitch />
-      </div>
-      {layout === "calendar" ? (
-        <UpcomingCalendar shows={loaded} />
-      ) : days.length === 0 && later.length === 0 && !checking ? (
-        <LibraryNotice
-          icon={CalendarDays}
-          title="Nothing coming up"
-          description="None of the shows in your library has a new episode scheduled yet."
-        />
-      ) : (
-        <div className="flex max-w-4xl flex-col gap-8 ios-compact:gap-4">
-          {days.map(({ day, entries }) => (
-            <DaySection key={day} {...dayLabel(day)} entries={entries} />
-          ))}
-          {later.length > 0 && <DaySection title="Later" entries={later} dated collapsible />}
+      >
+        {/* The status and the layout switch share the first row, so the switch
+            stays put whether or not there is anything to report. */}
+        <div className="flex items-center justify-between gap-4">
+          {checking || failed.length > 0 ? (
+            <div className="flex items-center gap-3 text-body text-muted-foreground">
+              {checking ? (
+                <>
+                  <Spinner className="size-4" />
+                  Checking your shows for new episodes…
+                </>
+              ) : (
+                <>
+                  {failed.length === 1
+                    ? "Couldn’t check one show."
+                    : `Couldn’t check ${failed.length} shows.`}
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => failed.forEach((query) => void query.refetch())}
+                  >
+                    Try again
+                  </Button>
+                </>
+              )}
+            </div>
+          ) : (
+            <span />
+          )}
+          <LayoutSwitch />
         </div>
-      )}
+        {layout === "calendar" ? (
+          <UpcomingCalendar shows={loaded} />
+        ) : days.length === 0 && later.length === 0 && !checking ? (
+          <LibraryNotice
+            icon={CalendarDays}
+            title="Nothing coming up"
+            description="None of the shows in your library has a new episode scheduled yet."
+          />
+        ) : (
+          <div className="flex flex-col gap-8 ios-compact:gap-4">
+            {days.map(({ day, entries }) => (
+              <DaySection key={day} {...dayLabel(day)} entries={entries} />
+            ))}
+            {later.length > 0 && <DaySection title="Later" entries={later} dated collapsible />}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
 
-// The list or the calendar: coss Tabs as a segmented control on an ink tint,
+// The calendar or the list: coss Tabs as a segmented control on an ink tint,
 // the Library page's view switch at the end of its header, so the two read as
 // one family. The pill is a wrapper here too, since a tier sets its own
-// background; the tab list inside it is bare.
+// background; the tab list inside it is bare. The default comes first.
 //
 // `compact` (#132, iPhone): the icons alone, as the words plus their icons
 // would crowd the status message beside them.
@@ -144,13 +153,14 @@ function LayoutSwitch() {
     <Tabs
       // Kept whole beside a long status message on an iPhone.
       className="shrink-0"
-      value={search.layout ?? "list"}
+      value={search.layout ?? "calendar"}
       onValueChange={(next: string) =>
         void navigate({
           to: ".",
           search: (previous: LibrarySearch): LibrarySearch => ({
             ...previous,
-            layout: next === "calendar" ? "calendar" : undefined,
+            // The calendar is the default, so choosing it leaves no param.
+            layout: next === "list" ? "list" : undefined,
           }),
           replace: true,
         })
@@ -162,20 +172,20 @@ function LayoutSwitch() {
           className="gap-x-1 rounded-full bg-transparent p-0 text-muted-foreground *:data-[slot=tab-indicator]:rounded-full *:data-[slot=tab-indicator]:bg-background *:data-[slot=tab-indicator]:shadow-card dark:*:data-[slot=tab-indicator]:bg-foreground/16 dark:*:data-[slot=tab-indicator]:shadow-none"
         >
           <TabsTab
-            value="list"
-            aria-label={compact ? "List" : undefined}
-            className={compact ? "rounded-full px-2.5" : "gap-1.5 rounded-full px-3"}
-          >
-            <List aria-hidden className="size-4" />
-            {compact ? null : "List"}
-          </TabsTab>
-          <TabsTab
             value="calendar"
             aria-label={compact ? "Calendar" : undefined}
             className={compact ? "rounded-full px-2.5" : "gap-1.5 rounded-full px-3"}
           >
             <CalendarDays aria-hidden className="size-4" />
             {compact ? null : "Calendar"}
+          </TabsTab>
+          <TabsTab
+            value="list"
+            aria-label={compact ? "List" : undefined}
+            className={compact ? "rounded-full px-2.5" : "gap-1.5 rounded-full px-3"}
+          >
+            <List aria-hidden className="size-4" />
+            {compact ? null : "List"}
           </TabsTab>
         </TabsList>
       </span>
@@ -306,7 +316,7 @@ function UpcomingSkeleton() {
     );
   }
   return (
-    <div aria-hidden className="flex max-w-4xl flex-col gap-1 px-page">
+    <div aria-hidden className="mx-auto flex w-full max-w-4xl flex-col gap-1 px-page">
       <Skeleton className="mb-1 h-9 w-48 rounded-xl" />
       {Array.from({ length: 4 }, (_, index) => (
         <div key={index} className="flex items-center gap-5 p-3">

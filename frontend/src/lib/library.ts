@@ -118,10 +118,10 @@ export const libraryPreview = (item: LibraryItem): TitlePreview => ({
 // The Library page's choices (#46), kept in the address so Back from a title
 // returns to them. No type means all of them; no view means the titles, not
 // the Upcoming calendar (#48), the Watchlist or the downloads (#85); no layout
-// means Upcoming's list rather than its month grid.
+// means Upcoming's month calendar, its default, rather than the list of days.
 export type LibrarySort = "added" | "watched" | "name";
 export type LibraryView = "upcoming" | "watchlist" | "downloads";
-export type UpcomingLayout = "calendar";
+export type UpcomingLayout = "list";
 export type LibrarySearch = {
   type?: string;
   sort?: LibrarySort;
@@ -152,7 +152,7 @@ export function librarySearch(search: Record<string, unknown>): LibrarySearch {
     ...(typeof type === "string" && type ? { type } : {}),
     ...(sort ? { sort } : {}),
     ...(view === "upcoming" || view === "watchlist" || view === "downloads" ? { view } : {}),
-    ...(layout === "calendar" ? { layout } : {}),
+    ...(layout === "list" ? { layout } : {}),
   };
 }
 

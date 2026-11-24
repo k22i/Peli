@@ -328,7 +328,7 @@ describe("upcoming episodes", () => {
     serve(metas);
     // Clicks don't register on Base UI tabs in jsdom (neither user-event's
     // nor fireEvent's), so the view is opened by its address.
-    await renderApp("/library?sort=name&view=upcoming");
+    await renderApp("/library?sort=name&view=upcoming&layout=list");
     const upcoming = await screen.findByRole("tab", { name: "Upcoming" });
     await waitFor(() => expect(upcoming).toHaveAttribute("aria-selected", "true"));
 
@@ -344,7 +344,7 @@ describe("upcoming episodes", () => {
 
   it("shows when a day's episode airs, at the end of its row", async () => {
     serve(metas);
-    await renderApp("/library?view=upcoming");
+    await renderApp("/library?view=upcoming&layout=list");
     const time = new Intl.DateTimeFormat(undefined, { timeStyle: "short" }).format(day(1));
     const [row] = within(await section("Tomorrow")).getAllByRole("button");
     expect(row?.lastElementChild).toHaveTextContent(time);
@@ -356,7 +356,7 @@ describe("upcoming episodes", () => {
       [breakingBadUrl]: { meta: { ...bbMeta.meta, videos: bbMeta.meta.videos.slice(2) } },
       [frierenUrl]: { meta: { ...frierenMeta.meta, videos: frierenMeta.meta.videos.slice(1) } },
     });
-    await renderApp("/library?view=upcoming");
+    await renderApp("/library?view=upcoming&layout=list");
     const date = new Intl.DateTimeFormat(undefined, { dateStyle: "medium" });
     expect(await entries("Later")).toEqual([
       `Frieren, S2 · E2: Episode 2, ${date.format(day(40))}`,
@@ -376,7 +376,7 @@ describe("upcoming episodes", () => {
         },
       },
     });
-    await renderApp("/library?view=upcoming");
+    await renderApp("/library?view=upcoming&layout=list");
     expect(await entries("Tomorrow")).toEqual([
       "Breaking Bad, S5 · E1–E4: 4 episodes",
       "Frieren, S2 · E1: Episode 1",
@@ -386,14 +386,14 @@ describe("upcoming episodes", () => {
   it("opens the show on the episode's season", async () => {
     serve(metas);
     const user = userEvent.setup();
-    const { router } = await renderApp("/library?view=upcoming");
+    const { router } = await renderApp("/library?view=upcoming&layout=list");
     await user.click(await within(await section("Tomorrow")).findByRole("button"));
     expect(decodeURIComponent(router.state.location.pathname)).toBe("/title/anime/kitsu:46474");
     expect(router.state.location.search).toEqual({ season: 2 });
   });
 
   it("paints from cached details offline", async () => {
-    await renderApp("/library?view=upcoming", {
+    await renderApp("/library?view=upcoming&layout=list", {
       seed: (client) => {
         client.setQueryData(manifestKey(cinemeta), parseManifest(cinemetaManifest));
         client.setQueryData(manifestKey(kitsu), parseManifest(kitsuManifest));
@@ -414,7 +414,7 @@ describe("upcoming episodes", () => {
   it("says which shows couldn't be checked, and tries them again", async () => {
     serve({ [breakingBadUrl]: metas[breakingBadUrl] });
     const user = userEvent.setup();
-    await renderApp("/library?view=upcoming");
+    await renderApp("/library?view=upcoming&layout=list");
     expect(
       await screen.findByText("Couldn’t check one show.", {}, { timeout: 3000 }),
     ).toBeVisible();
@@ -431,7 +431,7 @@ describe("upcoming episodes", () => {
       [breakingBadUrl]: { meta: { ...metas[breakingBadUrl].meta, videos: [] } },
       [frierenUrl]: { meta: { ...metas[frierenUrl].meta, videos: [] } },
     });
-    await renderApp("/library?view=upcoming");
+    await renderApp("/library?view=upcoming&layout=list");
     expect(await screen.findByRole("heading", { name: "Nothing coming up" })).toBeInTheDocument();
   });
 
@@ -445,8 +445,8 @@ describe("upcoming episodes", () => {
   });
 });
 
-// The calendar layout of the same view (a month grid over the list), kept in
-// the address as ?layout=calendar.
+// The calendar layout of the same view (a month grid over the list), the
+// default, so it needs no param; the list is ?layout=list.
 describe("Upcoming calendar", () => {
   beforeEach(() => {
     mocks.visibleAddons.mockResolvedValue([cinemeta, kitsu]);
@@ -455,11 +455,10 @@ describe("Upcoming calendar", () => {
   it("switches to the calendar from its tab, keeping the view", async () => {
     serve(metas);
     const user = userEvent.setup();
-    const { router } = await renderApp("/library?view=upcoming");
+    const { router } = await renderApp("/library?view=upcoming&layout=list");
     await user.click(await screen.findByRole("tab", { name: /calendar/i }));
-    await waitFor(() =>
-      expect(router.state.location.search).toEqual({ view: "upcoming", layout: "calendar" }),
-    );
+    // The calendar is the default, so choosing it drops the param.
+    await waitFor(() => expect(router.state.location.search).toEqual({ view: "upcoming" }));
     expect(await screen.findByRole("table")).toBeInTheDocument();
   });
 
@@ -474,7 +473,7 @@ describe("Upcoming calendar", () => {
         },
       },
     });
-    await renderApp("/library?view=upcoming&layout=calendar");
+    await renderApp("/library?view=upcoming");
     const today = await screen.findByRole("region", { name: /today/i });
     expect(within(today).getByText("Breaking Bad")).toBeInTheDocument();
   });

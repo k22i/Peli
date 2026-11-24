@@ -83,11 +83,14 @@ describe("librarySearch", () => {
     expect(librarySearch({ view: "titles" })).toEqual({});
   });
 
-  it("keeps Upcoming's calendar layout, and drops any other", () => {
-    expect(librarySearch({ view: "upcoming", layout: "calendar" })).toEqual({
+  it("keeps Upcoming's list layout, and drops any other", () => {
+    expect(librarySearch({ view: "upcoming", layout: "list" })).toEqual({
       view: "upcoming",
-      layout: "calendar",
+      layout: "list",
     });
+    // The calendar is the default, so it isn't written; nor is a stale
+    // ?layout=calendar from an old link.
+    expect(librarySearch({ view: "upcoming", layout: "calendar" })).toEqual({ view: "upcoming" });
     expect(librarySearch({ view: "upcoming", layout: "grid" })).toEqual({ view: "upcoming" });
   });
 });
