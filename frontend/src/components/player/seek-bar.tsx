@@ -80,7 +80,7 @@ export function SeekBar({
   // An effect event, so the effect is keyed on the time alone and asking
   // happens once per time, not once more for every render that hands over a
   // new function.
-  const wantPreview = useEffectEvent((at: number) => onPreviewWant?.(at));
+  const wantPreview = useEffectEvent((seconds: number) => onPreviewWant?.(seconds));
   useEffect(() => {
     if (label !== undefined) wantPreview(label);
   }, [label]);
