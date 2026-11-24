@@ -8,9 +8,8 @@ import { toastManager } from "@/components/ui/toast";
 import { catalogQuery, type CatalogSource } from "@/lib/addon-protocol";
 import {
   calendarShows,
-  dayLabel,
-  dayKey,
   entryCode,
+  recentDayLabel,
   recentEpisodes,
   type CalendarShow,
 } from "@/lib/calendar";
@@ -52,7 +51,7 @@ export function NewEpisodes({ profile }: { profile: Profile }) {
       renderItem={(entry) => (
         <PosterCard
           title={entry.item.name}
-          meta={`${entryCode(entry)} · ${dayLabel(dayKey(entry.airs)).title}`}
+          meta={`${entryCode(entry)} · ${recentDayLabel(entry.airs)}`}
           src={entry.item.poster}
           menu={libraryMenuTitle(entry.item)}
           onClick={() => open(libraryPreview(entry.item), { season: entry.episode.season })}

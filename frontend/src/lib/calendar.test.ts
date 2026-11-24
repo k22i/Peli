@@ -13,6 +13,7 @@ import {
   monthGrid,
   monthKey,
   monthLabel,
+  recentDayLabel,
   scheduleByDay,
   shiftMonth,
   weekdayNames,
@@ -150,6 +151,15 @@ describe("dayLabel", () => {
       expect(label.title).not.toBe(weekday.format(past));
       expect(label.title).toContain(weekday.format(past));
     }
+  });
+});
+
+describe("recentDayLabel", () => {
+  it("names today and yesterday, else the weekday, for a card caption", () => {
+    const weekday = new Intl.DateTimeFormat(undefined, { weekday: "long" });
+    expect(recentDayLabel(now, now)).toBe("Today");
+    expect(recentDayLabel(at(10, 29), now)).toBe("Yesterday");
+    expect(recentDayLabel(at(10, 27), now)).toBe(weekday.format(at(10, 27)));
   });
 });
 

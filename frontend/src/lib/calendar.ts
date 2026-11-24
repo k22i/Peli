@@ -182,6 +182,15 @@ export function dayLabel(day: string, now = Date.now()): { title: string; date?:
   return { title: (year === new Date(now).getFullYear() ? thisYear : otherYear).format(time) };
 }
 
+// A recent day's short name for a card caption (Home's New episodes):
+// "Today", "Yesterday", or the weekday within the past week.
+export function recentDayLabel(time: number, now = Date.now()): string {
+  const day = dayKey(time);
+  if (day === dayKey(now)) return "Today";
+  if (day === dayKey(startOfDay(now, -1))) return "Yesterday";
+  return weekday.format(time);
+}
+
 // A day in the month grid, with what the grid needs to style it without
 // looking the day up again: today's cell stands out, and past days don't.
 export type MonthCell = {
@@ -263,8 +272,8 @@ export function weekdayNames(weekStart: number, width: "short" | "narrow"): stri
   return Array.from({ length: 7 }, (_, index) => {
     // Weekday 2 (Tuesday) is the day after that Monday, and 0 (Sunday) is the
     // last day of the week that starts on it.
-    const weekday = (weekStart + index) % 7;
-    const date = new Date(2026, 10, 23 + (weekday === 0 ? 6 : weekday - 1));
+    const day = (weekStart + index) % 7;
+    const date = new Date(2026, 10, 23 + (day === 0 ? 6 : day - 1));
     return format.format(date);
   });
 }
