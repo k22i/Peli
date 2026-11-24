@@ -1,0 +1,166 @@
+{
+  "name": "dune-2021-3",
+  "source": "torbox",
+  "size": 2300853539,
+  "codec": "H.265 / HEVC (High Efficiency Video Coding)",
+  "video": "3840x1604 bt.2020",
+  "gamma": "pq",
+  "duration": 9326.609,
+  "hwdec": "videotoolbox-copy",
+  "width": 320,
+  "every": 10,
+  "order": "coarse",
+  "chunk": 1048576,
+  "queue": "4MiB",
+  "open_ms": 1436,
+  "open_bytes": 1294104,
+  "total_ms": 8311,
+  "bytes": 17539426,
+  "median_ms": 418,
+  "p90_ms": 498,
+  "median_kb": 866,
+  "sheet_kb": 56,
+  "thumbs": [
+    {
+      "at": 0,
+      "got": 0,
+      "ms": 23,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 5120,
+      "got": 5113.734,
+      "ms": 529,
+      "bytes": 228858,
+      "requests": 1
+    },
+    {
+      "at": 2560,
+      "got": 2554.469,
+      "ms": 436,
+      "bytes": 904700,
+      "requests": 1
+    },
+    {
+      "at": 7680,
+      "got": 7672.957,
+      "ms": 468,
+      "bytes": 912890,
+      "requests": 1
+    },
+    {
+      "at": 1280,
+      "got": 1273.481,
+      "ms": 398,
+      "bytes": 589308,
+      "requests": 1
+    },
+    {
+      "at": 3840,
+      "got": 3830.744,
+      "ms": 477,
+      "bytes": 1098680,
+      "requests": 1
+    },
+    {
+      "at": 6400,
+      "got": 6390.885,
+      "ms": 362,
+      "bytes": 1333826,
+      "requests": 1
+    },
+    {
+      "at": 8960,
+      "got": 8959.909,
+      "ms": 290,
+      "bytes": 450560,
+      "requests": 1
+    },
+    {
+      "at": 640,
+      "got": 633.758,
+      "ms": 312,
+      "bytes": 1490428,
+      "requests": 1
+    },
+    {
+      "at": 1920,
+      "got": 1919.751,
+      "ms": 425,
+      "bytes": 253130,
+      "requests": 1
+    },
+    {
+      "at": 3200,
+      "got": 3195.984,
+      "ms": 461,
+      "bytes": 957948,
+      "requests": 1
+    },
+    {
+      "at": 4480,
+      "got": 4478.516,
+      "ms": 400,
+      "bytes": 646156,
+      "requests": 1
+    },
+    {
+      "at": 5760,
+      "got": 5750.912,
+      "ms": 407,
+      "bytes": 814586,
+      "requests": 1
+    },
+    {
+      "at": 7040,
+      "got": 7033.86,
+      "ms": 549,
+      "bytes": 1011194,
+      "requests": 1
+    },
+    {
+      "at": 8320,
+      "got": 8309.885,
+      "ms": 410,
+      "bytes": 628601,
+      "requests": 1
+    },
+    {
+      "at": 320,
+      "got": 318.276,
+      "ms": 476,
+      "bytes": 888318,
+      "requests": 1
+    },
+    {
+      "at": 960,
+      "got": 957.999,
+      "ms": 418,
+      "bytes": 887347,
+      "requests": 1
+    },
+    {
+      "at": 1600,
+      "got": 1595.511,
+      "ms": 435,
+      "bytes": 699900,
+      "requests": 1
+    },
+    {
+      "at": 2240,
+      "got": 2235.233,
+      "ms": 498,
+      "bytes": 1060348,
+      "requests": 1
+    },
+    {
+      "at": 2880,
+      "got": 2870.326,
+      "ms": 402,
+      "bytes": 1388544,
+      "requests": 1
+    }
+  ],
+  "date": "2026-11-24T04:29:43.822108Z"
+}

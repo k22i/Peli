@@ -50,6 +50,18 @@ Measured on the M1 Pro with the spike process (`/usr/bin/time -l`, local 4K HEVC
 - A coarse fill of 100 thumbnails is ~3 s of CPU in total, spread over minutes. The thumbnails are ~10 KB each, so 1 MB for 100 and ~9 MB for a 10-second grid of a whole film. Network is the real cost: 2–4 MB per thumbnail.
 - **iOS (not measured):** expect a similar ~200 MB on a device with VideoToolbox, on top of the player. This is the main risk there (jetsam), so open it only on scrub, close it soon after, and never run it while the app is in the background. No fill on cellular or in Low Data Mode, because the radio costs more battery than the decoding. Keep the thumbnails out of the webview's memory (asset URLs, a small cap), given the WebContent kills in #128.
 
+## A smaller release as the thumbnail source
+
+Asked after the first pass: make the previews from the smallest release of the same title instead of the one playing.
+
+- **The very smallest is often a different cut.** In the subtitle spike's corpus (durations from its `refs/`), the smallest release ran 160 s long (Slow Horses 1.0 GB), 61 s short (Thunderbolts 1.5 GB) or 240 s short (Black Panther "Cropped" AV1). Picking by size alone gives wrong thumbnails.
+- **The smallest one with the same duration (±1 s) is usually right.** 34 of 56 releases had a smaller release of the same length: a median 2.9× smaller, up to 92×. The corpus was picked for several releases per title, but a real stream list usually has more. Same length within 1 s held in every pair looked at here, with the same frame at the same time: *Nobody Wants This* S03E01 at 0.7 GB 1080p SDR and 3.7 GB 2160p DV/HDR give identical sheets.
+- **Cost (20 thumbnails each, TorBox, `videotoolbox-copy`, 1 MiB requests):** Dune 2.3 GB 2160p: 418 ms median, **0.87 MB** per thumbnail (the 75 GB remux: 3.6 MB). *Nobody Wants This* 0.7 GB 1080p: 428 ms, **0.98 MB** (its 3.7 GB 4K release: 1.7 MB). Time hardly changes, since it's mostly round trips. Data drops 2–4×, and memory drops to ~43 MB when the small release is 1080p (~214 MB at 4K).
+- **Side benefits:** an SDR source needs no tone mapping and sidesteps the Dolby Vision profile 5 question.
+- **Costs:** the duration is only known once the file is open, so check it before using a candidate (~1–2 s, a few hundred KB), and fall back to the playing file on a mismatch. With Torrentio + TorBox, resolving another release **adds it to the user's TorBox list**, and if it isn't cached, starts a download. So only use candidates marked cached, or links that need no resolving, and say so in the setting. Series packs need the right file inside the pack (the picker already does this).
+
+How Peli would pick it: from the streams already fetched for the picker (`useStreams`, ranking's parsed size and resolution), take the smallest **cached** HTTP candidate at 720p or above, with H.264 or HEVC (M1 has no AV1 hardware decoding) and SDR preferred. Open it in the preview mpv, check its duration against the player's (±1 s) and use it, or try the next one, then fall back to the playing file. It's worth it for remuxes and big 4K files. When the playing file is already small (under ~5 GB), just use it.
+
 ## What Peli builds from this
 
 **Go: `internal/previews`** (desktop first, the same code on iOS later):

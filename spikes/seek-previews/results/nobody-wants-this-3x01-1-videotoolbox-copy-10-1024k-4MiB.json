@@ -1,0 +1,166 @@
+{
+  "name": "nobody-wants-this-3x01-1",
+  "source": "torbox",
+  "size": 703964374,
+  "codec": "H.265 / HEVC (High Efficiency Video Coding)",
+  "video": "1920x1080 bt.709",
+  "gamma": "bt.1886",
+  "duration": 1535.552,
+  "hwdec": "videotoolbox-copy",
+  "width": 320,
+  "every": 10,
+  "order": "coarse",
+  "chunk": 1048576,
+  "queue": "4MiB",
+  "open_ms": 1228,
+  "open_bytes": 2076149,
+  "total_ms": 8509,
+  "bytes": 19120292,
+  "median_ms": 428,
+  "p90_ms": 532,
+  "median_kb": 979,
+  "sheet_kb": 155,
+  "thumbs": [
+    {
+      "at": 0,
+      "got": 0,
+      "ms": 197,
+      "bytes": 220603,
+      "requests": 1
+    },
+    {
+      "at": 1280,
+      "got": 1279.57,
+      "ms": 484,
+      "bytes": 1043965,
+      "requests": 1
+    },
+    {
+      "at": 640,
+      "got": 636.469,
+      "ms": 384,
+      "bytes": 1421312,
+      "requests": 1
+    },
+    {
+      "at": 320,
+      "got": 319.486,
+      "ms": 601,
+      "bytes": 245245,
+      "requests": 1
+    },
+    {
+      "at": 960,
+      "got": 959.041,
+      "ms": 452,
+      "bytes": 1043965,
+      "requests": 1
+    },
+    {
+      "at": 160,
+      "got": 158.617,
+      "ms": 434,
+      "bytes": 683519,
+      "requests": 1
+    },
+    {
+      "at": 480,
+      "got": 476.685,
+      "ms": 428,
+      "bytes": 1007101,
+      "requests": 1
+    },
+    {
+      "at": 800,
+      "got": 799.424,
+      "ms": 344,
+      "bytes": 1236992,
+      "requests": 1
+    },
+    {
+      "at": 1120,
+      "got": 1115.615,
+      "ms": 332,
+      "bytes": 441853,
+      "requests": 1
+    },
+    {
+      "at": 1440,
+      "got": 1438.812,
+      "ms": 490,
+      "bytes": 1211901,
+      "requests": 1
+    },
+    {
+      "at": 80,
+      "got": 78.87,
+      "ms": 345,
+      "bytes": 1146882,
+      "requests": 1
+    },
+    {
+      "at": 240,
+      "got": 238.488,
+      "ms": 402,
+      "bytes": 389508,
+      "requests": 1
+    },
+    {
+      "at": 400,
+      "got": 394.185,
+      "ms": 511,
+      "bytes": 1003005,
+      "requests": 1
+    },
+    {
+      "at": 560,
+      "got": 558.308,
+      "ms": 405,
+      "bytes": 466429,
+      "requests": 1
+    },
+    {
+      "at": 720,
+      "got": 719.302,
+      "ms": 471,
+      "bytes": 1084925,
+      "requests": 1
+    },
+    {
+      "at": 880,
+      "got": 878.419,
+      "ms": 460,
+      "bytes": 806397,
+      "requests": 1
+    },
+    {
+      "at": 1040,
+      "got": 1034.45,
+      "ms": 544,
+      "bytes": 674704,
+      "requests": 1
+    },
+    {
+      "at": 1200,
+      "got": 1198.656,
+      "ms": 532,
+      "bytes": 1240573,
+      "requests": 1
+    },
+    {
+      "at": 1360,
+      "got": 1357.815,
+      "ms": 346,
+      "bytes": 1056768,
+      "requests": 1
+    },
+    {
+      "at": 1520,
+      "got": 1516.39,
+      "ms": 336,
+      "bytes": 618496,
+      "requests": 1
+    }
+  ],
+  "date": "2026-11-24T04:30:14.574511Z"
+}
