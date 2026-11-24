@@ -29,8 +29,8 @@ import { isTorrentSource } from "@/lib/torrent";
 
 export const bucketSeconds = 10;
 
-// How far a made thumbnail may be from the bucket asked for and stand in for
-// it (dimmed) while the right one is made.
+// How far a made thumbnail may be from the bucket asked for, to stand in
+// dimmed while the right one is made.
 const nearestWithin = 60;
 
 // One thumbnail as the seek bar shows it. `exact` is false for a
@@ -142,21 +142,44 @@ export function smallerCopies(streams: readonly Stream[], playing: Stream): Stre
 }
 
 // The thumbnails made so far, by bucket, and the copies to make more from:
-// empty until there are some. Shared as they are, so a reset is the same
-// value twice and doesn't re-render.
+// empty until there are some. Shared as they are, so showing none twice is
+// the same value and doesn't re-render.
 const noThumbs: ReadonlyMap<number, Thumb> = new Map();
 const noStreams: readonly Stream[] = [];
 const noSources: readonly Source[] = [];
 
+// State kept with the key it belongs to: another file's thumbnails are the
+// wrong picture and another file's links the wrong film's, so each render
+// shows them only while their key is its own, instead of an effect clearing
+// the last file's after a render that showed it.
+type ThumbsForKey = { key: string; map: ReadonlyMap<number, Thumb> };
+type CopiesForKey = { key: string; sources: readonly Source[] };
+const noThumbsForKey: ThumbsForKey = { key: "", map: noThumbs };
+const noCopiesForKey: CopiesForKey = { key: "", sources: noSources };
+
 // Go's event for a thumbnail the background fill made, carrying a Thumb.
 const thumbEvent = "previews:thumb";
 
-// The map with one bucket's thumbnail in it: a new map, since the old one is
-// what the last render showed.
-const withThumb = (current: ReadonlyMap<number, Thumb>, thumb: Thumb) => {
-  const next = new Map(current);
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null && !Array.isArray(value);
+
+// Whether an event's payload is a thumbnail: the bridge hands JavaScript
+// whatever Go sent, and only Go's own Thumb is a picture to show.
+const isThumb = (value: unknown): value is Thumb =>
+  isRecord(value) &&
+  typeof value["at"] === "number" &&
+  typeof value["w"] === "number" &&
+  typeof value["h"] === "number" &&
+  typeof value["url"] === "string";
+
+// The thumbnails with one bucket's in them, for the key it belongs to: a
+// thumbnail made for another file starts from an empty map rather than
+// mixing with this one's. A new map, since the old one is what the last
+// render showed.
+const withThumb = (held: ThumbsForKey, key: string, thumb: Thumb): ThumbsForKey => {
+  const next = new Map(held.key === key ? held.map : noThumbs);
   next.set(bucketOf(thumb.at), thumb);
-  return next;
+  return { key, map: next };
 };
 
 // The seek bar's previews for one file while the player screen is mounted.
@@ -186,11 +209,14 @@ export function useSeekPreviews(input: {
     watching?.videoId ?? "",
   );
 
-  const [thumbs, setThumbs] = useState<ReadonlyMap<number, Thumb>>(noThumbs);
   const lastAsked = useRef<number | undefined>(undefined);
 
-  // The smaller copies to make previews from, once resolved into links.
-  const [smaller, setSmaller] = useState<readonly Source[]>(noSources);
+  // The file that plays and its length in whole seconds, as the player
+  // reports that in fractions: what the copies and the thumbnails are keyed
+  // by.
+  const playingUrl = source?.url ?? "";
+  const wholeSeconds = Math.round(duration);
+
   const waiting = sources.some((asked) => asked.status === "pending");
   const found =
     fromSmaller && !waiting && stream
@@ -200,22 +226,39 @@ export function useSeekPreviews(input: {
         )
       : noStreams;
   const copiesKey =
-    found.length === 0 ? "" : `${source?.url ?? ""}\n${found.map((copy) => copy.url).join("\n")}`;
+    found.length === 0 ? "" : `${playingUrl}\n${found.map((copy) => copy.url).join("\n")}`;
+
+  // The smaller copies to make previews from, once resolved into links, and
+  // the key they were resolved for: a link resolved for another file (or
+  // another pick) is the wrong film's, so it counts only while it is the key
+  // this render asks for.
+  const [copiesForKey, setCopiesForKey] = useState<CopiesForKey>(noCopiesForKey);
+  const smaller = copiesForKey.key === copiesKey ? copiesForKey.sources : noSources;
+
+  // What a bucket, and so a thumbnail, belongs to: the file, its length, the
+  // copies Go reads frames from instead, and whether previews are on at all.
+  // The same link again keeps the thumbnails already made.
+  const smallerUrls = smaller.map((copy) => copy.url).join("\n");
+  const beginKey = `${on ? "on" : "off"}\n${playingUrl}\n${wholeSeconds}\n${smallerUrls}`;
+
+  // The thumbnails made so far, by bucket, and the key they were made for:
+  // another file's are the wrong picture, and a file left behind whose
+  // previews are coming back starts from nothing.
+  const [thumbsForKey, setThumbsForKey] = useState<ThumbsForKey>(noThumbsForKey);
+  const thumbs = thumbsForKey.key === beginKey ? thumbsForKey.map : noThumbs;
 
   // What the effects and a hover read, as the last render had it. Pages hand
   // these in afresh each render, and a new object with the same file in it
   // must not restart Go's work or queue the same bucket twice.
-  const newest = useRef({ source, duration, smaller, found, on, thumbs });
+  const newest = useRef({ beginKey, source, duration, smaller, found, on, thumbs });
   useLayoutEffect(() => {
-    newest.current = { source, duration, smaller, found, on, thumbs };
+    newest.current = { beginKey, source, duration, smaller, found, on, thumbs };
   });
 
   // Resolve the copies into links, which Go reads frames from in place of the
   // big file: one at a time, since each resolve can open the file on the
   // debrid service. Without copies Go uses what plays.
   useEffect(() => {
-    // A link resolved for another file (or another pick) is the wrong film's.
-    setSmaller(noSources);
     if (!copiesKey) return undefined;
     const aborter = new AbortController();
     let live = true;
@@ -226,13 +269,12 @@ export function useSeekPreviews(input: {
         if (!candidate.url) continue;
         try {
           // oxlint-disable-next-line no-await-in-loop
-          copies.push(
-            await wailsResolver(
-              candidate.url,
-              candidate.behaviorHints?.proxyHeaders?.request ?? {},
-              signal,
-            ),
+          const copy = await wailsResolver(
+            candidate.url,
+            candidate.behaviorHints?.proxyHeaders?.request ?? {},
+            signal,
           );
+          copies.push(copy);
         } catch {
           // A copy the service won't open this time is simply not offered;
           // the playing file's own thumbnails are the ones that matter.
@@ -242,7 +284,7 @@ export function useSeekPreviews(input: {
       return copies;
     };
     void resolveAll(aborter.signal).then((copies) => {
-      if (live && copies.length > 0) setSmaller(copies);
+      if (live && copies.length > 0) setCopiesForKey({ key: copiesKey, sources: copies });
     });
     return () => {
       live = false;
@@ -252,13 +294,9 @@ export function useSeekPreviews(input: {
 
   // Begin a file: the buckets start over, and Go opens what plays on the
   // first ask rather than now. Keyed on the file, its length in whole
-  // seconds (the player reports it in fractions) and the copies found for it,
-  // so the same link again keeps the thumbnails already made.
-  const playingUrl = source?.url ?? "";
-  const wholeSeconds = Math.round(duration);
+  // seconds (the player reports it in fractions) and the copies found for it
+  // (beginKey), so the same link again keeps the thumbnails already made.
   useEffect(() => {
-    // Another file's thumbnails are the wrong picture.
-    setThumbs(noThumbs);
     lastAsked.current = undefined;
     const playing = newest.current.source;
     // Nothing to preview, or this run is keyed for another file than the one
@@ -285,9 +323,11 @@ export function useSeekPreviews(input: {
   useEffect(() => {
     if (!on) return undefined;
     return Events.On(thumbEvent, (event) => {
-      setThumbs((current) => withThumb(current, event.data as Thumb));
+      const thumb = event.data;
+      if (!isThumb(thumb)) return;
+      setThumbsForKey((held) => withThumb(held, beginKey, thumb));
     });
-  }, [on]);
+  }, [on, beginKey]);
 
   // One ask at a time, the newest next: Go makes them one at a time and
   // replaces what's queued, and a drag asks several times a second. A
@@ -296,7 +336,12 @@ export function useSeekPreviews(input: {
   // and the bar keeps the nearest thumbnail it has either way.
   const [ask] = useState(() =>
     latestOnly<number>((bucket) =>
-      Previews.At(bucket).then((thumb) => setThumbs((current) => withThumb(current, thumb))),
+      Previews.At(bucket).then((thumb) => {
+        // Go's session when it arrives is the file playing then, whatever
+        // this ask was for, so it is that file's thumbnail.
+        const key = newest.current.beginKey;
+        setThumbsForKey((held) => withThumb(held, key, thumb));
+      }),
     ),
   );
   const want = useCallback(
