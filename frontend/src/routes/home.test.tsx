@@ -336,8 +336,10 @@ describe("catalogs", () => {
 
     // From the first, ← wraps to the last.
     await user.keyboard("{ArrowLeft}");
-    const dots = screen.getAllByRole("button", { name: /^Show / });
-    expect(dots.at(-1)).toHaveAttribute("aria-current", "true");
+    await waitFor(() => {
+      const dots = screen.getAllByRole("button", { name: /^Show / });
+      expect(dots.at(-1)).toHaveAttribute("aria-current", "true");
+    });
   });
 
   it("moves focus to the new title's dash when paged from a dash", async () => {

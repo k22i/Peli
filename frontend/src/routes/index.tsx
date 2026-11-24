@@ -1,3 +1,4 @@
+import { flushSync } from "react-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ChevronRight, Info, Play, RotateCcw } from "lucide-react";
@@ -279,6 +280,7 @@ function WatchingCard({ entry, ...context }: { entry: Progress } & WatchingConte
 // Continue Watching left it.
 const marqueeSize = 5;
 const marqueeMs = 9000;
+const ease = () => (prefersReducedMotion() ? 0 : 460);
 
 function CatalogHero({
   row,
@@ -309,18 +311,51 @@ function CatalogHero({
   // focus follows to the new title's dash.
   const frame = useRef<HTMLDivElement>(null);
   const refocus = useRef<number | "dot" | undefined>(undefined);
+  const pendingFocus = useRef<number | "dot" | undefined>(undefined);
+  const current = useRef<HTMLDivElement>(null);
   const [announced, setAnnounced] = useState("");
+  // A carousel: the previous, current and next titles sit side by side on a
+  // track, so the neighbours slide in under the pointer as you drag (mouse,
+  // pen or touch) and the track settles on one with an ease-out. Past a fifth
+  // of the width, or a quick flick, it turns; otherwise it springs back.
+  // Vertical moves stay the page's own scroll (touch-action: pan-y).
+  const track = useRef<HTMLDivElement>(null);
+  const drag = useRef<{ id: number; x: number; y: number; at: number; on: boolean } | null>(null);
+  const dragged = useRef(false);
+  const settling = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const wheel = useRef<{ sum: number; at: number; reset?: number }>({ sum: 0, at: 0 });
+  const move = (offset: string, ms: number) => {
+    const element = track.current;
+    if (!element) return;
+    element.style.transition = ms ? `transform ${ms}ms var(--ease-out-soft)` : "none";
+    element.style.transform = offset;
+  };
+  // One title on (by = 1) or back (-1), animated; the index changes once the
+  // track has arrived.
+  const go = (by: number) => {
+    if (count < 2 || settling.current) return;
+    move(`translateX(${-100 - by * 100}%)`, ease());
+    settling.current = setTimeout(() => {
+      settling.current = undefined;
+      refocus.current = pendingFocus.current;
+      pendingFocus.current = undefined;
+      const to = (index + by + count) % count;
+      // Swap the titles and put the track back in one go, before a paint.
+      flushSync(() => setIndex(to));
+      move("", 0);
+      setAnnounced(`${to + 1} of ${count}: ${metas[to]?.name ?? ""}`);
+    }, ease());
+  };
+  const goLater = useEffectEvent((by: number) => go(by));
   const page = useEffectEvent((event: KeyboardEvent) => {
     const by = heroArrowStep(event, count);
     if (!by) return;
     event.preventDefault();
-    const focusable = [...(frame.current?.querySelectorAll<HTMLElement>(heroFocusable) ?? [])];
+    const focusable = [...(current.current?.querySelectorAll<HTMLElement>(heroFocusable) ?? [])];
     const at = focusable.findIndex((element) => element === document.activeElement);
     const onDot = document.activeElement?.hasAttribute("data-marquee-dot") === true;
-    refocus.current = onDot ? "dot" : Math.max(at, 0);
-    const to = (index + by + count) % count;
-    setIndex(to);
-    setAnnounced(`${to + 1} of ${count}: ${metas[to]?.name ?? ""}`);
+    pendingFocus.current = onDot ? "dot" : Math.max(at, 0);
+    go(by);
   });
   // A listener on the frame, as it's no control itself. Attached after each
   // render: the frame mounts only once there's a title.
@@ -335,36 +370,20 @@ function CatalogHero({
     const at = refocus.current;
     if (at === undefined) return;
     refocus.current = undefined;
-    const focusable = frame.current?.querySelectorAll<HTMLElement>(heroFocusable);
+    const focusable = current.current?.querySelectorAll<HTMLElement>(heroFocusable);
     const target =
       at === "dot"
-        ? frame.current?.querySelector<HTMLElement>("[data-marquee-dot][aria-current]")
+        ? current.current?.querySelector<HTMLElement>("[data-marquee-dot][aria-current]")
         : focusable?.[at];
     (target ?? focusable?.[0])?.focus({ preventScroll: true });
   });
 
-  // Drag (mouse, pen or touch) or a sideways trackpad swipe pages the marquee
-  // like a carousel. The hero follows the pointer while it's down; past a
-  // third of a stride (or a quick flick) it turns, otherwise it springs back.
-  // Vertical moves stay the page's own scroll (touch-action: pan-y).
-  const slide = useRef<HTMLDivElement>(null);
-  const drag = useRef<{ id: number; x: number; y: number; at: number; on: boolean } | null>(null);
-  const dragged = useRef(false);
-  const wheel = useRef({ sum: 0, at: 0 });
-  const turn = useEffectEvent((by: number) => {
-    if (count < 2) return;
-    const to = (index + by + count) % count;
-    setIndex(to);
-    setAnnounced(`${to + 1} of ${count}: ${metas[to]?.name ?? ""}`);
-  });
-  const follow = (dx: number, animate: boolean) => {
-    const element = slide.current;
-    if (!element) return;
-    element.style.transition = animate
-      ? "transform 220ms ease-out, opacity 220ms ease-out"
-      : "none";
-    element.style.transform = dx ? `translateX(${dx}px)` : "";
-    element.style.opacity = dx ? String(1 - Math.min(Math.abs(dx) / 900, 0.4)) : "";
+  useEffect(() => () => clearTimeout(settling.current), []);
+  const pick = (dot: number) => {
+    const by = (dot - index + count) % count;
+    if (by === 1) go(1);
+    else if (by === count - 1) go(-1);
+    else setIndex(dot);
   };
   const finish = (event: ReactPointerEvent<HTMLDivElement>) => {
     const state = drag.current;
@@ -373,32 +392,38 @@ function CatalogHero({
     if (!state.on) return;
     const dx = event.clientX - state.x;
     const width = frame.current?.clientWidth ?? 1;
-    const flick = Math.abs(dx) / Math.max(performance.now() - state.at, 1) > 0.5;
+    const flick = Math.abs(dx) / Math.max(performance.now() - state.at, 1) > 0.45;
     if (
       event.type !== "pointercancel" &&
-      (Math.abs(dx) > width / 3 || (flick && Math.abs(dx) > 40))
+      (Math.abs(dx) > width / 5 || (flick && Math.abs(dx) > 30))
     ) {
-      follow(0, false);
-      turn(dx < 0 ? 1 : -1);
+      go(dx < 0 ? 1 : -1);
     } else {
-      follow(0, true);
+      move("", ease());
     }
   };
+  // A sideways trackpad swipe turns one title, and only once it's clearly
+  // meant: the sum must pass a long way, and its inertia tail is ignored.
   useEffect(() => {
     const element = frame.current;
     if (!element) return undefined;
     const onWheel = (event: WheelEvent) => {
-      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY) * 1.5) return;
       event.preventDefault();
       const now = performance.now();
-      if (now - wheel.current.at > 400) wheel.current.sum = 0;
-      wheel.current.at = now;
+      if (now < wheel.current.at) {
+        // Still inside the pause after a turn: keep it going while the tail lasts.
+        wheel.current.at = now + 250;
+        return;
+      }
       wheel.current.sum += event.deltaX;
-      if (Math.abs(wheel.current.sum) < 120) return;
-      turn(wheel.current.sum > 0 ? 1 : -1);
+      wheel.current.at = now;
+      window.clearTimeout(wheel.current.reset);
+      wheel.current.reset = window.setTimeout(() => (wheel.current.sum = 0), 200);
+      if (Math.abs(wheel.current.sum) < 320) return;
+      goLater(wheel.current.sum > 0 ? 1 : -1);
       wheel.current.sum = 0;
-      // One page per swipe: ignore the inertia tail.
-      wheel.current.at = now + 600;
+      wheel.current.at = now + 250;
     };
     element.addEventListener("wheel", onWheel, { passive: false });
     return () => element.removeEventListener("wheel", onWheel);
@@ -407,9 +432,9 @@ function CatalogHero({
   useEffect(() => {
     if (held || count < 2 || prefersReducedMotion()) return undefined;
     // From the title on show now, so picking a dot restarts its turn.
-    const next = (index + 1) % count;
-    const timer = setTimeout(() => setIndex(next), marqueeMs);
+    const timer = setTimeout(() => goLater(1), marqueeMs);
     return () => clearTimeout(timer);
+    // oxlint-disable-next-line react/exhaustive-deps -- `index` restarts the turn.
   }, [held, count, index]);
 
   if (catalogData.isPending) return <HeroSkeleton size="feature" />;
@@ -419,7 +444,6 @@ function CatalogHero({
       <WatchingHero entry={context.watching[0]} surprise={surprise} {...context} />
     ) : null;
   }
-  const entry = context.watching.find((item) => item.contentId === meta.id);
   return (
     <div
       ref={frame}
@@ -428,7 +452,8 @@ function CatalogHero({
       onFocus={() => setHeld(true)}
       onBlur={() => setHeld(false)}
       onPointerDown={(event) => {
-        if (count < 2 || (event.pointerType === "mouse" && event.button !== 0)) return;
+        if (count < 2 || settling.current || (event.pointerType === "mouse" && event.button !== 0))
+          return;
         drag.current = {
           id: event.pointerId,
           x: event.clientX,
@@ -448,7 +473,7 @@ function CatalogHero({
           dragged.current = true;
           event.currentTarget.setPointerCapture(event.pointerId);
         }
-        follow(dx, false);
+        move(`translateX(calc(-100% + ${dx}px))`, 0);
       }}
       onPointerUp={finish}
       onPointerCancel={finish}
@@ -460,49 +485,65 @@ function CatalogHero({
         event.stopPropagation();
       }}
       onDragStart={(event) => event.preventDefault()}
-      className="touch-pan-y select-none"
+      className="touch-pan-y overflow-x-clip select-none"
     >
       <p aria-live="polite" className="sr-only">
         {announced}
       </p>
-      <div ref={slide} className="will-change-transform">
-        <Hero
-          key={meta.id}
-          size="feature"
-          title={meta.name}
-          logo={meta.logo}
-          eyebrow={row.title}
-          meta={metaLine(meta)}
-          synopsis={meta.description}
-          backdrop={meta.background}
-          actions={
-            <>
-              <PlayButton
-                resume={entry !== undefined}
-                onClick={() =>
-                  play(
-                    entry
-                      ? resumeTarget(entry, meta.name)
-                      : { type: meta.type, id: meta.id, title: meta.name },
+      <div ref={track} className="flex -translate-x-full will-change-transform">
+        {([-1, 0, 1] as const).map((offset) => {
+          const at = (index + offset + count) % count;
+          const item = metas[at];
+          if (!item) return null;
+          const here = offset === 0;
+          const watched = context.watching.find((progress) => progress.contentId === item.id);
+          return (
+            <div
+              key={count > 2 ? item.id : offset}
+              ref={here ? current : undefined}
+              inert={!here}
+              aria-hidden={!here || undefined}
+              className="w-full shrink-0"
+            >
+              <Hero
+                size="feature"
+                title={item.name}
+                logo={item.logo}
+                eyebrow={row.title}
+                meta={metaLine(item)}
+                synopsis={item.description}
+                backdrop={item.background}
+                actions={
+                  <>
+                    <PlayButton
+                      resume={watched !== undefined}
+                      onClick={() =>
+                        play(
+                          watched
+                            ? resumeTarget(watched, item.name)
+                            : { type: item.type, id: item.id, title: item.name },
+                        )
+                      }
+                    />
+                    <DetailsButton title={item} />
+                    {surprise}
+                  </>
+                }
+                aside={
+                  count > 1 && (
+                    <MarqueeDots
+                      count={count}
+                      index={at}
+                      onPick={pick}
+                      titles={metas}
+                      held={held || !here}
+                    />
                   )
                 }
               />
-              <DetailsButton title={meta} />
-              {surprise}
-            </>
-          }
-          aside={
-            count > 1 && (
-              <MarqueeDots
-                count={count}
-                index={index}
-                onPick={setIndex}
-                titles={metas}
-                held={held}
-              />
-            )
-          }
-        />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
