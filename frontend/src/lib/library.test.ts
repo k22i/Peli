@@ -82,6 +82,14 @@ describe("librarySearch", () => {
     });
     expect(librarySearch({ view: "titles" })).toEqual({});
   });
+
+  it("keeps Upcoming's calendar layout, and drops any other", () => {
+    expect(librarySearch({ view: "upcoming", layout: "calendar" })).toEqual({
+      view: "upcoming",
+      layout: "calendar",
+    });
+    expect(librarySearch({ view: "upcoming", layout: "grid" })).toEqual({ view: "upcoming" });
+  });
 });
 
 describe("libraryMeta", () => {

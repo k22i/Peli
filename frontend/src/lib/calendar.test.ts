@@ -9,6 +9,13 @@ import {
   dayKey,
   dayLabel,
   entryCode,
+  firstWeekday,
+  monthGrid,
+  monthKey,
+  monthLabel,
+  scheduleByDay,
+  shiftMonth,
+  weekdayNames,
   type CalendarShow,
 } from "@/lib/calendar";
 
@@ -132,6 +139,18 @@ describe("dayLabel", () => {
     expect(later.title).not.toContain("2026");
     expect(dayLabel(dayKey(at(1, 4, 12, 2027)), now).title).toContain("2027");
   });
+
+  it("dates a day before today instead of naming its weekday", () => {
+    const weekday = new Intl.DateTimeFormat(undefined, { weekday: "long" });
+    // Yesterday, and a Monday two weeks back: "Monday" alone would read as
+    // this week's.
+    for (const past of [at(10, 29), at(10, 19)]) {
+      const label = dayLabel(dayKey(past), now);
+      expect(label.date).toBeUndefined();
+      expect(label.title).not.toBe(weekday.format(past));
+      expect(label.title).toContain(weekday.format(past));
+    }
+  });
 });
 
 const first = (released: number | string) =>
@@ -151,5 +170,140 @@ describe("airTime", () => {
     expect(entry && airTime(entry)).toBeUndefined();
     const stamped = first("2026-11-02T00:00:00.000Z");
     expect(stamped && airTime(stamped)).toBeUndefined();
+  });
+});
+
+// The calendar layout's month grid, as looked at on Tuesday 24 November 2026.
+const november = at(11, 24);
+
+describe("monthKey", () => {
+  it("is the local month of a time", () => {
+    expect(monthKey(november)).toBe("2026-11");
+    expect(monthKey(at(1, 4, 12, 2027))).toBe("2027-01");
+  });
+});
+
+describe("shiftMonth", () => {
+  it("moves by whole months, over year ends both ways", () => {
+    expect(shiftMonth("2026-12", 1)).toBe("2027-01");
+    expect(shiftMonth("2026-01", -1)).toBe("2025-12");
+    expect(shiftMonth("2026-11", 0)).toBe("2026-11");
+    expect(shiftMonth("2026-03", -3)).toBe("2025-12");
+    expect(shiftMonth("2026-11", 14)).toBe("2028-01");
+    expect(shiftMonth("2026-11", -11)).toBe("2025-12");
+  });
+});
+
+describe("monthGrid", () => {
+  const grid = monthGrid("2026-11", november, 1);
+  const cells = grid.flat();
+  const cell = (day: string) => cells.find((each) => each.day === day);
+
+  it("is whole weeks, from the week holding the 1st to the one holding the last day", () => {
+    expect(grid.length).toBeGreaterThanOrEqual(4);
+    expect(grid.length).toBeLessThanOrEqual(6);
+    expect(grid.every((week) => week.length === 7)).toBe(true);
+    // 1 November 2026 is a Sunday, so a Monday grid opens on 26 October.
+    expect(grid[0]?.[0]).toEqual({ day: "2026-10-26", inMonth: false, today: false, past: true });
+    expect(grid.at(-1)?.map((each) => each.day)).toContain("2026-11-30");
+  });
+
+  it("opens on 1 November when the viewer's week starts on Sunday", () => {
+    expect(monthGrid("2026-11", november, 0)[0]?.[0]?.day).toBe("2026-11-01");
+  });
+
+  it("marks today, and the days before it, and nothing after", () => {
+    expect(cells.filter((each) => each.today).map((each) => each.day)).toEqual(["2026-11-24"]);
+    expect(cell("2026-11-23")?.past).toBe(true);
+    expect(cell("2026-11-24")?.past).toBe(false);
+    expect(cell("2026-11-25")?.past).toBe(false);
+  });
+
+  it("keeps the neighbouring months' days, out of the month", () => {
+    expect(cell("2026-11-01")?.inMonth).toBe(true);
+    expect(cell("2026-10-26")?.inMonth).toBe(false);
+    expect(cell("2026-12-06")?.inMonth).toBe(false);
+  });
+});
+
+describe("firstWeekday", () => {
+  it("falls back to Monday for a locale it can't read", () => {
+    const weekday = firstWeekday("xx-invalid-@@");
+    expect(typeof weekday).toBe("number");
+    expect(weekday).toBeGreaterThanOrEqual(0);
+    expect(weekday).toBeLessThanOrEqual(6);
+  });
+
+  it("answers 0 to 6 for a real locale, or with none given", () => {
+    expect([0, 1, 2, 3, 4, 5, 6]).toContain(firstWeekday("en-GB"));
+    expect([0, 1, 2, 3, 4, 5, 6]).toContain(firstWeekday());
+  });
+});
+
+describe("weekdayNames", () => {
+  it("names seven days in grid order, from the first day of the week", () => {
+    const headings = weekdayNames(1, "short");
+    expect(headings).toHaveLength(7);
+    const short = new Intl.DateTimeFormat(undefined, { weekday: "short" });
+    // Monday 23 November 2026, the week those headings come from.
+    expect(headings[0]).toBe(short.format(new Date(2026, 10, 23)));
+  });
+
+  it("has a narrow form", () => {
+    expect(weekdayNames(0, "narrow")).toHaveLength(7);
+    expect(weekdayNames(0, "narrow").every((name) => name.length >= 1)).toBe(true);
+  });
+});
+
+describe("monthLabel", () => {
+  const long = new Intl.DateTimeFormat(undefined, { month: "long" });
+
+  it("names this year's month without the year", () => {
+    expect(monthLabel("2026-11", november)).toBe(long.format(new Date(2026, 10, 1)));
+  });
+
+  it("adds the year when it isn't this one", () => {
+    expect(monthLabel("2027-01", november)).toContain("2027");
+    expect(monthLabel("2027-01", november)).toContain(long.format(new Date(2027, 0, 1)));
+  });
+});
+
+describe("scheduleByDay", () => {
+  const shows = [
+    show("Severance", [
+      video(2, 1, at(11, 23)),
+      video(0, 1, at(11, 25)),
+      video(2, 2, at(12, 8)),
+      video(2, 3, at(11, 26)),
+      video(2, 4, at(11, 26)),
+    ]),
+    show("Andor", [video(1, 1, at(11, 25))]),
+  ];
+  const days = scheduleByDay(shows, "2026-11-20", "2026-11-30");
+
+  it("maps every day of the range that has an episode, past ones included", () => {
+    expect([...days.keys()]).toEqual(["2026-11-23", "2026-11-25", "2026-11-26"]);
+    // Two days before today, and still in.
+    expect(names(days.get("2026-11-23") ?? [])).toEqual(["Severance 2.1"]);
+  });
+
+  it("leaves out Specials and the days outside the range", () => {
+    // Only Andor's episode is left on the 25th.
+    expect(names(days.get("2026-11-25") ?? [])).toEqual(["Andor 1.1"]);
+    expect(days.get("2026-12-08")).toBeUndefined();
+  });
+
+  it("merges a show's episodes on one day into one entry", () => {
+    const [entry] = days.get("2026-11-26") ?? [];
+    expect(entry?.episodes).toHaveLength(2);
+    expect(entry && entryCode(entry)).toBe("S2 · E3–E4");
+  });
+
+  it("takes both ends of the range", () => {
+    const edges = [show("Edge", [video(1, 1, at(11, 20)), video(1, 2, at(11, 30))])];
+    expect([...scheduleByDay(edges, "2026-11-20", "2026-11-30").keys()]).toEqual([
+      "2026-11-20",
+      "2026-11-30",
+    ]);
   });
 });
