@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 import type { Loop } from "@/lib/ab-loop";
 import { segmentNames, type Segment } from "@/lib/markers";
 import { formatTime } from "@/lib/player";
+import type { PreviewImage } from "@/lib/previews";
 import { cn } from "@/lib/utils";
 
 // The seek bar: what's played (white), what's buffered ahead of it (a
@@ -16,7 +17,9 @@ import { cn } from "@/lib/utils";
 // Between the ~4 a second time events the played part glides on, so it moves
 // smoothly. The track is 4 px and grows to 8 px under the pointer or a drag;
 // the thumb only shows then, or on keyboard focus. An A–B loop shows as
-// sun-coloured ticks at its ends on the track and its span in the lane.
+// sun-coloured ticks at its ends on the track and its span in the lane. When
+// previews are on (debrid streams), the time bubble carries the nearest
+// thumbnail already made, dimmed while it's a neighbouring bucket's.
 export function SeekBar({
   position,
   duration,
@@ -29,6 +32,8 @@ export function SeekBar({
   onDraggingChange,
   touch = false,
   scrubAt,
+  preview,
+  onPreviewWant,
 }: {
   position: number;
   duration: number;
@@ -48,6 +53,9 @@ export function SeekBar({
   // A scrub driven from outside the bar (#131's swipe): the thumb and the
   // time bubble follow it as they follow a drag.
   scrubAt?: number | undefined;
+  // Seek previews (lib/previews): the thumbnail for a time, and asking for one.
+  preview?: ((seconds: number) => PreviewImage | undefined) | undefined;
+  onPreviewWant?: ((seconds: number) => void) | undefined;
 }) {
   const [drag, setDrag] = useState<number>();
   const dragging = useRef<number>(undefined);
@@ -66,6 +74,16 @@ export function SeekBar({
     label === undefined
       ? undefined
       : segments.find((segment) => label >= segment.start && label < segment.end);
+  const thumb = label === undefined ? undefined : preview?.(label);
+  // Ask for the time under the pointer as it moves: the nearest thumbnail
+  // already made shows at once, and the right one swaps in when it lands.
+  // Through a ref, so asking happens once per time and not once more for
+  // every render that hands over a new function.
+  const wantPreview = useRef(onPreviewWant);
+  wantPreview.current = onPreviewWant;
+  useEffect(() => {
+    if (label !== undefined) wantPreview.current?.(label);
+  }, [label]);
   const start = (value: number) => {
     if (dragging.current === undefined) onDraggingChange(true);
     dragging.current = value;
@@ -118,16 +136,36 @@ export function SeekBar({
         onPointerMove={(event) => known && setHover(pointerAt(event))}
         onPointerLeave={() => setHover(undefined)}
       >
+        {/* The time under the pointer, over its thumbnail when previews are on.
+            A bubble with a thumbnail is ~200 px wide, so its centre would
+            spill past the ends of the bar: hold it 6.5rem inside them. */}
         {known && label !== undefined && (
           <span
             aria-hidden
-            style={{ left: `${percent(label)}%` }}
+            style={{
+              left: thumb
+                ? `clamp(6.5rem, ${percent(label)}%, calc(100% - 6.5rem))`
+                : `${percent(label)}%`,
+            }}
             data-testid="seek-time"
             className={cn(
-              "pointer-events-none absolute bottom-full flex -translate-x-1/2 flex-col items-center gap-0.5 rounded-xl bg-black/80 px-2.5 py-1.5 text-white shadow-float backdrop-blur-md",
+              "pointer-events-none absolute bottom-full flex -translate-x-1/2 flex-col items-center gap-0.5 rounded-xl bg-black/80 text-white shadow-float backdrop-blur-md",
+              thumb ? "p-1.5" : "px-2.5 py-1.5",
               touch ? "mb-3" : "mb-5",
             )}
           >
+            {/* 192 px wide: the 320 px JPEG at 1.67× density. */}
+            {thumb && (
+              <img
+                src={thumb.url}
+                alt=""
+                data-testid="seek-thumb"
+                data-exact={thumb.exact || undefined}
+                width={thumb.w}
+                height={thumb.h}
+                className={cn("mb-1 w-48 h-auto rounded-lg", !thumb.exact && "opacity-60")}
+              />
+            )}
             {labelSegment && (
               <span className="type-eyebrow text-[0.625rem] text-[#ffc46b]">
                 {segmentNames[labelSegment.kind] ?? labelSegment.kind}

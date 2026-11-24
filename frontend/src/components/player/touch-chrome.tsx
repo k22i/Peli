@@ -38,6 +38,7 @@ import type { SleepProps } from "@/components/player/more-menu";
 import { Spinner } from "@/components/ui/spinner";
 import type { Meta } from "@/lib/addon-protocol";
 import { formatTime, subtitleDelayText, trackLabel, type Track } from "@/lib/player";
+import type { PreviewImage } from "@/lib/previews";
 import { sleepChoices } from "@/lib/sleep-timer";
 import { normalSpeed, sameSpeed, speedLabel, speeds } from "@/lib/speed";
 import { byLanguage, syncSummary, type AddonSubtitle, type SubtitleSync } from "@/lib/subtitles";
@@ -493,7 +494,16 @@ export function LockPill({ shown, onUnlock }: { shown: boolean; onUnlock: () => 
 
 // While scrubbing (a drag on the bar, or #131's swipe): the time it goes to,
 // large at the centre, and how far that is from where it was.
-export function ScrubLabel({ from, to }: { from: number; to: number }) {
+export function ScrubLabel({
+  from,
+  to,
+  thumb,
+}: {
+  from: number;
+  to: number;
+  // The nearest seek preview already made (lib/previews), over the big time.
+  thumb?: PreviewImage | undefined;
+}) {
   const delta = Math.round(to) - Math.round(from);
   return (
     <div
@@ -502,6 +512,19 @@ export function ScrubLabel({ from, to }: { from: number; to: number }) {
       className="pointer-events-none absolute inset-0 grid place-items-center"
     >
       <div className="flex flex-col items-center gap-1 drop-shadow-[0_2px_16px_rgb(0_0_0/0.7)]">
+        {thumb && (
+          <img
+            src={thumb.url}
+            alt=""
+            data-testid="scrub-thumb"
+            width={thumb.w}
+            height={thumb.h}
+            className={cn(
+              "mb-2 w-56 h-auto rounded-2xl shadow-float",
+              !thumb.exact && "opacity-60",
+            )}
+          />
+        )}
         <p className="text-[2.75rem] leading-none font-[650] text-white tnum">{formatTime(to)}</p>
         <p className="text-[0.9375rem] font-[600] text-white/80 tnum">
           {delta < 0 ? "−" : "+"}

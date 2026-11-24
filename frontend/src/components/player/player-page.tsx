@@ -135,6 +135,7 @@ import {
   type Ended,
   type Track,
 } from "@/lib/player";
+import { useSeekPreviews } from "@/lib/previews";
 import { useCurrentProfile } from "@/lib/profile";
 import type { Candidate } from "@/lib/ranking";
 import { attempts, PlayError, resolvePick, sameStream, type Attempt } from "@/lib/resolve";
@@ -814,6 +815,27 @@ function PlayerFile({
   };
 
   const ready = state.active && !error;
+  // Seek previews (docs/spikes/seek-previews.md): thumbnails over the seek bar
+  // for debrid streams only. A torrent would make a second reader fetch its
+  // pieces from the swarm, and a plain link has no service to ask; the mini
+  // player has no seek bar to hover.
+  const previews = useSeekPreviews({
+    source: playing?.source,
+    stream: playing?.stream,
+    duration: state.duration,
+    watching,
+    device,
+    enabled: ready && !torrent && !downloaded && !mini,
+  });
+  // The scrub in flight asks for its own thumbnail: on touch the big label
+  // shows it instead of the seek bar's bubble. Through a ref, as the bar does,
+  // so it asks once per time the scrub reaches and not once per render.
+  const previewAt = scrub?.to;
+  const wantPreview = useRef(previews.want);
+  wantPreview.current = previews.want;
+  useEffect(() => {
+    if (previewAt !== undefined) wantPreview.current(previewAt);
+  }, [previewAt]);
   // A menu the dock no longer shows (the mini player, a failure) is closed.
   const dockMenuOpen = (speedOpen || moreOpen) && ready && !mini;
   const known = state.duration > 0;
@@ -2785,7 +2807,7 @@ function PlayerFile({
           </div>
         )}
       </div>
-      {scrub && <ScrubLabel from={scrub.from} to={scrub.to} />}
+      {scrub && <ScrubLabel from={scrub.from} to={scrub.to} thumb={previews.near(scrub.to)} />}
     </>
   );
   // "Resumed at 12:34 · Start over" on touch: a small quiet pill in the top
@@ -3124,6 +3146,8 @@ function PlayerFile({
                     segments={segments}
                     loop={loop}
                     playing={!paused && ready}
+                    preview={previews.near}
+                    onPreviewWant={previews.want}
                     onScrub={(to) => ready && seeker({ to, exact: false })}
                     onSeek={seek}
                     onDraggingChange={setDragging}
