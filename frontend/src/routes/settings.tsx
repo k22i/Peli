@@ -1306,6 +1306,35 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
                   onCheckedChange={(preResolve) => setDevice({ preResolve })}
                 />
               </SettingRow>
+              {/* On unless the user turns it off: each thumbnail costs 1–4 MB
+              of the stream (docs/spikes/seek-previews.md). */}
+              <SettingRow
+                id="seek-previews"
+                label="Seek bar previews"
+                description="Shows a thumbnail over the seek bar while you scrub, for debrid streams. Each one downloads about 1–4 MB of the video."
+              >
+                <Switch
+                  aria-labelledby="seek-previews-label"
+                  aria-describedby="seek-previews-description"
+                  checked={device.seekPreviews}
+                  onCheckedChange={(seekPreviews) => setDevice({ seekPreviews })}
+                />
+              </SettingRow>
+              {/* Off unless the user turns it on, like pre-resolve: the smaller
+              copy is resolved and so added to the debrid service's list. */}
+              <SettingRow
+                id="previews-from-smaller"
+                label="Previews from a smaller copy"
+                description="Makes the thumbnails from a smaller cached copy of the same film or episode when one runs the same length: less data, but the copy is added to your debrid service’s list."
+              >
+                <Switch
+                  aria-labelledby="previews-from-smaller-label"
+                  aria-describedby="previews-from-smaller-description"
+                  checked={device.previewsFromSmaller}
+                  disabled={!device.seekPreviews}
+                  onCheckedChange={(previewsFromSmaller) => setDevice({ previewsFromSmaller })}
+                />
+              </SettingRow>
               {/* The profile's, not this device's: it plays by itself. */}
               <SettingRow
                 id="autoplay-top-pick"
