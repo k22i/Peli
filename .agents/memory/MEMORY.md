@@ -112,3 +112,4 @@
 - [iOS auto-crop](ios-autocrop.md) — "Remove black bars" on iOS: playback/autocrop.go shared, iosplayer/autocrop.go + mpv.commandResult, loads counter, iPhone no frame above 1920×1088, lock order
 - [iOS player adjustments](ios-player-adjustments.md) — 2026-11-23 Picture & sound sheet on iOS: playback/adjust.go shared rules, iosplayer subset, per-part features, what stays desktop-only and why
 - [Subtitle AutoSync](subtitle-autosync.md) — ADR-0065: internal/subsync Cues reference, AddSubtitle retimes before sub-add, Player.SubtitleSync, autoSyncSubtitles (on), Use original timing, spike recipe
+- [Seek previews](seek-previews.md) — 2026-11-24 spike: second headless libmpv, request_size 1 MiB (~0.5 s/thumb), never burst small requests at TorBox (node refused this Mac), Seekr only as fallback

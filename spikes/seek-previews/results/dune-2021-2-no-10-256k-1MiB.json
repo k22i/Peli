@@ -1,0 +1,237 @@
+{
+  "name": "dune-2021-2",
+  "source": "torbox",
+  "size": 74930796966,
+  "codec": "H.265 / HEVC (High Efficiency Video Coding)",
+  "video": "3840x2160 bt.2020",
+  "gamma": "pq",
+  "duration": 9326.61,
+  "hwdec": "no",
+  "width": 320,
+  "every": 10,
+  "order": "coarse",
+  "chunk": 262144,
+  "queue": "1MiB",
+  "open_ms": 1668,
+  "open_bytes": 3568406,
+  "total_ms": 51146,
+  "bytes": 46779417,
+  "median_ms": 195,
+  "p90_ms": 1273,
+  "median_kb": 0,
+  "sheet_kb": 100,
+  "thumbs": [
+    {
+      "at": 0,
+      "got": 0,
+      "ms": 35,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 5120,
+      "got": 5119.823,
+      "ms": 743,
+      "bytes": 1921024,
+      "requests": 8
+    },
+    {
+      "at": 2560,
+      "got": 2559.724,
+      "ms": 1231,
+      "bytes": 3608576,
+      "requests": 14
+    },
+    {
+      "at": 7680,
+      "got": 7679.505,
+      "ms": 1362,
+      "bytes": 3731456,
+      "requests": 14
+    },
+    {
+      "at": 1280,
+      "got": 1279.236,
+      "ms": 1273,
+      "bytes": 3932160,
+      "requests": 15
+    },
+    {
+      "at": 3840,
+      "got": 3839.169,
+      "ms": 1187,
+      "bytes": 3264512,
+      "requests": 12
+    },
+    {
+      "at": 6400,
+      "got": 6399.685,
+      "ms": 551,
+      "bytes": 1859584,
+      "requests": 7
+    },
+    {
+      "at": 8960,
+      "got": 8959.576,
+      "ms": 195,
+      "bytes": 598016,
+      "requests": 3
+    },
+    {
+      "at": 640,
+      "got": 639.556,
+      "ms": 721,
+      "bytes": 2476291,
+      "requests": 9
+    },
+    {
+      "at": 1920,
+      "got": 1920.001,
+      "ms": 1303,
+      "bytes": 4030464,
+      "requests": 16
+    },
+    {
+      "at": 3200,
+      "got": 3199.154,
+      "ms": 1043,
+      "bytes": 3588096,
+      "requests": 13
+    },
+    {
+      "at": 4480,
+      "got": 4479.183,
+      "ms": 1055,
+      "bytes": 3235840,
+      "requests": 13
+    },
+    {
+      "at": 5760,
+      "got": 5759.087,
+      "ms": 1105,
+      "bytes": 4141056,
+      "requests": 15
+    },
+    {
+      "at": 7040,
+      "got": 7039.366,
+      "ms": 1184,
+      "bytes": 4337664,
+      "requests": 17
+    },
+    {
+      "at": 8320,
+      "got": 8319.228,
+      "ms": 563,
+      "bytes": 2351104,
+      "requests": 9
+    },
+    {
+      "at": 320,
+      "got": 0,
+      "ms": 30003,
+      "bytes": 135168,
+      "requests": 1,
+      "error": "timeout"
+    },
+    {
+      "at": 960,
+      "got": 9326.61,
+      "ms": 7435,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 1600,
+      "got": 9326.61,
+      "ms": 1,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 2240,
+      "got": 9326.61,
+      "ms": 0,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 2880,
+      "got": 9326.61,
+      "ms": 0,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 3520,
+      "got": 9326.61,
+      "ms": 0,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 4160,
+      "got": 9326.61,
+      "ms": 0,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 4800,
+      "got": 9326.61,
+      "ms": 0,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 5440,
+      "got": 5440,
+      "ms": 1,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 6080,
+      "got": 9326.61,
+      "ms": 0,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 6720,
+      "got": 9326.61,
+      "ms": 1,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 7360,
+      "got": 9326.61,
+      "ms": 1,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 8000,
+      "got": 9326.61,
+      "ms": 0,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 8640,
+      "got": 9326.61,
+      "ms": 0,
+      "bytes": 0,
+      "requests": 0
+    },
+    {
+      "at": 9280,
+      "got": 9326.61,
+      "ms": 0,
+      "bytes": 0,
+      "requests": 0
+    }
+  ],
+  "date": "2026-11-24T03:42:14.705384Z"
+}

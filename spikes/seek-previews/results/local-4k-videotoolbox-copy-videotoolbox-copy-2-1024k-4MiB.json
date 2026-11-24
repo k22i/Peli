@@ -1,0 +1,446 @@
+{
+  "name": "local-4k-videotoolbox-copy",
+  "source": "local",
+  "size": 607078172,
+  "codec": "H.265 / HEVC (High Efficiency Video Coding)",
+  "video": "3840x2160 bt.709",
+  "gamma": "bt.1886",
+  "duration": 120,
+  "hwdec": "videotoolbox-copy",
+  "width": 320,
+  "every": 2,
+  "order": "seq",
+  "chunk": 1048576,
+  "queue": "4MiB",
+  "open_ms": 396,
+  "open_bytes": 33554432,
+  "total_ms": 4473,
+  "bytes": 295699668,
+  "median_ms": 72,
+  "p90_ms": 88,
+  "median_kb": 4096,
+  "sheet_kb": 452,
+  "thumbs": [
+    {
+      "at": 0,
+      "got": 0,
+      "ms": 232,
+      "bytes": 33555668,
+      "requests": 33
+    },
+    {
+      "at": 2,
+      "got": 2,
+      "ms": 51,
+      "bytes": 1048576,
+      "requests": 1
+    },
+    {
+      "at": 4,
+      "got": 4,
+      "ms": 41,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 6,
+      "got": 6,
+      "ms": 47,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 8,
+      "got": 8,
+      "ms": 47,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 10,
+      "got": 10,
+      "ms": 47,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 12,
+      "got": 12,
+      "ms": 48,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 14,
+      "got": 14,
+      "ms": 50,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 16,
+      "got": 16,
+      "ms": 60,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 18,
+      "got": 18,
+      "ms": 64,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 20,
+      "got": 20,
+      "ms": 62,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 22,
+      "got": 22,
+      "ms": 59,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 24,
+      "got": 24,
+      "ms": 58,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 26,
+      "got": 26,
+      "ms": 58,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 28,
+      "got": 28,
+      "ms": 59,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 30,
+      "got": 30,
+      "ms": 61,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 32,
+      "got": 32,
+      "ms": 61,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 34,
+      "got": 34,
+      "ms": 60,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 36,
+      "got": 36,
+      "ms": 72,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 38,
+      "got": 38,
+      "ms": 103,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 40,
+      "got": 40,
+      "ms": 64,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 42,
+      "got": 42,
+      "ms": 73,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 44,
+      "got": 44,
+      "ms": 59,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 46,
+      "got": 46,
+      "ms": 65,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 48,
+      "got": 48,
+      "ms": 59,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 50,
+      "got": 50,
+      "ms": 61,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 52,
+      "got": 52,
+      "ms": 58,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 54,
+      "got": 54,
+      "ms": 69,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 56,
+      "got": 56,
+      "ms": 78,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 58,
+      "got": 58,
+      "ms": 86,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 60,
+      "got": 60,
+      "ms": 88,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 62,
+      "got": 62,
+      "ms": 88,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 64,
+      "got": 64,
+      "ms": 78,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 66,
+      "got": 66,
+      "ms": 104,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 68,
+      "got": 68,
+      "ms": 71,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 70,
+      "got": 70,
+      "ms": 91,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 72,
+      "got": 72,
+      "ms": 86,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 74,
+      "got": 74,
+      "ms": 74,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 76,
+      "got": 76,
+      "ms": 77,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 78,
+      "got": 78,
+      "ms": 97,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 80,
+      "got": 80,
+      "ms": 78,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 82,
+      "got": 82,
+      "ms": 78,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 84,
+      "got": 84,
+      "ms": 74,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 86,
+      "got": 86,
+      "ms": 71,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 88,
+      "got": 88,
+      "ms": 87,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 90,
+      "got": 90,
+      "ms": 83,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 92,
+      "got": 92,
+      "ms": 71,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 94,
+      "got": 94,
+      "ms": 72,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 96,
+      "got": 96,
+      "ms": 80,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 98,
+      "got": 98,
+      "ms": 89,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 100,
+      "got": 100,
+      "ms": 69,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 102,
+      "got": 102,
+      "ms": 70,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 104,
+      "got": 104,
+      "ms": 84,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 106,
+      "got": 106,
+      "ms": 80,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 108,
+      "got": 108,
+      "ms": 84,
+      "bytes": 3145728,
+      "requests": 3
+    },
+    {
+      "at": 110,
+      "got": 110,
+      "ms": 78,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 112,
+      "got": 112,
+      "ms": 80,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 114,
+      "got": 114,
+      "ms": 76,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 116,
+      "got": 116,
+      "ms": 86,
+      "bytes": 4194304,
+      "requests": 4
+    },
+    {
+      "at": 118,
+      "got": 118,
+      "ms": 85,
+      "bytes": 4194304,
+      "requests": 4
+    }
+  ],
+  "date": "2026-11-24T03:59:37.288206Z"
+}

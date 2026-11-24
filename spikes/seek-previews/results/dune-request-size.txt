@@ -1,0 +1,20 @@
+Dune (2021) 2160p Remux HEVC DV/HDR10+ (dune-2021-2, 74.9 GB, 9327 s), TorBox CDN
+(nexus-397.apac, 50.7.60.34), 2026-11-24 ~11:39–11:42 PST, M1 Pro, software decode,
+30 thumbnails in "coarse" order (spread over the whole film), 320 px wide, tone mapped in Go.
+The per-thumbnail JSON of these runs was overwritten when the file naming changed;
+these are the summary lines the tool printed.
+
+request_size  open      total   median   p90      median bytes  total
+open-ended    857 ms    35.7 s  1299 ms  1668 ms  3735 KB       104 MB
+512 KiB       1087 ms   21.2 s   670 ms  1366 ms  3396 KB        93 MB
+1 MiB         921 ms    13.9 s   475 ms   602 ms  3568 KB       100 MB
+2 MiB         867 ms    14.0 s   474 ms   623 ms  3676 KB       102 MB
+
+An earlier open-ended run (40 thumbnails): median 947 ms, p90 1682 ms, 3911 KB.
+
+Then request_size 256 KiB with demuxer-max-bytes 1 MiB (8–17 requests per thumbnail,
+~400 requests in under a minute): 14 thumbnails worked, the 15th stalled 30 s, and from
+then on the node refused TCP connections (curl: "Connection refused" on port 443). See
+dune-2021-2-no-10-256k-1MiB.json. Fresh requestdl links kept pointing at the same IP;
+it still refused 20+ minutes later. Whether this was a block on this IP or an outage
+of that node couldn't be told apart from one vantage point.
