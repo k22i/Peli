@@ -445,4 +445,39 @@ describe("upcoming episodes", () => {
   });
 });
 
+// The calendar layout of the same view (a month grid over the list), kept in
+// the address as ?layout=calendar.
+describe("Upcoming calendar", () => {
+  beforeEach(() => {
+    mocks.visibleAddons.mockResolvedValue([cinemeta, kitsu]);
+  });
+
+  it("switches to the calendar from its tab, keeping the view", async () => {
+    serve(metas);
+    const user = userEvent.setup();
+    const { router } = await renderApp("/library?view=upcoming");
+    await user.click(await screen.findByRole("tab", { name: /calendar/i }));
+    await waitFor(() =>
+      expect(router.state.location.search).toEqual({ view: "upcoming", layout: "calendar" }),
+    );
+    expect(await screen.findByRole("grid")).toBeInTheDocument();
+  });
+
+  it("shows today's episode in the day panel under the grid", async () => {
+    serve({
+      ...metas,
+      [breakingBadUrl]: {
+        meta: {
+          ...metas[breakingBadUrl].meta,
+          // A minute from now is still today's, whatever the hour the suite runs.
+          videos: [episode("tt0903747", 5, 9, new Date(Date.now() + 60_000))],
+        },
+      },
+    });
+    await renderApp("/library?view=upcoming&layout=calendar");
+    const today = await screen.findByRole("region", { name: /today/i });
+    expect(within(today).getByText("Breaking Bad")).toBeInTheDocument();
+  });
+});
+
 const manifestKey = (addon: Addon) => ["addon-manifest", addon.url];
