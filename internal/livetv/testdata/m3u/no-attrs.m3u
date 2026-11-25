@@ -1,0 +1,5 @@
+#EXTM3U
+#EXTINF:-1,Channel One
+https://a.example/one.m3u8
+#EXTINF:-1 ,  Spaced  
+https://a.example/spaced.m3u8

@@ -1,0 +1,7 @@
+#EXTM3U url-tvg="https://a.example/guide.xml.gz"
+#EXTINF:-1 tvg-id="one.example" tvg-name="Channel One" tvg-logo="https://a.example/one.png" group-title="News",One
+https://a.example/one.m3u8
+#EXTINF:-1 tvg-id="two.example" tvg-name="Channel Two" tvg-logo="https://a.example/two.png" group-title="Sport",Two
+https://a.example/two.m3u8
+#EXTINF:-1 tvg-id="three.example" tvg-name="Channel Three" tvg-logo="https://a.example/three.png" group-title="Films",Three
+https://a.example/three.m3u8
