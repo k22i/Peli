@@ -252,7 +252,7 @@ describe("live page", () => {
     const { router } = await renderApp("/live");
     const user = userEvent.setup();
 
-    await user.click(within(await rail()).findByRole("button", { name: "News" }));
+    await user.click(await within(await rail()).findByRole("button", { name: "News" }));
 
     await waitFor(() => expect(router.state.location.search).toEqual({ group: "News" }));
     expect(screen.getByRole("button", { name: "News One" })).toBeInTheDocument();
@@ -284,7 +284,7 @@ describe("live page", () => {
     await renderApp("/live");
     const user = userEvent.setup();
 
-    await user.click(within(await rail()).findByRole("button", { name: "Favourites" }));
+    await user.click(await within(await rail()).findByRole("button", { name: "Favourites" }));
     await waitFor(() =>
       expect(screen.queryByRole("button", { name: "News One" })).not.toBeInTheDocument(),
     );
