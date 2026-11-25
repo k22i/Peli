@@ -274,7 +274,16 @@ export function LivePlayer({ live }: { live: LivePlay }) {
       )}
 
       <div className={cn("transition-opacity", !shown && "pointer-events-none opacity-0")}>
-        <div className="absolute inset-x-0 top-0 flex items-start gap-4 p-6 pt-[max(1.5rem,env(safe-area-inset-top))]">
+        {/* The top row is a drag strip, clear of the window's buttons on the
+        left, as the film player's is. */}
+        <div
+          className={cn(
+            "drag-region absolute inset-x-0 top-0 flex items-start gap-4",
+            touch
+              ? "pt-[calc(0.5rem+env(safe-area-inset-top))] pr-[calc(0.75rem+env(safe-area-inset-right))] pl-[calc(0.75rem+env(safe-area-inset-left))]"
+              : "pt-3 pr-5 pl-[5.75rem]",
+          )}
+        >
           <Button variant="ghost" size="icon" aria-label="Back" onClick={leave}>
             <ChevronLeft />
           </Button>
