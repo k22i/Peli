@@ -12,14 +12,16 @@ describe("withLive", () => {
   it("puts Live TV just before Library, the six in their order", () => {
     const list = withLive(sections, true);
 
+    // Live TV goes before Library as `sections` has them; the top bar is what
+    // moves Search to the end.
     expect(list.map((section) => section.label)).toEqual([
       "Home",
       "Movies",
       "Shows",
       "Anime",
+      "Search",
       "Live TV",
       "Library",
-      "Search",
     ]);
     expect(list[list.indexOf(liveSection) + 1]?.to).toBe("/library");
     // The six keep their order, so ⌘1–6 still point at them.

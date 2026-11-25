@@ -24,6 +24,9 @@ vi.mock("@bindings/store", () => ({
     ContinueWatching: async () => [],
     ProfileSettings: async () => profileSettings(),
     DeviceSettings: async () => deviceSettings(),
+    // On iOS the shell seeds the profile's audio languages once it is in use
+    // (lib/device-languages): without it the app falls to its error screen.
+    SeedAudioLanguages: async () => {},
   },
 }));
 
