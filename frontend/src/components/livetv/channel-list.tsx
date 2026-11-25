@@ -141,7 +141,7 @@ function ChannelRow({
   const next = entry?.next ?? undefined;
   const progress = now ? progressOf(now, clock) : 0;
   return (
-    <div className="flex h-[68px] items-center gap-3 rounded-xl px-3 hover:bg-foreground/5">
+    <div className="flex h-[76px] items-center gap-3 rounded-xl px-3 hover:bg-foreground/5">
       <button
         type="button"
         // The name, not "1 News One Midnight News …": a channel is played by
@@ -157,13 +157,17 @@ function ChannelRow({
         <span className="min-w-0 flex-1">
           <span className="block truncate font-medium">{channel.name}</span>
           {now && (
-            <span className="block min-w-0">
-              <span className="block truncate text-small text-muted-foreground">{now.title}</span>
+            // The title and how far through it is share a line: three lines
+            // in all fit the row's 76 pt.
+            <span className="flex items-center gap-2">
+              <span className="min-w-0 truncate text-small text-muted-foreground">
+                {now.title}
+              </span>
               <progress
                 max={1}
                 value={progress}
                 aria-label={`${now.title}, ${Math.round(progress * 100)}% watched`}
-                className="h-[3px] w-full max-w-60 appearance-none overflow-hidden rounded-full bg-foreground/10 [&::-webkit-progress-bar]:bg-transparent [&::-webkit-progress-value]:bg-foreground/70"
+                className="h-[3px] w-20 shrink-0 appearance-none overflow-hidden rounded-full bg-foreground/10 [&::-webkit-progress-bar]:bg-transparent [&::-webkit-progress-value]:bg-foreground/70"
               />
             </span>
           )}
