@@ -5,8 +5,8 @@ import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 import * as Runtime from "@wailsio/runtime";
 import type { Ended, State } from "@bindings/player";
 import type { DeviceSettings, Profile, ProfileSettings } from "@bindings/store";
-import type { Source } from "@bindings/streams";
-import { LiveTV, type Channel, type NowNext, type Programme } from "@/lib/livetv";
+import type { Source as StreamSource } from "@bindings/streams";
+import { LiveTV, type Channel, type NowNext, type Programme, type Source } from "@/lib/livetv";
 import { idleState } from "@/lib/player";
 import { deviceSettings, profileSettings } from "@/test/fixtures";
 import { renderApp } from "@/test/render-app";
@@ -25,7 +25,7 @@ const mocks = vi.hoisted(() => ({
   // Every listener of each event, as the runtime keeps them.
   handlers: new Map<string, Set<(event: { data: unknown }) => void>>(),
   snapshot: vi.fn<() => Promise<State>>(),
-  load: vi.fn<(source: Source, opts: { start: number }) => Promise<void>>(),
+  load: vi.fn<(source: StreamSource, opts: { start: number }) => Promise<void>>(),
   stop: vi.fn<() => Promise<void>>(),
   setPaused: vi.fn<(paused: boolean) => Promise<void>>(),
   setMuted: vi.fn<(muted: boolean) => Promise<void>>(),
@@ -190,7 +190,7 @@ const nowNext: NowNext[] = [
 
 // What LiveTV.Stream hands over once a channel is asked for: the link has a
 // token in it, as an Xtream one would, so nothing may show it.
-const live: Source = {
+const live: StreamSource = {
   url: "https://iptv.example/live/K3V/news.m3u8",
   origin: "https://iptv.example/live/K3V/news.m3u8",
   headers: {},
@@ -250,7 +250,7 @@ beforeEach(() => {
   mocks.deviceSettings.mockReset().mockResolvedValue(deviceSettings());
   // The playlist, the guide and the stream Go would answer with.
   vi.mocked(LiveTV.Sources).mockImplementation(() =>
-    Runtime.CancellablePromise.resolve<unknown[]>([]),
+    Runtime.CancellablePromise.resolve<Source[] | null>([]),
   );
   vi.mocked(LiveTV.Channels).mockImplementation(() =>
     Runtime.CancellablePromise.resolve<Channel[]>(channels),
