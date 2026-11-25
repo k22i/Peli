@@ -15,7 +15,7 @@ import {
 } from "@bindings/livetv";
 import { toastManager } from "@/components/ui/toast";
 import { loadOptions, Player } from "@/lib/player";
-import { useCurrentProfile } from "@/lib/profile";
+import { currentProfileQuery, useCurrentProfile } from "@/lib/profile";
 import { profileSettingsQuery } from "@/lib/settings";
 
 // Live TV (ADR-0066): IPTV channels from M3U playlists, with an XMLTV guide.
@@ -116,9 +116,13 @@ export function useFavourites(profileId: number): string[] {
 
 // Whether the profile gets Live TV: not a kids profile, and a source added.
 // The nav entry and the /live page follow it.
+//
+// It only reads the profile the shell has already asked for, never asks
+// itself: the nav mounts on the welcome and sign-in screens too, and on first
+// run the store makes a Guest when asked for the current profile.
 export function useLiveTVAvailable(): boolean {
-  const profile = useCurrentProfile();
-  const id = profile.kids ? 0 : (profile.id ?? 0);
+  const profile = useQuery({ ...currentProfileQuery, enabled: false }).data;
+  const id = !profile || profile.kids === true ? 0 : profile.id;
   return useLiveSources(id).length > 0;
 }
 
