@@ -20,6 +20,7 @@ import (
 	"github.com/k22i/Peli/internal/downloads"
 	"github.com/k22i/Peli/internal/haptics"
 	"github.com/k22i/Peli/internal/licences"
+	"github.com/k22i/Peli/internal/livetv"
 	"github.com/k22i/Peli/internal/markers"
 	"github.com/k22i/Peli/internal/nuvio"
 	"github.com/k22i/Peli/internal/pairing"
@@ -69,8 +70,11 @@ type peli struct {
 	// it to resolve the links it fetches.
 	streams   *streams.Service
 	downloads *downloads.Service
-	watched   *watching.Reporter
-	trackers  *tracking.Service
+	// liveTV is IPTV channels from M3U playlists, with XMLTV guides
+	// (ADR-0066).
+	liveTV   *livetv.Service
+	watched  *watching.Reporter
+	trackers *tracking.Service
 	// Copying SIMKL, AniList and the TMDB key to another device (#133).
 	pairing *pairing.Service
 	// players is the libmpv Service on the desktop and the stub or iOS engine
@@ -128,6 +132,12 @@ func newPeli(dbPath string) *peli {
 		Markers: p.skipTimes.Segments,
 		Root:    filepath.Join(filepath.Dir(dbPath), "Downloads"),
 		Version: appinfo.Version,
+	})
+	p.liveTV = livetv.NewService(livetv.Config{
+		Open:     func() *store.Store { return store.Opened(p.db) },
+		Keychain: p.keychain,
+		CacheDir: liveTVCache(dbPath),
+		Version:  appinfo.Version,
 	})
 	// How far each film or episode plays becomes the profile's progress, and
 	// watched at 90 % (#64). The player shuts down before the syncer, which
@@ -219,6 +229,9 @@ func (p *peli) services(x extras) []application.Service {
 	// (checkpointing its job) before streams and the store.
 	list = append(list, application.NewServiceWithOptions(p.downloads,
 		application.ServiceOptions{MarshalError: downloads.MarshalError}))
+	// Live TV (ADR-0066).
+	list = append(list, application.NewServiceWithOptions(p.liveTV,
+		application.ServiceOptions{MarshalError: livetv.MarshalError}))
 	list = append(list,
 		// Before the player, so it shuts down after it and sends the last
 		// stop.
@@ -236,6 +249,15 @@ func (p *peli) services(x extras) []application.Service {
 	list = append(list, application.NewServiceWithOptions(p.parties,
 		application.ServiceOptions{MarshalError: party.MarshalError}))
 	return list
+}
+
+// liveTVCache is where Live TV keeps its parsed playlists and guides: the
+// user cache folder, or beside the database when there is none.
+func liveTVCache(dbPath string) string {
+	if base, err := os.UserCacheDir(); err == nil {
+		return filepath.Join(base, "Peli", "livetv")
+	}
+	return filepath.Join(filepath.Dir(dbPath), "Cache", "livetv")
 }
 
 // importTracked imports SIMKL's and AniList's watches for the profile in

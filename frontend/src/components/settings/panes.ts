@@ -7,6 +7,7 @@ import {
   Play,
   Puzzle,
   Radio,
+  RadioTower,
   Shield,
   UserRound,
   type LucideIcon,
@@ -28,6 +29,8 @@ const allPanes = [
   // Downloads for offline viewing (#85, ADR-0064), right after how streams are
   // picked: what Peli keeps on this device and for how long.
   { id: "downloads", title: "Downloads", icon: Download, tone: "bg-[#5856d6]" },
+  // Live TV (ADR-0066): IPTV playlists and their guides.
+  { id: "livetv", title: "Live TV", icon: RadioTower, tone: "bg-[#ff375f]" },
   { id: "plugins", title: "Plugins", icon: Puzzle, tone: "bg-[#6e6e73]" },
   { id: "tracking", title: "Tracking", icon: ListChecks, tone: "bg-[#d4337a]" },
   { id: "privacy", title: "Privacy", icon: Shield, tone: "bg-[#3a8a3a]" },
@@ -46,7 +49,7 @@ export function visiblePanes(): readonly (typeof allPanes)[number][] {
 // plays and how, what it connects to, then privacy and what it is.
 const paneGroups: readonly (readonly PaneId[])[] = [
   ["account"],
-  ["content", "playback", "languages", "streaming", "downloads", "plugins"],
+  ["content", "playback", "languages", "streaming", "downloads", "livetv", "plugins"],
   ["tracking"],
   ["privacy", "about"],
 ];

@@ -87,8 +87,11 @@ func TestFixtures(t *testing.T) {
 			// what the build of the day knew, so the fields added since (#55,
 			// #98, #85) read as their defaults: the switch says which fields.
 			profileSettings := japanese
-			// Every fixture predates subtitle AutoSync: it reads as on.
-			profileSettings.AutoSyncSubtitles = true
+			// The fixtures before schema 6 predate subtitle AutoSync: it reads
+			// as on. Schema 6's was written with it saved (off).
+			if filepath.Base(fixture) != "schema-6.db" {
+				profileSettings.AutoSyncSubtitles = true
+			}
 			deviceSettings := DefaultDeviceSettings()
 			deviceSettings.HardwareDecoding, deviceSettings.Diagnostics = false, true
 			switch filepath.Base(fixture) {

@@ -88,6 +88,7 @@ var observed = []struct {
 	{"sub-visibility", fmtFlag},
 	{"cache-buffering-state", fmtInt64},
 	{"seeking", fmtFlag},
+	{"seekable", fmtFlag},
 	{"volume", fmtDouble},
 	{"mute", fmtFlag},
 	{"speed", fmtDouble},
@@ -415,7 +416,7 @@ func (s *Service) Load(source streams.Source, opts LoadOptions) error {
 	}
 	// Before loadfile, so the new file's first frame can't come first.
 	s.update(func(st *State) {
-		st.Loading, st.Buffering, st.BufferPercent, st.Seeking = true, false, 0, false
+		st.Loading, st.Buffering, st.BufferPercent, st.Seeking, st.Seekable = true, false, 0, false, false
 		st.Time = Time{Position: opts.Start}
 		st.Tracks, st.Chapters, st.AutoCrop = []Track{}, []Chapter{}, nil
 		// The new file's track-list replaces these; until it comes, nothing
@@ -1174,6 +1175,8 @@ func (s *Service) property(ses *session, name string, v any) {
 		st.BufferPercent = int(number(v))
 	case "seeking":
 		st.Seeking, _ = v.(bool)
+	case "seekable":
+		st.Seekable, _ = v.(bool)
 	case "volume":
 		st.Volume = number(v)
 	case "mute":

@@ -7,6 +7,7 @@ import type { Stream } from "@/lib/addon-protocol";
 import { ErrorScreen } from "@/components/error-screen";
 import { trackRoute } from "@/lib/diagnostics";
 import { trackNavDirection } from "@/lib/nav-direction";
+import type { LivePlay } from "@/lib/livetv";
 import type { PlayTarget } from "@/lib/playback";
 import type { SubtitleTarget } from "@/lib/subtitles";
 import type { TitlePreview } from "@/lib/title";
@@ -63,6 +64,8 @@ declare module "@tanstack/react-router" {
       subtitles?: SubtitleTarget;
       watching?: Watching;
       resumedAt?: number;
+      // A live channel (ADR-0066): the live player plays it instead.
+      live?: LivePlay;
     };
   }
 

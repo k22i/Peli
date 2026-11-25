@@ -205,6 +205,7 @@ var observed = []struct {
 	{"sub-visibility", fmtFlag},
 	{"cache-buffering-state", fmtInt64},
 	{"seeking", fmtFlag},
+	{"seekable", fmtFlag},
 	{"volume", fmtDouble},
 	{"mute", fmtFlag},
 	{"speed", fmtDouble},
@@ -349,7 +350,7 @@ func (e *Engine) loadFile(ses *session, source streams.Source, opts playback.Loa
 	// Not inside the update below, which holds e.mu.
 	e.stopAutoCrop()
 	e.update(func(st *playback.State) {
-		st.Loading, st.Buffering, st.BufferPercent, st.Seeking = true, false, 0, false
+		st.Loading, st.Buffering, st.BufferPercent, st.Seeking, st.Seekable = true, false, 0, false, false
 		st.Time = playback.Time{Position: opts.Start}
 		st.Tracks, st.Chapters = []playback.Track{}, []playback.Chapter{}
 		// The new file's track-list replaces these; until it comes, nothing
@@ -1122,6 +1123,8 @@ func (e *Engine) property(ses *session, name string, v any) {
 		st.BufferPercent = int(playback.Number(v))
 	case "seeking":
 		st.Seeking, _ = v.(bool)
+	case "seekable":
+		st.Seekable, _ = v.(bool)
 	case "volume":
 		st.Volume = playback.Number(v)
 	case "mute":

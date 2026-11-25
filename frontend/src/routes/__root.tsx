@@ -19,6 +19,7 @@ import {
   useUnlockedProfiles,
 } from "@/lib/account";
 import { useDownloadEvents } from "@/lib/downloads";
+import { useLiveTVEvents } from "@/lib/livetv";
 import { usePartyEvents, usePartyToasts } from "@/lib/party";
 import { isIOS } from "@/lib/platform";
 import { accountQuery, beforeProfile, currentProfileQuery, useCurrentProfile } from "@/lib/profile";
@@ -66,6 +67,8 @@ function RootLayout() {
   // Downloads (#85, ADR-0064): the one place the download events are
   // followed, so every screen's list stays live.
   useDownloadEvents();
+  // Live TV (ADR-0066), likewise.
+  useLiveTVEvents();
   useConnectionEvents();
   useTrackingEvents();
   usePartyEvents(useQueryClient());

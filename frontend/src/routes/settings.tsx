@@ -7,6 +7,7 @@ import { SignOutDialog } from "@/components/account/sign-out-dialog";
 import { AudioLanguagesRow } from "@/components/settings/audio-languages";
 import { DiagnosticsRows } from "@/components/settings/diagnostics-rows";
 import { DownloadsPane } from "@/components/settings/downloads-pane";
+import { LiveTVPane } from "@/components/settings/livetv-pane";
 import { LicencesDialog } from "@/components/settings/licences-dialog";
 import {
   defaultPane,
@@ -224,6 +225,8 @@ function Pane({
       return <StreamingPane title={title} profileId={profileId} />;
     case "downloads":
       return <DownloadsPane title={title} profileId={profileId} />;
+    case "livetv":
+      return <LiveTVPane title={title} profileId={profileId} />;
     case "plugins":
       return <PluginsPane title={title} profileId={profileId} />;
     case "tracking":

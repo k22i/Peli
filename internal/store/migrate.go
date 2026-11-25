@@ -98,6 +98,12 @@ var migrations = []migration{
 		_, err := tx.CreateBucketIfNotExists(bucketDownloads)
 		return err
 	},
+	// 6: Live TV sources (ADR-0066). One device-level bucket, keyed by source
+	// ID, each record naming its profile; never synced to Nuvio.
+	func(tx *bolt.Tx) error {
+		_, err := tx.CreateBucketIfNotExists(bucketLiveTV)
+		return err
+	},
 }
 
 func isSinagURL(url string) bool { return strings.HasPrefix(strings.ToLower(url), "sinag://") }

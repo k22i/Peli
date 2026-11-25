@@ -88,6 +88,9 @@ type State struct {
 	// BufferPercent is how full the cache is while Buffering, 0–100.
 	BufferPercent int  `json:"bufferPercent"`
 	Seeking       bool `json:"seeking"`
+	// Seekable is mpv's word on whether the file can be sought: false for
+	// most live streams, true for a live one with a DVR window (ADR-0066).
+	Seekable bool `json:"seekable"`
 	Time
 	// Volume is 0–100.
 	Volume     float64 `json:"volume"`

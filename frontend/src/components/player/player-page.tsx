@@ -44,6 +44,7 @@ import { PartyDock, partyDockWidth, usePartyDock } from "@/components/party/part
 import { PartyPill, PartySheet } from "@/components/party/party-sheet";
 import { PartyReactionLayer, ReactionBar } from "@/components/party/reaction-bar";
 import { MoreMenu } from "@/components/player/more-menu";
+import { LivePlayer } from "@/components/player/live-player";
 import { NextEpisode } from "@/components/player/next-episode";
 import { PictureSheet, type PictureSheetTab } from "@/components/player/picture-sheet";
 import { Prompt, promptEnter } from "@/components/player/prompt";
@@ -376,6 +377,10 @@ export function PlayerPage() {
   // input ("Still watching?"), and the sleep timer: both outlive a file.
   const streak = useEpisodesWithoutInput();
   const [sleep, setSleep] = useState<SleepTimer>(sleepOff);
+  // A live channel (ADR-0066) has its own screen: no progress, no next
+  // episode, no markers, previews, downloads or party. A channel change is a
+  // new one.
+  if (playing?.live) return <LivePlayer key={playing.live.channelId} live={playing.live} />;
   // One file at a time: the next episode starts afresh.
   return (
     <PlayerFile

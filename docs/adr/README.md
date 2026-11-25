@@ -67,6 +67,8 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0061](0061-device-pairing.md) | Device pairing: copying SIMKL, AniList and the TMDB key to another device by QR code, end to end encrypted | 2026-11-17 |
 | [0062](0062-anime-tab-follows-poster-addon.md) | The Anime tab follows the poster addon: one card per IMDb title, opening that title | 2026-11-20 |
 | [0063](0063-watch-parties-on-ios.md) | Watch parties on iOS: the party joins the build, suspension closes its socket and not its seat | 2026-11-21 |
+| [0064](0064-downloads-for-offline-viewing.md) | Downloads for offline viewing: Go downloads the picked stream into a per-device folder, and a downloaded copy always plays first | 2026-11-22 |
 | [0065](0065-subtitle-autosync.md) | Subtitle AutoSync: addon subtitles lined up with the video's own subtitle timing from its Matroska index | 2026-11-24 |
+| [0066](0066-live-tv.md) | Live TV: IPTV channels from M3U playlists with an XMLTV guide, parsed and kept in Go per profile, URLs in the keychain, its own live player | 2026-11-25 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

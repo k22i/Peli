@@ -122,7 +122,7 @@ function LibraryFrame({
 // (three for kids), 36 pt tall with a 9 pt radius.
 function ViewSwitch({ compact = false }: { compact?: boolean }) {
   const search: LibrarySearch = useSearch({ strict: false });
-  const navigate = useNavigate();
+  const navigate = useNavigate({ from: "/library" });
   // Kids profiles keep no tracking, so no Watchlist; downloads they may have.
   const kids = useQuery(currentProfileQuery).data?.kids ?? false;
   return (

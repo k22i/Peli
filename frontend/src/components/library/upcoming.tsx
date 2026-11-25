@@ -145,7 +145,7 @@ export function Upcoming({ profile }: { profile: Profile }) {
 // would crowd the status message beside them.
 function LayoutSwitch() {
   const search: LibrarySearch = useSearch({ strict: false });
-  const navigate = useNavigate();
+  const navigate = useNavigate({ from: "/library" });
   const compact = useCompactShell();
   return (
     // Replaced, as the view switch is: the layout is a preference, not a place

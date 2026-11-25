@@ -36,6 +36,7 @@ export const idleState: PlayerState = {
   buffering: false,
   bufferPercent: 0,
   seeking: false,
+  seekable: false,
   position: 0,
   duration: 0,
   buffered: 0,

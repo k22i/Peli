@@ -14,6 +14,7 @@ import { Route as AddonsRouteImport } from './routes/addons'
 import { Route as AnimeRouteImport } from './routes/anime'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LibraryRouteImport } from './routes/library'
+import { Route as LiveRouteImport } from './routes/live'
 import { Route as MoviesRouteImport } from './routes/movies'
 import { Route as PartyRouteImport } from './routes/party'
 import { Route as PlayerRouteImport } from './routes/player'
@@ -52,6 +53,11 @@ const GalleryRoute = GalleryRouteImport.update({
 const LibraryRoute = LibraryRouteImport.update({
   id: '/library',
   path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveRoute = LiveRouteImport.update({
+  id: '/live',
+  path: '/live',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MoviesRoute = MoviesRouteImport.update({
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/anime': typeof AnimeRoute
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
+  '/live': typeof LiveRoute
   '/movies': typeof MoviesRoute
   '/party': typeof PartyRoute
   '/player': typeof PlayerRoute
@@ -153,6 +160,7 @@ export interface FileRoutesByTo {
   '/anime': typeof AnimeRoute
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
+  '/live': typeof LiveRoute
   '/movies': typeof MoviesRoute
   '/party': typeof PartyRoute
   '/player': typeof PlayerRoute
@@ -175,6 +183,7 @@ export interface FileRoutesById {
   '/anime': typeof AnimeRoute
   '/gallery': typeof GalleryRoute
   '/library': typeof LibraryRoute
+  '/live': typeof LiveRoute
   '/movies': typeof MoviesRoute
   '/party': typeof PartyRoute
   '/player': typeof PlayerRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/anime'
     | '/gallery'
     | '/library'
+    | '/live'
     | '/movies'
     | '/party'
     | '/player'
@@ -219,6 +229,7 @@ export interface FileRouteTypes {
     | '/anime'
     | '/gallery'
     | '/library'
+    | '/live'
     | '/movies'
     | '/party'
     | '/player'
@@ -240,6 +251,7 @@ export interface FileRouteTypes {
     | '/anime'
     | '/gallery'
     | '/library'
+    | '/live'
     | '/movies'
     | '/party'
     | '/player'
@@ -262,6 +274,7 @@ export interface RootRouteChildren {
   AnimeRoute: typeof AnimeRoute
   GalleryRoute: typeof GalleryRoute
   LibraryRoute: typeof LibraryRoute
+  LiveRoute: typeof LiveRoute
   MoviesRoute: typeof MoviesRoute
   PartyRoute: typeof PartyRoute
   PlayerRoute: typeof PlayerRoute
@@ -313,6 +326,13 @@ declare module '@tanstack/react-router' {
       path: '/library'
       fullPath: '/library'
       preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live': {
+      id: '/live'
+      path: '/live'
+      fullPath: '/live'
+      preLoaderRoute: typeof LiveRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/movies': {
@@ -422,6 +442,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnimeRoute: AnimeRoute,
   GalleryRoute: GalleryRoute,
   LibraryRoute: LibraryRoute,
+  LiveRoute: LiveRoute,
   MoviesRoute: MoviesRoute,
   PartyRoute: PartyRoute,
   PlayerRoute: PlayerRoute,

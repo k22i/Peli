@@ -154,6 +154,31 @@ vi.mock("@bindings/downloads", () => {
   };
 });
 
+// Live TV (ADR-0066): no sources, so no channels, guide or favourites, unless
+// a test says otherwise. The shell asks for Sources (the nav entry); /live,
+// the live player and Settings › Live TV ask the rest. Stream refuses, as a
+// channel nobody added would.
+vi.mock("@bindings/livetv", () => ({
+  Service: {
+    Sources: vi.fn<() => Promise<unknown[]>>(() => cancels([])),
+    AddSource: vi.fn<() => Promise<unknown>>(() => cancels(undefined)),
+    RemoveSource: vi.fn<() => Promise<void>>(() => cancels(undefined)),
+    RenameSource: vi.fn<() => Promise<void>>(() => cancels(undefined)),
+    Refresh: vi.fn<() => Promise<void>>(() => cancels(undefined)),
+    Channels: vi.fn<() => Promise<unknown[]>>(() => cancels([])),
+    Guide: vi.fn<() => Promise<unknown[]>>(() => cancels([])),
+    NowNext: vi.fn<() => Promise<unknown[]>>(() => cancels([])),
+    Stream: vi.fn<() => Promise<unknown>>(() =>
+      Object.assign(Promise.reject(new Error("livetv: not_found")), {
+        cancel: vi.fn<() => void>(),
+      }),
+    ),
+    Favourites: vi.fn<() => Promise<string[]>>(() => cancels([])),
+    SetFavourite: vi.fn<() => Promise<string[]>>(() => cancels([])),
+    Recent: vi.fn<() => Promise<string[]>>(() => cancels([])),
+  },
+}));
+
 // Seek-bar previews: nothing begun, and an ask for a bucket answers
 // with an empty JPEG at the file's start, unless a test says otherwise. The
 // player screen asks as the pointer moves; each call resolves with a `cancel`
