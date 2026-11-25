@@ -51,6 +51,16 @@ const at = (hours: number, minutes = 0) => Date.UTC(2026, 10, 25, hours, minutes
 
 const names = (channels: Channel[]) => channels.map((entry) => entry.name);
 
+// A block as the guide would draw it, so a test reads as the row does.
+const shape = (blocks: GuideBlock[]) =>
+  blocks.map((block) => [
+    block.programme.title,
+    block.left,
+    block.width,
+    block.clippedStart,
+    block.clippedEnd,
+  ]);
+
 describe("groupKey", () => {
   it("treats a blank group as Other", () => {
     expect(groupKey(channel({ id: "a", name: "A" }))).toBe(otherGroup);
@@ -220,14 +230,6 @@ describe("offsetOf", () => {
 describe("blocksFor", () => {
   const from = at(20, 30);
   const to = at(22, 30);
-  const shape = (blocks: GuideBlock[]) =>
-    blocks.map((block) => [
-      block.programme.title,
-      block.left,
-      block.width,
-      block.clippedStart,
-      block.clippedEnd,
-    ]);
 
   it("clips a programme that overruns either end and says which", () => {
     const blocks = blocksFor(
