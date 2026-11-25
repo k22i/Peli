@@ -17,6 +17,7 @@ import (
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 
+	"github.com/k22i/Peli/internal/secrets"
 	"github.com/k22i/Peli/internal/store"
 )
 
@@ -65,6 +66,8 @@ func codeOf(err error) string {
 		return CodeNotFound
 	case errors.Is(err, store.ErrInvalidItem):
 		return CodeInvalid
+	case errors.Is(err, secrets.ErrNotFound):
+		return CodeKeychain
 	}
 	return CodeFailed
 }
@@ -140,7 +143,7 @@ type Channel struct {
 	ID       string `json:"id"`
 	SourceID string `json:"sourceId"`
 	// Number is the entry's place in its playlist, from 1.
-	Number int `json:"number"`
+	Number int    `json:"number"`
 	Name   string `json:"name"`
 	// Logo is a URL, or "".
 	Logo string `json:"logo"`
