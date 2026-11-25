@@ -3,6 +3,7 @@ package livetv
 import (
 	"encoding/json"
 	"errors"
+	"io/fs"
 	"log/slog"
 	"os"
 	"path/filepath"
@@ -100,16 +101,16 @@ func (s *Service) readSource(id string) *loaded {
 	}
 	folder := s.folder(id)
 	if err := readJSON(filepath.Join(folder, fileStatus), &l.status); err != nil {
-		slog.Warn("livetv: cache", "source", id, "part", "status", "code", cacheCode(err))
+		warnCache(id, "status", err)
 	}
 	var playlist playlistFile
 	if err := readJSON(filepath.Join(folder, filePlaylist), &playlist); err != nil {
-		slog.Warn("livetv: cache", "source", id, "part", "playlist", "code", cacheCode(err))
+		warnCache(id, "playlist", err)
 	}
 	l.put(playlist)
 	var guide guideFile
 	if err := readJSON(filepath.Join(folder, fileGuide), &guide); err != nil {
-		slog.Warn("livetv: cache", "source", id, "part", "guide", "code", cacheCode(err))
+		warnCache(id, "guide", err)
 	}
 	if guide.Programmes != nil {
 		l.guide = guide.Programmes
@@ -150,12 +151,14 @@ func (s *Service) forgetCache(id string) {
 	}
 }
 
-// cacheCode names a cache read's failure. A missing file is the first run.
-func cacheCode(err error) string {
-	if errors.Is(err, os.ErrNotExist) {
-		return CodeNotFound
+// warnCache logs a cache file that couldn't be read. One that isn't there yet
+// is a source's first run, not a warning: the next refresh writes it. A
+// corrupt file, or a folder we can't read, is worth saying.
+func warnCache(id, part string, err error) {
+	if errors.Is(err, fs.ErrNotExist) {
+		return
 	}
-	return CodeFailed
+	slog.Warn("livetv: cache", "source", id, "part", part, "code", CodeFailed)
 }
 
 // readJSON reads a cache file into v.
