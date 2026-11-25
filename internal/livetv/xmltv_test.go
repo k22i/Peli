@@ -203,6 +203,43 @@ func TestParseGuide(t *testing.T) {
 	})
 }
 
+// TestParseGuideMatchedIsPlaylistChannels: Matched is how many of our
+// channels the guide covers, not how many guide channels matched.
+func TestParseGuideMatchedIsPlaylistChannels(t *testing.T) {
+	const document = `<?xml version="1.0" encoding="UTF-8"?>
+<tv>
+  <channel id="bbc1.uk">
+    <display-name>BBC One</display-name>
+  </channel>
+  <programme start="20260314120000 +0000" stop="20260314130000 +0000" channel="bbc1.uk">
+    <title lang="en">Homes Under the Hammer</title>
+  </programme>
+</tv>`
+
+	from, to := xmltvWindow()
+	// Two entries for the same channel, both carrying the guide's tvg-id, so
+	// one guide channel covers both of them.
+	playlist := []Channel{
+		{ID: "src:000000000001", Name: "BBC One HD", TvgID: "bbc1.uk"},
+		{ID: "src:000000000002", Name: "BBC One London", TvgID: "bbc1.uk"},
+	}
+	guide, err := ParseGuide(strings.NewReader(document), NewMatcher(playlist), from, to)
+	if err != nil {
+		t.Fatalf("ParseGuide: %v", err)
+	}
+	if guide.GuideChannels != 1 {
+		t.Errorf("GuideChannels = %d, want 1", guide.GuideChannels)
+	}
+	if guide.Matched != 2 {
+		t.Errorf("Matched = %d, want 2", guide.Matched)
+	}
+	for _, channelID := range []string{"src:000000000001", "src:000000000002"} {
+		checkGuideSummaries(t, guide, channelID,
+			"03-14 12:00|03-14 13:00|Homes Under the Hammer|||",
+		)
+	}
+}
+
 // TestParseGuideGzip is the same file zipped, which is how most guides
 // arrive.
 func TestParseGuideGzip(t *testing.T) {

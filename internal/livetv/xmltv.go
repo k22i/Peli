@@ -147,11 +147,15 @@ walk:
 	}
 
 	guide.GuideChannels = len(channels)
+	// A guide channel can match several of ours and several can match the
+	// same one, so what's counted is the channels, not the guide entries.
+	matched := make(map[string]bool, len(resolved))
 	for _, ids := range resolved {
-		if len(ids) > 0 {
-			guide.Matched++
+		for _, id := range ids {
+			matched[id] = true
 		}
 	}
+	guide.Matched = len(matched)
 	for id, programmes := range perChannel {
 		if keep := trimGuideProgrammes(programmes, fromMS, toMS); len(keep) > 0 {
 			guide.Programmes[id] = keep
