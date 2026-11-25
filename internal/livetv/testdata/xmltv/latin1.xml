@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tv>
+  <channel id="fr.tf1">
+    <display-name>TF1</display-name>
+  </channel>
+  <programme start="20260314120000 +0000" stop="20260314130000 +0000" channel="fr.tf1">
+    <title lang="fr">Le café</title>
+  </programme>
+</tv>

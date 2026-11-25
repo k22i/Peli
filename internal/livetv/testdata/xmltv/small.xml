@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tv generator-info-name="Peli test" generator-info-url="https://peli.test">
+  <channel id="bbc1.uk">
+    <display-name>BBC One</display-name>
+    <display-name>BBC1</display-name>
+  </channel>
+  <channel id="itv.uk">
+    <display-name lang="en">ITV1</display-name>
+  </channel>
+  <channel id="us.cnn">
+    <display-name>CNN</display-name>
+  </channel>
+
+  <programme start="20260314100000 +0000" stop="20260314110000 +0000" channel="bbc1.uk">
+    <title lang="en">Breakfast</title>
+  </programme>
+
+  <programme start="20260314110000 +0000" stop="20260314123000 +0000" channel="bbc1.uk">
+    <title lang="en">Morning Live</title>
+    <desc>News, chat and the odd competition.</desc>
+  </programme>
+
+  <programme start="20260314130000 +0100" stop="20260314140000 +0100" channel="bbc1.uk">
+    <title lang="en">Homes Under the Hammer</title>
+    <title lang="fr">Maisons à vendre</title>
+    <sub-title>Series 12</sub-title>
+    <desc>   A cottage in Devon gets a new roof.   </desc>
+    <category>Factual</category>
+    <category></category>
+    <category>Homes</category>
+    <icon src="https://example.test/huth.png"/>
+    <episode-num system="xmltv_ns">0.2.</episode-num>
+  </programme>
+
+  <programme start="20260314120000 +0000" stop="20260314130000 +0000" channel="itv.uk">
+    <title lang="en">ITV News</title>
+    <episode-num system="xmltv_ns">1/3.9/10.0/1</episode-num>
+    <episode-num system="onscreen">S02E10</episode-num>
+    <category>News</category>
+  </programme>
+
+  <programme start="20260314123000 +0000" stop="20260314133000 +0000" channel="us.cnn">
+    <title lang="en">CNN Newsroom</title>
+  </programme>
+
+  <programme start="20260314130000 +0000" stop="20260314140000 +0000" channel="itv.uk">
+    <title lang="en">The Chase</title>
+    <desc>A quiz.</desc>
+    <episode-num system="onscreen">S01E05</episode-num>
+  </programme>
+
+  <programme start="20260314200000 +0000" channel="bbc1.uk">
+    <title lang="en">The Repair Shop</title>
+  </programme>
+
+  <programme start="20260314210000 -0500" stop="20260314220000 -0500" channel="bbc1.uk">
+    <title lang="en">Late Film</title>
+  </programme>
+
+  <programme start="20260315060000 +0000" channel="bbc1.uk">
+    <title lang="en">Breakfast</title>
+  </programme>
+
+  <programme start="20260315080000 +0000" stop="later on" channel="bbc1.uk">
+    <title lang="en">Weather</title>
+  </programme>
+
+  <programme start="20260315090000 +0000" stop="20260315100000 +0000" channel="dave.uk">
+    <title lang="en">Would I Lie to You?</title>
+  </programme>
+
+  <programme start="20260316000000 +0000" stop="20260316010000 +0000" channel="itv.uk">
+    <title lang="en">Out of Window</title>
+  </programme>
+
+  <programme start="soon" stop="20260314140000 +0000" channel="itv.uk">
+    <title lang="en">No Start</title>
+  </programme>
+</tv>
