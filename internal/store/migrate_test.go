@@ -109,7 +109,7 @@ func TestFixtures(t *testing.T) {
 				deviceSettings = DeviceSettings{
 					Diagnostics: true, TorrentCacheGB: 5, MaxResolution: "auto", HDR: "auto", DolbyVision: "auto",
 					AutoUpdate: true, Quality: DefaultQuality(), Audio: DefaultAudio(), StreamSort: "best",
-					DownloadsCapGB: 50, DownloadsWiFiOnly: true,
+					DownloadsCapGB: 50, DownloadsWiFiOnly: true, SeekPreviews: true,
 					Subtitles: DeviceSubtitles{Style: DefaultSubtitleStyle()},
 				}
 			}

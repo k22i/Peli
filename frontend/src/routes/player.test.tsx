@@ -341,6 +341,7 @@ beforeEach(() => {
     downloadsDir: "",
     downloadsCapGB: 50,
     downloadsWiFiOnly: true,
+    skipProfilePicker: false,
     subtitles: {
       always: false,
       style: {
@@ -2006,6 +2007,7 @@ describe("skip intro and credits", () => {
       downloadsDir: "",
       downloadsCapGB: 50,
       downloadsWiFiOnly: true,
+      skipProfilePicker: false,
       quality: defaultQuality,
       audio: defaultAudio,
       subtitles: {

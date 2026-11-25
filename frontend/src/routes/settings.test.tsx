@@ -201,6 +201,7 @@ vi.mock("@bindings/store", async () => {
           audio: { device: "auto", stereoDownmix: false, volumeBoost: false },
           // The party beside the video (ADR-0051), off by default.
           partyDock: false,
+          skipProfilePicker: false,
         },
       SaveDeviceSettings: (settings: DeviceSettings) =>
         store.save(() => {
@@ -324,6 +325,7 @@ describe("settings", () => {
     expect(screen.getByText("Nuvio account")).toBeInTheDocument();
     expect(screen.getByText("Server")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Manage" })).toBeInTheDocument();
+    expect(await screen.findByRole("switch", { name: "Ask who’s watching" })).toBeChecked();
 
     await open("Addons & content");
     expect(groups()).toEqual(["Addons", "Catalogs", "Episodes", "Artwork"]);

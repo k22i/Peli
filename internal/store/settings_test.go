@@ -38,6 +38,7 @@ var laptop = DeviceSettings{
 	// Downloads (#85) in a folder of the user's own, capped at 25 GB, on the
 	// phone's data too.
 	DownloadsDir: filepath.Join(mediaDir, "Downloads"), DownloadsCapGB: 25, DownloadsWiFiOnly: false,
+	SkipProfilePicker: true,
 }
 
 // The acceptance criterion: settings persist, per profile where they follow a
@@ -58,6 +59,7 @@ func TestSettingsPersistPerProfile(t *testing.T) {
 		Subtitles: DeviceSubtitles{Style: DefaultSubtitleStyle()},
 		// Downloads are the default folder, 50 GB, and Wi-Fi only (#85).
 		DownloadsDir: "", DownloadsCapGB: 50, DownloadsWiFiOnly: true,
+		SeekPreviews: true,
 	})
 
 	check(t, s.SaveProfileSettings(anna.ID, japanese))

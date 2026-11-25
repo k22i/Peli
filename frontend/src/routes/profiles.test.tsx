@@ -38,6 +38,8 @@ const backend = vi.hoisted(() => ({
   scopes: new Map<number, KidsScope>(),
   scopeSaves: [] as KidsScope[],
   signOuts: 0,
+  // This device's "Don't ask again" on the picker.
+  skipProfilePicker: false,
 }));
 
 vi.mock("@bindings/store", () => ({
@@ -57,7 +59,14 @@ vi.mock("@bindings/store", () => ({
       captions: "system",
       ...backend.settings.get(id),
     }),
-    DeviceSettings: async () => ({ hardwareDecoding: true, diagnostics: false }),
+    DeviceSettings: async () => ({
+      hardwareDecoding: true,
+      diagnostics: false,
+      skipProfilePicker: backend.skipProfilePicker,
+    }),
+    SaveDeviceSettings: async (settings: { skipProfilePicker: boolean }) => {
+      backend.skipProfilePicker = settings.skipProfilePicker;
+    },
     Addons: async (id: number) => backend.addons.get(id) ?? [],
     VisibleAddons: async (id: number) => backend.addons.get(id) ?? [],
     KidsScope: async (id: number): Promise<KidsScope> =>
@@ -214,6 +223,7 @@ beforeEach(() => {
   backend.scopes.clear();
   backend.scopeSaves = [];
   backend.signOuts = 0;
+  backend.skipProfilePicker = false;
 });
 
 const picker = () => screen.findByRole("heading", { level: 1, name: "Who’s watching?" });
@@ -265,6 +275,39 @@ describe("profile picker", () => {
     await user.click(screen.getByRole("button", { name: "Manage profiles" }));
     const badge = (await tile("Edit Kevin")).querySelector("[data-slot=edit-badge]");
     expect(badge).not.toBeNull();
+  });
+
+  it("remembers the pick with Don't ask again, and opens as it next time", async () => {
+    signedIn(kids, kevin, kids);
+    const user = userEvent.setup();
+    await renderApp("/", { shell: false });
+    await picker();
+
+    const dontAsk = await screen.findByRole("switch", { name: "Don’t ask again on this computer" });
+    expect(dontAsk).not.toBeChecked();
+    expect(dontAsk).toHaveAccessibleDescription("Peli will ask who’s watching each time it opens.");
+    await user.click(dontAsk);
+    await waitFor(() => expect(backend.skipProfilePicker).toBe(true));
+    expect(dontAsk).toHaveAccessibleDescription(
+      "Peli will open as the profile you pick. Switch from the profile menu.",
+    );
+  });
+
+  it("skips the picker at launch once told not to ask", async () => {
+    signedIn(kevin, kevin, kids);
+    backend.skipProfilePicker = true;
+    const { router } = await renderApp("/");
+
+    expect(await screen.findByRole("button", { name: "Profile: Kevin" })).toBeVisible();
+    expect(router.state.location.pathname).toBe("/");
+  });
+
+  it("leaves Don't ask again off the picker with one profile", async () => {
+    signedIn(kevin, kevin);
+    await renderApp("/profiles", { shell: false });
+    await tile("Kevin");
+
+    expect(screen.queryByRole("switch")).toBeNull();
   });
 
   it("goes straight in with one profile", async () => {

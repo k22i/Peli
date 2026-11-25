@@ -102,6 +102,8 @@ export const deviceSettings = (changes: Partial<DeviceSettings> = {}): DeviceSet
   downloadsDir: "",
   downloadsCapGB: 50,
   downloadsWiFiOnly: true,
+  // Who's watching is asked at launch until the picker's "Don't ask again".
+  skipProfilePicker: false,
   subtitles: {
     always: false,
     style: {

@@ -62,7 +62,7 @@ import { feature } from "@/lib/features";
 import { useCompactShell } from "@/lib/shell-mode";
 import { appBuildQuery, appVersionQuery } from "@/lib/app-info";
 import { contentDisclaimer } from "@/lib/disclaimer";
-import { deviceName as hostName, isIOS, isTouch } from "@/lib/platform";
+import { deviceName as hostName, isIOS, isTouch, thisDevice } from "@/lib/platform";
 import { useCurrentProfile } from "@/lib/profile";
 import { serverName, serverQuery } from "@/lib/server";
 import {
@@ -367,8 +367,32 @@ function AccountPane({ title }: { title: string }) {
             Manage
           </Link>
         </SettingRow>
+        <AskWhoRow />
       </SettingsGroup>
     </SettingsPaneView>
+  );
+}
+
+// The other side of the picker's "Don't ask again": on, Peli asks who's
+// watching at launch when there's more than one profile.
+function AskWhoRow() {
+  const device = useQuery(deviceSettingsQuery);
+  const save = useSaveDeviceSettings();
+  if (!device.data) return null;
+  const settings = device.data;
+  return (
+    <SettingRow
+      id="ask-who"
+      label="Ask who’s watching"
+      description={`When Peli opens on ${thisDevice()}. Off: it opens as the profile last used.`}
+    >
+      <Switch
+        aria-labelledby="ask-who-label"
+        aria-describedby="ask-who-description"
+        checked={!settings.skipProfilePicker}
+        onCheckedChange={(ask) => save.mutate({ ...settings, skipProfilePicker: !ask })}
+      />
+    </SettingRow>
   );
 }
 

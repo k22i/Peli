@@ -210,6 +210,11 @@ type DeviceSettings struct {
 	// DownloadsWiFiOnly fetches them over Wi-Fi alone, never the phone's data.
 	// Only iOS reads it.
 	DownloadsWiFiOnly bool `json:"downloadsWiFiOnly"`
+	// SkipProfilePicker opens Peli as the profile last used instead of asking
+	// who's watching at launch. Off until the picker's "Don't ask again" is
+	// turned on; the picker stays a menu away. A PIN-locked profile still
+	// asks for its PIN.
+	SkipProfilePicker bool `json:"skipProfilePicker"`
 }
 
 var (

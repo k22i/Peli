@@ -13,9 +13,11 @@ import {
 import { parentSteps, pinSteps, usePinSteps } from "@/components/account/pin-dialog";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Switch } from "@/components/ui/switch";
 import { toastManager } from "@/components/ui/toast";
 import { maxNuvioProfiles, profilesQuery, useSwitchProfile } from "@/lib/account";
 import { useCurrentProfile } from "@/lib/profile";
+import { deviceSettingsQuery, useSaveDeviceSettings } from "@/lib/settings";
 import { thisDevice } from "@/lib/platform";
 import { cn } from "@/lib/utils";
 import type { Profile } from "@bindings/store";
@@ -177,6 +179,7 @@ function Profiles() {
                 Sign in to bring your Nuvio profiles
               </Link>
             )}
+            {ready && list.length > 1 && <DontAskAgain />}
             {ready && (
               <Button
                 variant="ghost"
@@ -209,6 +212,36 @@ function Profiles() {
       <DeleteProfileDialog profile={removing} onClose={() => setRemoving(undefined)} />
       {pinDialog}
     </FocusScreen>
+  );
+}
+
+// "Don't ask again": the next launch opens as the profile last used instead
+// of this screen. A device setting, saved as it flips; the profile menu
+// still leads back here to switch or turn it off.
+function DontAskAgain() {
+  const device = useQuery(deviceSettingsQuery);
+  const save = useSaveDeviceSettings();
+  const id = useId();
+  if (!device.data) return null;
+  const settings = device.data;
+  const on = settings.skipProfilePicker;
+  return (
+    <div className="flex flex-col items-center gap-1">
+      <label className="flex cursor-pointer items-center gap-3 text-body">
+        <Switch
+          aria-labelledby={`${id}-label`}
+          aria-describedby={`${id}-hint`}
+          checked={on}
+          onCheckedChange={(skipProfilePicker) => save.mutate({ ...settings, skipProfilePicker })}
+        />
+        <span id={`${id}-label`}>Don’t ask again on {thisDevice()}</span>
+      </label>
+      <p id={`${id}-hint`} className="min-h-5 text-small text-muted-foreground">
+        {on
+          ? "Peli will open as the profile you pick. Switch from the profile menu."
+          : "Peli will ask who’s watching each time it opens."}
+      </p>
+    </div>
   );
 }
 

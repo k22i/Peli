@@ -23,6 +23,7 @@ import { usePartyEvents, usePartyToasts } from "@/lib/party";
 import { isIOS } from "@/lib/platform";
 import { accountQuery, beforeProfile, currentProfileQuery, useCurrentProfile } from "@/lib/profile";
 import { QuickActionSync, useQuickActionHandler } from "@/lib/quick-actions";
+import { deviceSettingsQuery } from "@/lib/settings";
 import { useConnectionEvents, useSyncEvents, useSyncProfile } from "@/lib/sync";
 import { TitlePrefetchProvider } from "@/lib/title-prefetch";
 import { useTrackingEvents, useTrackingProfile } from "@/lib/tracking";
@@ -47,8 +48,11 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       throw redirect({ to: "/sign-in", search: { reason: "session-ended" }, replace: true });
     }
     // More than one profile: ask who's watching, with the last one used
-    // first in line (#24).
-    if (needsPicker(profiles)) throw redirect({ to: "/profiles", replace: true });
+    // first in line (#24), unless this device was told not to ask again.
+    if (!needsPicker(profiles)) return;
+    const device = await context.queryClient.ensureQueryData(deviceSettingsQuery).catch(() => null);
+    if (device?.skipProfilePicker === true) return;
+    throw redirect({ to: "/profiles", replace: true });
   },
   component: RootLayout,
   // The shell itself failed: the same screen, with no shell around it.

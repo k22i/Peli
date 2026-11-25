@@ -279,6 +279,7 @@ const device: DeviceSettings = {
   downloadsDir: "",
   downloadsCapGB: 50,
   downloadsWiFiOnly: true,
+  skipProfilePicker: false,
   quality: defaultQuality,
   audio: defaultAudio,
   subtitles: {
