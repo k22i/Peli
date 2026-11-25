@@ -389,7 +389,7 @@ export function blocksFor(
   const blocks: GuideBlock[] = [];
   const overlapping = programmes
     .filter((programme) => programme.stop > from && programme.start < to)
-    .sort((a, b) => a.start - b.start);
+    .toSorted((a, b) => a.start - b.start);
   for (const programme of overlapping) {
     const left = offsetOf(Math.max(programme.start, from), from, pxPerMinute);
     const width = offsetOf(Math.min(programme.stop, to), from, pxPerMinute) - left;
