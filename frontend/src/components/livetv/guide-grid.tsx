@@ -109,7 +109,10 @@ export function GuideGrid({
     const chunk = chunks[index];
     if (chunk === undefined || result.data === undefined) return;
     answeredChunks.add(chunk);
-    for (const guide of result.data) programmesByChannel.set(guide.channelId, guide.programmes);
+    // Go's list fields reach the frontend as nullable.
+    for (const guide of result.data) {
+      programmesByChannel.set(guide.channelId, guide.programmes ?? []);
+    }
   });
 
   // The page shows its own notice with nothing to guide.

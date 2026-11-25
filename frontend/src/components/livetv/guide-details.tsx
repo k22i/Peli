@@ -43,6 +43,8 @@ function Details({ programme, channel }: { programme: Programme; channel: Channe
   // The day it airs, as the reader's locale writes it: "Tue".
   const weekday = new Intl.DateTimeFormat(undefined, { weekday: "short" }).format(programme.start);
   const line = [programme.episode, programme.subTitle].filter(Boolean).join(" · ");
+  // Go's list fields reach the frontend as nullable.
+  const categories = programme.categories ?? [];
   return (
     <>
       <DialogHeader>
@@ -56,9 +58,9 @@ function Details({ programme, channel }: { programme: Programme; channel: Channe
         {programme.description ? (
           <p className="text-muted-foreground">{programme.description}</p>
         ) : null}
-        {programme.categories.length > 0 ? (
+        {categories.length > 0 ? (
           <div className="flex flex-wrap gap-1.5">
-            {programme.categories.map((category) => (
+            {categories.map((category) => (
               <Badge key={category} variant="outline" size="sm">
                 {category}
               </Badge>
