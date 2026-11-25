@@ -194,6 +194,11 @@ export function LivePlayer({ live }: { live: LivePlay }) {
     return () => window.removeEventListener("keydown", listener);
   });
 
+  // The picture itself, as the film player has it: a button, so a tap on the
+  // picture is not a click on a static element (jsx-a11y) and the touch
+  // layouts can tell the picture from the controls. The keyboard is the
+  // window listener's, so it takes no focus of its own.
+  const surface = useRef<HTMLButtonElement>(null);
   // The channel strip's swipe: up for the next channel, down for the previous
   // one, as the list reads.
   const downY = useRef(0);
@@ -202,18 +207,27 @@ export function LivePlayer({ live }: { live: LivePlay }) {
     <div
       className={cn("fixed inset-0 select-none text-white", !shown && "cursor-none")}
       onPointerMove={wake}
-      // A touch on the picture is the tap's to judge below: woken here first,
-      // the controls it should show would be up already, and the tap hid them
-      // again (as the film player's picture does).
+      // A touch on the picture is the tap's to judge (onClick below): woken
+      // here first, the controls it should show would be up already, and the
+      // tap hid them again.
       onPointerDown={(event) => {
-        if (event.pointerType !== "touch" || event.target !== event.currentTarget) wake();
-      }}
-      onClick={(event) => {
-        if (!touch || event.target !== event.currentTarget) return;
-        if (shown) hideControls();
-        else wake();
+        if (event.pointerType !== "touch" || event.target !== surface.current) wake();
       }}
     >
+      {/* A tap on the picture shows or hides the controls on touch; a mouse
+          wakes them by moving. */}
+      <button
+        ref={surface}
+        type="button"
+        tabIndex={-1}
+        aria-hidden
+        className={cn("absolute inset-0 outline-none", !shown && "cursor-none")}
+        onClick={() => {
+          if (!touch) return;
+          if (shown) hideControls();
+          else wake();
+        }}
+      />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/70 to-transparent"
