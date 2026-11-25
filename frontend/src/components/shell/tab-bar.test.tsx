@@ -9,10 +9,12 @@ import { describe, expect, it, vi } from "vite-plus/test";
 
 import { TabBar } from "@/components/shell/tab-bar";
 import type { TabBarModel } from "@/components/shell/use-tab-bar";
+import { tabSections } from "@/lib/tab-bar";
 
 // Scrolled down far enough to minimise (lib/tab-bar.ts's tracker).
 const scrolledDown: TabBarModel = {
   active: "/",
+  items: tabSections,
   minimized: true,
   hidden: false,
   select: vi.fn<TabBarModel["select"]>(),

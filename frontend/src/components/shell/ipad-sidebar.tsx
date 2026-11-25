@@ -8,6 +8,7 @@ import { Wordmark } from "@/components/shell/wordmark";
 import { Button } from "@/components/ui/button";
 import { folderParams, folderPath } from "@/lib/folder";
 import { collectionsQuery } from "@/lib/home";
+import { useNavSections } from "@/lib/nav-sections";
 import { useCurrentProfile } from "@/lib/profile";
 import { sectionOf } from "@/lib/tab-bar";
 import { cn } from "@/lib/utils";
@@ -19,7 +20,6 @@ export const sidebarInset = "[--ipad-sidebar:calc(env(safe-area-inset-left)+17re
 
 // Search first, as a field-like row, then the sections in ⌘1–6 order.
 const search = sections.find((section) => section.to === "/search")!;
-const ordered = [search, ...sections.filter((section) => section !== search)];
 
 // Arrow keys move along the sidebar's links, as in a list (and as the top
 // capsule does); Tab leaves it.
@@ -71,6 +71,8 @@ export function IPadSidebar({
     select: (state) => (state.resolvedLocation ?? state.location).pathname,
   });
   const current = sectionOf(pathname, undefined);
+  const navSections = useNavSections();
+  const ordered = [search, ...navSections.filter((section) => section !== search)];
   const onClick = (event: MouseEvent) => {
     if (event.detail === 0) onKeyboardNavigate();
   };

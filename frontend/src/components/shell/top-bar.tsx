@@ -1,7 +1,7 @@
 import { Link, useCanGoBack, useNavigate, useRouter, useRouterState } from "@tanstack/react-router";
 import { Window } from "@wailsio/runtime";
 import { ChevronLeft, Search } from "lucide-react";
-import type { KeyboardEvent, MouseEvent } from "react";
+import { useMemo, type KeyboardEvent, type MouseEvent } from "react";
 
 import { useBarOverArt } from "@/components/shell/bar-tone";
 import { ConnectionStatus } from "@/components/shell/connection-status";
@@ -15,6 +15,7 @@ import { Wordmark } from "@/components/shell/wordmark";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 import { useHardwareKeyboard } from "@/lib/input-devices";
+import { useNavSections } from "@/lib/nav-sections";
 import type { Platform } from "@/lib/platform";
 import { cn } from "@/lib/utils";
 import { sections, type Section } from "@/sections";
@@ -22,9 +23,10 @@ import { sections, type Section } from "@/sections";
 // On screen the browse sections and Library sit together in the middle, and
 // Search closes the row as a round button. ⌘1–6 keep sections.ts's order.
 const search = sections.find((section) => section.to === "/search");
-const visualOrder = [...sections.filter((section) => section !== search), search].filter(
-  (section) => section !== undefined,
-);
+const barOrder = (list: readonly Section[]) =>
+  [...list.filter((section) => section !== search), search].filter(
+    (section) => section !== undefined,
+  );
 
 const nextIndex: Record<string, (index: number, count: number) => number> = {
   ArrowRight: (index, count) => (index + 1) % count,
@@ -119,6 +121,8 @@ export function TopBar({
       return location.pathname === "/settings" && "section" in (location.search as object);
     },
   });
+  const navSections = useNavSections();
+  const visualOrder = useMemo(() => barOrder(navSections), [navSections]);
   const current = visualOrder.findIndex((section) => section.to === pathname);
   const tabStop = current >= 0 ? current : 0;
 

@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vite-plus/test";
 
 import { tabIconName } from "@/lib/tab-icons";
-import { sections } from "@/sections";
+import { liveSection, sections, type Section } from "@/sections";
 
 // build/ios/Assets.xcassets, from frontend/.
 const catalog = join(process.cwd(), "..", "build", "ios", "Assets.xcassets");
@@ -13,7 +13,7 @@ const update = process.env["UPDATE_TAB_ICONS"] === "1";
 
 // The SVG UIKit draws: the lucide glyph in black (a template image takes its
 // colour from the tint), 24 pt, the web's stroke width.
-function svgOf(section: (typeof sections)[number]): string {
+function svgOf(section: Section): string {
   const markup = renderToStaticMarkup(
     createElement(section.icon, {
       size: 24,
@@ -41,7 +41,7 @@ function contentsOf(file: string): string {
 }
 
 describe("native tab bar icons", () => {
-  it.each(sections.map((section) => [section.label, section] as const))(
+  it.each([...sections, liveSection].map((section) => [section.label, section] as const))(
     "%s has a template SVG in the asset catalog",
     (_, section) => {
       const name = tabIconName(section);

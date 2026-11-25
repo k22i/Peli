@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from "react";
 
-import { sections, type Section } from "@/sections";
+import { liveSection, sections, type Section } from "@/sections";
 
 // The compact shell's tab bar (#129): a floating capsule of sections with
 // Search as a round button beside it. On iOS 26 it is native Liquid Glass
@@ -14,12 +14,21 @@ export const tabSections: readonly Section[] = sections.filter(
   (section) => section !== searchSection,
 );
 
+// The capsule's items: the sections it is given, without Search, which is the
+// round button beside it. The bar takes the sections from the profile
+// (lib/nav-sections), so Live TV is there while it may be.
+export function tabSectionsOf(list: readonly Section[]): readonly Section[] {
+  return list.filter((section) => section !== searchSection);
+}
+
 // The section a page belongs to: its own (a section's root or a page under
 // its path, such as /library?view=…), or for a page outside every section
 // (a title, a folder, a person, Settings) the one the user came from, as an
-// Apple TV tab keeps its selection on a detail page.
+// Apple TV tab keeps its selection on a detail page. /live is its own
+// section whether or not the profile has a source, so a bar that shows it
+// keeps its selection there.
 export function sectionOf(pathname: string, last: Section | undefined): Section | undefined {
-  const own = sections.find(
+  const own = [...sections, liveSection].find(
     (section) =>
       pathname === section.to || (section.to !== "/" && pathname.startsWith(`${section.to}/`)),
   );

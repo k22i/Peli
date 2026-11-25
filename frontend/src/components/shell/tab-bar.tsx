@@ -44,8 +44,9 @@ export function TabBar({ model, centred = false }: { model: TabBarModel; centred
   const keyboard = useKeyboardUp();
   const { active, minimized, select, expand } = model;
   const hidden = model.hidden || keyboard;
-  const index = tabSections.findIndex((section) => section.to === active);
-  const current = tabSections[index];
+  const items = model.items;
+  const index = items.findIndex((section) => section.to === active);
+  const current = items[index];
   // The iPad has the room: its bar keeps every section (the user, #138).
   const mini = minimized && !centred && current !== undefined;
 
@@ -96,12 +97,12 @@ export function TabBar({ model, centred = false }: { model: TabBarModel; centred
                 data-slot="tab-pill"
                 className="pointer-events-none absolute inset-y-1 start-1 rounded-full bg-foreground/9 shadow-[inset_0_1px_0_rgb(255_255_255/0.25)] transition-transform duration-[350ms] ease-(--ease-out-soft) motion-reduce:transition-none"
                 style={{
-                  width: `calc((100% - 0.5rem) / ${tabSections.length})`,
+                  width: `calc((100% - 0.5rem) / ${items.length})`,
                   transform: `translateX(${index * 100}%)`,
                 }}
               />
             )}
-            {tabSections.map((section) => {
+            {items.map((section) => {
               const selected = section.to === active;
               const Icon = section.icon;
               return (

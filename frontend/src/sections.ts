@@ -1,5 +1,14 @@
 import type { LinkProps } from "@tanstack/react-router";
-import { Clapperboard, House, Library, type LucideIcon, Search, Sparkles, Tv } from "lucide-react";
+import {
+  Clapperboard,
+  House,
+  Library,
+  type LucideIcon,
+  RadioTower,
+  Search,
+  Sparkles,
+  Tv,
+} from "lucide-react";
 
 export type Section = {
   label: string;
@@ -18,3 +27,11 @@ export const sections = [
   { label: "Search", to: "/search", icon: Search },
   { label: "Library", to: "/library", icon: Library },
 ] as const satisfies readonly Section[];
+
+// Live TV (ADR-0066): not one of the six, so no ⌘ number. It joins the
+// navs (lib/nav-sections) only while the profile has a source.
+export const liveSection = {
+  label: "Live TV",
+  to: "/live",
+  icon: RadioTower,
+} as const satisfies Section;

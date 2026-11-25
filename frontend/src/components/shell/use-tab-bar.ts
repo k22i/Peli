@@ -1,10 +1,11 @@
 import { Service as Shell } from "@bindings/shell";
 import { useNavigate, useRouterState } from "@tanstack/react-router";
 import { Events } from "@wailsio/runtime";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { feature } from "@/lib/features";
 import { haptic } from "@/lib/haptics";
+import { useNavSections } from "@/lib/nav-sections";
 import {
   expandedAt,
   nativeTabBar,
@@ -12,7 +13,7 @@ import {
   restingScroll,
   searchSection,
   sectionOf,
-  tabSections,
+  tabSectionsOf,
   useTabBarHideRequested,
   type ScrollTrack,
 } from "@/lib/tab-bar";
@@ -22,6 +23,9 @@ import type { Section } from "@/sections";
 export type TabBarModel = {
   // The selected section ("" for none), Search's included.
   active: string;
+  // The capsule's tabs, Search's left out: Live TV is among them while the
+  // profile has a source.
+  items: readonly Section[];
   minimized: boolean;
   // Hidden by a request (a sheet, #134), not by the route: the shell doesn't
   // draw the bar at all on the player and the focus screens.
@@ -57,6 +61,9 @@ export function useTabBar(pane: HTMLElement | null, shown: boolean): TabBarModel
   if (own && own !== last) setLast(own);
   const section = own ?? last;
   const requested = useTabBarHideRequested();
+  // A new array only when the nav's, so the native bar's push stays put.
+  const navSections = useNavSections();
+  const items = useMemo(() => tabSectionsOf(navSections), [navSections]);
 
   const track = useRef<ScrollTrack>(restingScroll);
   const [minimized, setMinimized] = useState(false);
@@ -109,14 +116,8 @@ export function useTabBar(pane: HTMLElement | null, shown: boolean): TabBarModel
     [section, pathname, navigate, pane, expand],
   );
 
-  return { active: section?.to ?? "", minimized, hidden: requested, select, expand };
+  return { active: section?.to ?? "", items, minimized, hidden: requested, select, expand };
 }
-
-const items = tabSections.map((section) => ({
-  id: section.to,
-  label: section.label,
-  icon: tabIconName(section),
-}));
 
 // Drives the native Liquid Glass bar (internal/shell) from the model: state
 // on every change, one push a frame at most, and its taps back as
@@ -127,6 +128,11 @@ export function useNativeTabBar(model: TabBarModel, shown: boolean) {
 
   useEffect(() => {
     if (!native) return undefined;
+    const items = model.items.map((section) => ({
+      id: section.to,
+      label: section.label,
+      icon: tabIconName(section),
+    }));
     const frame = requestAnimationFrame(() => {
       Shell.SetTabBar({
         items,
@@ -138,7 +144,7 @@ export function useNativeTabBar(model: TabBarModel, shown: boolean) {
       }).catch(() => {});
     });
     return () => cancelAnimationFrame(frame);
-  }, [native, active, hidden, shown, minimized]);
+  }, [native, model.items, active, hidden, shown, minimized]);
 
   // The capsule's height follows the window (52 pt on an iPhone on its
   // side): --tabs-h feeds --tabs-float, the content pane's bottom inset.
@@ -168,15 +174,15 @@ export function useNativeTabBar(model: TabBarModel, shown: boolean) {
   }, [native]);
 
   // Latest handlers, so the listeners stay put across renders.
-  const handlers = useRef({ select, expand });
+  const handlers = useRef({ select, expand, items: model.items });
   useEffect(() => {
-    handlers.current = { select, expand };
+    handlers.current = { select, expand, items: model.items };
   });
   useEffect(() => {
     if (!native) return undefined;
     const off = [
       Events.On("shell:tab", (event) => {
-        const target = tabSections.find((section) => section.to === event.data.id);
+        const target = handlers.current.items.find((section) => section.to === event.data.id);
         if (target) handlers.current.select(target);
       }),
       Events.On("shell:search", () => handlers.current.select(searchSection)),

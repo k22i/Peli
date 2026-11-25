@@ -36,6 +36,7 @@ import { isAnimeCatalog } from "@/lib/browse";
 import { useUnlockedProfiles } from "@/lib/account";
 import { useBrowsableAddons } from "@/lib/home";
 import { lastWatchedQuery, libraryPreview, libraryQuery } from "@/lib/library";
+import { useLiveTVAvailable } from "@/lib/livetv";
 import {
   commandMatches,
   isPaletteShortcut,
@@ -47,7 +48,7 @@ import { currentPlatform } from "@/lib/platform";
 import { currentProfileQuery } from "@/lib/profile";
 import { searchCatalogs, searchDebounceMs, searchGroups } from "@/lib/search";
 import { useOpenTitle, type TitlePreview } from "@/lib/title";
-import { sections } from "@/sections";
+import { liveSection, sections } from "@/sections";
 import type { Profile } from "@bindings/store";
 
 // One row of the palette: what it says, and what Enter does.
@@ -152,6 +153,8 @@ function PaletteBody({ profile, done }: { profile: Profile; done: () => void }) 
   );
   const library = useQuery(libraryQuery(profile.id)).data;
   const lastWatched = useQuery(lastWatchedQuery(profile.id)).data;
+  // Live TV (ADR-0066) is a page only while the profile has a source.
+  const live = useLiveTVAvailable();
 
   const mac = currentPlatform() === "mac";
   const go = (run: () => void) => () => {
@@ -170,6 +173,18 @@ function PaletteBody({ profile, done }: { profile: Profile; done: () => void }) 
         shortcut: `${mac ? "⌘" : "Ctrl+"}${number}`,
         run: go(() => void navigate({ to: section.to })),
       })),
+    // Live TV is no ⌘ number: it joins the list after the six.
+    ...(live
+      ? [
+          {
+            id: "go:/live",
+            label: "Live TV",
+            keywords: "iptv channels guide tv",
+            icon: liveSection.icon,
+            run: go(() => void navigate({ to: "/live" })),
+          },
+        ]
+      : []),
     {
       id: "go:upcoming",
       label: "Upcoming",
