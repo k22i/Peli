@@ -7,6 +7,7 @@ import {
   clockLabel,
   favouritesGroup,
   groupKey,
+  groupKeys,
   groupLabel,
   groupsOf,
   guideRange,
@@ -61,6 +62,19 @@ const shape = (blocks: GuideBlock[]) =>
     block.clippedEnd,
   ]);
 
+describe("groupKeys", () => {
+  it("splits the categories a playlist packs into one group-title", () => {
+    expect(groupKeys(channel({ id: "a", name: "A", group: " News; Sports ;;News" }))).toEqual([
+      "News",
+      "Sports",
+    ]);
+  });
+
+  it("is Other for a channel with no group", () => {
+    expect(groupKeys(channel({ id: "a", name: "A" }))).toEqual([otherGroup]);
+  });
+});
+
 describe("groupKey", () => {
   it("treats a blank group as Other", () => {
     expect(groupKey(channel({ id: "a", name: "A" }))).toBe(otherGroup);
@@ -81,6 +95,15 @@ describe("groupsOf", () => {
       channel({ id: "d", name: "D", group: "News" }),
     ]);
     expect(groups).toEqual(["News", "Sport", otherGroup]);
+  });
+
+  it("keeps a channel's several categories as groups of their own", () => {
+    expect(
+      groupsOf([
+        channel({ id: "a", name: "A", group: "A;B" }),
+        channel({ id: "b", name: "B", group: "B;C" }),
+      ]),
+    ).toEqual(["A", "B", "C"]);
   });
 
   it("leaves out the favourites, which the page keeps itself", () => {
@@ -122,6 +145,14 @@ describe("channelsIn", () => {
 
   it("keeps one group's channels in playlist order", () => {
     expect(names(channelsIn(channels, "Sport", [], ""))).toEqual(["Sport"]);
+  });
+
+  it("shows a channel under each of its categories", () => {
+    const packed = [
+      channel({ id: "a", name: "Cartoons", group: "A;B" }),
+      channel({ id: "b", name: "News", group: "B;C" }),
+    ];
+    expect(names(channelsIn(packed, "B", [], ""))).toEqual(["Cartoons", "News"]);
   });
 
   it("puts the favourites in the profile's order and skips ids it no longer has", () => {
