@@ -267,9 +267,10 @@ describe("live page", () => {
       expect(screen.queryByRole("button", { name: "News One" })).not.toBeInTheDocument(),
     );
     expect(screen.getByRole("button", { name: "Film One" })).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: "Remove Film One from favourites" }),
-    ).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "Remove Film One from favourites" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
 
     // Back to every channel to star another.
     await user.click(within(await rail()).getByRole("button", { name: "All" }));

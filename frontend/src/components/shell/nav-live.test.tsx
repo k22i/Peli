@@ -76,9 +76,9 @@ function source(changes: Partial<Source> = {}): Source {
 
 // What Go answers Sources with: the setup's default is none (src/test/setup.ts).
 const answers = (sources: Source[]) =>
-  vi.mocked(LiveTV.Sources).mockImplementation(() =>
-    CancellablePromise.resolve<Source[] | null>(sources),
-  );
+  vi
+    .mocked(LiveTV.Sources)
+    .mockImplementation(() => CancellablePromise.resolve<Source[] | null>(sources));
 
 const nav = () => screen.getByRole("navigation", { name: "Main" });
 const labels = () =>

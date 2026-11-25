@@ -94,7 +94,12 @@ const programme = (changes: Partial<Programme> = {}): Programme => ({
 
 // On now, or on over the half hour either side of it.
 const news = programme();
-const quiz = programme({ channelId: itv.id, title: "The Quiz", start: at(20, 30), stop: at(21, 30) });
+const quiz = programme({
+  channelId: itv.id,
+  title: "The Quiz",
+  start: at(20, 30),
+  stop: at(21, 30),
+});
 const film = programme({ channelId: four.id, title: "A Film", start: at(19, 0), stop: at(21, 0) });
 // Still to come, with everything the details dialog draws.
 const later = programme({
@@ -180,9 +185,7 @@ describe("GuideGrid", () => {
     expect(await screen.findByText("BBC One")).toBeInTheDocument();
     expect(screen.getByText("ITV")).toBeInTheDocument();
     expect(screen.getByText("Channel 4")).toBeInTheDocument();
-    expect(
-      await screen.findByRole("button", { name: blockName(news, true) }),
-    ).toBeInTheDocument();
+    expect(await screen.findByRole("button", { name: blockName(news, true) })).toBeInTheDocument();
   });
 
   it("plays the channel from a block that's on now", async () => {
@@ -195,9 +198,7 @@ describe("GuideGrid", () => {
       size: 0,
     };
     serving([guideOf(bbc, [news])]);
-    vi.mocked(LiveTV.Stream).mockImplementation(() =>
-      CancellablePromise.resolve<Source>(source),
-    );
+    vi.mocked(LiveTV.Stream).mockImplementation(() => CancellablePromise.resolve<Source>(source));
     renderGuide([bbc]);
 
     const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
@@ -233,12 +234,7 @@ describe("GuideGrid", () => {
     renderGuide([bbc, itv, four]);
 
     await waitFor(() =>
-      expect(LiveTV.Guide).toHaveBeenCalledWith(
-        1,
-        [bbc.id, itv.id, four.id],
-        range.from,
-        range.to,
-      ),
+      expect(LiveTV.Guide).toHaveBeenCalledWith(1, [bbc.id, itv.id, four.id], range.from, range.to),
     );
   });
 
