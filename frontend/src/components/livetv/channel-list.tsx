@@ -160,9 +160,7 @@ function ChannelRow({
             // The title and how far through it is share a line: three lines
             // in all fit the row's 76 pt.
             <span className="flex items-center gap-2">
-              <span className="min-w-0 truncate text-small text-muted-foreground">
-                {now.title}
-              </span>
+              <span className="min-w-0 truncate text-small text-muted-foreground">{now.title}</span>
               <progress
                 max={1}
                 value={progress}
