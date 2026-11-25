@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { CancellablePromise } from "@wailsio/runtime";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
+import type { State } from "@bindings/player";
 import type { Source as Playable } from "@bindings/streams";
 import type { Profile } from "@bindings/store";
 import { LiveTV, type Channel, type NowNext, type Programme, type Source } from "@/lib/livetv";
@@ -60,12 +61,23 @@ vi.mock("@bindings/syncer", async (importOriginal) => ({
 }));
 
 // Playing a channel loads the stream with no Watching: nothing here needs
-// mpv, only the calls lib/livetv makes on its way to the player.
+// mpv, only the calls lib/livetv and the live player make. A test that plays
+// a channel opens /player, which renders the live player, and it asks for
+// more than Load.
 vi.mock("@bindings/player", () => ({
   Service: {
-    Load: vi.fn(() => Promise.resolve()),
-    Snapshot: vi.fn(() => Promise.resolve(idleState)),
-    Stop: vi.fn(() => Promise.resolve()),
+    Load: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    Snapshot: vi.fn<() => Promise<State>>(() => Promise.resolve(idleState)),
+    Stop: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SetNowPlaying: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SetPaused: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SetMuted: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SetVolume: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SetFullscreen: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    Seek: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SeekBy: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    Scrub: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    SystemCaptions: vi.fn<() => Promise<boolean>>(() => Promise.resolve(false)),
   },
 }));
 
@@ -155,8 +167,8 @@ const playable: Playable = {
   size: 0,
 };
 
-// What Go answers for one test. Stream is left refusing, as a channel nobody
-// added would.
+// What Go answers for one test. A channel's stream refuses unless the test
+// hands one in, as a channel nobody added would.
 function livetv({
   sources = [],
   list = [],
@@ -182,19 +194,26 @@ function livetv({
   vi.mocked(LiveTV.Favourites).mockImplementation(() =>
     CancellablePromise.resolve<string[] | null>(favourites),
   );
-  if (stream) {
-    vi.mocked(LiveTV.Stream).mockImplementation(() => CancellablePromise.resolve(stream));
-  }
+  // A channel nobody added refuses, as Go does; every other test's answer
+  // would otherwise play a stream that doesn't exist.
+  vi.mocked(LiveTV.Stream).mockImplementation(() =>
+    stream
+      ? CancellablePromise.resolve<Playable>(stream)
+      : CancellablePromise.reject<Playable>(new Error("livetv: not_found")),
+  );
 }
 
 const rail = () => screen.findByRole("group", { name: "Group" });
 
 beforeEach(() => {
   backend.kids = false;
+  // Nothing of any test's answers left behind: no sources, no channels, no
+  // guide, no favourites, and Stream refusing.
+  livetv({});
   // Offline: nothing on the page needs the network.
   vi.stubGlobal(
     "fetch",
-    vi.fn(() => Promise.reject(new TypeError("offline"))),
+    vi.fn<() => Promise<never>>(() => Promise.reject(new TypeError("offline"))),
   );
 });
 
@@ -215,8 +234,11 @@ describe("live page", () => {
         .map((chip) => chip.textContent),
     ).toEqual(["All", "News", "Movies", "Other"]);
 
+    // The rows mount once the list has measured its scroller: wait for the
+    // first, then read them all.
+    expect(await screen.findByRole("button", { name: "News One" })).toBeInTheDocument();
     for (const name of ["News One", "News Two", "Film One", "Film Two", "Local Access"]) {
-      expect(await screen.findByRole("button", { name })).toBeInTheDocument();
+      expect(screen.getByRole("button", { name })).toBeInTheDocument();
     }
 
     expect(screen.getByText("Midnight News")).toBeInTheDocument();
@@ -230,7 +252,7 @@ describe("live page", () => {
     const { router } = await renderApp("/live");
     const user = userEvent.setup();
 
-    await user.click(within(await rail()).getByRole("button", { name: "News" }));
+    await user.click(within(await rail()).findByRole("button", { name: "News" }));
 
     await waitFor(() => expect(router.state.location.search).toEqual({ group: "News" }));
     expect(screen.getByRole("button", { name: "News One" })).toBeInTheDocument();
@@ -262,7 +284,7 @@ describe("live page", () => {
     await renderApp("/live");
     const user = userEvent.setup();
 
-    await user.click(within(await rail()).getByRole("button", { name: "Favourites" }));
+    await user.click(within(await rail()).findByRole("button", { name: "Favourites" }));
     await waitFor(() =>
       expect(screen.queryByRole("button", { name: "News One" })).not.toBeInTheDocument(),
     );
