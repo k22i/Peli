@@ -232,11 +232,22 @@ export function usePlayChannel() {
 export const favouritesGroup = ":favourites";
 export const otherGroup = ":other";
 
-// A channel's group value: its group, trimmed, or otherGroup. Playlists pad
-// their titles with spaces, and a blank group is a group of its own.
+// The groups a channel belongs to. iptv-org packs several categories into one
+// group-title, separated by semicolons ("Animation;Kids;Religious"), so each
+// part is a chip of its own; a channel with no group is in otherGroup alone.
+export function groupKeys(channel: Channel): string[] {
+  const keys: string[] = [];
+  for (const part of channel.group.split(";")) {
+    const key = part.trim();
+    if (key !== "" && !keys.includes(key)) keys.push(key);
+  }
+  return keys.length > 0 ? keys : [otherGroup];
+}
+
+// A channel's group value: the first of its groupKeys. Playlists pad their
+// titles with spaces; a blank group is a group of its own.
 export function groupKey(channel: Channel): string {
-  const group = channel.group.trim();
-  return group === "" ? otherGroup : group;
+  return groupKeys(channel)[0] ?? otherGroup;
 }
 
 // The groups of these channels, each once, in the order they first appear,
@@ -246,8 +257,9 @@ export function groupKey(channel: Channel): string {
 export function groupsOf(channels: readonly Channel[]): string[] {
   const groups: string[] = [];
   for (const channel of channels) {
-    const group = groupKey(channel);
-    if (group !== favouritesGroup && !groups.includes(group)) groups.push(group);
+    for (const group of groupKeys(channel)) {
+      if (group !== favouritesGroup && !groups.includes(group)) groups.push(group);
+    }
   }
   const other = groups.indexOf(otherGroup);
   if (other !== -1) {
@@ -296,7 +308,8 @@ export function channelsIn(
       if (channel) chosen.push(channel);
     }
   } else {
-    chosen = channels.filter((channel) => groupKey(channel) === group);
+    // A channel shows under each of its categories, not just the first.
+    chosen = channels.filter((channel) => groupKeys(channel).includes(group));
   }
   const wanted = filter.trim();
   if (wanted === "") return chosen;
