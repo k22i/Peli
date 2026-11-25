@@ -866,7 +866,7 @@ func TestErrorsNameNoURL(t *testing.T) {
 		func() error { _, err := f.s.Channels(f.profile.ID, "nope"); return err }(),
 		func() error { _, err := f.s.Stream(f.profile.ID, channels[0].ID+"extra"); return err }(),
 		func() error { _, err := f.s.Guide(f.profile.ID, nil, 2, 1); return err }(),
-		func() error { _, err := f.s.RenameSource(f.profile.ID, src.ID, "  "); return err }(),
+		f.s.RenameSource(f.profile.ID, src.ID, "  "),
 	}
 	for i, err := range checked {
 		if err == nil {
