@@ -11,7 +11,7 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import { CancellablePromise } from "@wailsio/runtime";
-import { Service as Player } from "@bindings/player";
+import { Service as Player, type State } from "@bindings/player";
 import type { Source } from "@bindings/streams";
 import { GuideGrid } from "@/components/livetv/guide-grid";
 import { ToastProvider } from "@/components/ui/toast";
@@ -23,6 +23,7 @@ import {
   type ChannelGuide,
   type Programme,
 } from "@/lib/livetv";
+import { idleState } from "@/lib/player";
 import { createQueryClient } from "@/lib/query";
 
 // The guide view of /live (W6): the time axis, a row for each channel with its
@@ -53,9 +54,9 @@ vi.mock("@bindings/account", () => ({
 // another test's work.
 vi.mock("@bindings/player", () => ({
   Service: {
-    Load: vi.fn(() => Promise.resolve()),
-    Snapshot: vi.fn(() => Promise.resolve(null)),
-    Stop: vi.fn(() => Promise.resolve()),
+    Load: vi.fn<() => Promise<void>>(() => Promise.resolve()),
+    Snapshot: vi.fn<() => Promise<State>>(() => Promise.resolve(idleState)),
+    Stop: vi.fn<() => Promise<void>>(() => Promise.resolve()),
   },
 }));
 
