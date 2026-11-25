@@ -228,39 +228,93 @@ export function usePlayChannel() {
 export const favouritesGroup = ":favourites";
 export const otherGroup = ":other";
 
-// A channel's group value: its group, trimmed, or otherGroup.
+// A channel's group value: its group, trimmed, or otherGroup. Playlists pad
+// their titles with spaces, and a blank group is a group of its own.
 export function groupKey(channel: Channel): string {
-  return channel.group;
+  const group = channel.group.trim();
+  return group === "" ? otherGroup : group;
 }
 
 // The groups of these channels, each once, in the order they first appear,
-// with otherGroup (if any) last.
+// with otherGroup (if any) last: "Other" is a leftover, not a playlist's
+// group, so it reads better after the named ones. Favourites are a chip of
+// the page's own, not a group the playlist gave.
 export function groupsOf(channels: readonly Channel[]): string[] {
-  return channels.length > 0 ? [] : [];
+  const groups: string[] = [];
+  for (const channel of channels) {
+    const group = groupKey(channel);
+    if (group !== favouritesGroup && !groups.includes(group)) groups.push(group);
+  }
+  const other = groups.indexOf(otherGroup);
+  if (other !== -1) {
+    groups.splice(other, 1);
+    groups.push(otherGroup);
+  }
+  return groups;
 }
 
-// A group value as a chip names it: "Favourites", "Other", or the group.
+// A group value as a chip names it: "Favourites", "Other" (or "All" for no
+// group at all), or else the group as the playlist wrote it.
 export function groupLabel(group: string): string {
+  if (group === favouritesGroup) return "Favourites";
+  if (group === otherGroup) return "Other";
+  if (group === "") return "All";
   return group;
 }
 
-// The channels a group shows, filtered by the field's text.
+// Lowercase without accents, so the field finds "Café TV" for "cafe".
+const fold = (text: string) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Mn}/gu, "");
+
+// The channels a group shows, filtered by the field's text: by name, or by
+// the channel's number. Favourites come in the profile's own order, not the
+// playlist's, and an id the playlist no longer has is skipped.
 export function channelsIn(
   channels: readonly Channel[],
   group: string | undefined,
   favourites: readonly string[],
   filter: string,
 ): Channel[] {
-  return favourites.length > 0 && group !== filter ? [...channels] : [...channels];
+  let chosen: Channel[];
+  if (group === undefined || group === "") {
+    chosen = [...channels];
+  } else if (group === favouritesGroup) {
+    // The profile's favourites are a list of ids, so the channels are looked
+    // up by id rather than walked in playlist order.
+    const byId = new Map<string, Channel>();
+    for (const channel of channels) byId.set(channel.id, channel);
+    chosen = [];
+    for (const id of favourites) {
+      const channel = byId.get(id);
+      if (channel) chosen.push(channel);
+    }
+  } else {
+    chosen = channels.filter((channel) => groupKey(channel) === group);
+  }
+  const wanted = filter.trim();
+  if (wanted === "") return chosen;
+  const needle = fold(wanted);
+  return chosen.filter(
+    (channel) => fold(channel.name).includes(needle) || String(channel.number) === wanted,
+  );
 }
 
-// The channel step places from currentId in list, wrapping round.
+// The channel step places from currentId in list, wrapping round both ends.
+// A list without currentId steps in from the end it comes from, which is
+// what channel up and down do after a jump from a search or a guide.
 export function neighbourChannel(
   channels: readonly Channel[],
   currentId: string,
   step: 1 | -1,
 ): Channel | undefined {
-  return step > 0 ? channels.find((channel) => channel.id !== currentId) : undefined;
+  if (channels.length === 0) return undefined;
+  const index = channels.findIndex((channel) => channel.id === currentId);
+  if (index === -1) return step > 0 ? channels.at(0) : channels.at(-1);
+  if (channels.length === 1) return undefined;
+  return channels.at((index + step + channels.length) % channels.length);
 }
 
 // The entry for a channel in a NowNext answer.
@@ -278,7 +332,9 @@ export function isOnNow(programme: Programme, now: number): boolean {
 
 // How far through a programme now is, 0–1.
 export function progressOf(programme: Programme, now: number): number {
-  return programme.stop > now ? 0 : 1;
+  const length = programme.stop - programme.start;
+  if (length <= 0) return 0;
+  return Math.min(1, Math.max(0, (now - programme.start) / length));
 }
 
 // --- Guide maths (W4) ---------------------------------------------------------
@@ -287,19 +343,24 @@ export function progressOf(programme: Programme, now: number): number {
 export const slotMs = 30 * 60_000;
 
 // The span the guide shows: from the half hour before the current one to 36
-// hours after the current one starts (Go keeps 2 h back to 36 h ahead).
+// hours after the current one starts (Go keeps 2 h back to 36 h ahead). The
+// slot before is there so a programme that began earlier has somewhere to
+// start, and the axis never moves while it is read.
 export function guideRange(now: number): { from: number; to: number } {
-  return { from: now, to: now };
+  const slot = Math.floor(now / slotMs) * slotMs;
+  return { from: slot - slotMs, to: slot + 36 * 60 * 60_000 };
 }
 
-// The start of each half hour in [from, to).
+// The start of each half hour in [from, to), ascending: the guide's columns.
 export function slotsOf(from: number, to: number): number[] {
-  return from < to ? [] : [];
+  const slots: number[] = [];
+  for (let slot = Math.ceil(from / slotMs) * slotMs; slot < to; slot += slotMs) slots.push(slot);
+  return slots;
 }
 
 // Where a time sits on the guide's axis, in px.
 export function offsetOf(time: number, from: number, pxPerMinute: number): number {
-  return (time - from) * pxPerMinute;
+  return ((time - from) / 60_000) * pxPerMinute;
 }
 
 // A programme as the guide draws it, clipped to the range.
@@ -311,19 +372,56 @@ export type GuideBlock = {
   clippedEnd: boolean;
 };
 
-// The blocks a channel's row draws, in order.
+// The blocks a channel's row draws, in start order. A programme that only
+// partly overlaps the range keeps the visible part and says which end was
+// cut. Guides do overlap themselves now and then, so the earlier of two
+// overlapping programmes is shortened to end where the later one starts.
 export function blocksFor(
   programmes: readonly Programme[],
   from: number,
   to: number,
   pxPerMinute: number,
 ): GuideBlock[] {
-  return programmes.length > 0 && from < to && pxPerMinute > 0 ? [] : [];
+  const blocks: GuideBlock[] = [];
+  const overlapping = programmes
+    .filter((programme) => programme.stop > from && programme.start < to)
+    .sort((a, b) => a.start - b.start);
+  for (const programme of overlapping) {
+    const left = offsetOf(Math.max(programme.start, from), from, pxPerMinute);
+    const width = offsetOf(Math.min(programme.stop, to), from, pxPerMinute) - left;
+    if (width <= 0) continue;
+    let previous = blocks.at(-1);
+    while (previous && previous.left + previous.width > left) {
+      previous.width = left - previous.left;
+      if (previous.width > 0) break;
+      // The later one covers it whole.
+      blocks.pop();
+      previous = blocks.at(-1);
+    }
+    blocks.push({
+      programme,
+      left,
+      width,
+      clippedStart: programme.start < from,
+      clippedEnd: programme.stop > to,
+    });
+  }
+  return blocks;
 }
+
+// Building a formatter is slow and the axis asks for a label per slot, so
+// each locale's is made once. "" is the viewer's own locale.
+const clockFormats = new Map<string, Intl.DateTimeFormat>();
 
 // A time as the guide's axis and the rows name it ("21:30", "9:30 PM").
 export function clockLabel(ms: number, locale?: string): string {
-  return new Date(ms).toLocaleTimeString(locale);
+  const key = locale ?? "";
+  let format = clockFormats.get(key);
+  if (!format) {
+    format = new Intl.DateTimeFormat(locale, { hour: "numeric", minute: "2-digit" });
+    clockFormats.set(key, format);
+  }
+  return format.format(ms);
 }
 
 // --- The page's address -------------------------------------------------------
