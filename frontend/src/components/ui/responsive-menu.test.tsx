@@ -287,6 +287,17 @@ describe("ResponsiveSelect", () => {
     await vi.waitFor(() => expect(trigger).toHaveTextContent("Name"));
   });
 
+  it("is one rounded surface: the popup, with the list straight inside it", async () => {
+    render(<Sort />);
+    await userEvent.click(screen.getByRole("combobox", { name: "Sort" }));
+    const list = await screen.findByRole("listbox");
+    const popup = document.querySelector<HTMLElement>('[data-slot="select-popup"]')!;
+    // A second box inside the popup drew square corners around the rounded
+    // one; the popup is the whole surface, so its radius is the radius seen.
+    expect(popup).toHaveClass("rounded-2xl");
+    expect(list.parentElement).toBe(popup);
+  });
+
   it("is a sheet of rows with the chosen one checked on the iPhone", async () => {
     compact();
     render(<Sort />);

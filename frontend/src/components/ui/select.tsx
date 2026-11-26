@@ -97,6 +97,10 @@ export function SelectValue({
   );
 }
 
+// The chosen item is not aligned over the trigger: the pop is a translucent
+// material, so the trigger's own pill and chevron show through it and the
+// popup reads as two boxes, a rounded pill and a list under it. Opening below
+// the trigger keeps one box, the way a menu opens.
 export function SelectPopup({
   className,
   children,
@@ -104,7 +108,7 @@ export function SelectPopup({
   sideOffset = 4,
   align = "start",
   alignOffset = 0,
-  alignItemWithTrigger = true,
+  alignItemWithTrigger = false,
   anchor,
   portalProps,
   ...props
@@ -129,27 +133,28 @@ export function SelectPopup({
         side={side}
         sideOffset={sideOffset}
       >
+        {/* One surface, like a menu's: the popup itself is the rounded box,
+            with the list straight inside it. A second rounded box in there
+            left its square corners showing around the popup's edges. */}
         <SelectPrimitive.Popup
-          className="origin-(--transform-origin) text-foreground outline-none"
+          className="relative min-w-(--anchor-width) origin-(--transform-origin) overflow-hidden rounded-2xl border bg-popover not-dark:bg-clip-padding text-foreground shadow-lg/5 outline-none before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-2xl)-1px)] before:shadow-[0_1px_--theme(--color-black/4%)] dark:before:shadow-[0_-1px_--theme(--color-white/6%)]"
           data-slot="select-popup"
           {...props}
         >
           <SelectPrimitive.ScrollUpArrow
-            className="top-0 z-50 flex h-6 w-full cursor-default items-center justify-center before:pointer-events-none before:absolute before:inset-x-px before:top-px before:h-[200%] before:rounded-t-[calc(var(--radius-2xl)-1px)] before:bg-linear-to-b before:from-50% before:from-popover"
+            className="top-0 z-50 flex h-6 w-full cursor-default items-center justify-center before:pointer-events-none before:absolute before:inset-x-px before:top-px before:h-[200%] before:rounded-t-[calc(var(--radius-2xl)-1px)] before:bg-linear-to-b before:from-50% before:from-(--pop)"
             data-slot="select-scroll-up-arrow"
           >
             <ChevronUpIcon className="relative size-4.5 sm:size-4" />
           </SelectPrimitive.ScrollUpArrow>
-          <div className="material-pop relative h-full min-w-(--anchor-width) rounded-2xl border not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-2xl)-1px)] before:shadow-[0_1px_--theme(--color-black/4%)] dark:before:shadow-[0_-1px_--theme(--color-white/6%)]">
-            <SelectPrimitive.List
-              className={cn("max-h-(--available-height) overflow-y-auto p-1.5", className)}
-              data-slot="select-list"
-            >
-              {children}
-            </SelectPrimitive.List>
-          </div>
+          <SelectPrimitive.List
+            className={cn("max-h-(--available-height) overflow-y-auto p-1.5", className)}
+            data-slot="select-list"
+          >
+            {children}
+          </SelectPrimitive.List>
           <SelectPrimitive.ScrollDownArrow
-            className="bottom-0 z-50 flex h-6 w-full cursor-default items-center justify-center before:pointer-events-none before:absolute before:inset-x-px before:bottom-px before:h-[200%] before:rounded-b-[calc(var(--radius-2xl)-1px)] before:bg-linear-to-t before:from-50% before:from-popover"
+            className="bottom-0 z-50 flex h-6 w-full cursor-default items-center justify-center before:pointer-events-none before:absolute before:inset-x-px before:bottom-px before:h-[200%] before:rounded-b-[calc(var(--radius-2xl)-1px)] before:bg-linear-to-t before:from-50% before:from-(--pop)"
             data-slot="select-scroll-down-arrow"
           >
             <ChevronDownIcon className="relative size-4.5 sm:size-4" />
