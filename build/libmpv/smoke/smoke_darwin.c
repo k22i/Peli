@@ -3,11 +3,17 @@
 // render API (what internal/player's macOS host uses) in an offscreen CGL
 // context, and fails unless a decoded frame reaches the framebuffer.
 //
-// What it is for is the build, not the host: hosted Macs have no GPU (Apple
-// Software Renderer, and VideoToolbox that fails or returns black), so a file
-// that doesn't show with hardware decoding is played again with `hwdec=no`
-// before it counts as a failure. Software decoding is the bottom line — mpv
-// always has it, and this build's configure enables the decoders by hand.
+// What it is for is the build, not the host, and hosted Macs are short of
+// both a GPU and a working VideoToolbox. Two allowances, both reported in the
+// log rather than made quietly:
+//
+//   - a file that doesn't show with hardware decoding is played again with
+//     `hwdec=no`. Software decoding is the bottom line: mpv always has it, and
+//     this build's configure enables the decoders by hand.
+//   - on a software renderer (Apple's, as hosted Macs get) no video reaches
+//     the framebuffer — it draws the OSD and subtitles, nothing for a planar
+//     yuv frame — so there the run asks only that mpv decodes each file and
+//     asks for it to be rendered. The pixel check still applies to a real GPU.
 //
 //   smoke <file>...
 //
@@ -17,6 +23,11 @@
 // run on a host whose hardware decoding works:
 //
 //   SMOKE_HWDEC=d3d11va ...  # not a macOS API: the first pass fails
+//
+// SMOKE_SOFTWARE_GL forces Apple's software renderer, which is how to see what
+// a hosted Mac does on one with a GPU:
+//
+//   SMOKE_SOFTWARE_GL=1 build/libmpv/smoke.sh build/libmpv/.work/libmpv-macos-arm64
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/gl3.h>
 #include <dlfcn.h>
@@ -88,10 +99,11 @@ static int rendered(GLuint fbo) {
 }
 
 // play renders path until a frame that isn't black reaches the framebuffer, and
-// returns whether one did. hwdec picks this file's decoding: NULL keeps what
-// the player set.
+// returns whether one did. hwdec picks this file's decoding: NULL keeps what the
+// player set. Without pixels, which is all a software renderer can be held to,
+// mpv asking for a frame is enough.
 static int play(mpv_handle *mpv, mpv_render_context *rc, GLuint fbo, const char *path,
-                const char *hwdec) {
+                const char *hwdec, int pixels) {
 	// The option is read when the file loads, so setting it first applies here.
 	if (hwdec)
 		check(mpv_set_property_string(mpv, "hwdec", hwdec), "hwdec");
@@ -128,7 +140,7 @@ static int play(mpv_handle *mpv, mpv_render_context *rc, GLuint fbo, const char 
 		check(mpv_render_context_render(rc, params), "render");
 		glFinish();
 		frames++;
-		shown = rendered(fbo);
+		shown = pixels ? rendered(fbo) : 1;
 	}
 	char *codec = mpv_get_property_string(mpv, "video-format");
 	char *current = mpv_get_property_string(mpv, "hwdec-current");
@@ -147,18 +159,33 @@ int main(int argc, char **argv) {
 		return 2;
 	}
 
-	// Any renderer, software included: CI's Macs have no GPU.
-	CGLPixelFormatAttribute attrs[] = {
+	// Any renderer, software included: hosted Macs have no GPU.
+	CGLPixelFormatAttribute anyRenderer[] = {
 		kCGLPFAOpenGLProfile, (CGLPixelFormatAttribute)kCGLOGLPVersion_3_2_Core,
 		kCGLPFAColorSize, 24, kCGLPFAAllowOfflineRenderers, 0,
+	};
+	// Apple's software renderer by name, which is what hosted Macs get:
+	// SMOKE_SOFTWARE_GL asks for it, so a Mac with a GPU can see that case.
+	CGLPixelFormatAttribute softwareRenderer[] = {
+		kCGLPFAOpenGLProfile, (CGLPixelFormatAttribute)kCGLOGLPVersion_3_2_Core,
+		kCGLPFAColorSize, 24, kCGLPFAAllowOfflineRenderers,
+		kCGLPFARendererID, (CGLPixelFormatAttribute)kCGLRendererGenericFloatID, 0,
 	};
 	CGLPixelFormatObj pix;
 	GLint npix;
 	CGLContextObj gl;
-	if (CGLChoosePixelFormat(attrs, &pix, &npix) || !pix || CGLCreateContext(pix, NULL, &gl))
+	if (CGLChoosePixelFormat(getenv("SMOKE_SOFTWARE_GL") ? softwareRenderer : anyRenderer, &pix,
+	                         &npix) ||
+	    !pix || CGLCreateContext(pix, NULL, &gl))
 		return fprintf(stderr, "FAIL: no OpenGL context\n"), 1;
 	CGLSetCurrentContext(gl);
-	printf("OpenGL: %s, %s\n", glGetString(GL_RENDERER), glGetString(GL_VERSION));
+	const char *renderer = (const char *)glGetString(GL_RENDERER);
+	printf("OpenGL: %s, %s\n", renderer, glGetString(GL_VERSION));
+	// A software renderer draws no video (see the top of this file), so the
+	// pixel check below can't run on one.
+	int software = strstr(renderer, "Software") != NULL;
+	if (software)
+		printf("software renderer: checking that each file decodes and renders, not the pixels\n");
 
 	GLuint fbo, tex;
 	glGenTextures(1, &tex);
@@ -225,18 +252,20 @@ int main(int argc, char **argv) {
 	int soft = 0;
 
 	for (int i = 1; i < argc; i++) {
+		int shown = play(mpv, rc, fbo, argv[i], soft ? "no" : hardware, !software);
 		// Once a file needed software decoding, the rest do too: the host
 		// can't hardware decode, and replaying each one is 20 seconds of
-		// black frames apiece.
-		int shown = play(mpv, rc, fbo, argv[i], soft ? "no" : hardware);
-		if (!shown && !soft) {
+		// black frames apiece. A software renderer shows nothing either way.
+		if (!shown && !soft && !software) {
 			soft = 1;
-			shown = play(mpv, rc, fbo, argv[i], "no");
+			shown = play(mpv, rc, fbo, argv[i], "no", 1);
 			if (shown)
 				printf("%s: this host could not hardware decode it; software decoding renders\n",
 				       argv[i]);
 		}
-		if (!shown)
+		if (!shown && software)
+			fail(argv[i], "mpv never decoded a frame to render");
+		else if (!shown)
 			fail(argv[i], "no frame reached the framebuffer, in hardware or software");
 	}
 
