@@ -81,7 +81,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
 import { loopArgs, loopOf, nextLoop, sameLoop, type Loop } from "@/lib/ab-loop";
-import { streamsQuery, type Stream } from "@/lib/addon-protocol";
+import { streamsQuery } from "@/lib/addon-protocol";
 import { chapterAt, chapterName, nextChapter, previousChapter } from "@/lib/chapters";
 import { haptic } from "@/lib/haptics";
 import { rememberSource } from "@/lib/chosen-source";
@@ -98,7 +98,6 @@ import {
   mediaLabel,
   noticeText,
   Party,
-  type PartyInfo,
   partyMedia,
   sharedStream,
   useParty,
@@ -140,10 +139,7 @@ import { useSeekPreviews } from "@/lib/previews";
 import { useCurrentProfile } from "@/lib/profile";
 import type { Candidate } from "@/lib/ranking";
 import { attempts, PlayError, resolvePick, sameStream, type Attempt } from "@/lib/resolve";
-import { isPartyGuest, usePartyAutoPick, type PartyPicked } from "@/lib/party-pick";
-import type { Watching } from "@bindings/playback";
 import type { Source } from "@bindings/streams";
-import type { Source as PartySource } from "@bindings/party";
 import {
   deviceSettingsQuery,
   profileSettingsQuery,
@@ -533,8 +529,6 @@ function PlayerFile({
   const [switcherOpen, setSwitcherOpen] = useState(false);
   // The stream being opened from the switcher, or why it couldn't be.
   const [switchStatus, setSwitchStatus] = useState<{ text: string; failed?: string }>();
-  // The host's new stream this guest follows (ADR-0051), until it plays.
-  const [following, setFollowing] = useState<PartySource>();
   const pickAbort = useRef<AbortController>(null);
   useEffect(() => () => pickAbort.current?.abort(), []);
   const [idle, wake, hideControls] = useIdle(idleAfter);
@@ -687,10 +681,6 @@ function PlayerFile({
     "--party-dock-w": dockShown ? partyDockWidth : "0px",
   };
   const media = watching ? partyMedia(watching, heading, meta, playing?.stream) : undefined;
-  // A guest doesn't choose a stream (ADR-0051): the party picks one from the
-  // host's for them, so the switcher, S and the failure overlay's way out are
-  // the host's alone. The host keeps them as they were.
-  const guest = isPartyGuest(party, media);
   const shared =
     playing?.source && !torrent ? sharedStream(playing.source, playing.stream) : undefined;
   const mediaKey = media
@@ -717,11 +707,6 @@ function PlayerFile({
   usePartyNotices((said) => {
     // The party moving on is the prompt's to offer.
     if (said.kind === "media") return;
-    // A guest follows the host onto another stream (the prompt shows it).
-    if (said.kind === "source") {
-      if (said.media?.source && isPartyGuest(party, media)) setFollowing(said.media.source);
-      return;
-    }
     const text = noticeText(said);
     if (text) setPartyNotice(text);
   });
@@ -733,18 +718,7 @@ function PlayerFile({
     next !== undefined &&
     partyElsewhere.id === meta.id &&
     partyElsewhere.videoId === next.id;
-  // The party's next episode, when this device is its guest: nothing here
-  // gets that episode's streams ready, since a guest never picks (ADR-0051).
-  // Playing it (Play it, Play now, the end of the file) opens the party's
-  // picker, which picks from the host's stream and starts where the party is.
-  // The guest test is the party's own (`!party.isHost`), not `guest` above:
-  // that one asks whether the party is on the file playing, and here it is on
-  // the next one instead.
-  const partyNext = partyIsNext && !party?.isHost ? partyElsewhere : undefined;
-  const startNext = () => {
-    if (partyNext) return watchWithParty(partyNext, true);
-    setStarting(true);
-  };
+  const startNext = () => setStarting(true);
   // While the next episode opens, the file ending or failing is expected.
   const switching = useRef(false);
   const switchAbort = useRef<AbortController>(null);
@@ -1020,32 +994,6 @@ function PlayerFile({
     });
     return true;
   };
-  // The host switched streams (ADR-0051): the chooser's pick plays from
-  // where this guest is, not the party. Only the latest pick loads, and
-  // the guest's remembered source stays theirs.
-  const followAbort = useRef<AbortController>(null);
-  useEffect(() => () => followAbort.current?.abort(), []);
-  const followPick = async (picked: PartyPicked, onFail: () => void) => {
-    if (picked.same || !picked.source) return setFollowing(undefined);
-    followAbort.current?.abort();
-    const controller = new AbortController();
-    followAbort.current = controller;
-    try {
-      const at = error ? stoppedAt.current : (await Player.Snapshot()).position;
-      if (controller.signal.aborted) return;
-      const loaded = await loadSwitch({
-        picked: picked.source,
-        attempt: picked.attempt,
-        addon: "",
-        at,
-      });
-      if (controller.signal.aborted) return;
-      if (loaded) setFollowing(undefined);
-      else onFail();
-    } catch {
-      if (!controller.signal.aborted) onFail();
-    }
-  };
   // Another stream of what's playing (#68): resolved as the picker resolves
   // a pick, loaded into this session from where this one is (or stopped),
   // with the same progress kept, in the languages playing now. This one
@@ -1144,24 +1092,14 @@ function PlayerFile({
       setSwitchStatus({ text: "", failed: "Peli’s player couldn’t start it." });
     }
   };
-  // The switcher needs the app window: the mini player leaves for it. A guest
-  // in a watch party has no stream to choose, so nothing opens it for them.
+  // The switcher needs the app window: the mini player leaves for it.
   const openSwitcher = () => {
-    if (guest) return;
     if (mini) {
       setMini(false);
       Player.SetMini(false).catch(() => {});
     }
     setSwitchStatus(undefined);
     setSwitcherOpen(true);
-  };
-  // The failure overlay's way to another stream: a guest's is the party's
-  // picker, which picks one from the host's stream for them (lib/party-pick);
-  // the host's is the switcher, or leaving when there is nothing to switch.
-  const anotherStream = () => {
-    if (guest && party) return watchWithParty(party.media, true);
-    if (watching && feature("streamSwitcher")) return openSwitcher();
-    leave();
   };
   const openParty = () => {
     if (mini) {
@@ -2146,8 +2084,7 @@ function PlayerFile({
         "[": () => changeSpeed(stepSpeed(speed, -1)),
         "]": () => changeSpeed(stepSpeed(speed, 1)),
         backspace: () => speed !== normalSpeed && changeSpeed(normalSpeed),
-        // The switcher is the host's: a guest's stream is the party's pick.
-        ...(guest ? {} : { s: () => watching && openSwitcher() }),
+        s: () => watching && openSwitcher(),
         w: () => (watching || party) && openParty(),
         "?": () => !mini && setHelpOpen(!helpOpen),
         escape: () => {
@@ -2323,18 +2260,6 @@ function PlayerFile({
             : "bottom-[calc(2rem+env(safe-area-inset-bottom))]"),
       )}
     >
-      {following && watching && party && !mini && (
-        <PartyFollower
-          key={JSON.stringify(following)}
-          hold={hold}
-          watching={watching}
-          title={heading.title}
-          party={party}
-          expected={following}
-          current={playing?.stream}
-          onPicked={followPick}
-        />
-      )}
       {partyElsewhere && !mini && (
         <Prompt
           {...hold}
@@ -2393,9 +2318,7 @@ function PlayerFile({
           </Button>
         </div>
       )}
-      {/* A guest's next episode is the party's, which the prompt above
-          offers: the card would only get this device's pick ready. */}
-      {meta && next && (counting || starting) && !partyNext && (
+      {meta && next && (counting || starting) && (
         <NextEpisode
           profileId={profileId}
           meta={meta}
@@ -3080,7 +3003,7 @@ function PlayerFile({
                       )}
                     />
                   )}
-                  {watching && feature("streamSwitcher") && !guest && (
+                  {watching && feature("streamSwitcher") && (
                     <ControlButton
                       label="Streams"
                       icon={ListVideo}
@@ -3442,7 +3365,7 @@ function PlayerFile({
           onUseForAll: qualityForAll,
         }}
       />
-      {watching && feature("streamSwitcher") && !guest && (
+      {watching && feature("streamSwitcher") && (
         <StreamSwitcher
           open={switcherOpen}
           onOpenChange={(open) => {
@@ -3485,7 +3408,7 @@ function PlayerFile({
         />
       )}
       {helpOpen && !failure && !mini && desktopControls && (
-        <ShortcutsOverlay onClose={() => setHelpOpen(false)} guest={guest} />
+        <ShortcutsOverlay onClose={() => setHelpOpen(false)} />
       )}
       {statsOpen && ready && !mini && <StatsOverlay onClose={() => setStatsOpen(false)} />}
       {notice && !failure && (
@@ -3537,8 +3460,13 @@ function PlayerFile({
                   Try again
                 </Button>
               )}
-              <Button variant="media" size="lg" onClick={anotherStream} disabled={retrying}>
-                {guest ? "Try another stream" : "Choose another stream"}
+              <Button
+                variant="media"
+                size="lg"
+                onClick={watching && feature("streamSwitcher") ? openSwitcher : leave}
+                disabled={retrying}
+              >
+                Choose another stream
               </Button>
             </div>
           </div>
@@ -3678,74 +3606,5 @@ function ControlButton({
         </span>
       )}
     </Button>
-  );
-}
-
-// Follows the host onto the stream they switched to: the chooser runs again
-// against it, and while it works the player says so. It plays on with the old
-// stream when nothing opens, and offers to try again, never a list.
-function PartyFollower({
-  hold,
-  watching,
-  title,
-  party,
-  expected,
-  current,
-  onPicked,
-}: {
-  hold: { onPointerEnter: () => void; onPointerLeave: () => void };
-  watching: Watching;
-  title: string;
-  party: PartyInfo;
-  expected: PartySource;
-  current: Stream | undefined;
-  onPicked: (picked: PartyPicked, onFail: () => void) => void;
-}) {
-  const [loadFailed, setLoadFailed] = useState(false);
-  // The party's state can trail its notice: wait for the new source so the
-  // chooser doesn't match the one just left.
-  const arrived = JSON.stringify(party.media.source) === JSON.stringify(expected);
-  const pick = usePartyAutoPick({
-    profileId: watching.profileId,
-    type: watching.contentType,
-    id: watching.contentId,
-    video: watching.videoId,
-    title,
-    party,
-    enabled: arrived,
-    open: false,
-    current,
-    onPicked: (picked) => {
-      setLoadFailed(false);
-      onPicked(picked, () => setLoadFailed(true));
-    },
-  });
-  if (pick.status === "failed" || loadFailed) {
-    return (
-      <Prompt
-        {...hold}
-        icon={<Users />}
-        action={
-          <Button
-            size="sm"
-            variant="light"
-            onClick={() => {
-              setLoadFailed(false);
-              pick.retry();
-            }}
-          >
-            Try again
-          </Button>
-        }
-      >
-        Couldn’t switch to {pick.hostName}’s new stream
-      </Prompt>
-    );
-  }
-  if (pick.status === "done") return null;
-  return (
-    <Prompt {...hold} icon={<Users />}>
-      {pick.hostName} switched streams: switching too…
-    </Prompt>
   );
 }

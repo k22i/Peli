@@ -478,15 +478,8 @@ func (s *Service) applySnapshot(sess *session, snap backend.PartySnapshot) {
 // applyMedia takes in what the party watches now. s.mu is held.
 func (s *Service) applyMedia(sess *session, media backend.PartyMedia, playback *backend.PartyPlayback) {
 	changed := media.Key() != sess.media.Key()
-	was := sess.media
 	sess.media = media
 	if !changed {
-		// The host switched streams: guests follow (not the host's own
-		// device, which made the switch).
-		if !sess.isHost() && !sameSource(was.Source, media.Source) {
-			view := mediaOf(media)
-			s.notify(Notice{Kind: NoticeSource, Media: &view})
-		}
 		if playback != nil {
 			s.accept(sess, *playback)
 		}
@@ -616,7 +609,7 @@ func (s *Service) schedulePersist(sess *session) {
 // s.mu is held.
 func (s *Service) publishMedia(sess *session, media Media, positionMs int64) {
 	wire := media.wire()
-	if !sess.isHost() || wire.Key() == sess.media.Key() && (media.Source == nil || sameSource(sess.media.Source, wire.Source)) {
+	if !sess.isHost() || wire.Key() == sess.media.Key() && media.Source == nil {
 		return
 	}
 	same := wire.Key() == sess.media.Key()
@@ -854,19 +847,4 @@ func sleep(ctx context.Context, d time.Duration) error {
 	case <-ctx.Done():
 		return ctx.Err()
 	}
-}
-
-// sameSource tells whether two sources name the same stream.
-func sameSource(a, b *backend.PartySource) bool {
-	if a == nil || b == nil {
-		return a == b
-	}
-	if a.InfoHash != b.InfoHash || a.Filename != b.Filename || a.VideoSize != b.VideoSize ||
-		a.BingeGroup != b.BingeGroup || a.AddonID != b.AddonID || a.Name != b.Name {
-		return false
-	}
-	if a.FileIdx == nil || b.FileIdx == nil {
-		return a.FileIdx == b.FileIdx
-	}
-	return *a.FileIdx == *b.FileIdx
 }

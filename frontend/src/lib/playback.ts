@@ -7,7 +7,6 @@ import type { ProfileSettings } from "@bindings/store";
 import { toastManager } from "@/components/ui/toast";
 import type { ContentType, Meta, Stream } from "@/lib/addon-protocol";
 import { playableQuery, type Download, type Playable } from "@/lib/downloads";
-import { usePartyGuestMedia, useWatchWithParty } from "@/lib/party";
 import { loadOptions, Player } from "@/lib/player";
 import { isIOS } from "@/lib/platform";
 import { currentProfileQuery } from "@/lib/profile";
@@ -177,23 +176,12 @@ export async function loadDownloaded({
 // (ADR-0064): straight to the player, no picker. Offline, a title that
 // isn't downloaded says so in a toast instead of opening a picker that
 // would fail.
-//
-// A guest of the party watching exactly this film or episode never picks
-// (ADR-0051): Play opens the party's picker, which picks from the host's
-// stream for them, and starts where the party is.
 export function usePlay() {
   const navigate = useNavigate();
   const client = useQueryClient();
-  const withParty = useWatchWithParty();
-  const partyGuest = usePartyGuestMedia();
   // Nothing is asked until Play is pressed: the profile and the connection
   // are read from the cache then.
   return (target: PlayTarget) => {
-    const party = partyGuest(target);
-    if (party) {
-      withParty(party);
-      return;
-    }
     if (!target.videoId && isSeriesType(target.type)) {
       void navigate({ to: titlePath, params: titleParams(target) });
       return;

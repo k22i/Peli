@@ -129,3 +129,18 @@ The host's side is `playback.go`'s `followPlayer`, in its same-media branch: it 
 
 - Whether Nuvio's own clients act on a same-key `Update`: untested. Peli sends it as Nuvio's clients send their own media, but Nuvio's apps may only read an `Update` that changes the media key, in which case a friend on Nuvio's apps keeps playing their own stream through a host's switch and sees no notice either.
 - No real two-device run of any of this, no host on a Nuvio app, and no live host switch. Everything above is the tests' and one device's reading of the code.
+
+## Addendum (2026-11-26): guests choose their own stream again
+
+The addendum above is reversed. Everyone in a party — host or guest — picks their own stream from their own addons, exactly as they did before 2026-11-22: the same picker, the same switcher with its **S**, the same failure overlay's "Choose another stream". Every way into the party's media (Play, opening the title, "Play it" on the next episode) keeps its normal flow, and a guest's next-episode card prepares their own pick again.
+
+`NoticeSource` is gone from Go along with `streamSig` and the same-media branch of `followPlayer`: a host switching streams on the same media is their own business now, and the party's `Source` stops moving with the switch. `lib/party-pick.ts` (the chooser, `usePartyAutoPick`, `isPartyGuest`) is deleted.
+
+**Why: "Share my stream" already covers the one thing the follow bought.** A host who wants guests on their exact link shares it — that's the opt-in, and it was always the *better* answer, since a followed source still sent each guest to their own addons and their own debrid. The follow, meanwhile, took the guest's streams away from them: no list, no S, no switcher, and a host's switch yanked everyone's file out from under them.
+
+What stays exactly as it was:
+
+- **"Share my stream"**: unchanged (`publishMedia`'s `Source == nil` guard is back to its pre-follow reading, so the host's initial pick still publishes the party's source).
+- **The party moving to another title or episode** (`publishMedia` on a media-key change) — unchanged; that's the party, not the stream.
+- **Playback sync** (pause, seek, rate, waiting for stragglers) — unchanged.
+- **The guest's pick starting where the party is** (`Party.StartAt` in the picker) — unchanged.

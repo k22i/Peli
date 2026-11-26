@@ -5,101 +5,75 @@ import { Button } from "@/components/ui/button";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
 import { isIOS } from "@/lib/platform";
 
-type ShortcutGroup = {
-  group: string;
-  items: {
-    keys: string[];
-    action: string;
-    // The iOS player leaves these alone (iosKeysOff in player-page.tsx, #138):
-    // the overlay doesn't list them on an iPad.
-    desktop?: true;
-  }[];
-};
-
-// S and the Streams panel (#68) belong to the host of a watch party: a guest
-// never picks a stream, so neither is listed for them.
-const chooseStream: ShortcutGroup["items"] = [
-  { keys: ["S"], action: "Choose another stream", desktop: true },
-];
-
-// The panel's own keys, for whoever can open it.
-const streamsGroup: ShortcutGroup = {
-  // While the panel (S) is open; the stream picker's keys too.
-  group: "In the Streams panel",
-  items: [
-    { keys: ["P"], action: "Play the top pick", desktop: true },
-    { keys: ["↑", "↓"], action: "Move through the streams", desktop: true },
-    { keys: ["I"], action: "Show a stream’s file name", desktop: true },
-    { keys: ["1–9"], action: "Jump to the top pick or a quality group", desktop: true },
-  ],
-};
-
 // The player's keys (#67), as the help overlay lists them; player-page.tsx
 // handles them. Space, F, M, Z and X are mpv's, K, C and I YouTube's.
-// `guest` leaves S and the panel out: in a watch party the party picks the
-// guest's stream (ADR-0051).
-export function playerShortcuts({ guest = false }: { guest?: boolean } = {}): ShortcutGroup[] {
-  return [
-    {
-      group: "Playback",
-      items: [
-        { keys: ["Space", "K"], action: "Play or pause" },
-        { keys: ["←", "→"], action: "Back or forward 10 seconds" },
-        { keys: ["↑", "↓"], action: "Volume up or down" },
-        { keys: ["[", "]"], action: "Slower or faster" },
-        { keys: ["Backspace"], action: "Normal speed" },
-        { keys: [",", "."], action: "A frame back or forward, paused", desktop: true },
-        { keys: ["Page Up", "Page Down"], action: "Previous or next chapter" },
-        { keys: ["L"], action: "Set A, set B, then clear an A–B loop", desktop: true },
-        { keys: ["Shift S"], action: "Screenshot, with the subtitles showing", desktop: true },
-        { keys: ["Shift I"], action: "Playback stats" },
-        { keys: ["M"], action: "Mute or unmute" },
-        { keys: ["F"], action: "Full screen", desktop: true },
-        { keys: ["I"], action: "Mini player", desktop: true },
-        ...(guest ? [] : chooseStream),
-        { keys: ["W"], action: "Watch party (opens beside the video when Keep open is on)" },
-        { keys: ["P"], action: "Picture and sound", desktop: true },
-        { keys: ["Shift F"], action: "Fit, fill, stretch or original size", desktop: true },
-        { keys: ["Shift A"], action: "Next aspect ratio", desktop: true },
-        { keys: ["=", "−"], action: "Zoom in or out", desktop: true },
-        { keys: ["0"], action: "Zoom back to 1×", desktop: true },
-        { keys: ["⌥ ←→↑↓"], action: "Move the zoomed picture", desktop: true },
-        { keys: ["Esc"], action: "Leave the mini player or full screen, then the player" },
-      ],
-    },
-    {
-      group: "Audio and subtitles",
-      items: [
-        { keys: ["A"], action: "Next audio track" },
-        { keys: ["B"], action: "Dialogue boost on or off", desktop: true },
-        { keys: ["C"], action: "Next subtitles, then off" },
-        { keys: ["Shift C"], action: "Next second-line subtitles, then off" },
-        { keys: ["Z", "X"], action: "Subtitles 0.1 s earlier or later" },
-        { keys: ["R", "Shift R"], action: "Move subtitles up or down" },
-        { keys: ["G", "Shift G"], action: "Make subtitles smaller or larger" },
-      ],
-    },
-    ...(guest ? [] : [streamsGroup]),
-    {
-      group: "Help",
-      items: [{ keys: ["?"], action: "Show or hide these shortcuts" }],
-    },
-  ];
-}
+// `desktop` marks the keys the iOS player leaves alone (iosKeysOff in
+// player-page.tsx, #138): the overlay doesn't list them on an iPad.
+export const playerShortcuts: {
+  group: string;
+  items: { keys: string[]; action: string; desktop?: true }[];
+}[] = [
+  {
+    group: "Playback",
+    items: [
+      { keys: ["Space", "K"], action: "Play or pause" },
+      { keys: ["←", "→"], action: "Back or forward 10 seconds" },
+      { keys: ["↑", "↓"], action: "Volume up or down" },
+      { keys: ["[", "]"], action: "Slower or faster" },
+      { keys: ["Backspace"], action: "Normal speed" },
+      { keys: [",", "."], action: "A frame back or forward, paused", desktop: true },
+      { keys: ["Page Up", "Page Down"], action: "Previous or next chapter" },
+      { keys: ["L"], action: "Set A, set B, then clear an A–B loop", desktop: true },
+      { keys: ["Shift S"], action: "Screenshot, with the subtitles showing", desktop: true },
+      { keys: ["Shift I"], action: "Playback stats" },
+      { keys: ["M"], action: "Mute or unmute" },
+      { keys: ["F"], action: "Full screen", desktop: true },
+      { keys: ["I"], action: "Mini player", desktop: true },
+      { keys: ["S"], action: "Choose another stream", desktop: true },
+      { keys: ["W"], action: "Watch party (opens beside the video when Keep open is on)" },
+      { keys: ["P"], action: "Picture and sound", desktop: true },
+      { keys: ["Shift F"], action: "Fit, fill, stretch or original size", desktop: true },
+      { keys: ["Shift A"], action: "Next aspect ratio", desktop: true },
+      { keys: ["=", "−"], action: "Zoom in or out", desktop: true },
+      { keys: ["0"], action: "Zoom back to 1×", desktop: true },
+      { keys: ["⌥ ←→↑↓"], action: "Move the zoomed picture", desktop: true },
+      { keys: ["Esc"], action: "Leave the mini player or full screen, then the player" },
+    ],
+  },
+  {
+    group: "Audio and subtitles",
+    items: [
+      { keys: ["A"], action: "Next audio track" },
+      { keys: ["B"], action: "Dialogue boost on or off", desktop: true },
+      { keys: ["C"], action: "Next subtitles, then off" },
+      { keys: ["Shift C"], action: "Next second-line subtitles, then off" },
+      { keys: ["Z", "X"], action: "Subtitles 0.1 s earlier or later" },
+      { keys: ["R", "Shift R"], action: "Move subtitles up or down" },
+      { keys: ["G", "Shift G"], action: "Make subtitles smaller or larger" },
+    ],
+  },
+  {
+    // While the Streams panel (S) is open; the stream picker's keys too.
+    group: "In the Streams panel",
+    items: [
+      { keys: ["P"], action: "Play the top pick", desktop: true },
+      { keys: ["↑", "↓"], action: "Move through the streams", desktop: true },
+      { keys: ["I"], action: "Show a stream’s file name", desktop: true },
+      { keys: ["1–9"], action: "Jump to the top pick or a quality group", desktop: true },
+    ],
+  },
+  {
+    group: "Help",
+    items: [{ keys: ["?"], action: "Show or hide these shortcuts" }],
+  },
+];
 
 // The shortcuts over the video, on strong media material-pop like the rest of the
 // player's chrome (#121); text is plain white so it reads over a white frame.
 // It doesn't take focus or the keys: they keep working while it shows.
-export function ShortcutsOverlay({
-  onClose,
-  guest = false,
-}: {
-  onClose: () => void;
-  // A guest in a watch party: no S, and no panel to list.
-  guest?: boolean;
-}) {
+export function ShortcutsOverlay({ onClose }: { onClose: () => void }) {
   const ios = isIOS();
-  const groups = playerShortcuts({ guest })
+  const groups = playerShortcuts
     .map(({ group, items }) => ({ group, items: items.filter((item) => !(ios && item.desktop)) }))
     .filter(({ items }) => items.length > 0);
   return (

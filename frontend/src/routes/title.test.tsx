@@ -874,28 +874,6 @@ const inParty = (party: Parameters<typeof partyState>[0] = {}, media = {}) =>
   partyState(party, media);
 
 describe("title page in a watch party", () => {
-  it("sends a guest's Play to the party's picker, with the party's own target", async () => {
-    serve();
-    const user = userEvent.setup();
-    const { router } = await renderApp(moviePath, {
-      seed: (client) =>
-        client.setQueryData(["party", "state"], inParty({ isHost: false, hostId: "ana" })),
-    });
-
-    await user.click(await screen.findByRole("button", { name: "Play" }));
-
-    expect(router.state.location.pathname).toBe("/streams/movie/tt0111161");
-    // The party's own target: no resume point of this device's, and for a
-    // film no video at all, so the picker picks for the guest (W1, W5).
-    expect(router.state.location.search).toEqual({});
-    expect(router.state.location.state.play).toMatchObject({
-      type: "movie",
-      id: "tt0111161",
-      title: "The Shawshank Redemption",
-    });
-    expect(router.state.location.state.play).not.toHaveProperty("resumeAt");
-  });
-
   it("keeps Play's own flow for the host", async () => {
     serve();
     const user = userEvent.setup();
@@ -930,7 +908,7 @@ describe("title page in a watch party", () => {
     expect(router.state.location.state.play).toMatchObject({ videoId: "tt0111161" });
   });
 
-  it("sends a guest opening the party's film to the party's picker, not its page", async () => {
+  it("opens the party's film page for a guest like anyone else's", async () => {
     serve({
       [`${base}/catalog/movie/top.json`]: {
         metas: [{ id: "tt0111161", type: "movie", name: "The Shawshank Redemption" }],
@@ -944,8 +922,7 @@ describe("title page in a watch party", () => {
 
     await user.click(await screen.findByRole("button", { name: /Shawshank/ }));
 
-    expect(router.state.location.pathname).toBe("/streams/movie/tt0111161");
-    expect(router.state.location.search).toEqual({});
+    expect(router.state.location.pathname).toBe("/title/movie/tt0111161");
   });
 
   it("still opens the party's series page, whose episode is the party's", async () => {

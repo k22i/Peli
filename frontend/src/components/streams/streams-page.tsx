@@ -55,7 +55,6 @@ import { profileSettingsQuery } from "@/lib/settings";
 import { runtimeMinutes, type Candidate } from "@/lib/ranking";
 import { loadOptions, Player } from "@/lib/player";
 import { Party, partyWatches, useParty } from "@/lib/party";
-import { usePartyAutoPick, type PartyPick } from "@/lib/party-pick";
 import { attempts, PlayError, resolvePick } from "@/lib/resolve";
 import { usePreResolve, useSettled } from "@/lib/pre-resolve";
 import { filtersKey } from "@/lib/stream-filters";
@@ -332,34 +331,15 @@ function Picker({
   // one, nothing resolves ahead either.
   const downloaded = useQuery(playableQuery(profile.id, video));
   const navigate = useNavigate();
-  // The watch party, when it watches this (ADR-0051). Its host keeps the
-  // picker, the party card and everyone else in step. A guest never chooses a
-  // stream: Peli picks one from the host's, so there's no list to show.
+  // The watch party, when it watches this (ADR-0051): whatever its members
+  // pick is what they each play, and Go keeps everyone in step.
   const partyState = useParty();
   const forParty = partyWatches(partyState?.party, type, target.id, video)
     ? (partyState?.party ?? undefined)
     : undefined;
-  const guest = forParty !== undefined && !forParty.isHost;
-  // What the guest's page says instead of a list. Called for a host too, so
-  // every hook keeps its place; for a host it does nothing at all.
-  const guestPick = usePartyAutoPick({
-    profileId: profile.id,
-    type,
-    id: target.id,
-    video,
-    title: target.title,
-    party: forParty ?? null,
-    enabled: true,
-  });
   const ahead = usePreResolve(settledTop, {
-    // Never ahead for a guest: an auto-pick is the party's, not the guest's
-    // own habit, and it never pre-resolves.
     enabled:
-      device?.preResolve === true &&
-      !profile.kids &&
-      !guest &&
-      !downloaded.isPending &&
-      !downloaded.data,
+      device?.preResolve === true && !profile.kids && !downloaded.isPending && !downloaded.data,
     answered,
     refresh,
   });
@@ -578,10 +558,10 @@ function Picker({
 
   // Autoplay (profile setting): once every source has answered, the top
   // pick plays by itself, once per visit, and the list is never shown on
-  // the way: a status screen is, with "Choose myself" for the list. Not for
-  // a guest (the party picks), nor when the address asks for the list.
+  // the way: a status screen is, with "Choose myself" for the list. Not
+  // when the address asks for the list.
   const autoplay = useAutoplay({
-    enabled: settings?.autoplayTopPick === true && !chooseAtOpen && !guest,
+    enabled: settings?.autoplayTopPick === true && !chooseAtOpen,
     answered,
     top: view.top,
     names,
@@ -589,14 +569,9 @@ function Picker({
     cancelOpening: () => opening.current?.cancel(),
   });
 
-  // P plays the top pick. A guest has nothing of their own to play, and
-  // while the autoplay is at it there's nothing to press it over, so the key
-  // does nothing then: the hook still runs, so every hook keeps its place.
-  usePlayKey(guest || autoplay.screen ? null : view.top, pickFromList);
-
-  // The guest's page, in every state: no list, no filters, no jump strip, and
-  // no addons notice either — the status says when nothing opened.
-  if (guest) return <GuestPick header={header} pick={guestPick} />;
+  // P plays the top pick, but nothing while the autoplay is at it: the key
+  // does nothing then, and the hook still runs, so every hook keeps its place.
+  usePlayKey(autoplay.screen ? null : view.top, pickFromList);
 
   // Not known yet whether the profile autoplays: nothing it would hide.
   if (settingsPending && !chooseAtOpen) {
@@ -700,10 +675,8 @@ function Picker({
 // How long the filters stay put before the filtered top pick resolves ahead.
 const filtersSettle = 1200;
 
-// The watch party's card, for the host (ADR-0051): the party is watching what
-// they pick, so whatever they pick is what everyone sees. A guest has no card
-// of buttons here: they don't pick at all, and the guest's page says what
-// Peli is doing for them instead.
+// The watch party's card (ADR-0051): the party watches this, and Peli keeps
+// each member's own pick in step with everyone else's.
 function PartySources() {
   return (
     <section
@@ -719,68 +692,6 @@ function PartySources() {
       </div>
     </section>
   );
-}
-
-// The guest's picker (ADR-0051): Peli picks a stream from the host's, so there
-// is nothing to choose — only what it's doing, in the FocusScreen's look
-// (Ambient and the centred column), sized to what the page's header leaves
-// rather than to the whole window.
-function GuestPick({ header, pick }: { header: ReactNode; pick: PartyPick }) {
-  const back = useLeave();
-  const failed = pick.status === "failed";
-  // What Peli is doing: finding the host's stream, opening it, or neither
-  // worked, which is the one state with buttons.
-  const heading = failed
-    ? `Couldn’t open a stream like ${pick.hostName}’s`
-    : pick.status === "searching"
-      ? `Finding ${pick.hostName}’s stream…`
-      : "Opening…";
-  const detail = failed
-    ? "None of your addons opened the party’s stream. Try again, or leave the party and pick one of your own."
-    : "Peli plays the party’s stream, so you see exactly what they do.";
-  return (
-    <PickScreen header={header} slot="party-pick" label="Watch party">
-      <div aria-live="polite" className="flex flex-col items-center gap-3">
-        {failed ? (
-          <AlertCircle aria-hidden className="size-9 text-sun" />
-        ) : (
-          <Users aria-hidden className="size-9 text-sun" />
-        )}
-        <h2 className="font-display text-[2rem] leading-tight text-balance">{heading}</h2>
-        <p className="max-w-sm text-[0.9375rem] text-pretty text-muted-foreground">{detail}</p>
-      </div>
-      {failed && (
-        <div className="flex w-full flex-col gap-3">
-          <Button
-            size="lg"
-            variant="sun"
-            className={cn(pillButton, "pointer-coarse:min-h-11")}
-            onClick={pick.retry}
-          >
-            <RotateCw />
-            Try again
-          </Button>
-          <Button
-            size="lg"
-            variant="ghost"
-            className={cn(pillButton, glassButton, "pointer-coarse:min-h-11")}
-            onClick={back}
-          >
-            <ChevronLeft />
-            Back
-          </Button>
-        </div>
-      )}
-    </PickScreen>
-  );
-}
-
-// Back as the page's own Back: where the user came from, or Home.
-function useLeave() {
-  const router = useRouter();
-  const navigate = useNavigate();
-  const canGoBack = useCanGoBack();
-  return () => (canGoBack ? router.history.back() : void navigate({ to: "/" }));
 }
 
 // A status in place of the list, in the FocusScreen's look (Ambient and the

@@ -12,7 +12,6 @@ metadata:
 **How to apply:**
 - Every test file that mocks `@bindings/player` and reaches /player needs `SetNowPlaying` in the mock (streams.test.tsx too), or the effect throws.
 - Keys with ⌘/Ctrl/Alt are ignored; arrows skip when `event.defaultPrevented` (a focused Base UI slider). Menus open = no player keys (`menuOpen`).
-- S is a watch party host's key only: for a guest `once` has no `s` and `playerShortcuts({ guest: true })` lists neither S nor the Streams panel ([[watch-party]], [[stream-switcher]]).
 - MPRIS method `Seek` is `SeekBy` in Go (go vet's io.Seeker check), exported with `ExportWithMap`. Linux tests start their own `dbus-daemon` (skip without it): run them in the `staysh-spike-render` Docker image.
 - Live media-key check on macOS: a tiny Swift tool posting `NSEvent.otherEvent(.systemDefined, subtype 8, data1 = key<<16 | 0xa00/0xb00)` (16 = play/pause) to `.cghidEventTap`. Only while Peli plays, or the key goes to Music. Use the dev-play hook from [[player-service]] and capture your window by PID.
 - Next/previous track are deliberately off (the next episode is the card's, [[next-episode]]); no artwork yet.

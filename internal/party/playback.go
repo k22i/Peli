@@ -40,11 +40,9 @@ type syncState struct {
 	lastCorrection time.Time
 	scrubbedAt     time.Time
 	// The playback last applied ("" to apply the next one whatever it is).
-	lastSeq    string
-	lastStatus string
-	lastShared string
-	// The host's stream and source as last seen for this media, to notice a switch.
-	lastStreamSig    string
+	lastSeq          string
+	lastStatus       string
+	lastShared       string
 	wasRendered      bool
 	publishedInitial bool
 	measureLead      bool
@@ -60,13 +58,6 @@ var (
 )
 
 func shareable(url string) bool { return linkURL.MatchString(url) && !loopbackURL.MatchString(url) }
-
-// streamSig is what tells one stream the host plays from another: the
-// shared link and the source others look for.
-func streamSig(w *watch) string {
-	data, _ := json.Marshal([]any{w.stream, w.media.Source})
-	return string(data)
-}
 
 // player times in ms.
 func ms(seconds float64) int64 { return int64(math.Round(seconds * 1000)) }
@@ -93,15 +84,6 @@ func (s *Service) followPlayer(sess *session) {
 		sy.prevKey = key
 		s.setBehind(sess, false)
 		if prev != "" && sess.media.Key() == prev {
-			s.publishMedia(sess, w.media, 0)
-		}
-		sy.lastStreamSig = streamSig(w)
-	} else if sess.isHost() {
-		// The same media on another stream (the host switched, a file
-		// failed, an expired link was reloaded): the party's source moves
-		// with it, shared or not.
-		if sig := streamSig(w); sig != sy.lastStreamSig {
-			sy.lastStreamSig = sig
 			s.publishMedia(sess, w.media, 0)
 		}
 	}

@@ -466,27 +466,6 @@ export function useWatchWithParty() {
   };
 }
 
-// The party's own Media when this device is a guest watching exactly what
-// target plays, and undefined otherwise: a guest never chooses a stream
-// (ADR-0051). Every way into the party's media — Play on a title page, a
-// title menu's Play, opening that title — goes to the party's picker
-// instead, which picks from the host's stream and starts where the party is.
-// The rule is lib/party-pick's isPartyGuest: the party is on that film or
-// episode, and this device isn't its host.
-export function usePartyGuestMedia(): (target: {
-  type: string;
-  id: string;
-  videoId?: string | undefined;
-}) => Media | undefined {
-  const party = useParty()?.party ?? undefined;
-  return (target) => {
-    if (!party || party.isHost) return undefined;
-    return partyWatches(party, target.type, target.id, target.videoId ?? target.id)
-      ? party.media
-      : undefined;
-  };
-}
-
 // Starts and leaves parties, updating the state query at once.
 export function usePartyActions() {
   const queryClient = useQueryClient();

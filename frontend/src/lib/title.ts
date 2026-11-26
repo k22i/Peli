@@ -12,7 +12,6 @@ import {
   type Meta,
   type Video,
 } from "@/lib/addon-protocol";
-import { usePartyGuestMedia, useWatchWithParty } from "@/lib/party";
 import type { PlayTarget } from "@/lib/playback";
 
 // The title page (#45): one film or series, its details from the first
@@ -399,27 +398,16 @@ export type TitlePreview = {
 };
 
 // Opens a title's page from a card, handing it the card's details, and on
-// a season when one is given (the calendar's episodes, #48). A guest of the
-// party watching exactly this film or episode goes to the party's picker
-// instead: the page's Play would only lead to a pick of their own, which a
-// guest never makes (ADR-0051, lib/party.ts's usePartyGuestMedia).
+// a season when one is given (the calendar's episodes, #48).
 export function useOpenTitle() {
   const navigate = useNavigate();
-  const withParty = useWatchWithParty();
-  const partyGuest = usePartyGuestMedia();
-  return (meta: TitlePreview, search: TitleSearch = {}) => {
-    const party = partyGuest(meta);
-    if (party) {
-      withParty(party);
-      return;
-    }
+  return (meta: TitlePreview, search: TitleSearch = {}) =>
     void navigate({
       to: titlePath,
       params: titleParams(meta),
       search,
       state: (state) => ({ ...state, title: previewOf(meta) }),
     });
-  };
 }
 
 // Only these fields: history state is kept with each entry.

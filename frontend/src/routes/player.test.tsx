@@ -1497,53 +1497,17 @@ describe("next episode", () => {
     expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
   });
 
-  it("sends a guest's Play it to the party's picker for its next episode", async () => {
-    const asked = serve([debrid]);
-    const { router } = await openPilot();
-    emit("party:state", partyOnNext());
-    emit("player:state", watched);
-
-    expect(
-      await screen.findByText("The party is watching Breaking Bad · S1 E2"),
-    ).toBeInTheDocument();
-    // The card would only get this device's pick ready: no card, and the next
-    // episode's streams are never asked for nor its pick resolved here.
-    expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
-    expect(asked.mock.calls.map(([url]) => url)).not.toContain(nextStreams);
-    expect(mocks.resolve).not.toHaveBeenCalled();
-
-    // The guest's picker picks from the host's stream as soon as it opens
-    // (W5), which would take this device on past it: with nothing to resolve
-    // it stays, so the address it was given can be read.
-    mocks.resolve.mockRejectedValue(new Error("no stream"));
-    await userEvent.setup().click(screen.getByRole("button", { name: "Play it" }));
-    await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
-    expect(router.state.location.search).toEqual({ video: "tt0903747:1:2" });
-    // The party's target, not this device's: the picker picks from the host's
-    // stream and starts where the party is.
-    expect(router.state.location.state.play).toMatchObject({
-      type: "series",
-      id: "tt0903747",
-      videoId: "tt0903747:1:2",
-    });
-    expect(mocks.load).not.toHaveBeenCalled();
-  });
-
-  it("goes to the party's picker at the end rather than playing its own pick", async () => {
+  it("gives a guest the next episode's card like anyone else", async () => {
     serve([debrid]);
-    const { router } = await openPilot();
+    await openPilot();
     emit("party:state", partyOnNext());
     emit("player:state", watched);
-    await screen.findByText("The party is watching Breaking Bad · S1 E2");
-    expect(mocks.resolve).not.toHaveBeenCalled();
 
-    // Nothing of the party's pick resolves here, so its picker stays on the
-    // address the end of the file sent this guest to (see Play it above).
-    mocks.resolve.mockRejectedValue(new Error("no stream"));
-    emit("player:ended", { reason: "eof" } satisfies Ended);
-    await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
-    expect(router.state.location.search).toEqual({ video: "tt0903747:1:2" });
-    expect(mocks.load).not.toHaveBeenCalled();
+    // The guest's own pick is prepared, like the host's: no card is kept from
+    // them.
+    const next = await card();
+    expect(await within(next).findByText("1080p from Torrentio")).toBeInTheDocument();
+    expect(mocks.resolve).toHaveBeenCalledWith({ url: debrid.url, headers: {} });
   });
 
   it("keeps the card and the prepared pick for the host", async () => {
@@ -1802,57 +1766,34 @@ describe("stream switcher", () => {
         partyMedia,
       );
 
-    it("gives a guest no Streams button, and no S", async () => {
+    it("gives a guest the Streams button and S like the host", async () => {
+      serve([hd, fullHd]);
       await openPilot();
       emit("player:state", playing);
       emit("party:state", asGuest());
-      await screen.findByRole("button", { name: "Pause" });
-
-      expect(screen.queryByRole("button", { name: "Streams" })).not.toBeInTheDocument();
       const user = userEvent.setup();
+
+      await user.click(await screen.findByRole("button", { name: "Streams" }));
+      const panel = await screen.findByRole("dialog", { name: "Streams" });
+      await user.click(await within(panel).findByRole("button", { name: /Playing/ }));
+      await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
+
       await user.keyboard("s");
-      expect(screen.queryByRole("dialog", { name: "Streams" })).not.toBeInTheDocument();
-      expect(mocks.resolve).not.toHaveBeenCalled();
+      expect(await screen.findByRole("dialog", { name: "Streams" })).toBeInTheDocument();
     });
 
-    it("leaves S and the Streams panel out of a guest's shortcuts", async () => {
+    it("offers a guest whose stream failed the switcher, like anyone else", async () => {
+      serve([hd, fullHd]);
       await openPilot();
-      emit("player:state", playing);
-      emit("party:state", asGuest());
-      await screen.findByRole("button", { name: "Pause" });
-      const user = userEvent.setup();
-      await user.keyboard("?");
-      const help = await screen.findByRole("region", { name: "Keyboard shortcuts" });
-
-      expect(within(help).queryByText("Choose another stream")).not.toBeInTheDocument();
-      expect(within(help).queryByText("In the Streams panel")).not.toBeInTheDocument();
-      expect(within(help).queryByText("S")).not.toBeInTheDocument();
-      // The rest are still the guest's to read.
-      expect(within(help).getByText("Next subtitles, then off")).toBeInTheDocument();
-    });
-
-    it("sends a guest whose stream failed to the party's picker", async () => {
-      const { router } = await openPilot();
       emit("player:state", playing);
       emit("party:state", asGuest());
       await screen.findByRole("button", { name: "Pause" });
       emit("player:ended", { reason: "error", code: "unsupported" } satisfies Ended);
       const alert = await screen.findByRole("alert");
 
-      expect(
-        within(alert).queryByRole("button", { name: "Choose another stream" }),
-      ).not.toBeInTheDocument();
       const user = userEvent.setup();
-      await user.click(within(alert).getByRole("button", { name: "Try another stream" }));
-
-      // The picker for the party's media, which picks from the host's stream.
-      await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
-      expect(router.state.location.search).toEqual({ video: "tt0903747:1:1" });
-      expect(router.state.location.state.play).toMatchObject({
-        type: "series",
-        id: "tt0903747",
-        videoId: "tt0903747:1:1",
-      });
+      await user.click(within(alert).getByRole("button", { name: "Choose another stream" }));
+      expect(await screen.findByRole("dialog", { name: "Streams" })).toBeInTheDocument();
     });
 
     it("keeps the Streams button and S for the host", async () => {
@@ -2395,232 +2336,6 @@ describe("watch party", () => {
     await user.click(screen.getByRole("button", { name: "Watch with the party" }));
     await waitFor(() => expect(router.state.location.pathname).toBe("/streams/series/tt0903747"));
     expect(router.state.location.search).toEqual({ video: "tt0903747:1:1" });
-  });
-});
-
-// A guest follows the host onto another stream (ADR-0051): the chooser runs
-// again against the host's new source and the pick loads where this guest is.
-// The pieces of a watch party the host-following tests build.
-const hostSource = (name: string) => ({
-  infoHash: "",
-  fileIdx: null,
-  filename: "",
-  videoSize: 0,
-  bingeGroup: "",
-  addonId: "torrentio",
-  name,
-});
-const member = (id: string, name: string, host: boolean, you: boolean) => ({
-  id,
-  name,
-  host,
-  you,
-  avatarUrl: "",
-  avatarColor: "",
-  status: "ready",
-  watchingElse: false,
-  behindMs: 0,
-});
-const hostMedia = (name: string) => ({
-  type: "series",
-  id: "tt0903747",
-  videoId: "tt0903747:1:1",
-  season: 1,
-  episode: 1,
-  title: "Breaking Bad",
-  episodeTitle: "Pilot",
-  description: "",
-  poster: "",
-  background: "",
-  logo: "",
-  source: hostSource(name),
-});
-
-// A promise settled from outside, for a resolve that stays open.
-function deferred<T>() {
-  let settle!: (value: T) => void;
-  const promise = new Promise<T>((done) => {
-    settle = done;
-  });
-  return { promise, settle };
-}
-
-describe("watch party: following the host's stream", () => {
-  const cinemeta: Addon = {
-    url: "https://v3-cinemeta.strem.io/manifest.json",
-    name: "Cinemeta",
-    enabled: true,
-  };
-  const torrentio: Addon = {
-    url: "https://torrentio.strem.fun/manifest.json",
-    name: "Torrentio",
-    enabled: true,
-  };
-  const pilotStreams = "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A1.json";
-  const hd: Stream = {
-    name: "[TB+] Torrentio\n720p",
-    title: "Breaking.Bad.S01E01.720p.BluRay.x264-GRP.mkv\n👤 20 💾 1.1 GB ⚙️ Tracker",
-    url: "https://torrentio.strem.fun/resolve/torbox/KEY/b/null/1/Breaking.Bad.S01E01.720p.mkv",
-  };
-  const fullHd: Stream = {
-    name: "[TB+] Torrentio\n1080p",
-    title: "Breaking.Bad.S01E01.1080p.BluRay.x264-GRP.mkv\n👤 40 💾 2.1 GB ⚙️ Tracker",
-    url: "https://torrentio.strem.fun/resolve/torbox/KEY/a/null/1/Breaking.Bad.S01E01.1080p.mkv",
-  };
-  const pilot: Watching = {
-    profileId: 1,
-    contentId: "tt0903747",
-    contentType: "series",
-    videoId: "tt0903747:1:1",
-    season: 1,
-    episode: 1,
-    title: "Pilot",
-  };
-  const people = [member("me", "Kevin", false, true), member("ana", "Ana", true, false)];
-  const hostParty = (name: string, more: Record<string, unknown> = {}) => ({
-    unavailable: "",
-    busy: false,
-    party: {
-      id: "p1",
-      code: "ABCDEF",
-      memberId: "me",
-      hostId: "ana",
-      isHost: false,
-      hostOnly: false,
-      canControl: true,
-      connected: true,
-      maxMembers: 8,
-      members: people,
-      media: hostMedia(name),
-      watching: true,
-      paused: false,
-      waiting: false,
-      waitingFor: [],
-      behind: false,
-      behindMs: 0,
-      sharing: false,
-      shared: null,
-      ...more,
-    },
-  });
-  // The host switches: the party's state carries the new source, then the
-  // notice says so.
-  const hostSwitches = (name: string, more: Record<string, unknown> = {}) => {
-    emit("party:state", hostParty(name, more));
-    emit("party:notice", {
-      kind: "source",
-      name: "",
-      action: "",
-      positionMs: 0,
-      rate: 1,
-      media: hostMedia(name),
-      hostOnly: false,
-    });
-  };
-  const openPilot = () =>
-    openPlayer("S1 · E1 · Pilot", source, undefined, {
-      watching: pilot,
-      stream: { ...hd, description: hd.title ?? "" },
-      resumedAt: 0,
-    });
-
-  let served: Stream[] = [];
-  beforeEach(() => {
-    served = [hd, fullHd];
-    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
-    mocks.visibleAddons.mockResolvedValue([cinemeta, torrentio]);
-    const answers: Record<string, unknown> = {
-      [cinemeta.url]: cinemetaManifest,
-      [torrentio.url]: torrentioManifest,
-      "https://v3-cinemeta.strem.io/meta/series/tt0903747.json": cinemetaSeries,
-    };
-    // The streams are read when asked, so a test can change what's served.
-    vi.stubGlobal(
-      "fetch",
-      vi.fn<(url: string) => Promise<Response>>(async (url) => {
-        const all: Record<string, unknown> = { ...answers, [pilotStreams]: { streams: served } };
-        return url in all ? Response.json(all[url]) : new Response("", { status: 503 });
-      }),
-    );
-    Object.defineProperty(document.documentElement, "clientHeight", {
-      configurable: true,
-      get: () => 800,
-    });
-  });
-  afterEach(() => {
-    vi.unstubAllGlobals();
-    Reflect.deleteProperty(document.documentElement, "clientHeight");
-  });
-
-  it("switches to the stream that matches the host's, from where this guest is, remembering nothing", async () => {
-    await openPilot();
-    emit("player:state", playing);
-    emit("party:state", hostParty("[TB+] Torrentio\n720p"));
-    await screen.findByRole("button", { name: "Pause" });
-    mocks.snapshot.mockResolvedValue({ ...playing, position: 642 });
-    hostSwitches("[TB+] Torrentio\n1080p");
-    expect(await screen.findByText(/Ana switched streams: switching too/)).toBeInTheDocument();
-    await waitFor(() =>
-      expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
-        expect.objectContaining({ url: "https://cdn.example/KEY/fresh.mkv" }),
-        expect.objectContaining({ start: 642, watching: pilot }),
-      ),
-    );
-    expect(mocks.resolve).toHaveBeenCalledWith({ url: fullHd.url, headers: {} });
-    // The party's pick isn't the guest's habit.
-    expect(mocks.setChosen).not.toHaveBeenCalled();
-  });
-
-  it("does nothing when the chooser lands on what plays", async () => {
-    await openPilot();
-    emit("player:state", playing);
-    emit("party:state", hostParty("[TB+] Torrentio\n1080p"));
-    await screen.findByRole("button", { name: "Pause" });
-    hostSwitches("[TB+] Torrentio\n720p");
-    await waitFor(() =>
-      expect(screen.queryByText(/switched streams: switching too/)).not.toBeInTheDocument(),
-    );
-    expect(mocks.resolve).not.toHaveBeenCalled();
-    expect(mocks.load).not.toHaveBeenCalled();
-  });
-
-  it("follows the latest switch when the host switches again mid-switch", async () => {
-    const open = deferred<Source>();
-    mocks.resolve.mockImplementationOnce(() => open.promise);
-    await openPilot();
-    emit("player:state", playing);
-    emit("party:state", hostParty("[TB+] Torrentio\n720p"));
-    await screen.findByRole("button", { name: "Pause" });
-    hostSwitches("[TB+] Torrentio\n1080p");
-    await waitFor(() => expect(mocks.resolve).toHaveBeenCalledTimes(1));
-    // Back to the one playing: the first pick is dropped, whatever it resolves to.
-    hostSwitches("[TB+] Torrentio\n720p");
-    open.settle({ ...source, url: "https://cdn.example/KEY/stale.mkv" });
-    await waitFor(() =>
-      expect(screen.queryByText(/switched streams: switching too/)).not.toBeInTheDocument(),
-    );
-    expect(mocks.load).not.toHaveBeenCalledWith(
-      expect.objectContaining({ url: "https://cdn.example/KEY/stale.mkv" }),
-      expect.anything(),
-    );
-  });
-
-  it("plays on and offers to try again when nothing opens", async () => {
-    // The chooser would end on the stream already playing; here it has nothing else.
-    served = [fullHd];
-    mocks.resolve.mockRejectedValue(new Error("unreachable"));
-    const { router } = await openPilot();
-    emit("player:state", playing);
-    emit("party:state", hostParty("[TB+] Torrentio\n720p"));
-    await screen.findByRole("button", { name: "Pause" });
-    hostSwitches("[TB+] Torrentio\n1080p");
-    expect(await screen.findByText("Couldn’t switch to Ana’s new stream")).toBeInTheDocument();
-    expect(mocks.load).not.toHaveBeenCalled();
-    expect(router.state.location.state.player?.source).toEqual(source);
-    mocks.resolve.mockResolvedValue({ ...source, url: "https://cdn.example/KEY/fresh.mkv" });
-    const user = userEvent.setup();
-    await user.click(screen.getByRole("button", { name: "Try again" }));
-    await waitFor(() => expect(mocks.load).toHaveBeenCalledTimes(1));
   });
 });
 

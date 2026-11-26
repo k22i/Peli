@@ -166,9 +166,6 @@ const (
 	NoticeRemoved = "removed"
 	// NoticeMedia: the party watches Media now.
 	NoticeMedia = "media"
-	// NoticeSource: the host plays another stream of the same media; Media
-	// carries its Source.
-	NoticeSource = "source"
 	// NoticeControl: only the host controls playback now (HostOnly), or
 	// everyone.
 	NoticeControl = "control"
