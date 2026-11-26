@@ -1,0 +1,44 @@
+{
+  "post": {
+    "parameters": [
+      {
+        "in": "body",
+        "name": "args",
+        "required": true,
+        "schema": {
+          "properties": {
+            "p_platform": {
+              "format": "text",
+              "type": "string"
+            },
+            "p_profile_id": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "p_profile_id"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "$ref": "#/parameters/preferParams"
+      }
+    ],
+    "produces": [
+      "application/json",
+      "application/vnd.pgrst.object+json;nulls=stripped",
+      "application/vnd.pgrst.object+json"
+    ],
+    "responses": {
+      "200": {
+        "description": "OK"
+      }
+    },
+    "tags": [
+      "(rpc) sync_pull_profile_settings_blob"
+    ]
+  }
+}
+signed out

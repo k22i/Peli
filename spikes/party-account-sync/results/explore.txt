@@ -1,0 +1,248 @@
+== backend
+https://api.nuvio.tv, account <user-uuid>
+
+== 117 paths
+  /
+  /addons
+  /avatar_catalog
+  /collections
+  /home_catalog_settings
+  /library_items
+  /plugins
+  /profile_settings_blobs
+  /profile_tracker_settings
+  /profiles
+  /rpc/approve_device_login_session
+  /rpc/approve_tv_login_session
+  /rpc/can_access_membership_branding
+  /rpc/can_access_membership_profile_avatar
+  /rpc/can_access_membership_profile_background
+  /rpc/can_access_user_data
+  /rpc/claim_my_supporter_welcome
+  /rpc/cleanup_anonymous_users
+  /rpc/clear_profile_pin
+  /rpc/clear_profile_pin_with_account_password
+  /rpc/clear_tracker_tokens
+  /rpc/emit_sync_invalidation
+  /rpc/expire_old_tv_login_sessions
+  /rpc/get_avatar_catalog
+  /rpc/get_device_login_session
+  /rpc/get_member_profile_avatar_catalog
+  /rpc/get_member_profile_background_catalog
+  /rpc/get_my_member_access
+  /rpc/get_my_membership_connection
+  /rpc/get_my_membership_overview
+  /rpc/get_my_supporter_wall_profile
+  /rpc/get_profile_tracker_settings
+  /rpc/get_supporter_wall
+  /rpc/get_sync_overview
+  /rpc/get_sync_owner
+  /rpc/get_tracker_tokens
+  /rpc/health_ping
+  /rpc/list_my_sessions
+  /rpc/membership_one_time_bonus_months
+  /rpc/normalize_tv_subtitle_colors
+  /rpc/poll_tracker_tv_login_session
+  /rpc/poll_tv_login_session
+  /rpc/random_tv_login_code
+  /rpc/record_activity_event
+  /rpc/register_current_device
+  /rpc/register_current_session
+  /rpc/revoke_my_session
+  /rpc/set_my_supporter_wall_profile
+  /rpc/set_my_supporter_wall_visibility
+  /rpc/set_profile_pin
+  /rpc/start_device_login_session
+  /rpc/start_tracker_tv_login_session
+  /rpc/start_tv_login_session
+  /rpc/sync_copy_profile_setup
+  /rpc/sync_current_origin_client_id
+  /rpc/sync_delete_library_items
+  /rpc/sync_delete_profile_data
+  /rpc/sync_delete_provider_credentials
+  /rpc/sync_delete_watch_progress
+  /rpc/sync_delete_watched_items
+  /rpc/sync_export_account_backup
+  /rpc/sync_get_library_delta_cursor
+  /rpc/sync_get_watch_progress_delta_cursor
+  /rpc/sync_get_watched_items_delta_cursor
+  /rpc/sync_patch_profile
+  /rpc/sync_pull_collections
+  /rpc/sync_pull_home_catalog_settings
+  /rpc/sync_pull_library
+  /rpc/sync_pull_library_delta
+  /rpc/sync_pull_media_servers
+  /rpc/sync_pull_profile_locks
+  /rpc/sync_pull_profile_settings_blob
+  /rpc/sync_pull_profiles
+  /rpc/sync_pull_provider_credentials
+  /rpc/sync_pull_watch_progress
+  /rpc/sync_pull_watch_progress_delta
+  /rpc/sync_pull_watched_items
+  /rpc/sync_pull_watched_items_delta
+  /rpc/sync_push_addons
+  /rpc/sync_push_collections
+  /rpc/sync_push_home_catalog_settings
+  /rpc/sync_push_library
+  /rpc/sync_push_library_items
+  /rpc/sync_push_media_servers
+  /rpc/sync_push_plugins
+  /rpc/sync_push_profile_settings_blob
+  /rpc/sync_push_profile_settings_blob_guarded
+  /rpc/sync_push_profiles
+  /rpc/sync_push_provider_credentials
+  /rpc/sync_push_watch_progress
+  /rpc/sync_push_watched_items
+  /rpc/sync_seed_provider_credentials
+  /rpc/sync_set_origin_client_id
+  /rpc/upsert_profile_tracker_settings
+  /rpc/upsert_tracker_tokens
+  /rpc/verify_profile_pin
+  /rpc/watch_party_clock
+  /rpc/watch_party_create
+  /rpc/watch_party_enabled
+  /rpc/watch_party_end
+  /rpc/watch_party_heartbeat
+  /rpc/watch_party_join
+  /rpc/watch_party_leave
+  /rpc/watch_party_link_profile
+  /rpc/watch_party_list_messages
+  /rpc/watch_party_preview
+  /rpc/watch_party_remove_member
+  /rpc/watch_party_send_message
+  /rpc/watch_party_set_host_only
+  /rpc/watch_party_topic_allowed
+  /rpc/watch_party_update
+  /tracker_tv_login_sessions
+  /tv_login_sessions
+  /user_tracker_tokens
+  /watch_progress
+  /watched_item_events
+  /watched_items
+
+== function parameters
+  approve_device_login_session                   
+  approve_tv_login_session                       
+  can_access_membership_branding                 
+  can_access_membership_profile_avatar           
+  can_access_membership_profile_background       
+  can_access_user_data                           
+  claim_my_supporter_welcome                     
+  cleanup_anonymous_users                        
+  clear_profile_pin                              
+  clear_profile_pin_with_account_password        
+  clear_tracker_tokens                           
+  emit_sync_invalidation                         
+  expire_old_tv_login_sessions                   
+  get_avatar_catalog                             
+  get_device_login_session                       
+  get_member_profile_avatar_catalog              
+  get_member_profile_background_catalog          
+  get_my_member_access                           
+  get_my_membership_connection                   
+  get_my_membership_overview                     
+  get_my_supporter_wall_profile                  
+  get_profile_tracker_settings                   
+  get_supporter_wall                             
+  get_sync_overview                              
+  get_sync_owner                                 
+  get_tracker_tokens                             
+  health_ping                                    
+  list_my_sessions                               
+  membership_one_time_bonus_months               
+  normalize_tv_subtitle_colors                   
+  poll_tracker_tv_login_session                  
+  poll_tv_login_session                          
+  random_tv_login_code                           
+  record_activity_event                          
+  register_current_device                        
+  register_current_session                       
+  revoke_my_session                              
+  set_my_supporter_wall_profile                  
+  set_my_supporter_wall_visibility               
+  set_profile_pin                                
+  start_device_login_session                     
+  start_tracker_tv_login_session                 
+  start_tv_login_session                         
+  sync_copy_profile_setup                        
+  sync_current_origin_client_id                  
+  sync_delete_library_items                      
+  sync_delete_profile_data                       
+  sync_delete_provider_credentials               
+  sync_delete_watch_progress                     
+  sync_delete_watched_items                      
+  sync_export_account_backup                     
+  sync_get_library_delta_cursor                  
+  sync_get_watch_progress_delta_cursor           
+  sync_get_watched_items_delta_cursor            
+  sync_patch_profile                             
+  sync_pull_collections                          
+  sync_pull_home_catalog_settings                
+  sync_pull_library                              
+  sync_pull_library_delta                        
+  sync_pull_media_servers                        
+  sync_pull_profile_locks                        
+  sync_pull_profile_settings_blob                
+  sync_pull_profiles                             
+  sync_pull_provider_credentials                 
+  sync_pull_watch_progress                       
+  sync_pull_watch_progress_delta                 
+  sync_pull_watched_items                        
+  sync_pull_watched_items_delta                  
+  sync_push_addons                               
+  sync_push_collections                          
+  sync_push_home_catalog_settings                
+  sync_push_library                              
+  sync_push_library_items                        
+  sync_push_media_servers                        
+  sync_push_plugins                              
+  sync_push_profile_settings_blob                
+  sync_push_profile_settings_blob_guarded        
+  sync_push_profiles                             
+  sync_push_provider_credentials                 
+  sync_push_watch_progress                       
+  sync_push_watched_items                        
+  sync_seed_provider_credentials                 
+  sync_set_origin_client_id                      
+  upsert_profile_tracker_settings                
+  upsert_tracker_tokens                          
+  verify_profile_pin                             
+  watch_party_clock                              
+  watch_party_create                             
+  watch_party_enabled                            
+  watch_party_end                                
+  watch_party_heartbeat                          
+  watch_party_join                               
+  watch_party_leave                              
+  watch_party_link_profile                       
+  watch_party_list_messages                      
+  watch_party_preview                            
+  watch_party_remove_member                      
+  watch_party_send_message                       
+  watch_party_set_host_only                      
+  watch_party_topic_allowed                      
+  watch_party_update                             
+
+== table columns (keys only, no values)
+  /                              not a row set
+  /addons                        HTTP 404 Not found
+  /avatar_catalog                HTTP 404 Not found
+  /collections                   HTTP 404 Not found
+  /home_catalog_settings         HTTP 404 Not found
+  /library_items                 HTTP 404 Not found
+  /plugins                       HTTP 404 Not found
+  /profile_settings_blobs        HTTP 404 Not found
+  /profile_tracker_settings      HTTP 404 Not found
+  /profiles                      HTTP 404 Not found
+  /tracker_tv_login_sessions     HTTP 404 Not found
+  /tv_login_sessions             HTTP 404 Not found
+  /user_tracker_tokens           HTTP 404 Not found
+  /watch_progress                HTTP 404 Not found
+  /watched_item_events           HTTP 404 Not found
+  /watched_items                 HTTP 404 Not found
+
+== 2 profiles
+  index 1, name "<profile-1-name>", avatar id set: true, uses primary addons: false
+  index 2, name "<profile-2-name>", avatar id set: true, uses primary addons: false
+
+signed out

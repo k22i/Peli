@@ -1,0 +1,6 @@
+read timings, 3 rounds, no rows stored right now
+  round 1: pull RPC 409ms, listing GET 345ms (<nil>, <nil>)
+  round 2: pull RPC 344ms, listing GET 340ms (<nil>, <nil>)
+  round 3: pull RPC 350ms, listing GET 373ms (<nil>, <nil>)
+  profile row list (GET, 2 rows): 362ms, 171 bytes
+signed out

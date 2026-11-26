@@ -1,0 +1,45 @@
+== 1. baseline: which (profile, platform) rows the account has, and when
+[{"profile_id":1,"platform":"desktop","updated_at":"2026-11-03T02:52:02.480589+00:00"}, 
+ {"profile_id":1,"platform":"tv","updated_at":"2026-10-04T04:07:44.083827+00:00"}]
+
+== 2. can this session delete a row at all? (a no-match delete, removes nothing)
+  DELETE /rest/v1/profile_settings_blobs?platform=eq.peli-spike -> HTTP 204 , <nil>
+
+== 3. A writes the announcement, platform "peli-spike", profile 1
+  sync_push_profile_settings_blob -> HTTP 204  (346ms), <nil>
+
+== 4. B (a second session of the same account) reads it back
+  sync_pull_profile_settings_blob(p_profile_id=1, p_platform="peli-spike") -> [{"profile_id":1,"settings_json":{"v": 1, "party": {"at": 1764200000000, "id": "<uuid>", "code": "TEST01", "host": "Peli spike", "media": {"type": "movie", "title": "Peli spike", "meta_id": "tt0000001"}}},"updated_at":"2026-11-26T08:30:39.257987+00:00"}] (420ms), <nil>
+  same as what A wrote: true
+
+== 5. the same read with no p_platform, which is one call for a Join page
+  answers 365 bytes, mentions "peli-spike": false, <nil>
+
+== 6. other platforms are untouched
+[{"profile_id":1,"platform":"desktop","updated_at":"2026-11-03T02:52:02.480589+00:00"}, 
+ {"profile_id":1,"platform":"peli-spike","updated_at":"2026-11-26T08:30:39.257987+00:00"}, 
+ {"profile_id":1,"platform":"tv","updated_at":"2026-10-04T04:07:44.083827+00:00"}]
+  desktop and tv rows unchanged: false
+
+== 7. compare-and-set: the guarded push refuses a stale updated_at
+  the row's updated_at is "2026-11-26T08:30:39.257987+00:00"
+  with a wrong updated_at -> HTTP 409 {"code":"PT409","details":null,"hint":null,"message":"Settings changed on another device. Reload and try again."}, <nil>
+  with the row's own updated_at -> HTTP 200 "2026-11-26T08:30:39.257987+00:00", <nil>
+
+== 8. a bigger blob (32 KiB) round-trips?
+  write -> HTTP 204 , <nil>
+  B reads back 32903 bytes, complete: true, <nil>
+
+== 9. another profile index on this account
+  B pull profile 2, platform "peli-spike": []
+  B pull profile 2, every platform: {"code":"PGRST203","details":null,"hint":"Try renaming the parameters or the function itself in the database so function overloading can be resolved","message":"Could not choose the best candidate fun…
+  B reads the table for profile 2: []
+
+== 10. undo: delete the row and check the account is back as it was
+  DELETE -> HTTP 204 , <nil>
+[{"profile_id":1,"platform":"desktop","updated_at":"2026-11-03T02:52:02.480589+00:00"}, 
+ {"profile_id":1,"platform":"tv","updated_at":"2026-10-04T04:07:44.083827+00:00"}]
+  back to the baseline: true
+  B pull of "peli-spike" now: []
+signed out
+signed out

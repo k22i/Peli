@@ -1,0 +1,54 @@
+{
+  "post": {
+    "parameters": [
+      {
+        "in": "body",
+        "name": "args",
+        "required": true,
+        "schema": {
+          "properties": {
+            "p_origin_client_id": {
+              "format": "text",
+              "type": "string"
+            },
+            "p_platform": {
+              "format": "text",
+              "type": "string"
+            },
+            "p_profile_id": {
+              "format": "int32",
+              "type": "integer"
+            },
+            "p_settings_json": {
+              "format": "jsonb"
+            }
+          },
+          "required": [
+            "p_profile_id",
+            "p_settings_json",
+            "p_platform",
+            "p_origin_client_id"
+          ],
+          "type": "object"
+        }
+      },
+      {
+        "$ref": "#/parameters/preferParams"
+      }
+    ],
+    "produces": [
+      "application/json",
+      "application/vnd.pgrst.object+json;nulls=stripped",
+      "application/vnd.pgrst.object+json"
+    ],
+    "responses": {
+      "200": {
+        "description": "OK"
+      }
+    },
+    "tags": [
+      "(rpc) sync_push_profile_settings_blob"
+    ]
+  }
+}
+signed out

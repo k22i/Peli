@@ -1,0 +1,26 @@
+== 1. the account's settings rows before (profile/platform/updated_at)
+  profile 1: 1/desktop/2026-11-03T02:52:02.480589+00:00; 1/tv/2026-10-04T04:07:44.083827+00:00
+  profile 2: 
+
+== 2. A writes the announcement to profile 1, platform "peli-spike"
+  HTTP 204 , <nil>
+
+== 3. one table read, no profile filter: every profile's announcement
+  GET /rest/v1/profile_settings_blobs?platform=eq.peli-spike -> [{"profile_id":1,"settings_json":{"v": 1, "party": {"at": 1764200000000, "id": "<uuid>", "code": "TEST01", "host": "Peli spike", "media": {"type": "movie", "title": "Peli spike", "meta_id": "tt0000001"}}},"updated_at":"2026-11-26T08:31:21.389943+00:00"}], <nil>
+
+== 4. may a session write another profile index's row? (profile 2, which this account doesn't have)
+  push to profile 2 -> HTTP 204 , <nil>
+  rows at profile 2 now: [{"profile_id":2,"platform":"peli-spike","updated_at":"2026-11-26T08:31:22.190779+00:00"}]
+  B pulls profile 2: [{"profile_id":2,"settings_json":{"v": 1, "party": {"at": 1764200000000, "id": "<uuid>", "code": "TEST01", "host": "Peli spike", "media": {"type": "movie", "title": "Peli spike", "meta_id": "tt0000001"}}},"updated_at":"2026-11-26T08:31:22.190779+00:00"}]
+
+== 5. undo both rows
+  DELETE profile 1 platform peli-spike -> HTTP 204 , <nil>
+  DELETE profile 2 platform peli-spike -> HTTP 204 , <nil>
+
+== 6. the account after
+  profile 1: 1/desktop/2026-11-03T02:52:02.480589+00:00; 1/tv/2026-10-04T04:07:44.083827+00:00
+  profile 2: 
+  identical to before: true
+  B's listing of "peli-spike" now: []
+signed out
+signed out
