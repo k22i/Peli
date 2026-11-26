@@ -320,8 +320,9 @@ jobs:
       - name: Notes
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh api --method POST "repos/$GITHUB_REPOSITORY/releases/generate-notes" \
-          -f tag_name="$GITHUB_REF_NAME" --jq .body > "$RUNNER_TEMP/notes.md"
+        run: |
+          gh api --method POST "repos/$GITHUB_REPOSITORY/releases/generate-notes" \
+            -f tag_name="$GITHUB_REF_NAME" --jq .body > "$RUNNER_TEMP/notes.md"
 
       # An ad-hoc release is installable, but the first install from the DMG
       # meets Gatekeeper (ADR-0053:60). Say it at the top, where it's read.
