@@ -3,7 +3,20 @@
 // render API (what internal/player's macOS host uses) in an offscreen CGL
 // context, and fails unless a decoded frame reaches the framebuffer.
 //
+// What it is for is the build, not the host: hosted Macs have no GPU (Apple
+// Software Renderer, and VideoToolbox that fails or returns black), so a file
+// that doesn't show with hardware decoding is played again with `hwdec=no`
+// before it counts as a failure. Software decoding is the bottom line — mpv
+// always has it, and this build's configure enables the decoders by hand.
+//
 //   smoke <file>...
+//
+// SMOKE_LOG sets mpv's log level (default warn).
+//
+// SMOKE_HWDEC overrides the first pass's `hwdec`, so the software retry can be
+// run on a host whose hardware decoding works:
+//
+//   SMOKE_HWDEC=d3d11va ...  # not a macOS API: the first pass fails
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/gl3.h>
 #include <dlfcn.h>
@@ -74,8 +87,14 @@ static int rendered(GLuint fbo) {
 	return 0;
 }
 
-// play renders path until a frame that isn't black reaches the framebuffer.
-static void play(mpv_handle *mpv, mpv_render_context *rc, GLuint fbo, const char *path) {
+// play renders path until a frame that isn't black reaches the framebuffer, and
+// returns whether one did. hwdec picks this file's decoding: NULL keeps what
+// the player set.
+static int play(mpv_handle *mpv, mpv_render_context *rc, GLuint fbo, const char *path,
+                const char *hwdec) {
+	// The option is read when the file loads, so setting it first applies here.
+	if (hwdec)
+		check(mpv_set_property_string(mpv, "hwdec", hwdec), "hwdec");
 	const char *cmd[] = {"loadfile", path, NULL};
 	check(mpv_command(mpv, cmd), "loadfile");
 	int frames = 0, shown = 0;
@@ -90,8 +109,11 @@ static void play(mpv_handle *mpv, mpv_render_context *rc, GLuint fbo, const char
 		if (ev->event_id == MPV_EVENT_END_FILE) {
 			mpv_event_end_file *end = ev->data;
 			if (end->reason == MPV_END_FILE_REASON_ERROR) {
-				fail(path, mpv_error_string(end->error));
-				return;
+				// A hardware decoder the host can't drive ends the file too,
+				// which is why this is reported per attempt and not as a
+				// failure: the caller retries in software before failing.
+				fprintf(stderr, "FAIL %s: %s\n", path, mpv_error_string(end->error));
+				break;
 			}
 		}
 		if (!(mpv_render_context_update(rc) & MPV_RENDER_UPDATE_FRAME))
@@ -109,15 +131,14 @@ static void play(mpv_handle *mpv, mpv_render_context *rc, GLuint fbo, const char
 		shown = rendered(fbo);
 	}
 	char *codec = mpv_get_property_string(mpv, "video-format");
-	char *hwdec = mpv_get_property_string(mpv, "hwdec-current");
+	char *current = mpv_get_property_string(mpv, "hwdec-current");
 	printf("%s: %d frames rendered, video %s, hwdec %s\n", path, frames, codec ? codec : "none",
-	       hwdec && *hwdec ? hwdec : "no");
+	       current && *current ? current : "no");
 	mpv_free(codec);
-	mpv_free(hwdec);
-	if (!shown)
-		fail(path, "no frame reached the framebuffer");
+	mpv_free(current);
 	const char *stop[] = {"stop", NULL};
 	mpv_command(mpv, stop);
+	return shown;
 }
 
 int main(int argc, char **argv) {
@@ -197,8 +218,27 @@ int main(int argc, char **argv) {
 	};
 	check(mpv_render_context_create(&rc, mpv, params), "mpv_render_context_create");
 
-	for (int i = 1; i < argc; i++)
-		play(mpv, rc, fbo, argv[i]);
+	// hardware is the first pass's hwdec: the player's setting, unless
+	// SMOKE_HWDEC names another one. soft records that this host has already
+	// failed to hardware decode, so the rest play in software straight away.
+	const char *hardware = getenv("SMOKE_HWDEC");
+	int soft = 0;
+
+	for (int i = 1; i < argc; i++) {
+		// Once a file needed software decoding, the rest do too: the host
+		// can't hardware decode, and replaying each one is 20 seconds of
+		// black frames apiece.
+		int shown = play(mpv, rc, fbo, argv[i], soft ? "no" : hardware);
+		if (!shown && !soft) {
+			soft = 1;
+			shown = play(mpv, rc, fbo, argv[i], "no");
+			if (shown)
+				printf("%s: this host could not hardware decode it; software decoding renders\n",
+				       argv[i]);
+		}
+		if (!shown)
+			fail(argv[i], "no frame reached the framebuffer, in hardware or software");
+	}
 
 	mpv_render_context_free(rc);
 	mpv_terminate_destroy(mpv);
