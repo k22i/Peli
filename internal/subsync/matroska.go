@@ -239,7 +239,15 @@ func loadMatroska(ctx context.Context, r ranges) (*Reference, error) {
 	}
 	readCues(cuesBody, float64(scale)/1e6, tracks)
 	ref := &Reference{}
-	for _, t := range tracks {
+	// The tracks come out in the file's order (by track number), not the
+	// random order of the map: callers pick a reference track by position.
+	numbers := make([]uint64, 0, len(tracks))
+	for number := range tracks {
+		numbers = append(numbers, number)
+	}
+	sort.Slice(numbers, func(i, j int) bool { return numbers[i] < numbers[j] })
+	for _, number := range numbers {
+		t := tracks[number]
 		if len(t.Times) > 0 {
 			sort.Slice(t.Times, func(i, j int) bool { return t.Times[i] < t.Times[j] })
 			ref.Tracks = append(ref.Tracks, *t)

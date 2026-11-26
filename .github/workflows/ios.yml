@@ -110,9 +110,17 @@ jobs:
       # parties are in it: they only send play/pause/seek/chat messages.
       # The test binary is the desktop main package, whose player cgo needs
       # mpv's headers (any mpv: nothing is run, the desktop build is not made).
-      - run: brew install mpv
       - name: Boundary test
-        run: go test -run '^Test(IOS|Desktop)Build' -count=1 .
+        run: |
+          brew install mpv
+          # mpv.pc names libarchive in Requires.private, and Homebrew's
+          # libarchive is keg-only (:provided_by_macos since 3.8): its
+          # libarchive.pc never reaches pkg-config's default path, so
+          # `pkg-config --cflags mpv` fails with "Package libarchive was not
+          # found" until the keg is named. Only this step builds against it.
+          libarchive_pc=$(brew --prefix libarchive)/lib/pkgconfig
+          export PKG_CONFIG_PATH="$libarchive_pc${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+          go test -run '^Test(IOS|Desktop)Build' -count=1 .
 
       - name: go vet (GOOS=ios)
         env:
