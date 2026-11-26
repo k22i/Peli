@@ -60,6 +60,34 @@ go run ./tools/updates verify bin/peli-update.json darwin/arm64=bin/Peli-0.2.0-a
 
 To try an update locally: package a copy, then bump `Info.plist`'s version and run `wails3 task darwin:package:zip`. Sign a feed whose `-base` is `http://127.0.0.1:<port>/`, serve the folder, and start the older copy with `PELI_UPDATE_URL=http://127.0.0.1:<port>/peli-update.json`. Development builds (`0.0.0-dev`) never update.
 
+### On CI
+
+`.github/workflows/release.yml` (#80) does the whole thing for both architectures when a `v*` tag is pushed:
+
+```sh
+git tag -a v0.2.0 -m "Peli 0.2.0" && git push origin v0.2.0
+```
+
+It fails early if the tag doesn't match `build/darwin/Info.plist`'s `CFBundleShortVersionString`, so bump that (and `build/config.yml`'s two versions) and commit before tagging. It builds libmpv for arm64 and x86_64, releases once per architecture (`wails3 task darwin:release`, or the ad-hoc path below), audits the bundle, signs the feed, and creates a **draft** release with both DMGs, both zips and `peli-update.json`.
+
+Publishing the draft is what turns auto-update on: Peli reads `/releases/latest/download/peli-update.json`, and GitHub's "latest" skips drafts and pre-releases. A private repo serves no assets without a token and Peli has none ([ADR-0054](docs/adr/0054-signed-auto-update.md)), so the repository has to be public before installed copies can update.
+
+Secrets, in Settings › Secrets and variables › Actions: `PELI_SIGN_CERT_P12` (the Developer ID Application certificate exported as `.p12`, base64) and `PELI_SIGN_CERT_PASSWORD`, `PELI_SIGN_IDENTITY`, `PELI_NOTARY_KEY` (the App Store Connect API key's `.p8` contents), `PELI_NOTARY_KEY_ID`, `PELI_NOTARY_ISSUER`, and `PELI_UPDATE_KEY` (ADR-0054's key: `security find-generic-password -s "Peli update signing" -w`).
+
+#### Without an Apple Developer account
+
+None of the six signing and notarization secrets are needed to ship and update Peli — only to make the *first* download clean. Set the repository **variable** `PELI_ADHOC=true` (Settings › Secrets and variables › Actions › Variables) and the same tag builds the same four artifacts, ad hoc signed, with no notarization. `dist.sh check` passes them, and `PELI_UPDATE_KEY` is still required: Peli refuses an unsigned feed whatever signed the app.
+
+Updates work. `pkg/updater` verifies a download with `codesign --verify --deep --strict`, which an ad-hoc bundle passes, and `internal/updates` skips the Team-ID anchor for a copy that has none (`installed_darwin.go:77`). And an update Peli downloads itself is not quarantined, so Gatekeeper doesn't see it (ADR-0054).
+
+What it costs:
+
+- **The first install.** A DMG from a browser is quarantined, and macOS 15+ blocks an unnotarized app until the user allows it in System Settings › Privacy & Security (ADR-0053). The release notes say so.
+- **`disable-library-validation`.** With no Team ID, dyld refuses to load libmpv, so ad-hoc bundles carry that entitlement; `dist.sh check` refuses it on a Developer ID build (ADR-0053).
+- **The keychain, after every update.** An ad-hoc copy can't use the direct Security.framework path, so items prompt again each time, because its signature changes with every build (ADR-0053).
+
+The two modes mix in one direction only: an ad-hoc copy accepts a later notarized release, a notarized copy refuses an ad-hoc one. So ad hoc first, Developer ID later, works.
+
 ## Before you open a PR
 
 Run what CI runs: `cd frontend && pnpm check && pnpm test` and `go vet ./internal/... && go test ./internal/...`.

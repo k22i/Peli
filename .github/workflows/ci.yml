@@ -253,7 +253,8 @@ jobs:
         run: wails3 build
       # Builds the binary, wraps it in Peli.app (signed ad hoc, hardened
       # runtime) and that in the drag-to-Applications DMG, failing over 60 MB
-      # (#78). Release signing and notarization are #80's.
+      # (#78). The signed, notarized release for both architectures is
+      # release.yml (#80), on a tag.
       - if: runner.os == 'macOS'
         run: wails3 task darwin:package:dmg
       # The build runs `go mod tidy`: a change means go.mod or go.sum is stale.

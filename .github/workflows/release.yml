@@ -1,0 +1,369 @@
+# #80: a tagged build becomes a GitHub release, so installed copies of Peli
+# can update themselves (ADR-0054). Until this existed, `wails3 task
+# darwin:release` on one Mac did it by hand (CONTRIBUTING.md).
+#
+#   git tag -a v0.2.0 -m "Peli 0.2.0" && git push origin v0.2.0
+#
+# Two architectures, because ADR-0005's limit and ADR-0053's packaging are
+# per architecture: Peli-<version>-{arm64,x86_64}.{dmg,zip}.
+#
+# The release is a **draft**. Assets land, and nobody updates, until someone
+# publishes it: Peli's feed is /releases/latest/download/peli-update.json
+# (internal/updates/feed.go), and GitHub's "latest" skips drafts and
+# pre-releases. So publishing is the step that turns auto-update on, which is
+# also why this needs no "go public" flag: a private repo serves no assets
+# without a token, and Peli has none (ADR-0054).
+#
+# Signing, two modes. With the secrets below it is a Developer ID release:
+# signed, notarized, Gatekeeper-clean on the first download (ADR-0053).
+#
+# Without them, set the repository variable `PELI_ADHOC` to `true` and it
+# builds the same four artifacts ad hoc signed and unnotarized. That is not a
+# second-class citizen in the updater's eyes: `pkg/updater` checks a download
+# with `codesign --verify --deep --strict`, which an ad-hoc bundle passes
+# (Wails says so at validate.go:343), and `internal/updates` skips the Team-ID
+# anchor for a copy that has no Team ID (installed_darwin.go:77). So updates
+# install and relaunch. What an ad-hoc release costs:
+#
+#   - the first install. A DMG from a browser is quarantined, and macOS 15+
+#     blocks an unnotarized app until the user allows it in System Settings ›
+#     Privacy & Security (ADR-0053:60). The release body says so.
+#   - `disable-library-validation`. Without a Team ID, dyld refuses to load
+#     libmpv, so an ad-hoc bundle carries that entitlement (ADR-0053:39) —
+#     which is why `dist.sh check` refuses it on a Developer ID build.
+#   - the keychain. An ad-hoc copy has no Team ID, so ADR-0053:51's direct
+#     Security.framework path is off and keychain items prompt after each
+#     update, since the signature changes with every build.
+#
+# The modes mix safely in one direction: an ad-hoc copy accepts a later
+# notarized release (no Team ID to keep), a notarized copy refuses an ad-hoc
+# one (the Team-ID anchor). So ad-hoc first, Developer ID later, works.
+#
+# Secrets (Settings › Secrets and variables › Actions), all for the
+# Developer ID path:
+#   PELI_SIGN_CERT_P12        Developer ID Application certificate: base64 of
+#                             the .p12 exported from Keychain Access
+#   PELI_SIGN_CERT_PASSWORD   that export's password
+#   PELI_SIGN_IDENTITY        "Developer ID Application: <name> (<TEAMID>)"
+#   PELI_NOTARY_KEY           the App Store Connect API key (.p8) contents
+#   PELI_NOTARY_KEY_ID        its key ID
+#   PELI_NOTARY_ISSUER        its issuer ID
+#   PELI_UPDATE_KEY           the update key's private half (ADR-0054), the
+#                             pair of internal/updates.PublicKey: `security
+#                             find-generic-password -s "Peli update signing" -w`
+#                             Needed by both modes: Peli refuses an unsigned
+#                             feed whatever signed the app.
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+# A run notarizes twice per architecture and waits on Apple: never cancel it
+# half way, and never run two for the same tag.
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  GO_VERSION: "1.27.x"
+  NODE_VERSION: "26"
+  WAILS3: github.com/wailsapp/wails/v3/cmd/wails3@v3.1.0
+
+permissions:
+  contents: read
+
+jobs:
+  # #92: the libmpv both bundles carry. ci.yml's libmpv job only builds
+  # macos-arm64 (there is no Intel runner), and an amd64 release needs its
+  # own: build.sh cross-builds either target on Apple silicon. The cache key
+  # is libmpv.yml's, so a normal CI run has already built the arm64 one.
+  libmpv:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: macos-arm64
+          - target: macos-x86_64
+    name: libmpv (${{ matrix.target }})
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz
+            build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz.sha256
+            build/libmpv/.work/sources-${{ matrix.target }}.tar
+          key: libmpv-${{ matrix.target }}-${{ hashFiles('build/libmpv/**') }}
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          brew install nasm
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install meson ninja
+          echo "$RUNNER_TEMP/venv/bin" >> "$GITHUB_PATH"
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: build/libmpv/build.sh ${{ matrix.target }}
+      - if: steps.cache.outputs.cache-hit == 'true'
+        run: tar -C build/libmpv/.work -xJf build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz
+      - run: cat build/libmpv/.work/libmpv-${{ matrix.target }}/BUILD-INFO.txt
+      # The x86_64 build runs on an arm64 runner, where it needs Rosetta. No
+      # Rosetta means no smoke test: it says so instead of failing a release
+      # over a test this host can't run.
+      - name: Smoke test
+        run: |
+          lib=build/libmpv/.work/libmpv-${{ matrix.target }}/lib/libmpv.2.dylib
+          built=$(lipo -archs "$lib")
+          if [ "$built" = "$(uname -m)" ] || arch -x86_64 /usr/bin/true 2>/dev/null; then
+            build/libmpv/smoke.sh "build/libmpv/.work/libmpv-${{ matrix.target }}"
+          else
+            echo "::notice::No Rosetta on $(uname -m): skipped the $built smoke test."
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: libmpv-${{ matrix.target }}
+          retention-days: 7
+          if-no-files-found: error
+          path: build/libmpv/.work/libmpv-${{ matrix.target }}.tar.xz
+
+  # build/darwin/Taskfile.yml's release task, once per architecture: build
+  # against our libmpv, sign the libraries and the app with the hardened
+  # runtime, notarize and staple the app, zip it for the updater, then make
+  # and notarize the DMG (ADR-0053).
+  macos:
+    needs: libmpv
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: arm64
+            target: arm64
+          - arch: amd64
+            target: x86_64
+    name: macos (${{ matrix.arch }})
+    runs-on: macos-26
+    timeout-minutes: 90
+    # Secrets and variables the `if:`s below choose between, all declared
+    # here so that a step can test them without a bash variable.
+    env:
+      PELI_SIGN_CERT_P12: ${{ secrets.PELI_SIGN_CERT_P12 }}
+      PELI_ADHOC: ${{ vars.PELI_ADHOC }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      # `wails3 task darwin:package` builds the frontend, and runs `go mod
+      # tidy` on the way (ci.yml checks that it changed nothing).
+      - run: npm install -g "$(node -p "require('./frontend/package.json').packageManager")"
+
+      # The tag is the release's version: Peli compares the feed's `version`
+      # with the unpacked bundle's CFBundleShortVersionString and refuses a
+      # mismatch (ADR-0054), so a tag that doesn't match the plist must fail
+      # here rather than ship a feed nobody can install.
+      - name: The tag matches the bundle's version
+        run: |
+          tag=${GITHUB_REF_NAME#v}
+          plist=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' build/darwin/Info.plist)
+          echo "PELI_VERSION=$plist" >> "$GITHUB_ENV"
+          echo "tag $GITHUB_REF_NAME, build/darwin/Info.plist $plist"
+          [ "$tag" = "$plist" ] ||
+            { echo "::error::tag v$tag but build/darwin/Info.plist says $plist: bump the plist and the build/config.yml versions first"; exit 1; }
+
+      # Neither mode configured: say so now, before 20 minutes of building.
+      - name: Which signature
+        if: env.PELI_SIGN_CERT_P12 == '' && env.PELI_ADHOC != 'true'
+        run: |
+          echo "::error::No PELI_SIGN_CERT_P12 secret, and the PELI_ADHOC repository variable isn't 'true'. Set the Developer ID secrets for a notarized release, or PELI_ADHOC=true for an ad-hoc one (CONTRIBUTING.md)."
+          exit 1
+
+      - name: Import the Developer ID certificate
+        if: env.PELI_SIGN_CERT_P12 != ''
+        env:
+          P12: ${{ secrets.PELI_SIGN_CERT_P12 }}
+          P12_PASSWORD: ${{ secrets.PELI_SIGN_CERT_PASSWORD }}
+          PELI_SIGN_IDENTITY: ${{ secrets.PELI_SIGN_IDENTITY }}
+        run: |
+          : "${P12:?set the PELI_SIGN_CERT_P12 secret}"
+          : "${P12_PASSWORD:?set the PELI_SIGN_CERT_PASSWORD secret}"
+          : "${PELI_SIGN_IDENTITY:?set the PELI_SIGN_IDENTITY secret}"
+          keychain=$RUNNER_TEMP/peli-signing.keychain-db
+          password=$(uuidgen)
+          echo "$P12" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security create-keychain -p "$password" "$keychain"
+          security set-keychain-settings -lut 10800 "$keychain"
+          security unlock-keychain -p "$password" "$keychain"
+          security import "$RUNNER_TEMP/cert.p12" -k "$keychain" -P "$P12_PASSWORD" \
+            -T /usr/bin/codesign -T /usr/bin/security
+          # Without this, codesign waits on a UI prompt that never comes.
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$password" "$keychain" > /dev/null
+          security list-keychains -d user -s "$keychain" login.keychain-db
+          rm -f "$RUNNER_TEMP/cert.p12"
+          security find-identity -v -p codesigning
+          # The secret and the certificate must name the same thing, or codesign
+          # fails after the frontend build has already run.
+          security find-identity -v -p codesigning | grep -F "$PELI_SIGN_IDENTITY" ||
+            { echo "::error::PELI_SIGN_IDENTITY is not in the imported certificate's identities"; exit 1; }
+
+      # dist.sh takes the notary key as a path, so the secret becomes a file.
+      - name: Notarization credentials
+        if: env.PELI_SIGN_CERT_P12 != ''
+        env:
+          PELI_SIGN_IDENTITY: ${{ secrets.PELI_SIGN_IDENTITY }}
+          NOTARY_KEY: ${{ secrets.PELI_NOTARY_KEY }}
+          NOTARY_KEY_ID: ${{ secrets.PELI_NOTARY_KEY_ID }}
+          NOTARY_ISSUER: ${{ secrets.PELI_NOTARY_ISSUER }}
+        run: |
+          : "${PELI_SIGN_IDENTITY:?set the PELI_SIGN_IDENTITY secret}"
+          : "${NOTARY_KEY:?set the PELI_NOTARY_KEY secret}"
+          : "${NOTARY_KEY_ID:?set the PELI_NOTARY_KEY_ID secret}"
+          : "${NOTARY_ISSUER:?set the PELI_NOTARY_ISSUER secret}"
+          umask 077
+          printf '%s\n' "$NOTARY_KEY" > "$RUNNER_TEMP/notary.p8"
+          { echo "PELI_NOTARY_KEY=$RUNNER_TEMP/notary.p8"
+            echo "PELI_NOTARY_KEY_ID=$NOTARY_KEY_ID"
+            echo "PELI_NOTARY_ISSUER=$NOTARY_ISSUER"
+          } >> "$GITHUB_ENV"
+
+      - run: go install "$WAILS3"
+
+      # #92: the libmpv this architecture packages against. darwin:release
+      # looks for exactly this path (LIBMPV's default).
+      - uses: actions/download-artifact@v4
+        with:
+          name: libmpv-macos-${{ matrix.target }}
+          path: build/libmpv/.work
+      - run: tar -C build/libmpv/.work -xJf build/libmpv/.work/libmpv-macos-${{ matrix.target }}.tar.xz
+
+      - name: Release, sign, notarize
+        if: env.PELI_SIGN_CERT_P12 != ''
+        env:
+          PELI_SIGN_IDENTITY: ${{ secrets.PELI_SIGN_IDENTITY }}
+        run: wails3 task darwin:release ARCH=${{ matrix.arch }}
+
+      # The same four artifacts, ad hoc signed: darwin:release without the two
+      # notarize calls, and PELI_SIGN_IDENTITY unset so dist.sh signs ad hoc
+      # with the hardened runtime and entitlements.adhoc.plist (ADR-0053).
+      # One `package` run, then dist.sh's own steps, so this doesn't rebuild
+      # what darwin:package:dmg and darwin:package:zip would each rebuild.
+      - name: Package (ad hoc, unnotarized)
+        if: env.PELI_SIGN_CERT_P12 == '' && env.PELI_ADHOC == 'true'
+        run: |
+          echo "::warning::Ad-hoc release (vars.PELI_ADHOC=true): unnotarized, so the first install needs System Settings › Privacy & Security."
+          wails3 task darwin:package ARCH=${{ matrix.arch }}
+          build/darwin/dist.sh check bin/Peli.app ${{ matrix.arch }}
+          build/darwin/dist.sh zip bin/Peli.app ${{ matrix.arch }}
+          build/darwin/dist.sh dmg bin/Peli.app ${{ matrix.arch }}
+
+      - run: test -z "$(gofmt -l main.go internal)" || { gofmt -l main.go internal; exit 1; }
+      - run: git diff --exit-code go.mod go.sum
+
+      # #18: no GPL-only or non-free libmpv/FFmpeg in what we ship. CI does
+      # this for the ad-hoc bundle too; here it's the one that goes out.
+      - run: go run ./tools/notices -audit -bundle bin
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: peli-macos-${{ matrix.arch }}
+          retention-days: 7
+          if-no-files-found: error
+          path: |
+            bin/Peli-*.dmg
+            bin/Peli-*.zip
+
+  # The feed (#83, ADR-0054) and the draft release. The feed signs each zip's
+  # SHA-512 with PELI_UPDATE_KEY and refuses a key that isn't the private half
+  # of internal/updates.PublicKey, so a wrong secret fails the run instead of
+  # shipping a feed no copy of Peli will install.
+  publish:
+    needs: macos
+    runs-on: macos-26
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    env:
+      PELI_SIGN_CERT_P12: ${{ secrets.PELI_SIGN_CERT_P12 }}
+      PELI_ADHOC: ${{ vars.PELI_ADHOC }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - uses: actions/download-artifact@v4
+        with:
+          path: bin
+          merge-multiple: true
+
+      - name: The tag matches the bundle's version
+        run: |
+          tag=${GITHUB_REF_NAME#v}
+          plist=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' build/darwin/Info.plist)
+          echo "PELI_VERSION=$plist" >> "$GITHUB_ENV"
+          [ "$tag" = "$plist" ] || { echo "::error::tag v$tag but the plist says $plist"; exit 1; }
+          ls -l bin
+
+      # Release notes from the commits since the last tag, for the release and
+      # for what Settings › About shows about an update.
+      - name: Notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/releases/generate-notes" \
+          -f tag_name="$GITHUB_REF_NAME" --jq .body > "$RUNNER_TEMP/notes.md"
+
+      # An ad-hoc release is installable, but the first install from the DMG
+      # meets Gatekeeper (ADR-0053:60). Say it at the top, where it's read.
+      - name: Say what an unnotarized DMG costs the first installer
+        if: env.PELI_SIGN_CERT_P12 == '' && env.PELI_ADHOC == 'true'
+        run: |
+          cat > "$RUNNER_TEMP/adhoc.md" <<'EOF'
+          > **This build is ad-hoc signed, not notarized.** macOS blocks an
+          > unnotarized download until you allow it: open the DMG, drag Peli to
+          > Applications, then try to open it and follow System Settings ›
+          > Privacy & Security › "Open Anyway". Updating from inside Peli needs
+          > none of that, but macOS will ask for keychain access again after
+          > each update.
+
+          EOF
+          cat "$RUNNER_TEMP/adhoc.md" "$RUNNER_TEMP/notes.md" > "$RUNNER_TEMP/notes-all.md"
+          mv "$RUNNER_TEMP/notes-all.md" "$RUNNER_TEMP/notes.md"
+
+      - name: Feed
+        env:
+          PELI_UPDATE_KEY: ${{ secrets.PELI_UPDATE_KEY }}
+        run: |
+          : "${PELI_UPDATE_KEY:?set the PELI_UPDATE_KEY secret (ADR-0054)}"
+          version=$PELI_VERSION
+          # Artifact URLs embed the tag, so a release published between the
+          # check and the download can't swap the file (ADR-0054).
+          base="https://github.com/$GITHUB_REPOSITORY/releases/download/$GITHUB_REF_NAME/"
+          go run ./tools/updates feed -version "$version" -notes "$RUNNER_TEMP/notes.md" \
+            -out bin/peli-update.json -base "$base" \
+            darwin/arm64="bin/Peli-$version-arm64.zip" \
+            darwin/amd64="bin/Peli-$version-x86_64.zip"
+          go run ./tools/updates verify bin/peli-update.json \
+            darwin/arm64="bin/Peli-$version-arm64.zip" \
+            darwin/amd64="bin/Peli-$version-x86_64.zip"
+          cat bin/peli-update.json
+
+      - name: Draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$PELI_VERSION
+          gh release create "$GITHUB_REF_NAME" --draft \
+            --title "Peli $version" --notes-file "$RUNNER_TEMP/notes.md" \
+            "bin/Peli-$version-arm64.dmg" \
+            "bin/Peli-$version-x86_64.dmg" \
+            "bin/Peli-$version-arm64.zip" \
+            "bin/Peli-$version-x86_64.zip" \
+            bin/peli-update.json
+          cat <<EOF >> "$GITHUB_STEP_SUMMARY"
+          Draft release $GITHUB_REF_NAME is ready. Publishing it turns on
+          auto-update for installed copies: Peli reads
+          /releases/latest/download/peli-update.json, and "latest" skips drafts.
+          EOF
