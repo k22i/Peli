@@ -456,7 +456,7 @@ describe("settings", () => {
     await renderSettings("content");
 
     const toggle = screen.getByRole("switch", { name: "Hide spoilers" });
-    expect(toggle).toHaveAccessibleDescription(/haven’t watched yet/);
+    expect(toggle).toHaveAccessibleDescription(/haven’t watched\./);
     await user.click(toggle);
     await waitFor(() =>
       expect(store.profileSettings.get(store.profiles[store.current]!.id)).toMatchObject({
@@ -677,7 +677,7 @@ describe("settings", () => {
 
     const always = screen.getByRole("switch", { name: "Always show subtitles" });
     expect(always).not.toBeChecked();
-    expect(always).toHaveAccessibleDescription(/in the style below/);
+    expect(always).toHaveAccessibleDescription(/each profile’s language/);
     // The device's style row is there once it is on, not before.
     expect(screen.queryByText("Subtitle style on this device")).not.toBeInTheDocument();
 
@@ -688,7 +688,7 @@ describe("settings", () => {
     expect(screen.getByText("Subtitle style on this device")).toBeInTheDocument();
     // The profile's own choice still shows, saying the device's wins.
     const captions = screen.getByRole("group", { name: "Captions" });
-    expect(screen.getByText(/^Always on on this .+: see On this device\.$/)).toBeInTheDocument();
+    expect(screen.getByText(/^On for every profile on this .+\.$/)).toBeInTheDocument();
     expect(within(captions).getByRole("button", { name: "System" })).toBeEnabled();
   });
 
@@ -729,7 +729,7 @@ describe("settings", () => {
     await renderSettings("streaming");
     const streaming = screen.getByRole("switch", { name: "Stream torrents" });
     expect(streaming).not.toBeChecked();
-    expect(streaming).toHaveAccessibleDescription(/can see your IP address/);
+    expect(streaming).toHaveAccessibleDescription(/see your IP address/);
     expect(screen.queryByRole("combobox", { name: "Torrent cache" })).not.toBeInTheDocument();
 
     await user.click(streaming);
@@ -754,7 +754,7 @@ describe("settings", () => {
     const sooner = screen.getByRole("switch", { name: "Start cached streams sooner" });
     expect(sooner).not.toBeChecked();
     expect(sooner).toHaveAccessibleDescription(
-      /adds the stream to your debrid service’s list before you press play/,
+      /Adds it to your debrid list even if you don’t play it/,
     );
 
     await user.click(sooner);
@@ -863,7 +863,7 @@ describe("Playback on iOS", () => {
     // The phone finds the bars too, up to 1080p (the engine's cap), and its
     // row says so.
     expect(screen.getByText("Remove black bars", { selector: "[id$=-label]" })).toBeInTheDocument();
-    expect(screen.getByText(/On iPhone, for videos up to 1080p/)).toBeInTheDocument();
+    expect(screen.getByText(/On iPhone: up to 1080p/)).toBeInTheDocument();
     for (const name of [
       "Sharpening",
       "Upscaling",

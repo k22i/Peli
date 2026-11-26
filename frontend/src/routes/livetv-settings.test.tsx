@@ -118,14 +118,12 @@ describe("settings › live tv", () => {
 
     expect(
       screen.getByText(
-        "Watch channels from an IPTV playlist (M3U), with a programme guide (XMLTV). Peli keeps the links in the keychain, as they can hold a password.",
+        "Channels from an IPTV playlist (M3U) and a programme guide (XMLTV). Links stay in the keychain, as they can hold a password.",
       ),
     ).toBeVisible();
     expect(screen.getByRole("heading", { level: 3, name: "Sources" })).toBeVisible();
     expect(
-      screen.getByText(
-        "Playlists update every 12 hours and guides every 6. Refresh updates one now.",
-      ),
+      screen.getByText("Playlists update every 12 hours, guides every 6. Refresh updates one now."),
     ).toBeVisible();
 
     // The counts and the age come from Go; the age is the locale's to word,

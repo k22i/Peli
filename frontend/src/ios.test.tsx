@@ -307,7 +307,7 @@ describe("Settings on iOS", () => {
       expect(screen.getByRole("heading", { name })).toBeInTheDocument();
     }
     // The pinch fills the screen, and no key is named to say so.
-    expect(screen.getByText(/Pinch the video to fill the screen/)).toBeInTheDocument();
+    expect(screen.getByText(/Pinch to fill/)).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Fill" })).not.toBeInTheDocument();
   });
 

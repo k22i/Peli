@@ -139,7 +139,7 @@ describe("settings › plugins", () => {
     const toggle = await open();
 
     expect(toggle).not.toBeChecked();
-    expect(screen.getByText(/No plugin is ever asked for streams/)).toBeInTheDocument();
+    expect(screen.getByText(/Turning it on shows a warning first/)).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: addRepository })).not.toBeInTheDocument();
   });
 

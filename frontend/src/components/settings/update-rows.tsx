@@ -71,7 +71,7 @@ function AutoUpdateRow() {
     <SettingRow
       id="auto-update"
       label="Automatic updates"
-      description="Looks for new versions and downloads them in the background. Peli asks before it restarts. Applies to this device."
+      description="Checks for and downloads new versions in the background. Asks before restarting. This device."
     >
       <Switch
         aria-labelledby="auto-update-label"

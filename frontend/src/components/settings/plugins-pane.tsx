@@ -132,10 +132,10 @@ function PluginGroups({
           label="Use plugins"
           description={
             enabled
-              ? "Plugins are asked for streams beside your addons. Turn this off and none is asked."
+              ? "Plugins are asked for streams beside your addons."
               : repos.length > 0
-                ? `Off. None is asked. ${repos.length === 1 ? "The repository" : `The ${repos.length} repositories`} you added stays here.`
-                : "Off. No plugin is ever asked for streams. Turning it on shows a warning first."
+                ? `Off. ${repos.length === 1 ? "The repository" : `The ${repos.length} repositories`} you added stays here.`
+                : "Off. Turning it on shows a warning first."
           }
         >
           <Switch
@@ -165,7 +165,7 @@ function PluginGroups({
               onRemove={() => setRemoving(repo)}
             />
           ))}
-          <SettingsGroup footer="A repository is a list of plugins at a web address (its manifest.json). They sync with your Nuvio account, so your other devices get the same repositories; which plugins are on, and their settings, stay on this device.">
+          <SettingsGroup footer="A repository is a list of plugins at a web address (its manifest.json). Repositories sync with your Nuvio account; which plugins are on stays here.">
             <SettingRow
               id="plugins-add"
               label="Add a repository"

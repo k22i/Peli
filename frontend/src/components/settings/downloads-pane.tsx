@@ -134,7 +134,7 @@ function LoadedDownloadsPane({ profileId, kids }: { profileId: number; kids: boo
           <SettingRow
             id="downloads-folder"
             label="Location"
-            description="New downloads go here. Ones you have stay where they are."
+            description="New downloads go here; existing ones stay put."
           >
             <span className="max-w-56 truncate text-small text-muted-foreground" title={usage?.dir}>
               {usage?.dir ?? "…"}
@@ -175,7 +175,7 @@ function LoadedDownloadsPane({ profileId, kids }: { profileId: number; kids: boo
           <SettingRow
             id="downloads-wifi"
             label="Download over Wi-Fi only"
-            description="Downloads wait for Wi-Fi instead of using mobile data."
+            description="Downloads wait for Wi-Fi, not mobile data."
           >
             <Switch
               aria-labelledby="downloads-wifi-label"
@@ -193,7 +193,7 @@ function LoadedDownloadsPane({ profileId, kids }: { profileId: number; kids: boo
           <SettingRow
             id="downloads-delete-all"
             label="Delete all downloads"
-            description="Removes what was downloaded on this device, for every profile."
+            description="Removes this device’s downloads, for every profile."
           >
             <Button
               variant="destructive-outline"

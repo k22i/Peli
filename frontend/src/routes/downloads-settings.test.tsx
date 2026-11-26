@@ -109,9 +109,7 @@ describe("settings › downloads", () => {
     // The desktop's folder: what Go counts downloads in, under the row.
     expect(screen.getByText("Location")).toBeVisible();
     expect(screen.getByText(folder)).toBeVisible();
-    expect(
-      screen.getByText("New downloads go here. Ones you have stay where they are."),
-    ).toBeVisible();
+    expect(screen.getByText("New downloads go here; existing ones stay put.")).toBeVisible();
     // The default folder is Go's, so there is nothing to put back.
     expect(screen.queryByRole("button", { name: "Use default" })).not.toBeInTheDocument();
 
@@ -211,9 +209,7 @@ describe("settings › downloads", () => {
 
     const wifi = screen.getByRole("switch", { name: "Download over Wi-Fi only" });
     expect(wifi).not.toBeChecked();
-    expect(wifi).toHaveAccessibleDescription(
-      "Downloads wait for Wi-Fi instead of using mobile data.",
-    );
+    expect(wifi).toHaveAccessibleDescription("Downloads wait for Wi-Fi, not mobile data.");
 
     await user.click(wifi);
 

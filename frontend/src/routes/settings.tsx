@@ -298,11 +298,11 @@ function AccountPane({ title }: { title: string }) {
       : "Nuvio session ended, kept on this device";
   const nuvio = profile.signedIn
     ? profile.guest
-      ? "Signed in. Your Nuvio profiles sync across devices; the Guest profile stays on this one."
-      : "Signed in. Your library, progress and addons sync across devices."
+      ? "Signed in. Profiles sync across devices; Guest stays on this one."
+      : "Signed in. Library, progress and addons sync across devices."
     : profile.sessionEnded
-      ? "Your session ended. Sign in again to keep syncing; your library and progress here are kept."
-      : "Sign in to sync your library, progress and addons across devices.";
+      ? "Session ended. Sign in again to keep syncing; nothing here is lost."
+      : "Sign in to sync your library, progress and addons.";
 
   return (
     <SettingsPaneView title={title}>
@@ -339,7 +339,7 @@ function AccountPane({ title }: { title: string }) {
               ? "…"
               : server.data.custom
                 ? `Your own server, ${serverName(server.data.url)}.`
-                : "Nuvio’s server. You can use your own Nuvio-compatible server instead."
+                : "Nuvio’s server. You can use your own instead."
           }
         >
           <Button
@@ -357,11 +357,7 @@ function AccountPane({ title }: { title: string }) {
         )}
       </SettingsGroup>
       <SettingsGroup title="Profiles">
-        <SettingRow
-          id="profiles"
-          label="Profiles"
-          description="Add, rename and delete profiles, and change their avatars."
-        >
+        <SettingRow id="profiles" label="Profiles" description="Add, rename or delete profiles.">
           <Link
             to="/profiles"
             search={{ manage: true }}
@@ -387,7 +383,7 @@ function AskWhoRow() {
     <SettingRow
       id="ask-who"
       label="Ask who’s watching"
-      description={`When Peli opens on ${thisDevice()}. Off: it opens as the profile last used.`}
+      description={`At launch on ${thisDevice()}. Off: opens as the last profile.`}
     >
       <Switch
         aria-labelledby="ask-who-label"
@@ -412,7 +408,7 @@ function ContentPane({ title, profileId }: { title: string; profileId: number | 
               <SettingRow
                 id="debrid"
                 label="Debrid services"
-                description="Set up TorBox, AllDebrid or Premiumize in a stream addon’s own settings, such as Torrentio’s or Comet’s. Peli never asks for your debrid key."
+                description="Set up TorBox, AllDebrid or Premiumize in a stream addon’s settings. Peli never asks for your key."
               >
                 <Link to="/addons" className={buttonVariants({ variant: "outline", size: "sm" })}>
                   Open addons
@@ -424,7 +420,7 @@ function ContentPane({ title, profileId }: { title: string; profileId: number | 
               <SettingRow
                 id="anime-in-movies-and-shows"
                 label="Show anime in Movies and Shows"
-                description="Off: anime that general addons list among films and series shows only under Anime."
+                description="Off: anime shows only under Anime."
               >
                 <Switch
                   aria-labelledby="anime-in-movies-and-shows-label"
@@ -438,7 +434,7 @@ function ContentPane({ title, profileId }: { title: string; profileId: number | 
               <SettingRow
                 id="hide-spoilers"
                 label="Hide spoilers"
-                description="Blurs the pictures and descriptions of episodes you haven’t watched yet. Reveal one to see it."
+                description="Blurs art and text for episodes you haven’t watched."
               >
                 <Switch
                   aria-labelledby="hide-spoilers-label"
@@ -480,7 +476,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
               <SettingRow
                 id="hardware-decoding"
                 label="Hardware decoding"
-                description="Decodes video on the graphics card, which saves power. Turn it off if playback stutters or shows glitches. Applies to this device, from the next video you play."
+                description="Decodes on the graphics card, saving power. Off if playback stutters. Next video on this device."
               >
                 <Switch
                   aria-labelledby="hardware-decoding-label"
@@ -500,7 +496,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
               <SettingRow
                 id="tone-mapping"
                 label="Tone mapping"
-                description="How HDR video is brought into what this screen shows, when it can't show HDR. Natural keeps it true to the film; Bright lifts it; Filmic is softer at the top. Applies to this device."
+                description="How HDR fits a screen that can't show it. Natural stays true; Bright lifts; Filmic softens highlights. This device."
               >
                 <Choice
                   id="tone-mapping"
@@ -517,7 +513,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
               <SettingRow
                 id="target-peak"
                 label="Screen brightness"
-                description="How bright this screen gets, for tone mapping. Auto lets the player guess; a brighter value keeps more of the highlights."
+                description="Tone-mapping brightness for this screen. Auto lets the player guess; higher keeps more highlights."
               >
                 <Choice
                   id="target-peak"
@@ -549,8 +545,8 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                 label="Fit"
                 description={
                   isTouch()
-                    ? "How the picture fills the screen: all of it, stretched, or its own size. Pinch the video to fill the screen."
-                    : "How the picture fills the window: all of it, the window filled (the edges cropped), stretched, or its own size. A title can have its own (P, then Framing, or Shift+F)."
+                    ? "How the picture fills the screen. Pinch to fill."
+                    : "How the picture fills the window. A title can have its own (P › Framing, or Shift+F)."
                 }
               >
                 <Choice
@@ -571,7 +567,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
               <SettingRow
                 id="auto-crop"
                 label="Remove black bars"
-                description={`Finds the bars around a film as it plays and crops them, so a wide film fills a wide screen. It never cuts into the picture.${isIOS() ? " On iPhone, for videos up to 1080p." : ""}`}
+                description={`Crops the bars around a wide film. Never cuts into the picture.${isIOS() ? " On iPhone: up to 1080p." : ""}`}
               >
                 <Switch
                   aria-labelledby="auto-crop-label"
@@ -610,7 +606,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
               <SettingRow
                 id="still-watching"
                 label="Ask if you’re still watching"
-                description="After this many episodes in a row with no key or pointer touched, the next one waits until you say you’re still there."
+                description="After this many episodes untouched, the next one waits for you."
               >
                 <Choice
                   id="still-watching"
@@ -626,7 +622,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
               <SettingRow
                 id="skip-intros"
                 label="Skip intros automatically"
-                description="Skips intros and recaps without asking when Peli knows where they are. Otherwise a button offers to skip them."
+                description="Skips intros and recaps when Peli knows where they are."
               >
                 <Switch
                   aria-labelledby="skip-intros-label"
@@ -638,7 +634,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
               <SettingRow
                 id="skip-times-online"
                 label="Look up intro and credits times"
-                description="Asks IntroDB (introdb.app) where they are, for videos that don’t mark them, which tells it what you’re watching. Applies to this device."
+                description="Asks IntroDB (introdb.app) about videos that don’t mark them, sending what you play. This device."
               >
                 <Switch
                   aria-labelledby="skip-times-online-label"
@@ -656,7 +652,7 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
                 <SettingRow
                   id="party-dock"
                   label="Keep watch party open beside the video"
-                  description="The party’s people and chat stay open in a sidebar while the video plays, which moves left instead of being covered. W opens the party over the video when this is off. Applies to this device."
+                  description="Keeps the party in a sidebar while the video plays. Off: W opens it over the video. This device."
                 >
                   <Switch
                     aria-labelledby="party-dock-label"
@@ -717,7 +713,7 @@ function GestureSettings({
       {toggle(
         "level-swipes",
         "Brightness and volume swipes",
-        "Swipe up or down on the left of the picture for brightness, on the right for volume.",
+        "Swipe on the left for brightness, on the right for volume.",
         "levelSwipes",
       )}
       {toggle(
@@ -735,7 +731,7 @@ function GestureSettings({
       <SettingRow
         id="double-tap-skip"
         label="Double-tap skip"
-        description="How far a double tap on either side of the picture, and the skip buttons, go."
+        description="How far a double tap or the skip buttons go."
       >
         <Choice
           id="double-tap-skip"
@@ -795,7 +791,7 @@ function SoundDefaults({
         <SettingRow
           id="audio-device"
           label="Output"
-          description={`Where the player's sound goes. System default follows the ${isIOS() ? "device" : "Mac"}'s sound settings. Applies to this device.`}
+          description={`Where sound goes. System default follows the ${isIOS() ? "device" : "Mac"}'s settings. This device.`}
         >
           <ResponsiveSelect
             items={items}
@@ -811,7 +807,7 @@ function SoundDefaults({
       <SettingRow
         id="stereo-downmix"
         label="Stereo downmix"
-        description="Mixes surround tracks down to two channels, for stereo speakers and headphones. Applies to this device."
+        description="Downmixes surround to two channels, for speakers or headphones. This device."
       >
         <Switch
           aria-labelledby="stereo-downmix-label"
@@ -824,7 +820,7 @@ function SoundDefaults({
         <SettingRow
           id="volume-boost"
           label="Volume up to 150 %"
-          description="For quiet tracks. Above 100 % loud parts can distort. Applies to this device."
+          description="For quiet tracks. Above 100 % loud parts can distort. This device."
         >
           <Switch
             aria-labelledby="volume-boost-label"
@@ -839,8 +835,8 @@ function SoundDefaults({
         label="Dialogue boost"
         description={
           isTouch()
-            ? "Lifts speech over music and effects in every title, unless one has its own. Surround sound comes out of the front while it's on."
-            : "Lifts speech over music and effects in every title, unless one has its own (B in the player). Surround sound comes out of the front while it's on."
+            ? "Lifts speech over music and effects. Surround plays from the front. This device."
+            : "Lifts speech over music and effects (B in the player). Surround plays from the front. This device."
         }
       >
         <Switch
@@ -853,7 +849,7 @@ function SoundDefaults({
       <SettingRow
         id="night-mode"
         label="Night mode"
-        description="Evens out loud and quiet, for watching late without waking anyone."
+        description="Evens out loud and quiet, for watching late."
       >
         <Switch
           aria-labelledby="night-mode-label"
@@ -903,7 +899,7 @@ function QualityDefaults({
       <SettingRow
         id="scaling"
         label="Scaling"
-        description={`${scalingHint[quality.scaling] ?? ""} Applies to this device.`}
+        description={`${scalingHint[quality.scaling] ?? ""} This device.`}
       >
         <Choice
           id="scaling"
@@ -915,7 +911,7 @@ function QualityDefaults({
       <SettingRow
         id="deband"
         label="Debanding"
-        description="Smooths the steps in skies and dark gradients. High can soften fine texture."
+        description="Smooths banding in skies and dark gradients. High softens fine texture."
       >
         <Choice
           id="deband"
@@ -929,7 +925,7 @@ function QualityDefaults({
           <SettingRow
             id="sharpen"
             label="Sharpening"
-            description="AMD's contrast-adaptive sharpening: crisper detail without halos."
+            description="AMD's contrast-adaptive sharpening: crisper detail, no halos."
           >
             <Choice
               id="sharpen"
@@ -957,7 +953,7 @@ function QualityDefaults({
         <SettingRow
           id="motion-smoothing"
           label="Motion smoothing"
-          description={`Shows frames in step with the screen and blends between them: smoother pans, but films can look like TV (the soap-opera look). Uses more power. ${heavyWarning({ ...quality, motionSmoothing: true }) ?? ""}`}
+          description={`Blends extra frames: smoother pans, but films can look like TV. Uses more power. ${heavyWarning({ ...quality, motionSmoothing: true }) ?? ""}`}
         >
           <Switch
             aria-labelledby="motion-smoothing-label"
@@ -971,7 +967,7 @@ function QualityDefaults({
         <SettingRow
           id="deinterlace"
           label="Deinterlacing"
-          description="For TV recordings and DVDs. Auto only deinterlaces video marked as interlaced."
+          description="For TV recordings and DVDs. Auto does only video marked interlaced."
         >
           <Choice
             id="deinterlace"
@@ -1021,7 +1017,7 @@ function PictureDefaults({
       <SettingRow
         id="picture-preset"
         label="Picture"
-        description="How every title looks unless you adjust it in the player (P). Changes made there stay with that title; Use for all titles there makes them this."
+        description="How every title looks, unless you adjust it in the player (P)."
       >
         <Choice
           id="picture-preset"
@@ -1064,7 +1060,7 @@ function PictureDefaults({
         description={
           adjusted === 0
             ? "None: every title follows your defaults."
-            : `${adjusted} ${adjusted === 1 ? "title keeps its" : "titles keep their"} own picture, framing or quality, on this device.`
+            : `${adjusted} ${adjusted === 1 ? "title keeps its" : "titles keep their"} own picture, framing or quality.`
         }
       >
         <Button
@@ -1112,7 +1108,7 @@ function AnimePostersRow({
     <SettingRow
       id="anime-posters"
       label="Anime titles"
-      description="AniList picks what the Anime tab lists. With an addon, each entry shows as that addon’s title, as search has it: one card per show with its poster and details, and later seasons open on their season. AniList lists every season and cour on its own."
+      description="AniList picks what the Anime tab lists. With an addon, one card per show, opening on its season."
     >
       <ResponsiveSelect
         items={items}
@@ -1202,7 +1198,7 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
                 <SettingRow
                   id="subtitle-language"
                   label="Subtitle language"
-                  description="Chosen when a stream or subtitle addon has it."
+                  description="Picked when a stream or subtitle addon has it."
                 >
                   <LanguageSelect
                     id="subtitle-language"
@@ -1214,7 +1210,7 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
                 <SettingRow
                   id="second-subtitle-language"
                   label="Second subtitle language"
-                  description="Shown smaller, above the main subtitles, when a stream or subtitle addon has it."
+                  description="Smaller, above the main subtitles, when an addon has it."
                 >
                   <LanguageSelect
                     id="second-subtitle-language"
@@ -1228,7 +1224,7 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
                 <SubtitleLookRow
                   id="subtitle-look"
                   label="Look"
-                  description="Font, size, colour, edge and position. You can change it while you watch, too."
+                  description="Font, size, colour, edge and position."
                   style={
                     settings.subtitleStyle?.font ? settings.subtitleStyle : defaultSubtitleStyle
                   }
@@ -1240,8 +1236,8 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
                   // On for everyone here, so this profile's own choice waits.
                   description={
                     always
-                      ? `Always on on this ${hostName()}: see On this device.`
-                      : `Turn subtitles on by default. System follows your ${hostName()}’s captions setting.`
+                      ? `On for every profile on this ${hostName()}.`
+                      : `System follows your ${hostName()}’s captions setting.`
                   }
                 >
                   <Choice
@@ -1257,7 +1253,7 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
                 <SettingRow
                   id="auto-sync-subtitles"
                   label="Sync addon subtitles"
-                  description="Lines up subtitles from addons with the video, using the subtitles it comes with. Most remuxes and web releases have some; when one doesn’t, the timing is left as it was."
+                  description="Lines up addon subtitles with the video, using the subtitles it ships with."
                 >
                   <Switch
                     aria-labelledby="auto-sync-subtitles-label"
@@ -1274,7 +1270,7 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
                 <SettingRow
                   id="always-subtitles"
                   label="Always show subtitles"
-                  description={`Subtitles on for everyone on this ${hostName()}, in the style below. Peli picks them in each profile’s language.`}
+                  description={`Subtitles on for everyone on this ${hostName()}, in each profile’s language.`}
                 >
                   <Switch
                     aria-labelledby="always-subtitles-label"
@@ -1289,7 +1285,7 @@ function LanguagesPane({ title, profileId }: { title: string; profileId: number 
                   <SubtitleLookRow
                     id="device-subtitle-look"
                     label="Subtitle style on this device"
-                    description="Font, size, colour, edge and position, used on this device while Always show subtitles is on."
+                    description="Font, size, colour, edge and position, while Always show subtitles is on."
                     style={deviceStyle}
                     onChange={(style) =>
                       setDevice({ subtitles: { ...deviceSubtitles, always: true, style } })
@@ -1324,7 +1320,7 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
               <SettingRow
                 id="pre-resolve"
                 label="Start cached streams sooner"
-                description="Gets the top pick ready while you choose, when it’s cached on your debrid service, so it starts about two seconds sooner. This adds the stream to your debrid service’s list before you press play, even if you never play it. Off unless you turn it on. Applies to this device."
+                description="Gets the top pick ready while you choose, when it’s cached. Adds it to your debrid list even if you don’t play it. This device."
               >
                 <Switch
                   aria-labelledby="pre-resolve-label"
@@ -1338,7 +1334,7 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
               <SettingRow
                 id="seek-previews"
                 label="Seek bar previews"
-                description="Shows a thumbnail over the seek bar while you scrub, for debrid streams. Each one downloads about 1–4 MB of the video."
+                description="Shows a thumbnail over the seek bar while you scrub. About 1–4 MB each."
               >
                 <Switch
                   aria-labelledby="seek-previews-label"
@@ -1352,7 +1348,7 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
               <SettingRow
                 id="previews-from-smaller"
                 label="Previews from a smaller copy"
-                description="Makes the thumbnails from a smaller cached copy of the same film or episode when one runs the same length: less data, but the copy is added to your debrid service’s list."
+                description="Makes them from a smaller cached copy: less data, but that copy joins your debrid list."
               >
                 <Switch
                   aria-labelledby="previews-from-smaller-label"
@@ -1366,7 +1362,7 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
               <SettingRow
                 id="autoplay-top-pick"
                 label="Autoplay the top pick"
-                description="Plays the best stream as soon as the streams are in, instead of showing the list. Choose another from the player’s Streams sheet."
+                description="Plays the best stream as soon as streams are in. Change it in the Streams sheet."
               >
                 <Switch
                   aria-labelledby="autoplay-top-pick-label"
@@ -1383,7 +1379,7 @@ function StreamingPane({ title, profileId }: { title: string; profileId: number 
                 <SettingRow
                   id="torrent-streaming"
                   label="Stream torrents"
-                  description="Plays torrents without a debrid or direct link by fetching them from other people as you watch (peer to peer). They can see your IP address, and get pieces of the file from you too. Off unless you turn it on. Applies to this device."
+                  description="Plays torrents with no debrid or direct link by fetching them from peers. They see your IP address and get pieces from you. This device."
                 >
                   <Switch
                     aria-labelledby="torrent-streaming-label"
@@ -1448,7 +1444,7 @@ function QualityGroup({
       <SettingRow
         id="preferred-quality"
         label="Preferred quality"
-        description="Ranks this quality first for every title. Higher ones follow; the device’s maximum resolution still caps it."
+        description="Ranks this quality first. The maximum resolution still caps it."
       >
         <Choice
           id="preferred-quality"
@@ -1461,7 +1457,7 @@ function QualityGroup({
       <SettingRow
         id="max-resolution"
         label="Maximum resolution"
-        description="The biggest picture to pick. Streams above it are listed after the rest. Auto doesn’t limit it. Applies to this device."
+        description="The biggest picture to pick. Bigger streams are listed after the rest. This device."
       >
         <Choice
           id="max-resolution"
@@ -1476,7 +1472,7 @@ function QualityGroup({
           <SettingRow
             id="hdr"
             label="HDR"
-            description="Prefers HDR streams if this screen shows them. Auto asks the screen. Applies to this device."
+            description="Prefers HDR streams if this screen shows them. This device."
           >
             <Choice
               id="hdr"
@@ -1489,7 +1485,7 @@ function QualityGroup({
           <SettingRow
             id="dolby-vision"
             label="Dolby Vision"
-            description="Prefers Dolby Vision streams, even ones with no HDR layer to fall back on. Auto leaves it off, as Peli can’t tell if this screen shows it. Applies to this device."
+            description="Prefers Dolby Vision streams, even with no HDR fallback. Auto leaves it off. This device."
           >
             <Choice
               id="dolby-vision"
@@ -1518,7 +1514,7 @@ function PrivacyPane({ title, profileId }: { title: string; profileId: number | 
             <SettingRow
               id="diagnostics"
               label="Share diagnostics"
-              description="Sends crash reports and whether videos started playing, to help fix problems. Never your library, accounts or stream links. Off unless you turn it on. Applies to this device."
+              description="Sends crash reports and whether videos played. Never your library, accounts or stream links. This device."
             >
               <Switch
                 aria-labelledby="diagnostics-label"
@@ -1544,7 +1540,7 @@ function TorrentCacheRow({ size, onChange }: { size: number; onChange: (gb: numb
     <SettingRow
       id="torrent-cache"
       label="Torrent cache"
-      description={`Keeps what you stream on this device, up to this size, deleting the oldest first. ${
+      description={`Keeps what you stream, up to this size, oldest deleted first. ${
         used === undefined ? "" : `${formatBytes(used)} used.`
       }`}
     >
@@ -1593,7 +1589,7 @@ function LoadedTrackingPane({ title, profileId }: { title: string; profileId: nu
         connections &&
         (connections.kids
           ? "Kids profiles don’t connect to trackers."
-          : "Keep SIMKL and AniList up to date with what this profile watches. Each profile connects its own accounts.")
+          : "Keep SIMKL and AniList up to date. Each profile connects its own accounts.")
       }
     >
       <WithSettings profileId={profileId}>
@@ -1655,10 +1651,10 @@ function TrackingGroups({
               : simkl
                 ? simkl.needsReconnect
                   ? simklShared
-                    ? "SIMKL was disconnected on another device. Connect again."
-                    : `Connected as ${simkl.user}, but SIMKL stopped accepting the sign-in. Connect again.`
-                  : `Connected as ${simkl.user}. What this profile watches is scrobbled to SIMKL, and marked watched at 90 %.`
-                : "Scrobble what this profile watches to SIMKL, and bring in your SIMKL history."
+                    ? "Disconnected on another device. Connect again."
+                    : `Connected as ${simkl.user}, but the sign-in expired. Connect again.`
+                  : `Connected as ${simkl.user}. Scrobbles what you watch, marks it at 90 %.`
+                : "Scrobble what you watch to SIMKL, and bring in your history."
           }
         >
           {connections.simklAvailable && (
@@ -1700,21 +1696,21 @@ function TrackingGroups({
             <ToggleRow
               id="simkl-scrobble"
               label="Scrobble"
-              description="Shows SIMKL what’s playing, and marks it watched there when it’s finished."
+              description="Shows SIMKL what’s playing, and marks it watched when it ends."
               checked={settings.simklScrobble}
               onChange={(simklScrobble) => onChange({ simklScrobble })}
             />
             <ToggleRow
               id="simkl-import"
               label="Import watched history"
-              description="Marks what you watched on SIMKL as watched here, and in Nuvio. Nothing here is unmarked."
+              description="Marks SIMKL’s watched as watched here, and in Nuvio. Never unmarks."
               checked={settings.simklImport}
               onChange={(simklImport) => setImport({ simklImport }, simklImport)}
             />
             <ToggleRow
               id="simkl-anime"
               label="Include anime"
-              description="Turn off if you keep anime on AniList instead."
+              description="Off if you keep anime on AniList."
               checked={settings.simklAnime}
               onChange={(simklAnime) =>
                 setImport({ simklAnime }, simklAnime && settings.simklImport)
@@ -1732,9 +1728,9 @@ function TrackingGroups({
               ? "Not available in this build."
               : anilist
                 ? anilist.needsReconnect
-                  ? `Connected as ${anilist.user}, but the sign-in has run out. Connect again.`
-                  : `Connected as ${anilist.user}. Anime this profile watches moves along on your list.`
-                : "Update your AniList list as you watch anime, and bring in what’s on it."
+                  ? `Connected as ${anilist.user}, but the sign-in ran out. Connect again.`
+                  : `Connected as ${anilist.user}. Watched anime moves along on your list.`
+                : "Update your AniList list as you watch anime, and bring in that list."
           }
         >
           {connections.anilistAvailable && (
@@ -1770,14 +1766,14 @@ function TrackingGroups({
             <ToggleRow
               id="anilist-progress"
               label="Update progress"
-              description="Moves the list’s progress on when an episode is watched, and completes it at the last."
+              description="Moves the list’s progress on per episode, and completes it at the last."
               checked={settings.anilistProgress}
               onChange={(anilistProgress) => onChange({ anilistProgress })}
             />
             <ToggleRow
               id="anilist-import"
               label="Import list"
-              description="Marks the episodes on your AniList list as watched here, and in Nuvio."
+              description="Marks your AniList watched episodes as watched here."
               checked={settings.anilistImport}
               onChange={(anilistImport) => setImport({ anilistImport }, anilistImport)}
             />
@@ -1788,7 +1784,7 @@ function TrackingGroups({
         <SettingRow
           id="pair-add"
           label="Add to another device"
-          description="Copy SIMKL, AniList and the TMDB key from here to your iPhone, iPad or Mac, over this Wi-Fi."
+          description="Copy SIMKL, AniList and the TMDB key to another device over Wi-Fi."
         >
           <Button
             variant="outline"
@@ -1802,7 +1798,7 @@ function TrackingGroups({
         <SettingRow
           id="pair-copy"
           label="Copy from another device"
-          description="Get the connections another device already has. Both must be signed in to the same Nuvio account."
+          description="Get the connections another device has. Both must be on the same Nuvio account."
         >
           <Button
             variant="outline"
@@ -1894,8 +1890,8 @@ function TmdbRow() {
           key === undefined
             ? "…"
             : key
-              ? "Title pages show TMDB’s logos, backdrops and cast photos. Applies to this device."
-              : "Add your own TMDB key for richer artwork, logos and cast photos. Optional."
+              ? "Title pages show TMDB’s logos, backdrops and cast photos. This device."
+              : "Add your own TMDB key for richer artwork and cast photos."
         }
       >
         <Button

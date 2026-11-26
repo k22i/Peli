@@ -55,7 +55,7 @@ export function AudioLanguagesRow({
       <SettingRow
         id="audio-languages"
         label="Audio languages"
-        description="Streams in the first language rank highest, then the next. Playback starts with the first one the video has. With none, the original audio plays."
+        description="Streams in the first language rank highest, then the next. Playback starts with the first the video has; with none, the original."
       >
         <ResponsiveSelect
           items={items}

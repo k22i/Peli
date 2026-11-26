@@ -31,7 +31,7 @@ import { useCurrentProfile } from "@/lib/profile";
 // and the nav entry is gone with the sources (lib/livetv).
 
 const lead =
-  "Watch channels from an IPTV playlist (M3U), with a programme guide (XMLTV). Peli keeps the links in the keychain, as they can hold a password.";
+  "Channels from an IPTV playlist (M3U) and a programme guide (XMLTV). Links stay in the keychain, as they can hold a password.";
 
 const kidsLead = "Kids profiles don’t have Live TV.";
 
@@ -73,7 +73,7 @@ function Sources({ profileId }: { profileId: number }) {
     <>
       <SettingsGroup
         title="Sources"
-        footer="Playlists update every 12 hours and guides every 6. Refresh updates one now."
+        footer="Playlists update every 12 hours, guides every 6. Refresh updates one now."
       >
         {pending ? (
           <Skeleton className="h-14 rounded-2xl" />

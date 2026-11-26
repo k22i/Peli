@@ -67,7 +67,7 @@ function DiagnosticsOnIOS() {
         <SettingRow
           id="share-logs"
           label="Logs"
-          description="What Peli did recently, with the last crash, to send with a problem report."
+          description="Recent activity and the last crash, to send with a report."
         >
           <Button
             variant="outline"
@@ -135,14 +135,13 @@ function CrashTests() {
       id: "tab-loop",
       label: "Tab loop",
       description:
-        "Home, Movies, Shows and Anime, each scrolled three screens, ten times. Every step is logged with memory: share the logs after.",
+        "Home, Movies, Shows and Anime, each scrolled three screens, ten times. Logs memory at every step.",
       run: () => void runTabLoop(router, queryClient),
     },
     {
       id: "tab-loop-drop-src",
       label: "Tab loop, dropping src",
-      description:
-        "The same loop with each image’s src taken off as it leaves the screen: the drop-src retest. Share the logs after.",
+      description: "The same loop with each image’s src dropped off screen. The drop-src retest.",
       run: () => void runTabLoop(router, queryClient, { dropSrc: true }),
     },
     {
