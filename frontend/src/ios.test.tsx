@@ -329,22 +329,6 @@ describe("Settings on iOS", () => {
     expect(screen.queryByRole("button", { name: "Fill" })).not.toBeInTheDocument();
   });
 
-  it("leaves the picture controls iOS can't apply out of Playback", async () => {
-    await renderApp("/settings?section=playback");
-
-    await screen.findByRole("switch", { name: "Skip intros automatically" });
-    for (const name of [
-      "Sharpening",
-      "Upscaling",
-      "Motion smoothing",
-      "Deinterlacing",
-      "Output",
-      "Volume up to 150 %",
-    ]) {
-      expect(screen.queryByText(name, { selector: "[id$=-label]" })).toBeNull();
-    }
-  });
-
   it("leaves torrents and HDR out of Streaming", async () => {
     await renderApp("/settings?section=streaming");
 

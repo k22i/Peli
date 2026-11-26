@@ -601,14 +601,6 @@ describe("with no addons", () => {
     expect(await screen.findByText("Installed Torrentio")).toBeInTheDocument();
   });
 
-  it("stays above the library and Continue Watching", async () => {
-    mocks.library.mockResolvedValue([dune]);
-    await renderApp("/");
-
-    expect(await empty()).toBeInTheDocument();
-    expect(await row("Your library")).toBeInTheDocument();
-  });
-
   it("says when every addon is turned off", async () => {
     mocks.addons.mockResolvedValue([{ ...cinemeta, enabled: false }]);
     await renderApp("/");

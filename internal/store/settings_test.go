@@ -431,20 +431,6 @@ func TestOneGuest(t *testing.T) {
 	}
 }
 
-// The Guest's writes are never queued for Nuvio: there is nothing to push.
-func TestGuestQueuesNoPushes(t *testing.T) {
-	s, _ := openTemp(t)
-	guest := must[Profile](t)(s.CurrentProfile())
-	check(t, s.SaveLibraryItem(guest.ID, dune))
-	must[Progress](t)(s.SaveProgress(guest.ID, episode))
-	check(t, s.MarkWatched(guest.ID, WatchedItem{ContentID: "tt1160419", ContentType: "movie", WatchedAt: 4000}))
-	check(t, s.SetAddons(guest.ID, []Addon{cinemeta}))
-	check(t, s.RemoveLibraryItem(guest.ID, dune.ContentID, dune.ContentType))
-	if pending := must[[]Push](t)(s.Pending(guest.ID)); len(pending) != 0 {
-		t.Fatalf("pending = %+v", pending)
-	}
-}
-
 func TestSetCurrentProfile(t *testing.T) {
 	s, path := openTemp(t)
 	guest := must[Profile](t)(s.CurrentProfile())

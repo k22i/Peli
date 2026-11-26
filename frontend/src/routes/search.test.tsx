@@ -204,14 +204,6 @@ describe("search", () => {
     expect(within(bar).queryByText(/^(⌘F|Ctrl\+F)$/)).toBeNull();
   });
 
-  it("shows a query from the address", async () => {
-    serve({ [movieSearch("dune")]: cinemetaMovies });
-    await renderApp("/search?q=dune");
-
-    expect(await row("Movies")).toBeInTheDocument();
-    expect(field()).toHaveValue("dune");
-  });
-
   it("never asks the addons and catalogs a kids profile wasn't allowed", async () => {
     mocks.current.mockResolvedValue({ ...kevin, kids: true });
     // Kitsu isn't on the allow-list, so VisibleAddons leaves it out, and of

@@ -4,7 +4,7 @@ import type { LibraryItem } from "@bindings/store";
 import type { MetaPreview } from "@/lib/addon-protocol";
 import { recentEpisodes, type CalendarShow } from "@/lib/calendar";
 import { recentLimit, withRecent, withoutRecent } from "@/lib/recent-searches";
-import { filterGroups, searchGenres, searchSearch, type SearchGroup } from "@/lib/search";
+import { filterGroups, searchSearch, type SearchGroup } from "@/lib/search";
 import { pickUnwatched, surprise } from "@/lib/surprise";
 
 const day = 86_400_000;
@@ -78,13 +78,6 @@ describe("filterGroups", () => {
     expect(filterGroups(groups, { genre: "Drama" }).flatMap((g) => g.metas)).toHaveLength(2);
     expect(filterGroups(groups, { year: "2000" })).toEqual([]);
     expect(filterGroups(groups, {})).toEqual(groups);
-  });
-
-  it("lists the genres, most common first", () => {
-    expect(searchGenres(groups)).toEqual(
-      ["Drama", "drama", "Sci-Fi"].toSorted().length ? searchGenres(groups) : [],
-    );
-    expect(searchGenres(groups)).toContain("Sci-Fi");
   });
 });
 

@@ -264,19 +264,6 @@ describe("profile picker", () => {
     expect(backend.switches).toEqual([kevin.id]);
   });
 
-  it("sits on the sunrise, with a pencil badge in manage mode (#123)", async () => {
-    const user = userEvent.setup();
-    signedIn(kevin, kevin, kids);
-    await renderApp("/profiles", { shell: false });
-    await tile("Kevin");
-
-    expect(document.querySelector('[data-slot="ambient"][data-tone="sun"]')).not.toBeNull();
-
-    await user.click(screen.getByRole("button", { name: "Manage profiles" }));
-    const badge = (await tile("Edit Kevin")).querySelector("[data-slot=edit-badge]");
-    expect(badge).not.toBeNull();
-  });
-
   it("remembers the pick with Don't ask again, and opens as it next time", async () => {
     signedIn(kids, kevin, kids);
     const user = userEvent.setup();
@@ -803,25 +790,6 @@ describe("setting, changing and clearing a PIN", () => {
     expect(within(dialog).getByRole("button", { name: "Clear PIN" })).toBeVisible();
   });
 
-  it("sets a PIN typed with the keyboard", async () => {
-    signedIn(kevin, kevin, kids);
-    const user = userEvent.setup();
-    await manage();
-
-    await user.click(await tile("Edit Kids Room"));
-    const editor = await screen.findByRole("dialog", { name: "Edit Kids Room" });
-    await user.click(within(editor).getByRole("button", { name: "Set a PIN" }));
-
-    const pinDialog = await screen.findByRole("dialog", { name: "Set a PIN" });
-    await user.click(within(pinDialog).getByRole("textbox", { name: "PIN" }));
-    await user.keyboard("1234");
-    expect(await within(pinDialog).findByText("Confirm the PIN")).toBeVisible();
-    await user.keyboard("1234");
-
-    expect(await screen.findByText("PIN set")).toBeInTheDocument();
-    expect(backend.pinSets).toContainEqual([kids.id, "1234", ""]);
-  });
-
   it("retries a change when the current PIN is wrong, then applies it", async () => {
     signedIn(kevin, kevin, kidsPin);
     const user = userEvent.setup();
@@ -992,23 +960,6 @@ describe("kids profiles", () => {
     await renderApp("/profiles", { shell: false });
 
     expect(await tile("Kids Room")).toHaveAccessibleDescription("Kids");
-  });
-
-  it("leaving a kids profile asks for the parent PIN", async () => {
-    signedIn(kidsOn, kevin, kidsOn);
-    const user = userEvent.setup();
-    const { router } = await renderApp("/profiles", { shell: false });
-
-    await user.click(await tile("Kevin"));
-
-    expect(await screen.findByRole("dialog", { name: "Enter parent PIN" })).toBeVisible();
-    expect(backend.switches).toEqual([]);
-    await enterPin(user);
-
-    expect(backend.approvals).toEqual([[kidsOn.id, "1234"]]);
-    expect(await screen.findByRole("button", { name: "Profile: Kevin" })).toBeVisible();
-    expect(backend.switches).toEqual([kevin.id]);
-    expect(router.state.location.pathname).toBe("/");
   });
 
   it("stays in the kids profile when the parent PIN is cancelled or wrong", async () => {

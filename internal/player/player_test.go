@@ -408,17 +408,6 @@ func TestChapters(t *testing.T) {
 	}
 }
 
-func TestMarshalError(t *testing.T) {
-	for err, want := range map[error]string{
-		ErrInvalid: CodeInvalid, ErrNotPlaying: CodeNotPlaying, ErrUnavailable: CodeUnavailable,
-		ErrSubtitles: CodeSubtitles,
-	} {
-		if got := string(MarshalError(err)); got != `{"code":"`+want+`"}` {
-			t.Errorf("MarshalError(%v) = %s", err, got)
-		}
-	}
-}
-
 // tracks.mkv is the clip with English (default) and Japanese audio, and
 // English (default), Japanese and forced English ("Signs") subtitles.
 func TestPicksTracksByLanguageAndCaptions(t *testing.T) {

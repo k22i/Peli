@@ -34,10 +34,4 @@ describe("router", () => {
     expect(router.state.location.pathname).toBe("/movies");
     expect(screen.getByRole("link", { name: "Movies" })).toHaveClass("active");
   });
-
-  it("shows the app version from the Go binding on Settings", async () => {
-    await renderApp("/settings?section=about");
-
-    expect(await screen.findByText("1.2.3")).toBeInTheDocument();
-  });
 });

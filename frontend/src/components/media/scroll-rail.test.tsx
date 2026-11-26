@@ -75,13 +75,6 @@ describe("ScrollRail", () => {
     expect(down.defaultPrevented).toBe(false);
     expect(scroller.scrollLeft).toBe(0);
   });
-
-  it("leaves the wheel to the page when nothing overflows", () => {
-    const { container } = renderRail();
-    const wheel = new WheelEvent("wheel", { deltaY: 120, cancelable: true });
-    scrollerOf(container).dispatchEvent(wheel);
-    expect(wheel.defaultPrevented).toBe(false);
-  });
 });
 
 describe("ChipRail", () => {

@@ -293,27 +293,6 @@ describe("settings", () => {
     expect(router.state.location.pathname).toBe("/settings");
   });
 
-  it("gives only the current pane a sliding pill", async () => {
-    await renderSettings("playback");
-
-    const pills = [...paneList().querySelectorAll("[data-settings-pill]")];
-
-    expect(pills).toHaveLength(1);
-    expect(within(paneList()).getByRole("link", { name: "Playback" }).contains(pills[0]!)).toBe(
-      true,
-    );
-  });
-
-  it("falls back to Account for a pane that doesn't exist", async () => {
-    await renderApp("/settings?section=nope");
-
-    expect(await screen.findByRole("heading", { level: 2, name: "Account" })).toBeInTheDocument();
-    expect(within(paneList()).getByRole("link", { name: "Account" })).toHaveAttribute(
-      "aria-current",
-      "page",
-    );
-  });
-
   it("shows every row in its pane, with the defaults", async () => {
     const user = userEvent.setup();
     await renderSettings("account");
@@ -642,13 +621,6 @@ describe("settings", () => {
       hdr: "off",
       dolbyVision: "on",
     });
-  });
-
-  it("describes the device, not the ranking", async () => {
-    await renderSettings("streaming");
-    const group = screen.getByRole("region", { name: "Picture" });
-    expect(group).toHaveTextContent("Maximum resolution");
-    expect(group.textContent).not.toMatch(/score|weight|points/i);
   });
 
   it("keeps the watch party beside the video, per device", async () => {

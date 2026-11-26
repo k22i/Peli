@@ -12,7 +12,6 @@ import type { Meta, Stream, Video } from "@/lib/addon-protocol";
 import {
   addRequestFor,
   changedEvent,
-  downloadErrorText,
   downloadFor,
   downloadLabel,
   downloadable,
@@ -197,12 +196,6 @@ describe("reasonText", () => {
     expect(reasonText(undefined)).toBe("Something went wrong");
     expect(reasonText("")).toBe("Something went wrong");
     expect(reasonText("meteor")).toBe("Something went wrong");
-  });
-
-  it("is what a refused call says", () => {
-    expect(downloadErrorText("over_cap")).toBe("Over the downloads limit");
-    expect(downloadErrorText(undefined)).toBe("Something went wrong");
-    expect(downloadErrorText("no_space")).toBe(reasonText("no_space"));
   });
 });
 

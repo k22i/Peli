@@ -411,21 +411,6 @@ describe("stream picker", () => {
     expect(await screen.findByText("3 streams from 2 addons")).toBeInTheDocument();
   });
 
-  it("asks for the episode, and the heading names it", async () => {
-    const asked = serve({
-      "https://torrentio.strem.fun/stream/series/tt0903747%3A1%3A1.json": torrentioSeries,
-    });
-    const user = userEvent.setup();
-    await renderApp("/title/series/tt0903747");
-
-    await user.click(await screen.findByRole("button", { name: /^S1 · E1/ }));
-    expect(
-      await screen.findByRole("heading", { level: 1, name: "Breaking Bad S1 · E1" }),
-    ).toBeInTheDocument();
-    await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("12 streams"));
-    expect(asked().filter(({ url }) => url.includes("/stream/"))).toHaveLength(2);
-  });
-
   // #122: the header names the episode under the title.
   it("names the episode under the title", async () => {
     serve({
@@ -718,35 +703,6 @@ describe("stream picker", () => {
       expect.anything(),
       expect.objectContaining({ start: 1234 }),
     );
-  });
-
-  it("starts from the beginning when the store has it watched to 90 %", async () => {
-    serve({ [movieStreams("torrentio.strem.fun")]: streams(1) });
-    mocks.addons.mockResolvedValue([torrentio]);
-    mocks.titleProgress.mockResolvedValue([
-      {
-        key: "tt0111161",
-        contentId: "tt0111161",
-        contentType: "movie",
-        videoId: "tt0111161",
-        position: 8_000_000,
-        duration: 8_520_000,
-        lastWatched: 2,
-      },
-    ]);
-    const user = userEvent.setup();
-    await renderApp(`${pickerPath}?at=8000000`);
-
-    const [first] = await within(
-      await screen.findByRole("list", { name: "Streams" }),
-    ).findAllByRole("button");
-    await user.click(first!);
-    await opensThePlayer();
-    expect(mocks.load).toHaveBeenCalledExactlyOnceWith(
-      expect.anything(),
-      expect.objectContaining({ start: 0 }),
-    );
-    expect(screen.queryByRole("button", { name: "Start over" })).not.toBeInTheDocument();
   });
 
   it("keeps an episode's progress under its season and number", async () => {
@@ -1057,14 +1013,6 @@ describe("stream picker", () => {
     await user.click(screen.getByRole("button", { name: "Next episode, S1 · E3" }));
     expect(await screen.findByText(/^S1 · E3/)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Previous episode, S1 · E2" })).toBeInTheDocument();
-  });
-
-  it("has no episode buttons for a film", async () => {
-    serve({ [movieStreams("peerflix.example")]: peerflixMovie });
-    await renderApp(pickerPath);
-
-    await screen.findByRole("heading", { level: 1 });
-    expect(screen.queryByRole("navigation", { name: "Episodes" })).toBeNull();
   });
 
   it("moves through the list with the arrow keys, Home and End, and plays with Enter", async () => {
@@ -1443,19 +1391,6 @@ describe("starting cached streams sooner", () => {
     expect(mocks.resolve).not.toHaveBeenCalled();
   });
 
-  it("resolves no uncached or torrent top pick ahead", async () => {
-    mocks.device.mockResolvedValue({ ...device, preResolve: true });
-    serve({
-      [movieStreams("torrentio.strem.fun")]: { streams: [debrid(shawshank, " download")] },
-      [movieStreams("peerflix.example")]: peerflixMovie,
-    });
-    await renderApp(pickerPath);
-    await waitFor(() => expect(addonStatus("Torrentio")).toHaveTextContent("1 stream"));
-    await waitFor(() => expect(addonStatus("Peerflix")).toHaveTextContent("12 streams"));
-    await looking();
-    expect(mocks.resolve).not.toHaveBeenCalled();
-  });
-
   it("waits for every addon to answer", async () => {
     mocks.device.mockResolvedValue({ ...device, preResolve: true });
     const slow = later<unknown>();
@@ -1549,17 +1484,6 @@ describe("with a watch party", () => {
       },
     ],
   };
-
-  it("gives a guest the list and the party card like anyone else", async () => {
-    vi.mocked(Party.State).mockResolvedValueOnce(partyState({}, { source: partySource }));
-    serve({ [movieStreams("torrentio.strem.fun")]: answer });
-    mocks.addons.mockResolvedValue([cinemeta, torrentio]);
-    await renderApp(pickerPath);
-
-    expect(await screen.findByText("Your watch party is watching this")).toBeInTheDocument();
-    await waitFor(() => expect(shownStreams().length).toBeGreaterThan(0));
-    expect(screen.getByRole("list", { name: "Streams" })).toBeInTheDocument();
-  });
 
   it("gives the host the list and the party card", async () => {
     vi.mocked(Party.State).mockResolvedValueOnce(

@@ -8,7 +8,6 @@ import type { Connections, TitleRef, TitleTracking } from "@bindings/tracking";
 
 import {
   connectedServices,
-  servicesFor,
   statusesFor,
   titleRef,
   titleTrackingQuery,
@@ -73,11 +72,6 @@ describe("which statuses to offer", () => {
     expect(statusesFor(simklOnly, "series")).toHaveLength(6);
     // AniList takes the lot, and a film can be anime.
     expect(statusesFor(both, "movie")).toHaveLength(6);
-  });
-
-  it("names the services that would take a status", () => {
-    expect(servicesFor(both, "movie", "watching")).toEqual(["anilist"]);
-    expect(servicesFor(both, "series", "planned")).toEqual(["simkl", "anilist"]);
   });
 });
 

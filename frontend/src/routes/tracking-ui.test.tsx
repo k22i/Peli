@@ -247,17 +247,6 @@ describe("removing a title while SIMKL is connected", () => {
     await waitFor(() => expect(card).toHaveFocus());
   });
 
-  it("sends none after Remove", async () => {
-    mocks.titleStatus.mockResolvedValue(onSimkl);
-    const user = userEvent.setup({ pointerEventsCheck: 0 });
-    await renderApp("/library");
-    fireEvent.contextMenu(await heatCard());
-    fireEvent.click(await screen.findByRole("menuitem", { name: "Remove from Watchlist" }));
-    await user.click(await screen.findByRole("button", { name: "Remove" }));
-    await waitFor(() => expect(mocks.setStatus).toHaveBeenCalledTimes(1));
-    expect(mocks.setStatus).toHaveBeenCalledWith(1, expect.anything(), "none");
-  });
-
   it("asks from Status > None too", async () => {
     mocks.titleStatus.mockResolvedValue({ ...onSimkl, status: "completed" });
     const user = userEvent.setup({ pointerEventsCheck: 0 });

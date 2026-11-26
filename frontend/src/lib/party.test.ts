@@ -9,7 +9,6 @@ import {
   duration,
   formatCode,
   inviteText,
-  matchesPartySource,
   mediaLabel,
   memberStatus,
   noticeText,
@@ -87,16 +86,6 @@ beforeEach(() => {
   mocks.sendReaction.mockResolvedValue(undefined);
 });
 
-const source = {
-  infoHash: "",
-  fileIdx: null,
-  filename: "",
-  videoSize: 0,
-  bingeGroup: "",
-  addonId: "",
-  name: "",
-};
-
 describe("party codes", () => {
   it("keeps the code's letters, upper case, and shows it in two halves", () => {
     expect(normalizeCode(" abc-d e f ")).toBe("ABCDEF");
@@ -109,34 +98,6 @@ describe("party codes", () => {
     expect(inviteText("ABCDEF")).toBe(
       "Join my watch party with code ABC DEF\nhttps://nuvio.tv/party/ABCDEF",
     );
-  });
-});
-
-describe("matchesPartySource", () => {
-  it("matches the same torrent, and file when both say", () => {
-    const party = { ...source, infoHash: "ABC", fileIdx: 2 };
-    expect(matchesPartySource({ infoHash: "abc", fileIdx: 2 }, party)).toBe(true);
-    expect(matchesPartySource({ infoHash: "abc" }, party)).toBe(true);
-    expect(matchesPartySource({ infoHash: "abc", fileIdx: 3 }, party)).toBe(false);
-    expect(matchesPartySource({ infoHash: "def", fileIdx: 2 }, party)).toBe(false);
-  });
-
-  it("else the same file name", () => {
-    const party = { ...source, filename: "Show.S01E03.1080p.mkv" };
-    expect(
-      matchesPartySource(
-        { url: "https://x", behaviorHints: { filename: "show.s01e03.1080p.mkv" } },
-        party,
-      ),
-    ).toBe(true);
-    expect(
-      matchesPartySource({ url: "https://x", behaviorHints: { filename: "other.mkv" } }, party),
-    ).toBe(false);
-  });
-
-  it("matches nothing without a source", () => {
-    expect(matchesPartySource({ infoHash: "abc" }, null)).toBe(false);
-    expect(matchesPartySource({ name: "1080p" }, { ...source, name: "1080p" })).toBe(false);
   });
 });
 

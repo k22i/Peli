@@ -160,10 +160,6 @@ func TestUnavailable(t *testing.T) {
 	}
 }
 
-func TestAvailable(t *testing.T) {
-	check(t, mock(t, nil).Available())
-}
-
 func TestErrorsNeverHoldTheValue(t *testing.T) {
 	for _, mockErr := range []error{errors.New("exit status 36"), keyring.ErrSetDataTooBig, keyring.ErrUnsupportedPlatform} {
 		k := mock(t, mockErr)

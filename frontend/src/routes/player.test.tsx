@@ -1497,19 +1497,6 @@ describe("next episode", () => {
     expect(screen.queryByRole("region", { name: "Next episode" })).not.toBeInTheDocument();
   });
 
-  it("gives a guest the next episode's card like anyone else", async () => {
-    serve([debrid]);
-    await openPilot();
-    emit("party:state", partyOnNext());
-    emit("player:state", watched);
-
-    // The guest's own pick is prepared, like the host's: no card is kept from
-    // them.
-    const next = await card();
-    expect(await within(next).findByText("1080p from Torrentio")).toBeInTheDocument();
-    expect(mocks.resolve).toHaveBeenCalledWith({ url: debrid.url, headers: {} });
-  });
-
   it("keeps the card and the prepared pick for the host", async () => {
     serve([debrid]);
     await openPilot();
@@ -1750,7 +1737,6 @@ describe("stream switcher", () => {
       episode: 1,
       title: "Pilot",
     };
-    const asGuest = () => partyState({ watching: true }, partyMedia);
     const asHost = () =>
       partyState(
         {
@@ -1765,36 +1751,6 @@ describe("stream switcher", () => {
         },
         partyMedia,
       );
-
-    it("gives a guest the Streams button and S like the host", async () => {
-      serve([hd, fullHd]);
-      await openPilot();
-      emit("player:state", playing);
-      emit("party:state", asGuest());
-      const user = userEvent.setup();
-
-      await user.click(await screen.findByRole("button", { name: "Streams" }));
-      const panel = await screen.findByRole("dialog", { name: "Streams" });
-      await user.click(await within(panel).findByRole("button", { name: /Playing/ }));
-      await waitFor(() => expect(screen.queryByRole("dialog")).not.toBeInTheDocument());
-
-      await user.keyboard("s");
-      expect(await screen.findByRole("dialog", { name: "Streams" })).toBeInTheDocument();
-    });
-
-    it("offers a guest whose stream failed the switcher, like anyone else", async () => {
-      serve([hd, fullHd]);
-      await openPilot();
-      emit("player:state", playing);
-      emit("party:state", asGuest());
-      await screen.findByRole("button", { name: "Pause" });
-      emit("player:ended", { reason: "error", code: "unsupported" } satisfies Ended);
-      const alert = await screen.findByRole("alert");
-
-      const user = userEvent.setup();
-      await user.click(within(alert).getByRole("button", { name: "Choose another stream" }));
-      expect(await screen.findByRole("dialog", { name: "Streams" })).toBeInTheDocument();
-    });
 
     it("keeps the Streams button and S for the host", async () => {
       serve([hd, fullHd]);

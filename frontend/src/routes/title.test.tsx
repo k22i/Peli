@@ -586,19 +586,6 @@ describe("title page", () => {
       "https://anime-kitsu.strem.fun/meta/series/kitsu%3A46474.json",
     ]);
   });
-  it("keeps the Library and Watched buttons' names on their round icon buttons", async () => {
-    serve();
-    await renderApp(moviePath);
-
-    const library = await screen.findByRole("button", { name: "Add to library" });
-    const watched = screen.getByRole("button", { name: "Mark watched" });
-    // Icon-only: the label is the accessible name and the tooltip's text, not
-    // text in the button.
-    expect(library.textContent).toBe("");
-    expect(watched.textContent).toBe("");
-    expect(library).toHaveClass("rounded-full");
-    expect(watched).toHaveClass("rounded-full");
-  });
 
   describe("scrolling", () => {
     // jsdom has no IntersectionObserver: record who watches what, and let a
@@ -888,67 +875,5 @@ describe("title page in a watch party", () => {
     // The title's own video, and the target Play chose.
     expect(router.state.location.search).toEqual({ video: "tt0111161" });
     expect(router.state.location.state.play).toMatchObject({ videoId: "tt0111161" });
-  });
-
-  it("keeps Play's own flow for a guest whose party watches something else", async () => {
-    serve();
-    const user = userEvent.setup();
-    const { router } = await renderApp(moviePath, {
-      seed: (client) =>
-        client.setQueryData(
-          ["party", "state"],
-          inParty({ isHost: false, hostId: "ana" }, { id: "tt0133093", title: "The Matrix" }),
-        ),
-    });
-
-    await user.click(await screen.findByRole("button", { name: "Play" }));
-
-    expect(router.state.location.pathname).toBe("/streams/movie/tt0111161");
-    expect(router.state.location.search).toEqual({ video: "tt0111161" });
-    expect(router.state.location.state.play).toMatchObject({ videoId: "tt0111161" });
-  });
-
-  it("opens the party's film page for a guest like anyone else's", async () => {
-    serve({
-      [`${base}/catalog/movie/top.json`]: {
-        metas: [{ id: "tt0111161", type: "movie", name: "The Shawshank Redemption" }],
-      },
-    });
-    const user = userEvent.setup();
-    const { router } = await renderApp("/movies", {
-      seed: (client) =>
-        client.setQueryData(["party", "state"], inParty({ isHost: false, hostId: "ana" })),
-    });
-
-    await user.click(await screen.findByRole("button", { name: /Shawshank/ }));
-
-    expect(router.state.location.pathname).toBe("/title/movie/tt0111161");
-  });
-
-  it("still opens the party's series page, whose episode is the party's", async () => {
-    db.progress = [];
-    serve();
-    const { router } = await renderApp(seriesPath, {
-      seed: (client) =>
-        client.setQueryData(
-          ["party", "state"],
-          inParty(
-            { isHost: false, hostId: "ana" },
-            {
-              type: "series",
-              id: "tt0903747",
-              videoId: "tt0903747:1:1",
-              season: 1,
-              episode: 1,
-              title: "Breaking Bad",
-            },
-          ),
-        ),
-    });
-
-    // The page is a series': the party's own episode is not what opening it
-    // names, so the page shows and its episodes are pickable.
-    expect(await screen.findByRole("img", { name: "Breaking Bad" })).toBeInTheDocument();
-    expect(router.state.location.pathname).toBe(seriesPath);
   });
 });

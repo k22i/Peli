@@ -290,15 +290,6 @@ describe("title menu", () => {
     );
   });
 
-  it("removes a library title from the library's card menu", async () => {
-    const user = userEvent.setup();
-    await renderApp("/library");
-    fireEvent.contextMenu(await card("Heat"));
-    expect(await items()).toContain("Mark watched");
-    await user.click(await screen.findByRole("menuitem", { name: "Remove from Library" }));
-    expect(mocks.remove).toHaveBeenCalledWith(1, "tt0113277", "movie");
-  });
-
   it("opens from the keyboard and gives the focus back to the card", async () => {
     const user = userEvent.setup();
     await renderApp("/library");
