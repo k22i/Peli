@@ -28,7 +28,7 @@ import { deviceSettingsQuery } from "@/lib/settings";
 import { useConnectionEvents, useSyncEvents, useSyncProfile } from "@/lib/sync";
 import { TitlePrefetchProvider } from "@/lib/title-prefetch";
 import { useTrackingEvents, useTrackingProfile } from "@/lib/tracking";
-import { useUpdateEvents, useUpdateReadyToast } from "@/lib/updates";
+import { useUpdateEvents, useUpdateToast } from "@/lib/updates";
 
 export type RouterContext = {
   queryClient: QueryClient;
@@ -97,8 +97,9 @@ function RootLayout() {
       current?.id !== undefined &&
       (current.pinEnabled !== true || unlocked.includes(current.id)),
   );
-  // Not over a film: it waits until the player closes (#83).
-  useUpdateReadyToast(location.pathname === "/player");
+  // Says when a release is found, and again when it's ready. Not over a
+  // film: it waits until the player closes (#83).
+  useUpdateToast(location.pathname === "/player");
   // The launch gate only applies once a profile is in use, so it skips the
   // screens that come before one — and doesn't ask the store for the current
   // profile (which makes a Guest on first run) while they're showing.

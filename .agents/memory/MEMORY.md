@@ -116,5 +116,6 @@
 - [Seek previews](seek-previews.md) — spike + built 2026-11-24: internal/previews, OpenPreview per OS, lib/previews.ts, debrid only, ±2 s smaller copy, request_size 1 MiB; never burst small requests at TorBox
 - [Nuvio party RPC surface](nuvio-party-rpc-surface.md) — live probe: no account party listing, join needs the code, no account-wide realtime channel (spike 2026-11-26); link_profile + topic_allowed; the listing moved to synced data (ADR-0067)
 - [Live TV](live-tv.md) — ADR-0066 built 2026-11-25: internal/livetv (M3U, streaming XMLTV, service), livetv bucket + keychain URLs, lib/livetv.ts, /live list + guide, LivePlayer, Settings pane, conditional nav; profile-query gotcha, desktop live-check rig, open items
+- [Toasts](toasts.md) — base-ui: a child's mount-effect add is lost (provider subscribes in a parent effect) so defer a microtask; update toast's one id, states, close rules
 - [Layout overflow check](layout-overflow-check.md) — jsdom DOM dump → real WebKit at 393 pt: find what scrolls sideways when there is no browser tool; input intrinsic width vs `auto` grid tracks
 - [UI snapshot rig](ui-snapshot-rig.md) — see a component with no browser tool: .shot scene + vp dev + swiftc WKWebView PNG; stacked translucent surfaces and popup-under-trigger ghosts

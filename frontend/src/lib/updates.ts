@@ -1,6 +1,6 @@
 import { queryOptions, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Events } from "@wailsio/runtime";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 import { toastManager } from "@/components/ui/toast";
 import { feature } from "@/lib/features";
@@ -43,6 +43,11 @@ export function useUpdateStatus(): Status | undefined {
 // The version ready to install, if there is one.
 export function readyVersion(status: Status | undefined): string | undefined {
   return status?.state === State.Ready ? status.version : undefined;
+}
+
+// The version on its way: found, still downloading and checking.
+export function availableVersion(status: Status | undefined): string | undefined {
+  return status?.state === State.Downloading ? status.version : undefined;
 }
 
 // The code updates.MarshalError put in a call's cause.
@@ -109,20 +114,59 @@ export function updateSummary(status: Status | undefined): string {
   }
 }
 
-// Says once per version that an update is ready, unless something is
-// playing: then it waits until the player is closed.
-export function useUpdateReadyToast(playing: boolean) {
-  const version = readyVersion(useUpdateStatus());
+// The one toast the updater speaks through, so the "available" toast turns
+// into the "ready" one in place rather than stacking a second.
+const updateToastId = "peli-update";
+
+// Says an update is on its way as soon as the feed names one, then says it's
+// ready — with Restart — once it's downloaded and checked. It's actionable,
+// so it stays until it's used or swiped away. Nothing appears over a film:
+// it waits until the player is closed, and closes if one opens.
+export function useUpdateToast(playing: boolean) {
+  const status = useUpdateStatus();
   const { mutate: restart } = useRestartToUpdate();
-  const shown = useRef<string | undefined>(undefined);
+  const available = availableVersion(status);
+  const ready = readyVersion(status);
+
   useEffect(() => {
-    if (!version || playing || shown.current === version) return;
-    shown.current = version;
-    toastManager.add({
-      type: "info",
-      title: `Peli ${version} is ready`,
-      description: "It installs when you restart Peli.",
-      actionProps: { children: "Restart", onClick: () => restart() },
+    // ToastProvider starts listening in its own effect, and a parent's effect
+    // runs after its children's: a toast said on the first render would reach
+    // nobody. A microtask is after every one of them, so it lands.
+    let gone = false;
+    queueMicrotask(() => {
+      if (gone) return;
+      if (playing) {
+        // Not over a film, and not held back either: it comes back when the
+        // player closes.
+        toastManager.close(updateToastId);
+        return;
+      }
+      if (ready) {
+        toastManager.add({
+          id: updateToastId,
+          type: "info",
+          title: `Peli ${ready} is ready`,
+          description: "It installs when you restart Peli.",
+          timeout: 0,
+          actionProps: { children: "Restart", onClick: () => restart() },
+        });
+        return;
+      }
+      if (available) {
+        toastManager.add({
+          id: updateToastId,
+          type: "loading",
+          title: `Peli ${available} is available`,
+          description: "Downloading it in the background. You can restart into it when it’s ready.",
+          timeout: 0,
+        });
+        return;
+      }
+      // Nothing to say: up to date, off, or the download failed.
+      toastManager.close(updateToastId);
     });
-  }, [version, playing, restart]);
+    return () => {
+      gone = true;
+    };
+  }, [available, ready, playing, restart]);
 }
