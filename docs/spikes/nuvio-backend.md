@@ -66,6 +66,8 @@ Everything a desktop client needs, ~30 functions. Every `sync_*` takes `p_profil
 | `sync_pull_home_catalog_settings` / `sync_push_home_catalog_settings` | `p_profile_id, p_platform` (+ `p_settings_json`) | per-platform home rows | ✅ live (pull) |
 | `sync_pull_collections` / `sync_push_collections` | `p_profile_id` (+ `p_collections_json`) | `collections_json`: folders of addon catalog sources | ✅ live (pull) |
 
+**Since found (#93, 2026-11-26):** the pushes are `sync_push_profile_settings_blob` (with `p_origin_client_id`) and `sync_push_profile_settings_blob_guarded` (`p_profile_id, p_platform, p_settings_json, p_expected_updated_at`, answering the new `updated_at` or `409 PT409`), and the table itself is the cheap listing: `GET /rest/v1/profile_settings_blobs?select=profile_id,settings_json,updated_at&platform=eq.<p>` answers every profile's row in one request. `p_platform` is not optional on the pull: the one-argument call is ambiguous between its two overloads (`PGRST203`). Peli keeps its watch party announcement under `p_platform = 'peli'`, a key Nuvio's clients never ask for ([ADR-0067](../adr/0067-party-announcement-in-synced-data.md)).
+
 `p_platform` defaults to `'tv'`. We sent `'desktop'` and got an empty row set for home catalog settings, so #28 has to decide whether desktop gets its own settings or shares another platform's.
 
 **Since found (#35):** Nuvio's TV and mobile apps share one layout under `p_platform = 'home_catalog_shared'`. On live (2026-10-27) that platform had the account's layout, and `tv`, `mobile`, `web` and `desktop` had nothing. The blob's shape and Peli's use of it are in [ADR-0022](../adr/0022-home-layout-and-collections.md).

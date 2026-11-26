@@ -22,7 +22,15 @@ type (
 	PartyMessages    = nuvio.PartyMessages
 	PartyIdentity    = nuvio.PartyIdentity
 	ChannelHandler   = nuvio.ChannelHandler
+	// SettingsBlob and SettingsBlobRow are the account's synced data
+	// (ADR-0067), which a party's announcement rides in.
+	SettingsBlob    = nuvio.SettingsBlob
+	SettingsBlobRow = nuvio.SettingsBlobRow
 )
+
+// AnnouncePlatform is the platform key of Peli's own settings blob: never one
+// of Nuvio's, whose blob is the user's real settings for that device type.
+const AnnouncePlatform = nuvio.PlatformPeli
 
 // The party functions' refusals.
 const (
@@ -152,4 +160,52 @@ func (p Parties) Open(partyID, memberID string, handler ChannelHandler) Channel 
 		return withSession(ctx, p.Sessions, func(s nuvio.Session) (string, error) { return s.AccessToken, nil })
 	}
 	return p.Client.OpenChannel("watch-party:"+partyID, memberID, token, handler)
+}
+
+// The account's synced data (ADR-0067), as a party's announcement uses it: a
+// settings blob per profile, under the platform Peli owns. They ride here
+// rather than in a backend of their own because nothing else uses them and
+// their only caller is internal/party.
+
+// AccountSettings reads profile index's blob for platform, and whether there
+// is one.
+func (p Parties) AccountSettings(ctx context.Context, index int, platform string) (SettingsBlobRow, bool, error) {
+	var row SettingsBlobRow
+	var ok bool
+	err := p.Sessions.Do(ctx, func(s nuvio.Session) error {
+		var err error
+		row, ok, err = p.Client.ProfileSettings(ctx, s, index, platform)
+		return err
+	})
+	return row, ok, err
+}
+
+// AccountSettingsList reads every profile's blob for platform: one request
+// for the whole account.
+func (p Parties) AccountSettingsList(ctx context.Context, platform string) ([]SettingsBlobRow, error) {
+	return withSession(ctx, p.Sessions, func(s nuvio.Session) ([]SettingsBlobRow, error) {
+		return p.Client.ProfileSettingsList(ctx, s, platform)
+	})
+}
+
+// PutAccountSettings replaces profile index's blob for platform.
+func (p Parties) PutAccountSettings(ctx context.Context, index int, platform string, blob SettingsBlob) error {
+	return p.Sessions.Do(ctx, func(s nuvio.Session) error {
+		return p.Client.PushProfileSettings(ctx, s, index, platform, blob)
+	})
+}
+
+// PutAccountSettingsGuarded replaces the blob only while the row is still the
+// one expectedUpdatedAt names, and answers its new updated_at.
+func (p Parties) PutAccountSettingsGuarded(ctx context.Context, index int, platform string, blob SettingsBlob, expectedUpdatedAt string) (string, error) {
+	return withSession(ctx, p.Sessions, func(s nuvio.Session) (string, error) {
+		return p.Client.PushProfileSettingsGuarded(ctx, s, index, platform, blob, expectedUpdatedAt)
+	})
+}
+
+// ClearAccountSettings removes profile index's blob for platform.
+func (p Parties) ClearAccountSettings(ctx context.Context, index int, platform string) error {
+	return p.Sessions.Do(ctx, func(s nuvio.Session) error {
+		return p.Client.DeleteProfileSettings(ctx, s, index, platform)
+	})
 }

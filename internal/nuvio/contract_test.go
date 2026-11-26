@@ -46,6 +46,9 @@ type answer struct {
 	// Fields of row the backend leaves out, which the client's doc says
 	// not to trust.
 	absent []string
+	// mayBeEmpty: a 2xx with no body is an answer too. The settings blob
+	// table is read for its rows and deleted from; a delete is 204.
+	mayBeEmpty bool
 }
 
 func rows[T any]() answer { return answer{row: reflect.TypeFor[T](), many: true} }
@@ -99,6 +102,12 @@ var contract = map[string]answer{
 	"/rest/v1/rpc/sync_push_home_catalog_settings": {},
 	"/rest/v1/rpc/sync_pull_collections":           rows[CollectionsRow](),
 	"/rest/v1/rpc/sync_push_collections":           {},
+
+	"/rest/v1/rpc/sync_pull_profile_settings_blob":         rows[SettingsBlobRow](),
+	"/rest/v1/rpc/sync_push_profile_settings_blob":         {},
+	"/rest/v1/rpc/sync_push_profile_settings_blob_guarded": {},
+	// Read for its rows, and deleted from (ADR-0067).
+	"/rest/v1/profile_settings_blobs": {row: reflect.TypeFor[SettingsBlobRow](), many: true, mayBeEmpty: true},
 }
 
 // liveOnly lists the endpoints only api.nuvio.tv has: self-host has no watch
@@ -125,6 +134,9 @@ var liveOnly = map[string]answer{
 // into. It returns what doesn't fit, and the fields the client doesn't read,
 // which are new or unused, not wrong.
 func shapeErrors(data []byte, a answer) (problems, unread []string) {
+	if a.mayBeEmpty && len(bytes.TrimSpace(data)) == 0 {
+		return nil, nil
+	}
 	var v any
 	if err := json.Unmarshal(data, &v); err != nil {
 		return []string{fmt.Sprintf("the answer isn't JSON: %v", err)}, nil
@@ -784,6 +796,48 @@ func TestContract(t *testing.T) {
 		}
 		if err := c.PushCollections(t.Context(), s, index, json.RawMessage(`[]`)); !errors.Is(err, ErrNuviosServer) {
 			t.Errorf("push from the client made for this backend: err = %v, want ErrNuviosServer", err)
+		}
+	})
+
+	// Peli's own row in Nuvio's settings-blob table (ADR-0067): written under
+	// a platform Nuvio's clients never ask for, read back by the pull and by
+	// the table, compared and set, and deleted again.
+	run("settings blobs", func(t *testing.T) {
+		list, err := c.ProfileSettingsList(t.Context(), s, PlatformPeli)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(list) != 0 {
+			t.Fatalf("%d settings rows for %q on a new account", len(list), PlatformPeli)
+		}
+		blob := SettingsBlob{"v": json.RawMessage(`1`), "party": json.RawMessage(`{"id":"p1","code":"TEST01"}`)}
+		if err := c.PushProfileSettings(t.Context(), s, index, PlatformPeli, blob); err != nil {
+			t.Fatal(err)
+		}
+		row, ok, err := c.ProfileSettings(t.Context(), s, index, PlatformPeli)
+		if err != nil || !ok {
+			t.Fatalf("pull = %+v, present %v, %v", row, ok, err)
+		}
+		if row.ProfileID != index || row.UpdatedAt == "" || string(row.Settings["party"]) == "" {
+			t.Fatalf("pull = %+v", row)
+		}
+		if list, err = c.ProfileSettingsList(t.Context(), s, PlatformPeli); err != nil || len(list) != 1 || list[0].ProfileID != index {
+			t.Fatalf("table = %+v, %v", list, err)
+		}
+		// Compare-and-set: a stale updated_at is refused, the row's own is
+		// taken.
+		if _, err := c.PushProfileSettingsGuarded(t.Context(), s, index, PlatformPeli, blob, "2000-01-01T00:00:00+00:00"); apiCode(err) != "PT409" {
+			t.Errorf("a guarded push with a stale updated_at: err = %v, want PT409", err)
+		}
+		if updated, err := c.PushProfileSettingsGuarded(t.Context(), s, index, PlatformPeli, blob, row.UpdatedAt); err != nil || updated == "" {
+			t.Errorf("a guarded push with the row's own updated_at = %q, %v", updated, err)
+		}
+		// Deleted, it's gone: 204, and the table has nothing.
+		if err := c.DeleteProfileSettings(t.Context(), s, index, PlatformPeli); err != nil {
+			t.Fatal(err)
+		}
+		if list, err = c.ProfileSettingsList(t.Context(), s, PlatformPeli); err != nil || len(list) != 0 {
+			t.Fatalf("table after the delete = %+v, %v", list, err)
 		}
 	})
 

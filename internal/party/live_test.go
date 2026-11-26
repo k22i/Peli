@@ -6,6 +6,7 @@ import (
 	"errors"
 	"math"
 	"os"
+	"strings"
 	"sync"
 	"testing"
 	"time"
@@ -198,4 +199,130 @@ func (p *livePlayer) SetSpeed(speed float64) error {
 	p.advance()
 	p.st.Speed = speed
 	return nil
+}
+
+// TestLivePartyAnnouncement announces a party on the real account and checks
+// the account's synced data: the party appears there under the platform key
+// Peli owns (ADR-0067), another profile of the account can read it, and it is
+// gone again when the party ends. It runs only with
+// PELI_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD, and leaves the
+// account's rows as it found them.
+func TestLivePartyAnnouncement(t *testing.T) {
+	if os.Getenv("PELI_NUVIO_LIVE_WRITES") != "1" {
+		t.Skip("set PELI_NUVIO_LIVE_WRITES=1, NUVIO_EMAIL and NUVIO_PASSWORD to announce a party on a live backend")
+	}
+	c := nuvio.New(cmp.Or(os.Getenv("NUVIO_URL"), nuvio.DefaultURL), "0.0.0-live-test")
+	s, err := c.SignInWithPassword(t.Context(), os.Getenv("NUVIO_EMAIL"), os.Getenv("NUVIO_PASSWORD"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Not t.Context(): it is cancelled before cleanups run.
+	ctx := context.Background()
+	t.Cleanup(func() {
+		if err := c.SignOut(ctx, s); err != nil && !errors.Is(err, nuvio.ErrSignedOut) {
+			t.Errorf("sign out: %v", err)
+		}
+	})
+	rows := func() []nuvio.SettingsBlobRow {
+		t.Helper()
+		got, err := c.ProfileSettingsList(ctx, s, nuvio.PlatformPeli)
+		if err != nil {
+			t.Logf("listing %q rows: %v", nuvio.PlatformPeli, err)
+			return nil
+		}
+		return got
+	}
+	baseline := rows()
+	if len(baseline) != 0 {
+		t.Fatalf("the account has %d %q rows before the test: remove them with DELETE /rest/v1/profile_settings_blobs?platform=eq.%s",
+			len(baseline), nuvio.PlatformPeli, nuvio.PlatformPeli)
+	}
+
+	profiles, err := c.Profiles(t.Context(), s)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(profiles) == 0 {
+		t.Fatal("the account has no profiles")
+	}
+	index := profiles[0].Index
+	api := backend.Parties{Client: c, Sessions: fixedSession{s}}
+	svc := NewService(api, func() (Me, error) {
+		return Me{ProfileID: 1, Linked: true, Identity: backend.PartyIdentity{
+			DeviceID: "peli-live-announce-" + time.Now().Format("150405"), DisplayName: "Peli live test",
+			ProfileIndex: &index,
+		}}, nil
+	})
+	t.Cleanup(func() {
+		if svc.State().Party != nil {
+			_ = svc.End()
+		}
+		// Whatever happened, leave nothing of Peli's behind.
+		if rows := rows(); len(rows) != 0 {
+			if err := c.DeleteProfileSettings(ctx, s, index, nuvio.PlatformPeli); err != nil {
+				t.Errorf("removing the announcement: %v", err)
+			}
+		}
+	})
+
+	start := time.Now()
+	film := Media{Type: "movie", ID: "tt0000001", Title: "Peli live test"}
+	if err := svc.Create(film); err != nil {
+		t.Fatal(err)
+	}
+	code := svc.State().Party.Code
+	t.Logf("party created in %v", time.Since(start).Round(time.Millisecond))
+
+	wait := func(what string, ok func() bool) {
+		t.Helper()
+		deadline := time.Now().Add(20 * time.Second)
+		for !ok() {
+			if time.Now().After(deadline) {
+				t.Fatalf("%s: not within 20 s", what)
+			}
+			time.Sleep(200 * time.Millisecond)
+		}
+	}
+	var announced nuvio.SettingsBlobRow
+	wait("the party is announced in the account's synced data", func() bool {
+		got := rows()
+		if len(got) != 1 || got[0].ProfileID != index {
+			return false
+		}
+		announced = got[0]
+		return strings.Contains(string(announced.Settings["party"]), code)
+	})
+	t.Logf("announced at profile %d in %v", announced.ProfileID, time.Since(start).Round(time.Millisecond))
+	if string(announced.Settings["v"]) != "1" {
+		t.Errorf("the blob's version = %s, want 1", announced.Settings["v"])
+	}
+
+	// The pull another device makes of its own profile's row: the same thing.
+	pulled, ok, err := c.ProfileSettings(ctx, s, index, nuvio.PlatformPeli)
+	if err != nil || !ok {
+		t.Fatalf("pull = %+v, present %v, %v", pulled, ok, err)
+	}
+	if !strings.Contains(string(pulled.Settings["party"]), code) {
+		t.Errorf("the pulled blob has no code in it")
+	}
+	// And what the list shows is a code that still joins a party, which is
+	// what the Join page checks before listing one.
+	preview, err := c.PartyPreview(t.Context(), s, code)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if preview.Error != "" || preview.Media == nil || preview.Host == nil {
+		t.Errorf("preview of the announced code = %+v", preview)
+	} else {
+		t.Logf("preview: %q hosted by someone, %d of %d seats", mediaTitle(*preview.Media), preview.Members, preview.MaxMembers)
+	}
+
+	if err := svc.End(); err != nil {
+		t.Fatal(err)
+	}
+	wait("ending the party clears the announcement", func() bool { return len(rows()) == 0 })
+	if got := rows(); len(got) != 0 {
+		t.Errorf("the account has %d %q rows after the party", len(got), nuvio.PlatformPeli)
+	}
+	t.Logf("announcement, listing, preview and withdrawal in %v", time.Since(start).Round(time.Millisecond))
 }

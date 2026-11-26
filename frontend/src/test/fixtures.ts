@@ -1,4 +1,5 @@
 import type {
+  AccountParty,
   ActivityEntry,
   Media,
   Member,
@@ -177,6 +178,36 @@ export function partyMember(member: Partial<Member> = {}): Member {
     watchingElse: false,
     behindMs: 0,
     ...member,
+  };
+}
+
+// A party another profile of the account hosts, as the Join page lists it
+// (ADR-0067, `party.Service.AccountParties`): The Shawshank Redemption, one
+// seat taken of eight.
+export function accountParty(party: Partial<AccountParty> = {}): AccountParty {
+  return {
+    id: "p2",
+    code: "GHJKLM",
+    host: "Kevin",
+    profile: 1,
+    media: {
+      type: "movie",
+      id: "tt0111161",
+      videoId: "",
+      season: null,
+      episode: null,
+      title: "The Shawshank Redemption",
+      episodeTitle: "",
+      description: "",
+      poster: "",
+      background: "",
+      logo: "",
+      source: null,
+    },
+    members: 1,
+    maxMembers: 8,
+    startedAt: Date.UTC(2026, 10, 26, 20, 0),
+    ...party,
   };
 }
 

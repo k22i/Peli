@@ -3,6 +3,7 @@ package party
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"slices"
 	"sync"
 	"testing"
@@ -22,6 +23,14 @@ type fakeAPI struct {
 	channels []*fakeChannel
 	clockMs  func() int64
 	sendErr  error
+	// The account's synced data (announce.go): one row, kept here.
+	settings        backend.SettingsBlob
+	settingsUpdated string
+	settingsErr     error
+	settingsProfile int
+	// What watch_party_preview answers, for the account's listing.
+	preview    backend.PartyPreview
+	previewErr error
 }
 
 func (f *fakeAPI) record(call string) {
@@ -54,7 +63,10 @@ func (f *fakeAPI) Join(context.Context, string, backend.PartyIdentity) (backend.
 	return f.answer, nil
 }
 func (f *fakeAPI) Preview(context.Context, string) (backend.PartyPreview, error) {
-	return backend.PartyPreview{}, nil
+	f.record("preview")
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	return f.preview, f.previewErr
 }
 func (f *fakeAPI) Heartbeat(context.Context, string, string) (backend.PartySnapshot, error) {
 	f.record("heartbeat")
@@ -115,6 +127,75 @@ func (f *fakeAPI) Open(_, _ string, handler backend.ChannelHandler) backend.Chan
 	ch := &fakeChannel{handler: handler}
 	f.channels = append(f.channels, ch)
 	return ch
+}
+
+// The account's synced data, as announce.go keeps a party in it.
+
+func (f *fakeAPI) AccountSettings(context.Context, int, string) (backend.SettingsBlobRow, bool, error) {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	if f.settingsErr != nil {
+		return backend.SettingsBlobRow{}, false, f.settingsErr
+	}
+	if f.settings == nil {
+		return backend.SettingsBlobRow{}, false, nil
+	}
+	return backend.SettingsBlobRow{ProfileID: f.settingsProfile, Settings: f.settings, UpdatedAt: f.settingsUpdated}, true, nil
+}
+
+func (f *fakeAPI) AccountSettingsList(context.Context, string) ([]backend.SettingsBlobRow, error) {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	if f.settingsErr != nil {
+		return nil, f.settingsErr
+	}
+	if f.settings == nil {
+		return []backend.SettingsBlobRow{}, nil
+	}
+	return []backend.SettingsBlobRow{{ProfileID: f.settingsProfile, Settings: f.settings, UpdatedAt: f.settingsUpdated}}, nil
+}
+
+func (f *fakeAPI) PutAccountSettings(_ context.Context, index int, _ string, blob backend.SettingsBlob) error {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	f.calls = append(f.calls, "announce")
+	if f.settingsErr != nil {
+		return f.settingsErr
+	}
+	f.settings, f.settingsProfile, f.settingsUpdated = blob, index, "2026-11-26T08:30:39.257987+00:00"
+	return nil
+}
+
+func (f *fakeAPI) PutAccountSettingsGuarded(_ context.Context, index int, _ string, blob backend.SettingsBlob, expected string) (string, error) {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	f.calls = append(f.calls, "announce")
+	if f.settingsErr != nil {
+		return "", f.settingsErr
+	}
+	if f.settings == nil || f.settingsUpdated != expected {
+		return "", errors.New("nuvio: HTTP 409 PT409")
+	}
+	f.settings, f.settingsProfile, f.settingsUpdated = blob, index, "2026-11-26T08:30:39.257987+00:00"
+	return f.settingsUpdated, nil
+}
+
+func (f *fakeAPI) ClearAccountSettings(_ context.Context, _ int, _ string) error {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	f.calls = append(f.calls, "withdraw")
+	if f.settingsErr != nil {
+		return f.settingsErr
+	}
+	f.settings, f.settingsUpdated = nil, ""
+	return nil
+}
+
+// announced is the party in the fake's synced data, or nil.
+func (f *fakeAPI) announced() *announcedParty {
+	f.mu.Lock()
+	defer f.mu.Unlock()
+	return announcedPartyOf(f.settings)
 }
 
 func (f *fakeAPI) channel(t *testing.T) *fakeChannel {

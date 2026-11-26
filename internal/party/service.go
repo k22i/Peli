@@ -16,6 +16,7 @@ import (
 	"encoding/json"
 	"errors"
 	"log/slog"
+	"slices"
 	"strings"
 	"sync"
 	"time"
@@ -50,6 +51,12 @@ type API interface {
 	Messages(ctx context.Context, partyID, deviceID string, after int64) (backend.PartyMessages, error)
 	Clock(ctx context.Context) (int64, error)
 	Open(partyID, memberID string, handler backend.ChannelHandler) backend.Channel
+	// The account's synced data, where a party is announced (announce.go).
+	AccountSettings(ctx context.Context, index int, platform string) (backend.SettingsBlobRow, bool, error)
+	AccountSettingsList(ctx context.Context, platform string) ([]backend.SettingsBlobRow, error)
+	PutAccountSettings(ctx context.Context, index int, platform string, blob backend.SettingsBlob) error
+	PutAccountSettingsGuarded(ctx context.Context, index int, platform string, blob backend.SettingsBlob, expectedUpdatedAt string) (string, error)
+	ClearAccountSettings(ctx context.Context, index int, platform string) error
 }
 
 var _ API = backend.Parties{}
@@ -148,6 +155,14 @@ type Service struct {
 	// player names it, joining one compares with it.
 	watching *watch
 	chatOpen bool
+	// announced is the party this device announced in the account's synced
+	// data, and announceToken counts announcement changes, so a withdrawal
+	// that started before a newer announcement doesn't take it away.
+	announced     string
+	announceToken int
+	// listed is what the Join page was shown last, to say when one of those
+	// parties is gone.
+	listed map[string]AccountParty
 	// What was emitted last, so a tick that changes nothing sends nothing.
 	lastState []byte
 }
@@ -163,6 +178,7 @@ func NewService(api API, who func() (Me, error)) *Service {
 	return &Service{
 		api: api, who: who, now: time.Now, enabled: true, emit: func(string, any) {},
 		syncEvery: syncEvery, heartbeatEvery: heartbeatEvery,
+		listed: map[string]AccountParty{},
 	}
 }
 
@@ -201,6 +217,7 @@ func (s *Service) ServiceShutdown() error {
 		ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 		defer cancel()
 		s.api.Leave(ctx, sess.id, sess.deviceID)
+		go s.withdrawAnnouncement(sess)
 	}
 	return nil
 }
@@ -354,6 +371,7 @@ func (s *Service) start(request func(context.Context, backend.PartyIdentity) (ba
 	if s.cur != nil {
 		old := s.cur
 		s.stop(old)
+		s.withdraw(old)
 		go s.api.Leave(context.Background(), old.id, old.deviceID)
 	}
 	s.begin(snap, me, sentAt, nil)
@@ -370,12 +388,21 @@ func (s *Service) Leave() {
 	}
 	s.stop(sess)
 	s.changed()
+	s.withdraw(sess)
 	s.mu.Unlock()
 	ctx, cancel := context.WithTimeout(context.Background(), callWithin)
 	defer cancel()
 	if _, err := s.api.Leave(ctx, sess.id, sess.deviceID); err != nil {
 		slog.Warn("leaving watch party failed", "err", err)
 	}
+}
+
+// withdrawAnnouncement is withdraw for a session this device is done with,
+// called without the lock.
+func (s *Service) withdrawAnnouncement(sess *session) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.withdraw(sess)
 }
 
 // End ends the party for everyone (the host only).
@@ -395,11 +422,41 @@ func (s *Service) End() error {
 	}
 	s.mu.Lock()
 	defer s.mu.Unlock()
+	// The announcement goes whether or not this device still has the
+	// session: the channel may have heard the end before this call did.
+	s.withdraw(sess)
 	if s.cur == sess {
 		s.stop(sess)
 		s.changed()
 	}
 	return nil
+}
+
+// AccountParties lists the account's live parties, for the Join page: the
+// parties this account's other profiles host, to join with one click and no
+// code (announce.go, ADR-0067). It is empty when parties can't be used, for a
+// kids profile, and when the account has none: the listing fails closed.
+func (s *Service) AccountParties() []AccountParty {
+	s.mu.Lock()
+	if s.unavailable() != "" {
+		s.mu.Unlock()
+		return []AccountParty{}
+	}
+	s.refreshEnabled()
+	s.mu.Unlock()
+	ctx, cancel := context.WithTimeout(context.Background(), callWithin)
+	defer cancel()
+	parties, ok := s.accountParties(ctx)
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	// The party this device is in is the one page it can't be joined from.
+	parties = slices.DeleteFunc(parties, func(p AccountParty) bool { return s.cur != nil && p.ID == s.cur.id })
+	if ok {
+		// A read that failed says nothing about the parties it listed
+		// before: only a full answer can say one is gone.
+		s.listedAgain(parties)
+	}
+	return parties
 }
 
 // SetHostOnly lets only the host control playback, or everyone (the host

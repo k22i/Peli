@@ -113,6 +113,8 @@ vi.mock("@bindings/party", () => ({
     Leave: vi.fn<() => Promise<void>>(() => Promise.resolve()),
     End: vi.fn<() => Promise<void>>(() => Promise.resolve()),
     Preview: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ error: "party_not_found" })),
+    // The account's live parties (ADR-0067): none, unless a test says so.
+    AccountParties: vi.fn<() => Promise<unknown[] | null>>(() => Promise.resolve([])),
     CatchUp: vi.fn<() => Promise<void>>(() => Promise.resolve()),
     SetHostOnly: vi.fn<() => Promise<void>>(() => Promise.resolve()),
     SetSharing: vi.fn<() => Promise<void>>(() => Promise.resolve()),

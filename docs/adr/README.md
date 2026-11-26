@@ -70,5 +70,6 @@ Decisions that are hard to reverse, surprising without context, and the result o
 | [0064](0064-downloads-for-offline-viewing.md) | Downloads for offline viewing: Go downloads the picked stream into a per-device folder, and a downloaded copy always plays first | 2026-11-22 |
 | [0065](0065-subtitle-autosync.md) | Subtitle AutoSync: addon subtitles lined up with the video's own subtitle timing from its Matroska index | 2026-11-24 |
 | [0066](0066-live-tv.md) | Live TV: IPTV channels from M3U playlists with an XMLTV guide, parsed and kept in Go per profile, URLs in the keychain, its own live player | 2026-11-25 |
+| [0067](0067-party-announcement-in-synced-data.md) | Announcing a live watch party in the account's synced data: a small row under a platform key Peli owns, listed on the Join page and confirmed by the code's preview | 2026-11-26 |
 
 0001–0005 came out of the M0 gate review ([`../m0-gate-review.md`](../m0-gate-review.md), #8).

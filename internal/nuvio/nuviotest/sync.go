@@ -55,15 +55,17 @@ type event struct {
 
 // syncState is what the sync RPCs read and write. The server's mutex guards it.
 type syncState struct {
-	next    int64
-	rows    map[string]map[rowKey]map[string]any // by surface
-	events  map[string][]event
-	addons  map[profileKey][]map[string]any
-	plugins map[profileKey][]map[string]any // plugin repositories (#57)
-	home    map[homeKey]map[string]any      // home layouts (home.go)
-	colls   map[profileKey][]any            // collections (home.go)
-	pushes  map[string]int                  // pushes received, by RPC name
-	dropped int                             // progress entries dropped by the throttle
+	next      int64
+	rows      map[string]map[rowKey]map[string]any // by surface
+	events    map[string][]event
+	addons    map[profileKey][]map[string]any
+	plugins   map[profileKey][]map[string]any // plugin repositories (#57)
+	home      map[homeKey]map[string]any      // home layouts (home.go)
+	colls     map[profileKey][]any            // collections (home.go)
+	blobs     map[blobKey]blobRow             // settings blobs (settings.go)
+	blobClock int
+	pushes    map[string]int // pushes received, by RPC name
+	dropped   int            // progress entries dropped by the throttle
 }
 
 func newSyncState() *syncState {
@@ -75,6 +77,7 @@ func newSyncState() *syncState {
 		plugins: map[profileKey][]map[string]any{},
 		home:    map[homeKey]map[string]any{},
 		colls:   map[profileKey][]any{},
+		blobs:   map[blobKey]blobRow{},
 		pushes:  map[string]int{},
 	}
 }
@@ -143,6 +146,10 @@ func (s *Server) syncRoutes(w http.ResponseWriter, r *http.Request, user string,
 		s.readPlugins(w, user, r.URL.Query())
 		return true
 	}
+	if path == "/rest/v1/profile_settings_blobs" {
+		s.settingsTable(w, r, user)
+		return true
+	}
 	rpc, ok := strings.CutPrefix(path, "/rest/v1/rpc/")
 	if !ok || !isSyncRPC(rpc) {
 		return false
@@ -181,6 +188,11 @@ func (s *Server) syncRoutes(w http.ResponseWriter, r *http.Request, user string,
 		return true
 	}
 	if s.pullHome(w, rpc, profile, body) {
+		return true
+	}
+	switch rpc {
+	case "sync_pull_profile_settings_blob", "sync_push_profile_settings_blob", "sync_push_profile_settings_blob_guarded":
+		s.settingsRPC(w, rpc, profile, body)
 		return true
 	}
 	if index < 1 || index > 6 {
@@ -266,10 +278,13 @@ var syncArgs = map[string][]string{
 	"sync_push_addons":               {"p_addons", "p_profile_id", "p_origin_client_id"},
 	"sync_push_plugins":              {"p_plugins", "p_profile_id", "p_origin_client_id"},
 
-	"sync_pull_home_catalog_settings": {"p_profile_id", "p_platform"},
-	"sync_push_home_catalog_settings": {"p_profile_id", "p_settings_json", "p_platform", "p_origin_client_id"},
-	"sync_pull_collections":           {"p_profile_id"},
-	"sync_push_collections":           {"p_profile_id", "p_collections_json", "p_origin_client_id"},
+	"sync_pull_home_catalog_settings":         {"p_profile_id", "p_platform"},
+	"sync_push_home_catalog_settings":         {"p_profile_id", "p_settings_json", "p_platform", "p_origin_client_id"},
+	"sync_pull_profile_settings_blob":         {"p_profile_id", "p_platform"},
+	"sync_push_profile_settings_blob":         {"p_profile_id", "p_platform", "p_settings_json", "p_origin_client_id"},
+	"sync_push_profile_settings_blob_guarded": {"p_profile_id", "p_platform", "p_settings_json", "p_expected_updated_at"},
+	"sync_pull_collections":                   {"p_profile_id"},
+	"sync_push_collections":                   {"p_profile_id", "p_collections_json", "p_origin_client_id"},
 }
 
 func isSyncRPC(rpc string) bool {

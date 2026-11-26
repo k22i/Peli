@@ -144,3 +144,11 @@ What stays exactly as it was:
 - **The party moving to another title or episode** (`publishMedia` on a media-key change) — unchanged; that's the party, not the stream.
 - **Playback sync** (pause, seek, rate, waiting for stragglers) — unchanged.
 - **The guest's pick starting where the party is** (`Party.StartAt` in the picker) — unchanged.
+
+## Addendum (2026-11-26): the account's other profiles are told, in its synced data
+
+A party is joined with a code, and until now only a host who shared that code could bring anyone in — including someone who is signed into the same Nuvio account, on another device or profile. The Join page now lists the account's live parties and joins one in a click ([0067](0067-party-announcement-in-synced-data.md)).
+
+Nuvio offers no way to find them (no listing RPC, and no account-scoped realtime channel: `spikes/party-account-topic/REPORT.md`), so Peli announces the party itself in the account's **synced data**: a small JSON blob under the platform key `peli` in `profile_settings_blobs`, which every profile of the account already reads. `internal/party/announce.go` writes it where the party starts and where it moves to another title, and takes it away on `End`, on `Leave`, when the party is no longer this device's to host, and when a session is replaced. Reading is one `GET` of the account's rows, an 8 h age filter, and `watch_party_preview(code)` on each — the preview is what's authoritative, and a row it no longer knows is deleted.
+
+Party create, join, presence, chat, playback sync and every Nuvio client's party behave exactly as before: the announcement is best-effort and off the party's own goroutines, so a failure is a missing list, never a broken party, and typing the code still works.

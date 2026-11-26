@@ -6,6 +6,7 @@ import { useCallback, useEffect, useEffectEvent } from "react";
 import type { Watching } from "@bindings/playback";
 import {
   Service as Party,
+  type AccountParty,
   type Activity,
   type ActivityEntry,
   type Chat,
@@ -63,6 +64,7 @@ export const reactionName: Record<(typeof REACTIONS)[number], string> = {
 
 export { Party };
 export type {
+  AccountParty,
   Activity,
   ActivityEntry,
   Chat,
@@ -100,9 +102,27 @@ export const partyActivityQuery = queryOptions({
   staleTime: Infinity,
 });
 
+// The account's live parties, for the Join page (ADR-0067): what this
+// account's profiles announced in its synced data, confirmed by Go. It is a
+// pull, not a push: it fetches when the page opens and when the window comes
+// back, and no faster than every 30 s.
+export const accountPartiesQuery = queryOptions({
+  queryKey: ["party", "account"],
+  queryFn: () => Party.AccountParties(),
+  enabled: () => feature("party"),
+  staleTime: 30_000,
+  refetchOnWindowFocus: true,
+});
+
 // The party as it is now: undefined until Go first answers.
 export function useParty(): State | undefined {
   return useQuery(partyQuery).data;
+}
+
+// The account's live parties, with the query's own loading state.
+export function useAccountParties() {
+  const query = useQuery(accountPartiesQuery);
+  return { parties: query.data ?? [], pending: query.isPending };
 }
 
 export function usePartyChat(): Chat {
@@ -286,6 +306,11 @@ export function noticeText(notice: Notice): string | undefined {
       return "Only the host can control playback";
     case "caught_up":
       return "Back in step with the party";
+    case "party_gone":
+      // A party the Join page listed has ended (ADR-0067).
+      return notice.media
+        ? `The watch party for ${mediaLabel(notice.media)} has ended`
+        : "A watch party has ended";
   }
   return undefined;
 }

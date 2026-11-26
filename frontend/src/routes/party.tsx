@@ -2,6 +2,7 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 import { Play, Users } from "lucide-react";
 
 import { Artwork } from "@/components/media/artwork";
+import { AccountParties } from "@/components/party/account-parties";
 import { PartyChat } from "@/components/party/party-chat";
 import { JoinParty, PartyPanel } from "@/components/party/party-panel";
 import { Button } from "@/components/ui/button";
@@ -46,6 +47,9 @@ function PartyPage() {
         <div className="grid gap-10 md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] ios-compact:gap-8">
           <section aria-label="Join a watch party" className="flex flex-col gap-4">
             <h2 className="type-title">Join a watch party</h2>
+            {/* A party another profile of this account hosts, joined in one
+                click (ADR-0067), above the code for one hosted elsewhere. */}
+            <AccountParties />
             <JoinParty />
           </section>
           <section

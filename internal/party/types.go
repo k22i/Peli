@@ -173,6 +173,9 @@ const (
 	NoticeLocked = "locked"
 	// NoticeCaughtUp: back in step after watching behind.
 	NoticeCaughtUp = "caught_up"
+	// NoticeGone: a party the Join page listed has ended, and its
+	// announcement was dropped (announce.go).
+	NoticeGone = "party_gone"
 )
 
 // Notice is something to tell the user for a moment.

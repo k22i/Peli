@@ -48,6 +48,9 @@ type session struct {
 	// away: the app is in the background and the channel is closed on
 	// purpose (suspend.go); the seat is kept.
 	away bool
+	// startedAt is when the party started, on the party clock: what its
+	// announcement says (announce.go).
+	startedAt int64
 
 	// Watching on alone, behind the party (only-the-host parties).
 	behind   bool
@@ -143,10 +146,16 @@ func (s *Service) begin(snap backend.PartySnapshot, me Me, sentAt time.Time, pla
 			}
 		}
 	}()
+	sess.startedAt = sess.clock.nowMs()
 	sess.channel = s.openChannel(sess)
 	go s.heartbeats(sess)
 	go s.refineClock(sess)
 	go s.loop(sess)
+	if sess.isHost() {
+		// The account's other profiles find it in the synced data they
+		// already read (announce.go).
+		s.announce(sess, mediaOf(sess.media))
+	}
 	s.syncChat(sess, false)
 	s.emitChat(sess)
 	// The log starts with this member coming in; the others send theirs
@@ -212,6 +221,9 @@ func (s *Service) stop(sess *session) {
 // finish ends the session and says why. s.mu is held.
 func (s *Service) finish(sess *session, kind string) {
 	s.stop(sess)
+	// Out of the party, this device hosts nothing: whatever ended it, the
+	// account's list mustn't go on offering it (announce.go).
+	s.withdraw(sess)
 	s.notify(Notice{Kind: kind})
 	s.changed()
 }
@@ -398,8 +410,10 @@ func (s *Service) onMemberLeft(sess *session, memberID, reason, hostID string) {
 	sess.members = members
 	delete(sess.presence, memberID)
 	delete(sess.ignored, memberID)
-	if hostID != "" {
+	if hostID != "" && hostID != sess.hostID {
 		sess.hostID = hostID
+		// Handed on: the row goes to whoever hosts the party now.
+		s.hostingMoved(sess)
 	}
 	if name != "" {
 		s.notify(Notice{Kind: NoticeLeft, Name: name})
@@ -460,7 +474,11 @@ func (s *Service) applySnapshot(sess *session, snap backend.PartySnapshot) {
 		return
 	}
 	sess.members = snap.Members
-	sess.hostID = info.HostMemberID
+	if info.HostMemberID != sess.hostID {
+		// The party moved on to another host, this device or not.
+		sess.hostID = info.HostMemberID
+		s.hostingMoved(sess)
+	}
 	sess.maxMembers = info.MaxMembers
 	sess.hostOnly = info.HostOnly
 	for id := range sess.presence {
@@ -638,6 +656,10 @@ func (s *Service) publishMedia(sess *session, media Media, positionMs int64) {
 	}
 	if sess.persist != nil {
 		sess.persist.Stop()
+	}
+	if !same {
+		// The listing keeps up with what the party watches.
+		s.announce(sess, media)
 	}
 	go func() {
 		snap, err := s.call(sess, func(ctx context.Context) (backend.PartySnapshot, error) {
