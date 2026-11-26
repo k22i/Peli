@@ -93,7 +93,7 @@
 - [iOS polish epic](ios-polish-epic.md) — #126 (2026-11-17): sub-tickets #127–#142 with priorities, code findings (no WebKit-kill handler, extraLarge covers, 45 % player dock), native glass tab bar + QR tracker pairing decisions
 - [Touch player chrome](touch-player-chrome.md) — #130 touchLayout branch, touch-chrome.tsx, scrubTo/endScrub for #131, --touch-chrome, sheets, lift covers, iOS Stats
 - [Crash diagnostics](crash-diagnostics.md) — #127 internal/diagnostics + iosshell (WebKit-kill reload, loop guard, crash files, ring log, Share logs), safego, ErrorScreen, route restore, pelidev crash tests in Settings
-- [Bottom sheets](bottom-sheets.md) — #134 ResponsiveMenu/ContextMenu/Select + BottomSheet drag, useSheetOpen for the tab bar, haptic() stub, long press, CDP screenshot rig
+- [Bottom sheets](bottom-sheets.md) — #134 ResponsiveMenu/ContextMenu/Select + BottomSheet drag, useSheetOpen for the tab bar (every dialog too, since 2026-11-27), haptic() stub, long press, CDP screenshot rig
 - [iOS small fixes](ios-small-fixes.md) — #139: thisDevice/deviceName, Meteor 🌩️/☁️, SeedAudioLanguages, About build, icon + launch assets, quiet webview, touch CSS
 - [Library on iPhone](library-iphone.md) — #132 CompactLibraryFrame + --library-header-h, Sort sheet, PosterGrid dense (--poster-dense-columns), Card dense/corner, compact Upcoming, toasts above --tabs-float
 - [Player gestures](player-gestures.md) — #131 lib/player-gestures.ts reducer, native brightness/volume/immersive, Haptics.Impact (#135 extends), Gestures settings, fill per title, Lock

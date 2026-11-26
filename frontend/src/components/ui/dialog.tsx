@@ -5,9 +5,11 @@ import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
 import { XIcon } from "lucide-react";
 import type React from "react";
+import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { markSheetOpen } from "@/lib/sheets";
 import { useCompactShell } from "@/lib/shell-mode";
 
 export const DialogCreateHandle: typeof DialogPrimitive.createHandle = DialogPrimitive.createHandle;
@@ -76,9 +78,17 @@ export function DialogPopup({
   closeProps?: DialogPrimitive.Close.Props;
   portalProps?: DialogPrimitive.Portal.Props;
 }): React.ReactElement {
-  const asSheet = useCompactShell() && sheet;
+  const compact = useCompactShell();
+  const asSheet = compact && sheet;
+  // On the compact shell the popup sits on the screen's bottom edge — the
+  // sheet above it, or the popup itself under 640 pt — where the floating tab
+  // bar (#129) would cover its footer's buttons. Hold a hideTabBar() request
+  // while it is up, as the bottom sheets do (#134). The pairing dialogs held
+  // their own until this; the TMDB key's Save was still behind the bar.
+  const overBar = compact && (sheet || bottomStickOnMobile);
   return (
     <DialogPortal {...portalProps}>
+      {overBar && <HoldTabBar />}
       <DialogBackdrop />
       <DialogViewport
         className={cn(
@@ -114,6 +124,14 @@ export function DialogPopup({
       </DialogViewport>
     </DialogPortal>
   );
+}
+
+// Nothing to draw: it lives as long as the popup it is rendered in, which is
+// only while the dialog is open (the portal renders no children when it is
+// shut), and releases the bar when it goes.
+function HoldTabBar(): null {
+  useEffect(() => markSheetOpen(), []);
+  return null;
 }
 
 export function DialogHeader({

@@ -2,7 +2,10 @@
 
 import { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog";
 import type React from "react";
+import { useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { markSheetOpen } from "@/lib/sheets";
+import { useCompactShell } from "@/lib/shell-mode";
 
 export const AlertDialogCreateHandle: typeof AlertDialogPrimitive.createHandle =
   AlertDialogPrimitive.createHandle;
@@ -56,8 +59,14 @@ export function AlertDialogPopup({
   bottomStickOnMobile?: boolean;
   portalProps?: AlertDialogPrimitive.Portal.Props;
 }): React.ReactElement {
+  // On the compact shell the popup sits on the screen's bottom edge (it is
+  // stuck there under 640 pt), where the floating tab bar (#129) would cover
+  // its buttons: hold a hideTabBar() request while it is up, as dialog.tsx
+  // does for its own.
+  const overBar = useCompactShell() && bottomStickOnMobile;
   return (
     <AlertDialogPortal {...portalProps}>
+      {overBar && <HoldTabBar />}
       <AlertDialogBackdrop />
       <AlertDialogViewport
         className={cn(bottomStickOnMobile && "max-sm:grid-rows-[1fr_auto] max-sm:p-0 max-sm:pt-12")}
@@ -75,6 +84,14 @@ export function AlertDialogPopup({
       </AlertDialogViewport>
     </AlertDialogPortal>
   );
+}
+
+// Nothing to draw: it lives as long as the popup it is rendered in, which is
+// only while the dialog is open (the portal renders no children when it is
+// shut), and releases the bar when it goes.
+function HoldTabBar(): null {
+  useEffect(() => markSheetOpen(), []);
+  return null;
 }
 
 export function AlertDialogHeader({

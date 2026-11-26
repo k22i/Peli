@@ -197,6 +197,24 @@ describe("the iOS shell", () => {
     expect(tabs).not.toHaveAttribute("inert");
   });
 
+  it("takes the bar away while a dialog stands on the bottom edge", async () => {
+    width(true);
+    const user = userEvent.setup();
+    await renderApp("/settings?section=content");
+    const tabs = screen.getByRole("navigation", { name: "Main" });
+    expect(tabs).not.toHaveAttribute("inert");
+
+    // The TMDB key's sheet reaches the screen's bottom edge, where the bar
+    // floats: its Save button sat under it, and a finger on it hit the bar.
+    await user.click(await screen.findByRole("button", { name: "Add TMDB key" }));
+    await screen.findByRole("dialog", { name: "TMDB" });
+    await waitFor(() => expect(tabs).toHaveAttribute("inert"));
+
+    await user.click(screen.getByRole("button", { name: "Cancel" }));
+    await waitFor(() => expect(tabs).not.toHaveAttribute("inert"));
+    expect(screen.queryByRole("dialog", { name: "TMDB" })).toBeNull();
+  });
+
   it("floats the sections at the bottom centre at regular width", async () => {
     width(false);
     await renderApp("/settings?section=about");
