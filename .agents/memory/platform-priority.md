@@ -9,4 +9,4 @@ Since 2026-10-31: build and test macOS first, Windows second. Linux is deferred 
 
 **Why:** the user wants to save time. Mac is the dev machine, and Windows and Linux runs are slow to get.
 
-**How to apply:** a ticket is done once macOS passes, with Windows as the next lane. Don't spend time on Linux runs (Docker, GTK hosts, AppImage). Keep existing Linux code compiling where it's cheap, but add new Linux-only work to #103 instead of doing it. Related: [[player-service]], [[hardware-decoding-hdr]], [[player-keys-media]].
+**How to apply:** since 2026-11-26 the pipelines themselves only run on macOS Apple silicon (Windows, Linux and Intel commented out — see [[ci-minutes]]), so a ticket is done once macOS passes and Windows is verified by hand if at all. Don't spend time on Linux runs (Docker, GTK hosts, AppImage). Keep existing Linux code compiling where it's cheap, but add new Linux-only work to #103 instead of doing it. Related: [[player-service]], [[hardware-decoding-hdr]], [[player-keys-media]].

@@ -1,6 +1,14 @@
-# #16: lint, test and build Peli on Windows, macOS and Linux: the newest
-# runner image of each, x64 except macOS (arm64). No Intel Mac and no older
-# images: a macOS minute costs ten on a private repo.
+# #16: lint, test and build Peli on macOS (Apple silicon) only: the newest
+# runner image, arm64. No Intel Mac and no older images: a macOS minute costs
+# ten on a private repo.
+#
+# Windows and Linux are commented out for now, and Intel Macs (macos x86_64,
+# and release's amd64 target) with them: only an M-chip Mac is checked, to
+# keep a run short. Nothing in these jobs is deleted, so putting an OS back is
+# uncommenting its matrix entry, its steps and the conditional "Fetch libmpv"
+# below. The `frontend` and `licences` jobs stay on ubuntu-26.04: they lint
+# and test JavaScript and Go tooling, not an OS build, and a Linux minute is
+# the cheapest there is.
 name: ci
 
 on:
@@ -19,10 +27,11 @@ on:
       - ".github/workflows/spike-*.yml"
   workflow_dispatch:
     inputs:
-      dev-smoke:
-        description: Also check that `wails3 dev` starts the app (Windows, Linux)
-        type: boolean
-        default: false
+      # Commented out with the dev-smoke job, which is the only user.
+      # dev-smoke:
+      #   description: Also check that `wails3 dev` starts the app (Windows, Linux)
+      #   type: boolean
+      #   default: false
       contract:
         description: Also run the Nuvio contract tests against self-host (#33)
         type: boolean
@@ -40,17 +49,19 @@ env:
   NODE_VERSION: "26"
   WAILS3: github.com/wailsapp/wails/v3/cmd/wails3@v3.1.0
   # The Wails packages' Linux cgo files need the GTK and WebKitGTK headers,
-  # and the player (#60) libmpv's and libepoxy's.
+  # and the player (#60) libmpv's and libepoxy's. Still installed by the
+  # ubuntu jobs that remain: `frontend` (bindings) and `contract` (self-host).
   LINUX_DEPS: build-essential pkg-config libgtk-4-dev libwebkitgtk-6.0-dev libmpv-dev libepoxy-dev
   # Ubuntu 26.04's mpv.pc passes -fno-strict-overflow, which cgo refuses
   # unless allowed (https://go.dev/s/invalidflag).
   CGO_CFLAGS_ALLOW: -fno-strict-overflow
-  # #92: macOS builds with our own LGPL libmpv (libmpv.yml). TODO(#92):
-  # Windows still links shinchiro's (the M0 spikes' build) until our Windows
-  # build lands; Linux links the distro's, which the .deb depends on anyway
-  # (AppImage and Flatpak are deferred, #103).
-  LIBMPV_WIN_TAG: "20261009"
-  LIBMPV_WIN_ASSET: mpv-dev-x86_64-20261009-git-36abaa32d0.7z
+  # #92: macOS builds with our own LGPL libmpv (libmpv.yml); the Windows
+  # shinchiro fetch that used these two is commented out with its runner.
+  # TODO(#92): Windows still links shinchiro's (the M0 spikes' build) until our
+  # Windows build lands; Linux links the distro's, which the .deb depends on
+  # anyway (AppImage and Flatpak are deferred, #103).
+  # LIBMPV_WIN_TAG: "20261009"
+  # LIBMPV_WIN_ASSET: mpv-dev-x86_64-20261009-git-36abaa32d0.7z
 
 jobs:
   frontend:
@@ -122,7 +133,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2025, macos-26, ubuntu-26.04]
+        os:
+          - macos-26
+          # Commented out for now (see the note at the top of the file).
+          # - windows-2025
+          # - ubuntu-26.04
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -132,10 +147,6 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: ${{ env.GO_VERSION }}
-      - if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends $LINUX_DEPS
       # #92: our own LGPL libmpv, from the libmpv job.
       - if: runner.os == 'macOS'
         uses: actions/download-artifact@v4
@@ -146,16 +157,18 @@ jobs:
         run: |
           tar -C "$RUNNER_TEMP/libmpv" -xJf "$RUNNER_TEMP"/libmpv/libmpv-macos-*.tar.xz
           echo "PKG_CONFIG_PATH=$(echo "$RUNNER_TEMP"/libmpv/libmpv-macos-*/lib/pkgconfig)" >> "$GITHUB_ENV"
-      - if: runner.os == 'Windows'
-        name: Fetch libmpv
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download "$LIBMPV_WIN_TAG" --repo shinchiro/mpv-winbuild-cmake -p "$LIBMPV_WIN_ASSET" -D "$RUNNER_TEMP"
-          7z x -y -o"$RUNNER_TEMP/libmpv" "$RUNNER_TEMP/$LIBMPV_WIN_ASSET" > /dev/null
-          lib=$(cygpath -m "$RUNNER_TEMP/libmpv")
-          { echo "CGO_ENABLED=1"; echo "CGO_CFLAGS=-I$lib/include"; echo "CGO_LDFLAGS=-L$lib"; } >> "$GITHUB_ENV"
-          echo "$RUNNER_TEMP/libmpv" >> "$GITHUB_PATH"
+      # Commented out with the Windows runner: this fetches shinchiro's libmpv
+      # and wires it in. Uncomment together with the matrix entry.
+      # - if: runner.os == 'Windows'
+      #   name: Fetch libmpv
+      #   env:
+      #     GH_TOKEN: ${{ github.token }}
+      #   run: |
+      #     gh release download "$LIBMPV_WIN_TAG" --repo shinchiro/mpv-winbuild-cmake -p "$LIBMPV_WIN_ASSET" -D "$RUNNER_TEMP"
+      #     7z x -y -o"$RUNNER_TEMP/libmpv" "$RUNNER_TEMP/$LIBMPV_WIN_ASSET" > /dev/null
+      #     lib=$(cygpath -m "$RUNNER_TEMP/libmpv")
+      #     { echo "CGO_ENABLED=1"; echo "CGO_CFLAGS=-I$lib/include"; echo "CGO_LDFLAGS=-L$lib"; } >> "$GITHUB_ENV"
+      #     echo "$RUNNER_TEMP/libmpv" >> "$GITHUB_PATH"
       # Windows checks out with CRLF line endings, which gofmt flags.
       - if: runner.os != 'Windows'
         run: test -z "$(gofmt -l main.go internal)" || { gofmt -l main.go internal; exit 1; }
@@ -167,29 +180,30 @@ jobs:
       # benchmark (Home's data load) running everywhere.
       - run: go test -run '^$' -bench . -benchtime 20x ./internal/store
       # #15: secrets against the real OS keychain. On Linux that means a
-      # Secret Service: gnome-keyring on a throwaway session bus.
+      # Secret Service: gnome-keyring on a throwaway session bus. Commented
+      # out with the Linux runner, both blocks.
       - if: runner.os != 'Linux'
         run: PELI_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets
-      - if: runner.os == 'Linux'
-        run: |
-          sudo apt-get install -y --no-install-recommends gnome-keyring dbus
-          dbus-run-session -- bash -c "echo -n ci | gnome-keyring-daemon --unlock --components=secrets > /dev/null && PELI_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets"
+      # - if: runner.os == 'Linux'
+      #   run: |
+      #     sudo apt-get install -y --no-install-recommends gnome-keyring dbus
+      #     dbus-run-session -- bash -c "echo -n ci | gnome-keyring-daemon --unlock --components=secrets > /dev/null && PELI_KEYCHAIN_TEST=1 go test -v -run 'OSKeychain|NoTokens' ./internal/secrets"
       # A session bus with no service directories: nothing can provide
       # org.freedesktop.secrets, so Peli must give the clear error.
-      - if: runner.os == 'Linux'
-        run: |
-          cat > "$RUNNER_TEMP/bare-bus.conf" <<'EOF'
-          <busconfig>
-            <type>session</type>
-            <listen>unix:tmpdir=/tmp</listen>
-            <policy context="default">
-              <allow send_destination="*" eavesdrop="true"/>
-              <allow eavesdrop="true"/>
-              <allow own="*"/>
-            </policy>
-          </busconfig>
-          EOF
-          dbus-run-session --config-file="$RUNNER_TEMP/bare-bus.conf" -- env PELI_KEYCHAIN_TEST=unavailable go test -v -run OSKeychainUnavailable ./internal/secrets
+      # - if: runner.os == 'Linux'
+      #   run: |
+      #     cat > "$RUNNER_TEMP/bare-bus.conf" <<'EOF'
+      #     <busconfig>
+      #       <type>session</type>
+      #       <listen>unix:tmpdir=/tmp</listen>
+      #       <policy context="default">
+      #         <allow send_destination="*" eavesdrop="true"/>
+      #         <allow eavesdrop="true"/>
+      #         <allow own="*"/>
+      #       </policy>
+      #     </busconfig>
+      #     EOF
+      #     dbus-run-session --config-file="$RUNNER_TEMP/bare-bus.conf" -- env PELI_KEYCHAIN_TEST=unavailable go test -v -run OSKeychainUnavailable ./internal/secrets
 
   build:
     if: github.event_name != 'schedule'
@@ -198,9 +212,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { os: windows-2025, name: windows-amd64, arch: amd64 }
           - { os: macos-26, name: macos-arm64, arch: arm64 }
-          - { os: ubuntu-26.04, name: linux-amd64, arch: amd64 }
+          # Commented out for now (see the note at the top of the file).
+          # - { os: windows-2025, name: windows-amd64, arch: amd64 }
+          # - { os: ubuntu-26.04, name: linux-amd64, arch: amd64 }
     name: build (${{ matrix.name }})
     runs-on: ${{ matrix.os }}
     defaults:
@@ -224,10 +239,11 @@ jobs:
           path: ${{ env.PNPM_STORE }}
           key: pnpm-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('frontend/pnpm-lock.yaml') }}
           restore-keys: pnpm-${{ runner.os }}-${{ runner.arch }}-
-      - if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends $LINUX_DEPS
+      # Commented out with the Linux runner (see the note at the top).
+      # - if: runner.os == 'Linux'
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y --no-install-recommends $LINUX_DEPS
       - run: go install "$WAILS3"
       # #92: our own LGPL libmpv, from the libmpv job.
       - if: runner.os == 'macOS'
@@ -239,18 +255,21 @@ jobs:
         run: |
           tar -C "$RUNNER_TEMP/libmpv" -xJf "$RUNNER_TEMP"/libmpv/libmpv-macos-*.tar.xz
           echo "PKG_CONFIG_PATH=$(echo "$RUNNER_TEMP"/libmpv/libmpv-macos-*/lib/pkgconfig)" >> "$GITHUB_ENV"
-      - if: runner.os == 'Windows'
-        name: Fetch libmpv
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download "$LIBMPV_WIN_TAG" --repo shinchiro/mpv-winbuild-cmake -p "$LIBMPV_WIN_ASSET" -D "$RUNNER_TEMP"
-          7z x -y -o"$RUNNER_TEMP/libmpv" "$RUNNER_TEMP/$LIBMPV_WIN_ASSET" > /dev/null
-          lib=$(cygpath -m "$RUNNER_TEMP/libmpv")
-          { echo "CGO_ENABLED=1"; echo "CGO_CFLAGS=-I$lib/include"; echo "CGO_LDFLAGS=-L$lib"; } >> "$GITHUB_ENV"
-          echo "$RUNNER_TEMP/libmpv" >> "$GITHUB_PATH"
-      - if: runner.os != 'macOS'
-        run: wails3 build
+      # Commented out with the Windows runner (see the note at the top).
+      # - if: runner.os == 'Windows'
+      #   name: Fetch libmpv
+      #   env:
+      #     GH_TOKEN: ${{ github.token }}
+      #   run: |
+      #     gh release download "$LIBMPV_WIN_TAG" --repo shinchiro/mpv-winbuild-cmake -p "$LIBMPV_WIN_ASSET" -D "$RUNNER_TEMP"
+      #     7z x -y -o"$RUNNER_TEMP/libmpv" "$RUNNER_TEMP/$LIBMPV_WIN_ASSET" > /dev/null
+      #     lib=$(cygpath -m "$RUNNER_TEMP/libmpv")
+      #     { echo "CGO_ENABLED=1"; echo "CGO_CFLAGS=-I$lib/include"; echo "CGO_LDFLAGS=-L$lib"; } >> "$GITHUB_ENV"
+      #     echo "$RUNNER_TEMP/libmpv" >> "$GITHUB_PATH"
+      # Commented out with the Windows and Linux runners: this is the plain
+      # `wails3 build` they used instead of the macOS DMG.
+      # - if: runner.os != 'macOS'
+      #   run: wails3 build
       # Builds the binary, wraps it in Peli.app (signed ad hoc, hardened
       # runtime) and that in the drag-to-Applications DMG, failing over 60 MB
       # (#78). The signed, notarized release for both architectures is
@@ -283,72 +302,76 @@ jobs:
           retention-days: 14
           if-no-files-found: error
           path: |
-            bin/peli.exe
             bin/Peli-*.dmg
-            ${{ runner.os == 'Linux' && 'bin/peli' || '' }}
+            # Commented out with the Windows and Linux runners.
+            # bin/peli.exe
+            # ${{ runner.os == 'Linux' && 'bin/peli' || '' }}
 
-  # Manual only: checks that `wails3 dev` starts the app (was #10's
-  # scaffold-check; macOS is checked locally).
-  dev-smoke:
-    if: github.event_name == 'workflow_dispatch' && inputs.dev-smoke
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-2025, ubuntu-26.04]
-    runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version: ${{ env.GO_VERSION }}
-      - uses: pnpm/action-setup@v6.1.0
-        with:
-          package_json_file: frontend/package.json
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends $LINUX_DEPS xvfb xauth dbus-x11
-          # Ubuntu 24.04 blocks unprivileged user namespaces through AppArmor,
-          # which WebKitGTK's sandbox needs.
-          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
-      - if: runner.os == 'Windows'
-        name: Fetch libmpv
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release download "$LIBMPV_WIN_TAG" --repo shinchiro/mpv-winbuild-cmake -p "$LIBMPV_WIN_ASSET" -D "$RUNNER_TEMP"
-          7z x -y -o"$RUNNER_TEMP/libmpv" "$RUNNER_TEMP/$LIBMPV_WIN_ASSET" > /dev/null
-          lib=$(cygpath -m "$RUNNER_TEMP/libmpv")
-          { echo "CGO_ENABLED=1"; echo "CGO_CFLAGS=-I$lib/include"; echo "CGO_LDFLAGS=-L$lib"; } >> "$GITHUB_ENV"
-          echo "$RUNNER_TEMP/libmpv" >> "$GITHUB_PATH"
-      - run: go install "$WAILS3"
-      # Start `wails3 dev`, wait for the Vite server and the app, and check the
-      # app is still running 15 s later.
-      - name: wails3 dev
-        run: |
-          if [ "$RUNNER_OS" = Linux ]; then
-            xvfb-run -a wails3 dev > dev.log 2>&1 &
-            running() { pgrep -f 'bin/peli' > /dev/null; }
-          else
-            wails3 dev > dev.log 2>&1 &
-            running() { tasklist //FI "IMAGENAME eq peli.exe" | grep -q peli.exe; }
-          fi
-          for i in $(seq 1 90); do
-            if running && curl -sf -o /dev/null http://127.0.0.1:9245/; then break; fi
-            sleep 2
-          done
-          running && curl -sf http://127.0.0.1:9245/ | grep '<title>Peli</title>'
-          sleep 15
-          running
-          echo "app running under wails3 dev"
-      - if: always()
-        run: cat dev.log || true
+  # Commented out for now: it only ever ran `wails3 dev` on Windows (in a
+  # plain shell) and Linux (under xvfb), and neither is built any more.
+  # Uncomment together with the matrix entries in `go` and `build`.
+  # # Manual only: checks that `wails3 dev` starts the app (was #10's
+  # # scaffold-check; macOS is checked locally).
+  # dev-smoke:
+  #   if: github.event_name == 'workflow_dispatch' && inputs.dev-smoke
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       os: [windows-2025, ubuntu-26.04]
+  #   runs-on: ${{ matrix.os }}
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-go@v5
+  #       with:
+  #         go-version: ${{ env.GO_VERSION }}
+  #     - uses: pnpm/action-setup@v6.1.0
+  #       with:
+  #         package_json_file: frontend/package.json
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ env.NODE_VERSION }}
+  #     - if: runner.os == 'Linux'
+  #       run: |
+  #         sudo apt-get update
+  #         sudo apt-get install -y --no-install-recommends $LINUX_DEPS xvfb xauth dbus-x11
+  #         # Ubuntu 24.04 blocks unprivileged user namespaces through AppArmor,
+  #         # which WebKitGTK's sandbox needs.
+  #         sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+  #     - if: runner.os == 'Windows'
+  #       name: Fetch libmpv
+  #       env:
+  #         GH_TOKEN: ${{ github.token }}
+  #       run: |
+  #         gh release download "$LIBMPV_WIN_TAG" --repo shinchiro/mpv-winbuild-cmake -p "$LIBMPV_WIN_ASSET" -D "$RUNNER_TEMP"
+  #         7z x -y -o"$RUNNER_TEMP/libmpv" "$RUNNER_TEMP/$LIBMPV_WIN_ASSET" > /dev/null
+  #         lib=$(cygpath -m "$RUNNER_TEMP/libmpv")
+  #         { echo "CGO_ENABLED=1"; echo "CGO_CFLAGS=-I$lib/include"; echo "CGO_LDFLAGS=-L$lib"; } >> "$GITHUB_ENV"
+  #         echo "$RUNNER_TEMP/libmpv" >> "$GITHUB_PATH"
+  #     - run: go install "$WAILS3"
+  #     # Start `wails3 dev`, wait for the Vite server and the app, and check the
+  #     # app is still running 15 s later.
+  #     - name: wails3 dev
+  #       run: |
+  #         if [ "$RUNNER_OS" = Linux ]; then
+  #           xvfb-run -a wails3 dev > dev.log 2>&1 &
+  #           running() { pgrep -f 'bin/peli' > /dev/null; }
+  #         else
+  #           wails3 dev > dev.log 2>&1 &
+  #           running() { tasklist //FI "IMAGENAME eq peli.exe" | grep -q peli.exe; }
+  #         fi
+  #         for i in $(seq 1 90); do
+  #           if running && curl -sf -o /dev/null http://127.0.0.1:9245/; then break; fi
+  #           sleep 2
+  #         done
+  #         running && curl -sf http://127.0.0.1:9245/ | grep '<title>Peli</title>'
+  #         sleep 15
+  #         running
+  #         echo "app running under wails3 dev"
+  #     - if: always()
+  #       run: cat dev.log || true
 
   # #33: the contract and integration tests against a self-hosted Nuvio at a
   # pinned commit (ADR-0020), daily and on demand. A failure means the

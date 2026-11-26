@@ -4,8 +4,12 @@
 #
 #   git tag -a v0.2.0 -m "Peli 0.2.0" && git push origin v0.2.0
 #
-# Two architectures, because ADR-0005's limit and ADR-0053's packaging are
-# per architecture: Peli-<version>-{arm64,x86_64}.{dmg,zip}.
+# One architecture for now, Apple silicon: Peli-<version>-arm64.{dmg,zip}.
+# ADR-0005's limit and ADR-0053's packaging are per architecture, so an Intel
+# release is its own build (the commented-out amd64 entries below) rather than
+# a universal binary. It is off to keep a release short, like ci.yml's Windows
+# and Linux jobs; the feed then carries darwin/arm64 alone, and an Intel copy
+# of Peli simply sees no update for its architecture.
 #
 # The release is a **draft**. Assets land, and nobody updates, until someone
 # publishes it: Peli's feed is /releases/latest/download/peli-update.json
@@ -74,17 +78,18 @@ permissions:
   contents: read
 
 jobs:
-  # #92: the libmpv both bundles carry. ci.yml's libmpv job only builds
-  # macos-arm64 (there is no Intel runner), and an amd64 release needs its
-  # own: build.sh cross-builds either target on Apple silicon. The cache key
-  # is libmpv.yml's, so a normal CI run has already built the arm64 one.
+  # #92: the libmpv the bundle carries. ci.yml's libmpv job builds macos-arm64
+  # (there is no Intel runner); build.sh can still cross-build macos-x86_64 on
+  # Apple silicon, which the commented-out entry below did. Uncomment it with
+  # release's amd64 entry and the feed's darwin/amd64 artifact to ship an
+  # Intel release again.
   libmpv:
     strategy:
       fail-fast: false
       matrix:
         include:
           - target: macos-arm64
-          - target: macos-x86_64
+          # - target: macos-x86_64
     name: libmpv (${{ matrix.target }})
     runs-on: macos-26
     timeout-minutes: 90
@@ -140,8 +145,11 @@ jobs:
         include:
           - arch: arm64
             target: arm64
-          - arch: amd64
-            target: x86_64
+          # Commented out for now: one Apple-silicon bundle is released, and
+          # the x86_64 one doubled this job's time. Uncomment it with the
+          # libmpv macos-x86_64 entry and the feed's darwin/amd64 artifact.
+          # - arch: amd64
+          #   target: x86_64
     name: macos (${{ matrix.arch }})
     runs-on: macos-26
     timeout-minutes: 90
@@ -343,11 +351,13 @@ jobs:
           base="https://github.com/$GITHUB_REPOSITORY/releases/download/$GITHUB_REF_NAME/"
           go run ./tools/updates feed -version "$version" -notes "$RUNNER_TEMP/notes.md" \
             -out bin/peli-update.json -base "$base" \
-            darwin/arm64="bin/Peli-$version-arm64.zip" \
-            darwin/amd64="bin/Peli-$version-x86_64.zip"
+            darwin/arm64="bin/Peli-$version-arm64.zip"
+          # Uncomment with the macos amd64 entry to feed Intel copies again.
+          # (One artifact last, so the line above keeps its trailing `\`.)
+          # darwin/amd64="bin/Peli-$version-x86_64.zip"
           go run ./tools/updates verify bin/peli-update.json \
-            darwin/arm64="bin/Peli-$version-arm64.zip" \
-            darwin/amd64="bin/Peli-$version-x86_64.zip"
+            darwin/arm64="bin/Peli-$version-arm64.zip"
+          # darwin/amd64="bin/Peli-$version-x86_64.zip"
           cat bin/peli-update.json
 
       - name: Draft release
@@ -358,10 +368,11 @@ jobs:
           gh release create "$GITHUB_REF_NAME" --draft \
             --title "Peli $version" --notes-file "$RUNNER_TEMP/notes.md" \
             "bin/Peli-$version-arm64.dmg" \
-            "bin/Peli-$version-x86_64.dmg" \
             "bin/Peli-$version-arm64.zip" \
-            "bin/Peli-$version-x86_64.zip" \
             bin/peli-update.json
+          # Uncomment with the macos amd64 entry (assets last in the list).
+          # "bin/Peli-$version-x86_64.dmg"
+          # "bin/Peli-$version-x86_64.zip"
           cat <<EOF >> "$GITHUB_STEP_SUMMARY"
           Draft release $GITHUB_REF_NAME is ready. Publishing it turns on
           auto-update for installed copies: Peli reads
