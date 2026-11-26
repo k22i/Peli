@@ -121,3 +121,4 @@
 - [Toasts](toasts.md) — base-ui: a child's mount-effect add is lost (provider subscribes in a parent effect) so defer a microtask; update toast's one id, states, close rules
 - [Layout overflow check](layout-overflow-check.md) — jsdom DOM dump → real WebKit at 393 pt: find what scrolls sideways when there is no browser tool; input intrinsic width vs `auto` grid tracks
 - [UI snapshot rig](ui-snapshot-rig.md) — see a component with no browser tool: .shot scene + vp dev + swiftc WKWebView PNG; stacked translucent surfaces and popup-under-trigger ghosts
+- [Releasing](releasing.md) — bump the 7 build files, chore(release) + annotated tag, push main then tag; release.yml drafts get published ~8 min later, tag push leaves ci/ios cancelled, re-run ios:sideload
