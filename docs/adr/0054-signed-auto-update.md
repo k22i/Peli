@@ -5,7 +5,7 @@ date: 2026-11-12
 
 # Signed auto-update: Wails' updater, a signed feed on GitHub Releases, macOS first
 
-#83 (F28) keeps installed copies of Peli up to date. A new version downloads in the background, Peli checks it, and it installs only when the user restarts Peli. It never installs while something is playing. `internal/updates` does it.
+#83 (F28) keeps installed copies of Peli up to date. A new version downloads in the background, Peli checks it, and it installs only when the user restarts Peli. It never installs while something is playing. A manual check in Settings asks before it downloads anything; the background check, which the device's settings allow, doesn't. `internal/updates` does it.
 
 ## Wails' updater, with Peli's rules on top
 
@@ -18,6 +18,7 @@ Peli adds rules that Wails leaves out:
 - **Same app, same team.** The new bundle's `CFBundleIdentifier` must match, `codesign --verify --deep --strict` must pass, and when the running copy has a Team ID, the new one must satisfy `anchor apple generic and certificate leaf[subject.OU] = "<team>"`. ADR-0053's keychain items trust Peli's designated requirement, so an update from a different team would make them prompt. An ad-hoc copy has no team to keep, so only the signature check applies to it.
 - **Only a copy that can replace itself.** Updates are off (`State: off` with a `Reason`) for a build without a release version (`go run`, `wails dev`, `0.0.0-dev`), for an app outside a bundle or on a read-only volume (the DMG, or App Translocation's copy when Peli was opened from the download folder), and when Peli can't write to the bundle or the folder it's in. Settings › About says which, for example "Move Peli to your Applications folder to get updates."
 - **Never during playback.** Nothing restarts by itself. "Restart to update" is in the top bar's pill and in Settings › About, and neither shows on the player screen. Go refuses `Restart` while a stream is loaded (`ErrPlaying`). The update toast waits until the player closes, and closes if one opens.
+- **A manual check asks before it downloads.** "Check now" in Settings › About is a check: it looks, and when the feed names a release the status says it's available (`State: available`, with the version and notes) and nothing is downloaded. The row asks "Download Peli 0.2.0?" — a dialog, with "Not now" leaving a Download button in the row — and only `Download` starts it. The background check doesn't ask, since "Automatic updates" (`DeviceSettings.autoUpdate`) already says it may download by itself.
 - **Said as soon as there's something to say.** A toast says "Peli 0.2.0 is available" the moment the feed names a release, then becomes "Peli 0.2.0 is ready" with a Restart button in place, on one id, once the download is checked. It stays until it's used or swiped away, so the update is one click rather than a trip to Settings.
 
 `main.go` calls `updater.HandleHelperMode()` straight after `plugins.ServeChild()`. `application.New` calls it too, but only after everything above it in `main` has run: moving Sinag's folders, opening the keychain, and starting the anime list's download.
@@ -61,7 +62,7 @@ The DMG is for the first install. An update is `Peli-<version>-<arch>.zip`: the 
 
 Release builds now stamp `appinfo.Version` from `Info.plist` (`-X …/appinfo.Version`). Before this they all said `0.0.0-dev`. That was harmless for User-Agents, but updates compare against it.
 
-**When it runs.** One minute after launch, so the check never slows startup, then every six hours (or an hour after a failure). A 15-minute tick checks the clock, so the schedule survives the Mac sleeping. Settings › About › "Automatic updates" (`DeviceSettings.autoUpdate`, on by default) turns the background checks off. "Check now" still works.
+**When it runs.** One minute after launch, so the check never slows startup, then every six hours (or an hour after a failure). A 15-minute tick checks the clock, so the schedule survives the Mac sleeping. Settings › About › "Automatic updates" (`DeviceSettings.autoUpdate`, on by default) turns the background checks off. "Check now" still works, and it asks before downloading: the automatic path checks and downloads in one go, a manual one stops at `available` and waits for `Download`.
 
 **Tried end to end on 2026-11-12** (M1 Pro, ad hoc): a 0.1.0 `Peli.app` packaged with `darwin:package`, a 0.1.1 zip from `darwin:package:zip` (24.3 MB), and a feed signed with a throwaway key, served on loopback through `$PELI_UPDATE_URL`. The check, download, signature, version and bundle checks passed. On Restart, the helper backed up the bundle, swapped it on the first try, removed the backup and opened 0.1.1, whose signature verified. Earlier in the same run, a build whose Taskfile left the version empty came up `off` (development), as it should.
 

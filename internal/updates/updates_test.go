@@ -39,11 +39,27 @@ type fakeEngine struct {
 	checkErr  error
 	staged    string
 	restarted int
+	downloads int
+	download  func() // called from DownloadAndInstall, to watch it happen
 }
 
 func (e *fakeEngine) Check(context.Context) (*updater.Release, error) { return e.release, e.checkErr }
-func (e *fakeEngine) DownloadAndInstall(context.Context) error        { return nil }
-func (e *fakeEngine) DownloadedPath() string                          { return e.staged }
+func (e *fakeEngine) DownloadAndInstall(context.Context) error {
+	e.mu.Lock()
+	e.downloads++
+	download := e.download
+	e.mu.Unlock()
+	if download != nil {
+		download()
+	}
+	return nil
+}
+func (e *fakeEngine) downloaded() int {
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	return e.downloads
+}
+func (e *fakeEngine) DownloadedPath() string { return e.staged }
 func (e *fakeEngine) Restart(context.Context) error {
 	e.mu.Lock()
 	defer e.mu.Unlock()
@@ -92,7 +108,7 @@ func TestRunDownloadsAndIsReady(t *testing.T) {
 	inst := &fakeInstalled{where: "/Applications/Peli.app"}
 	s, sent := newTestService(t, "0.1.0", engine, inst)
 
-	s.run(context.Background())
+	s.run()
 
 	st := s.Status()
 	if st.State != Ready || st.Version != "0.2.0" || st.Notes != "New" || st.CheckedAt == 0 {
@@ -110,7 +126,7 @@ func TestRunDownloadsAndIsReady(t *testing.T) {
 	}
 	// Ready stays ready: another run doesn't check again.
 	engine.checkErr = errors.New("boom")
-	s.run(context.Background())
+	s.run()
 	if s.Status().State != Ready {
 		t.Fatalf("a run after ready changed the status to %+v", s.Status())
 	}
@@ -121,7 +137,7 @@ func TestRunRejectsAMismatchedApp(t *testing.T) {
 	inst := &fakeInstalled{where: "/Applications/Peli.app", check: ErrMismatch}
 	s, _ := newTestService(t, "0.1.0", engine, inst)
 
-	s.run(context.Background())
+	s.run()
 
 	st := s.Status()
 	if st.State != Failed || st.Problem == "" {
@@ -134,9 +150,94 @@ func TestRunRejectsAMismatchedApp(t *testing.T) {
 
 func TestRunUpToDate(t *testing.T) {
 	s, _ := newTestService(t, "0.1.0", &fakeEngine{}, &fakeInstalled{where: "/Applications/Peli.app"})
-	s.run(context.Background())
+	s.run()
 	if st := s.Status(); st.State != UpToDate || st.CheckedAt == 0 {
 		t.Fatalf("status = %+v, want up to date", st)
+	}
+}
+
+// "Check now" asks before it downloads: it finds the release and says so,
+// and nothing is downloaded until the user says yes.
+func TestCheckAsksBeforeDownloading(t *testing.T) {
+	engine := &fakeEngine{
+		release: &updater.Release{Version: "0.2.0", Notes: "New", Artifact: updater.Artifact{Size: 100}},
+		staged:  "/tmp/wails-update-2/Peli.app",
+	}
+	s, sent := newTestService(t, "0.1.0", engine, &fakeInstalled{where: "/Applications/Peli.app"})
+
+	if _, err := s.Check(); err != nil {
+		t.Fatal(err)
+	}
+	st := waitForState(t, s, Available)
+	if st.Version != "0.2.0" || st.Notes != "New" || st.CheckedAt == 0 || st.Total != 100 {
+		t.Fatalf("status = %+v, want 0.2.0 available", st)
+	}
+	if n := engine.downloaded(); n != 0 {
+		t.Fatalf("a manual check downloaded %d times, want 0", n)
+	}
+	if err := s.Restart(); !errors.Is(err, ErrNotReady) {
+		t.Fatalf("Restart() before the download = %v, want ErrNotReady", err)
+	}
+	var states []State
+	for _, st := range *sent {
+		states = append(states, st.State)
+	}
+	if len(states) == 0 || states[len(states)-1] != Available {
+		t.Fatalf("a check sent %v, want it to end on %s", states, Available)
+	}
+	for _, state := range states {
+		if state == Downloading || state == Ready {
+			t.Fatalf("a check sent %v, want no download", states)
+		}
+	}
+
+	if _, err := s.Download(); err != nil {
+		t.Fatal(err)
+	}
+	if st := waitForState(t, s, Ready); st.Version != "0.2.0" {
+		t.Fatalf("status = %+v, want ready for 0.2.0", st)
+	}
+	if n := engine.downloaded(); n != 1 {
+		t.Fatalf("downloaded %d times, want 1", n)
+	}
+	// Nothing left to download, so downloading again is refused.
+	if _, err := s.Download(); !errors.Is(err, ErrNotReady) {
+		t.Fatalf("Download() after ready = %v, want ErrNotReady", err)
+	}
+	if engine.downloaded() != 1 {
+		t.Fatal("a refused download started anyway")
+	}
+}
+
+func TestDownloadNeedsARelease(t *testing.T) {
+	s, _ := newTestService(t, "0.1.0", &fakeEngine{}, &fakeInstalled{where: "/Applications/Peli.app"})
+	if _, err := s.Download(); !errors.Is(err, ErrNotReady) {
+		t.Fatalf("Download() before any check = %v, want ErrNotReady", err)
+	}
+	// Up to date is nothing to download either.
+	if _, err := s.Check(); err != nil {
+		t.Fatal(err)
+	}
+	waitForState(t, s, UpToDate)
+	if _, err := s.Download(); !errors.Is(err, ErrNotReady) {
+		t.Fatalf("Download() when up to date = %v, want ErrNotReady", err)
+	}
+}
+
+// waitForState waits for the service to settle on st: Check and Download do
+// their work in the background, the way the frontend sees them.
+func waitForState(t *testing.T, s *Service, want State) Status {
+	t.Helper()
+	deadline := time.Now().Add(5 * time.Second)
+	for {
+		st := s.Status()
+		if st.State == want {
+			return st
+		}
+		if time.Now().After(deadline) {
+			t.Fatalf("status = %+v, want %s", st, want)
+		}
+		time.Sleep(time.Millisecond)
 	}
 }
 
@@ -145,7 +246,7 @@ func TestRestartWaitsForPlayback(t *testing.T) {
 	s, _ := newTestService(t, "0.1.0", engine, &fakeInstalled{where: "/Applications/Peli.app"})
 	playing := true
 	UsePlayer(s, func() bool { return playing })
-	s.run(context.Background())
+	s.run()
 
 	if err := s.Restart(); !errors.Is(err, ErrPlaying) {
 		t.Fatalf("Restart() while playing = %v, want ErrPlaying", err)

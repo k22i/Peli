@@ -35,10 +35,13 @@ type State string
 
 const (
 	// Off: this copy of Peli can't update itself; Reason says why.
-	Off         State = "off"
-	Idle        State = "idle"
-	Checking    State = "checking"
-	UpToDate    State = "up-to-date"
+	Off      State = "off"
+	Idle     State = "idle"
+	Checking State = "checking"
+	UpToDate State = "up-to-date"
+	// Available: a manual check found a release and nothing is downloading
+	// yet. It waits for the user's yes: "Download" in Settings.
+	Available   State = "available"
 	Downloading State = "downloading"
 	// Ready: the new version is downloaded and checked, and installs when
 	// the user restarts Peli.
@@ -70,7 +73,7 @@ type Status struct {
 	State   State  `json:"state"`
 	Reason  Reason `json:"reason,omitempty"`
 	Current string `json:"current"`
-	// The release found, from Downloading on.
+	// The release found, from Available on.
 	Version string `json:"version,omitempty"`
 	Notes   string `json:"notes,omitempty"`
 	// Bytes downloaded and the download's size, while Downloading.
@@ -174,6 +177,7 @@ type Service struct {
 	status  Status
 	target  string
 	engine  Engine
+	release *updater.Release // what the last check found, for Download
 	running bool
 	next    time.Time // when the loop next checks by itself
 	ctx     context.Context
@@ -323,7 +327,7 @@ func (s *Service) loop(ctx context.Context) {
 		due := !s.now().Before(s.next)
 		s.mu.Unlock()
 		if due && s.automatic() {
-			s.run(ctx)
+			s.run()
 		}
 	}
 }
@@ -344,57 +348,122 @@ func (s *Service) Status() Status {
 	return s.status
 }
 
-// Check looks for a release now and downloads it if there is one, for
-// "Check now" in Settings. It returns once the check has started; the
-// status events say how it goes.
+// Check looks for a release now, for "Check now" in Settings. It downloads
+// nothing: when the feed names a release the status says it's available, and
+// Peli waits for the user to say "Download". It returns once the check has
+// started; the status events say how it goes.
 func (s *Service) Check() (Status, error) {
+	ctx, engine, _, ok, err := s.claim()
+	if err != nil || !ok {
+		return s.Status(), err
+	}
+	go func() {
+		defer s.unclaim()
+		rel, found := s.look(ctx, engine)
+		if !found || rel == nil {
+			return
+		}
+		s.set(func(st *Status) { st.State = Available })
+	}()
+	return s.Status(), nil
+}
+
+// Download downloads and checks the release the last check found, for the
+// "Download" button in Settings: the answer to the question a manual check
+// asks. The background check doesn't ask — the device's automatic updates
+// setting says it may download by itself.
+func (s *Service) Download() (Status, error) {
 	s.mu.Lock()
-	off, ctx := s.engine == nil, s.ctx
+	off := s.engine == nil
+	rel, available := s.release, s.status.State == Available
 	s.mu.Unlock()
 	if off {
 		return s.Status(), ErrOff
 	}
-	go s.run(ctx)
+	if rel == nil || !available {
+		return s.Status(), ErrNotReady
+	}
+	ctx, engine, target, ok, err := s.claim()
+	if err != nil || !ok {
+		return s.Status(), err
+	}
+	go func() {
+		defer s.unclaim()
+		s.fetch(ctx, engine, target, rel)
+	}()
 	return s.Status(), nil
 }
 
-// run checks, downloads and checks the download, unless that's already
-// happening or done.
-func (s *Service) run(ctx context.Context) {
+// claim takes the updater for one check or download, so two of them never
+// run at once. It returns ErrOff when this copy can't update itself, and ok
+// = false when something else is running or the update is already ready.
+func (s *Service) claim() (ctx context.Context, engine Engine, target string, ok bool, err error) {
 	s.mu.Lock()
-	if s.running || s.status.State == Ready || s.engine == nil {
-		s.mu.Unlock()
-		return
+	defer s.mu.Unlock()
+	if s.engine == nil || s.ctx == nil {
+		return nil, nil, "", false, ErrOff
+	}
+	if s.running || s.status.State == Ready {
+		return nil, nil, "", false, nil
 	}
 	s.running = true
-	engine, target := s.engine, s.target
-	s.mu.Unlock()
-	defer func() {
-		s.mu.Lock()
-		s.running = false
-		s.mu.Unlock()
-	}()
+	return s.ctx, s.engine, s.target, true, nil
+}
 
+func (s *Service) unclaim() {
+	s.mu.Lock()
+	s.running = false
+	s.mu.Unlock()
+}
+
+// run checks and, when the feed names a release, downloads it: what the
+// background check does when the device's settings let it.
+func (s *Service) run() {
+	ctx, engine, target, ok, err := s.claim()
+	if err != nil || !ok {
+		return
+	}
+	defer s.unclaim()
+	rel, found := s.look(ctx, engine)
+	if !found || rel == nil {
+		return
+	}
+	s.fetch(ctx, engine, target, rel)
+}
+
+// look asks the feed for a release. It says it's checking, then that Peli is
+// up to date, or fails. When it finds one it names it and leaves the status
+// on Checking, for its caller to say what happens next: Downloading, or
+// Available with a question for the user. The second result is false when
+// the check failed.
+func (s *Service) look(ctx context.Context, engine Engine) (*updater.Release, bool) {
 	s.set(func(st *Status) { st.State, st.Problem = Checking, "" })
 	rel, err := engine.Check(ctx)
 	if err != nil {
 		s.fail(ctx, "check", err)
-		return
+		return nil, false
 	}
 	checked := s.now()
 	s.mu.Lock()
 	s.next = checked.Add(CheckEvery)
+	s.release = rel
 	s.mu.Unlock()
 	if rel == nil {
 		s.set(func(st *Status) {
 			*st = Status{State: UpToDate, Current: s.version, CheckedAt: checked.UnixMilli()}
 		})
-		return
+		return nil, true
 	}
-	s.set(func(st *Status) {
-		*st = Status{State: Downloading, Current: s.version, Version: rel.Version, Notes: rel.Notes,
-			Total: rel.Artifact.Size, CheckedAt: checked.UnixMilli()}
+	s.put(func(st *Status) {
+		st.Current, st.Version, st.Notes = s.version, rel.Version, rel.Notes
+		st.Total, st.CheckedAt = rel.Artifact.Size, checked.UnixMilli()
 	})
+	return rel, true
+}
+
+// fetch downloads rel, checks the download and says it's ready.
+func (s *Service) fetch(ctx context.Context, engine Engine, target string, rel *updater.Release) {
+	s.set(func(st *Status) { st.State, st.Written = Downloading, 0 })
 	if err := engine.DownloadAndInstall(ctx); err != nil {
 		s.fail(ctx, "download", err)
 		return
@@ -478,4 +547,13 @@ func (s *Service) set(change func(*Status)) {
 	st := s.status
 	s.mu.Unlock()
 	s.emit(st)
+}
+
+// put changes the status without telling the frontend: for the release a
+// check found, which the event right after says along with the state it
+// settles on.
+func (s *Service) put(change func(*Status)) {
+	s.mu.Lock()
+	change(&s.status)
+	s.mu.Unlock()
 }

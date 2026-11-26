@@ -45,6 +45,12 @@ export function readyVersion(status: Status | undefined): string | undefined {
   return status?.state === State.Ready ? status.version : undefined;
 }
 
+// The version a manual check found and is waiting to hear about: "Download"
+// hasn't been pressed, or the background check hasn't started yet.
+export function foundVersion(status: Status | undefined): string | undefined {
+  return status?.state === State.Available ? status.version : undefined;
+}
+
 // The version on its way: found, still downloading and checking.
 export function availableVersion(status: Status | undefined): string | undefined {
   return status?.state === State.Downloading ? status.version : undefined;
@@ -58,9 +64,25 @@ export function updateErrorCode(error: unknown): string | undefined {
   return typeof code === "string" ? code : undefined;
 }
 
-// "Check now": Go answers at once and the status events say how it goes.
+// "Check now": looks for a release and nothing more. Go answers at once and
+// the status events say what it found.
 export function useCheckForUpdates() {
   return useMutation({ mutationFn: () => Updates.Check() });
+}
+
+// "Download": the answer to the question a check asks. Go downloads and
+// checks the release, then the status events say it's ready.
+export function useDownloadUpdate() {
+  return useMutation({
+    mutationFn: () => Updates.Download(),
+    onError: () => {
+      toastManager.add({
+        type: "error",
+        title: "Couldn’t download the update",
+        description: "Try again, or check for updates later.",
+      });
+    },
+  });
 }
 
 // "Restart to update": Peli quits, the new version goes in its place and
@@ -100,6 +122,8 @@ export function updateSummary(status: Status | undefined): string {
       return "Checking for updates…";
     case State.UpToDate:
       return "Peli is up to date.";
+    case State.Available:
+      return `Peli ${status.version ?? ""} is available. It downloads when you say so.`;
     case State.Downloading: {
       const total = status.total ?? 0;
       const percent = total > 0 ? Math.floor(((status.written ?? 0) / total) * 100) : 0;

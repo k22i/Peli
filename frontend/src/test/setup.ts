@@ -92,6 +92,7 @@ vi.mock("@bindings/updates", async (importOriginal) => ({
       Promise.resolve({ state: "off", reason: "development", current: "0.0.0-dev" }),
     ),
     Check: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ state: "checking" })),
+    Download: vi.fn<() => Promise<unknown>>(() => Promise.resolve({ state: "downloading" })),
     Restart: vi.fn<() => Promise<void>>(() => Promise.resolve()),
   },
 }));
