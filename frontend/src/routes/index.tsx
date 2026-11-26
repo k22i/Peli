@@ -20,7 +20,7 @@ import { AnimeTitleCard } from "@/components/media/anime-title-card";
 import { EagerArtwork, preloadArtwork, useArtworkDevice } from "@/components/media/artwork";
 import { DeferredRow } from "@/components/media/deferred-row";
 import { LandscapeCard, PosterCard } from "@/components/media/cards";
-import { Hero, HeroSkeleton, ImdbScore } from "@/components/media/hero";
+import { Hero, HeroSkeleton, ImdbScore, heroActions } from "@/components/media/hero";
 import { prefersReducedMotion } from "@/components/media/roving";
 import { Row, RowGroup, RowSkeleton, rowLinkClassName } from "@/components/media/row";
 import { Button } from "@/components/ui/button";
@@ -558,6 +558,10 @@ function CatalogHero({
                       {actions}
                     </span>
                   }
+                  // And the room the dashes take under them on a phone, where
+                  // the overlay stacks them: without it the buttons were drawn
+                  // over the synopsis's last line.
+                  aside={count > 1 ? <DotsSpace count={count} /> : undefined}
                 />
               </div>
             );
@@ -569,7 +573,7 @@ function CatalogHero({
           the Hero's own bottom row, so they sit where its actions would. */}
       <div className="dark pointer-events-none absolute inset-x-0 bottom-0 z-10">
         <div className="flex w-full items-end justify-between gap-8 px-page pb-14 ios-compact:flex-col ios-compact:items-start ios-compact:gap-5 ios-compact:pb-10">
-          <div className="pointer-events-auto flex max-w-2xl flex-wrap items-center gap-2.5 ios-compact:w-full ios-compact:flex-nowrap">
+          <div data-slot="hero-actions" className={cn("pointer-events-auto", heroActions)}>
             {actions}
           </div>
           {count > 1 && (
@@ -579,6 +583,24 @@ function CatalogHero({
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+// The room the dashes take, for the slides to keep clear: the one current
+// dash is wide, the rest short (see the dashes themselves below). Spans, not
+// buttons, and nothing a finger or a screen reader can reach: the real dashes
+// are drawn once, over the slides.
+function DotsSpace({ count }: { count: number }) {
+  return (
+    <div
+      aria-hidden
+      data-slot="marquee-dots-space"
+      className="flex items-center gap-1.5 whitespace-nowrap opacity-0 [&>span]:h-1.5 [&>span]:rounded-full"
+    >
+      {Array.from({ length: count }, (_, dot) => (
+        <span key={dot} className={dot === 0 ? "block w-8" : "block w-1.5"} />
+      ))}
     </div>
   );
 }

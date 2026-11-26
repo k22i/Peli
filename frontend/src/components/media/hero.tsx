@@ -25,7 +25,9 @@ export type HeroSize = "default" | "feature" | "title";
 const bled = (size: HeroSize) => size !== "default";
 
 const heights: Record<HeroSize, string> = {
-  feature: "min-h-[min(84vh,50rem)] ios-compact:min-h-[min(64vh,32rem)]",
+  // The phone keeps a third of the screen for the rows below, and the room
+  // for the marquee's buttons and dashes under the synopsis (routes/index.tsx).
+  feature: "min-h-[min(84vh,50rem)] ios-compact:min-h-[min(68vh,34rem)]",
   // The phone: 52 % of the screen (#136), the text starting under the bar row.
   title: "min-h-[min(74vh,44rem)] ios-compact:min-h-[52svh]",
   default: "min-h-[min(56vh,30rem)]",
@@ -48,6 +50,15 @@ const bottomShade = "linear-gradient(0deg, rgb(0 0 0/0.7), rgb(0 0 0/0.3) 35%, t
 
 // Small light text over art: a faint shadow keeps its edges off bright pixels.
 const textShadow = "[text-shadow:0_1px_2px_rgb(0_0_0/0.45)]";
+
+// The hero's row of actions. The same in the slide and in Home's marquee
+// overlay, which draws the real buttons over the slides (routes/index.tsx):
+// they have to lay out alike, or the buttons land outside the room the slide
+// kept for them. A 320 pt phone has 296 pt for them, and Play, Details and
+// Surprise take 311 at the ordinary padding, so they lose some there rather
+// than wrap onto a second row that the floating tab bar would cover.
+export const heroActions =
+  "flex max-w-2xl flex-wrap items-center gap-2.5 ios-compact:w-full max-[359.98px]:gap-2 max-[359.98px]:[&_[data-slot=button]]:px-4";
 
 const regionKeys = ["aspect", "x0", "x1", "y0", "y1"] as const;
 
@@ -231,7 +242,7 @@ export function Hero({
                 </p>
               ))}
             {actions && (
-              <div className="mt-2 flex flex-wrap items-center gap-2.5 ios-compact:w-full ios-compact:flex-nowrap">
+              <div data-slot="hero-actions" className={cn("mt-2", heroActions)}>
                 {actions}
               </div>
             )}

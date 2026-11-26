@@ -16,6 +16,7 @@ import { parseCatalogResponse, parseManifest } from "@/lib/addon-protocol/parse"
 import cinemetaMovies from "@/lib/addon-protocol/fixtures/cinemeta/catalog-movie-top.json";
 import cinemetaShows from "@/lib/addon-protocol/fixtures/cinemeta/catalog-series-top-skip.json";
 import cinemetaManifest from "@/lib/addon-protocol/fixtures/cinemeta/manifest.json";
+import { heroActions } from "@/components/media/hero";
 import { renderApp } from "@/test/render-app";
 
 const mocks = vi.hoisted(() => ({
@@ -281,6 +282,29 @@ describe("catalogs", () => {
       await screen.findByRole("heading", { level: 1, name: theInvite.name }),
     ).toBeInTheDocument();
     expect(router.state.location.pathname).toBe(`/streams/movie/${theInvite.id}`);
+  });
+
+  // The buttons and the dashes are drawn once, over the slides, so each slide
+  // has to keep the room they take: the buttons' row (with the same classes,
+  // or they don't land on it) and, on a phone, the dashes' row under it. The
+  // dashes were left out once, and Play/Details/Surprise were drawn over the
+  // synopsis's last line.
+  it("keeps the room the marquee's buttons and dashes take in every slide", async () => {
+    await renderApp("/");
+
+    const hero = await screen.findByRole("region", { name: theInvite.name });
+    const actions = [...document.querySelectorAll<HTMLElement>('[data-slot="hero-actions"]')];
+    // One per slide, and the buttons themselves.
+    expect(actions.length).toBeGreaterThan(1);
+    for (const element of actions) {
+      expect(element.className.split(" ")).toEqual(expect.arrayContaining(heroActions.split(" ")));
+    }
+
+    // The dashes' row, on the featured slide as on its neighbours.
+    expect(hero.querySelector('[data-slot="marquee-dots-space"]')).not.toBeNull();
+    expect(document.querySelectorAll('[data-slot="marquee-dots-space"]')).toHaveLength(
+      actions.length - 1,
+    );
   });
 
   // #113: big cards, so a catalog row shows ten and links to the rest.
