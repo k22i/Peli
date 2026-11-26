@@ -267,7 +267,9 @@ export function JoinParty({ onJoined }: { onJoined?: () => void }) {
           autoComplete="off"
           spellCheck={false}
           placeholder="ABC DEF"
-          className="h-14 rounded-2xl bg-foreground/6 px-5 text-center font-mono text-[1.625rem] font-[650] tracking-[0.18em] uppercase outline-none placeholder:text-muted-foreground/50 focus-visible:ring-2 focus-visible:ring-ring"
+          // A field's own width is its 20-character default, which on a phone
+          // is wider than the screen: fill the column, and let it shrink.
+          className="h-14 w-full min-w-0 rounded-2xl bg-foreground/6 px-5 text-center font-mono text-[1.625rem] font-[650] tracking-[0.18em] uppercase outline-none placeholder:text-muted-foreground/50 focus-visible:ring-2 focus-visible:ring-ring"
         />
       </label>
       {complete && !shown && (

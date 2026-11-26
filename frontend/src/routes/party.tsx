@@ -44,7 +44,7 @@ function PartyPage() {
           <p className="text-body">{partyProblem(state.unavailable)}</p>
         </div>
       ) : (
-        <div className="grid gap-10 md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] ios-compact:gap-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] ios-compact:gap-8">
           <section aria-label="Join a watch party" className="flex flex-col gap-4">
             <h2 className="type-title">Join a watch party</h2>
             {/* A party another profile of this account hosts, joined in one
@@ -76,7 +76,7 @@ function InParty({ party }: { party: PartyInfo }) {
   const watchWithParty = useWatchWithParty();
   const media = party.media;
   return (
-    <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] ios-compact:gap-6">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] ios-compact:gap-6">
       <div className="flex flex-col gap-8 ios-compact:gap-6">
         <section
           aria-label="Watching now"
