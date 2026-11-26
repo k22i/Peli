@@ -605,8 +605,8 @@ function PlaybackPane({ title, profileId }: { title: string; profileId: number |
             <SettingsGroup title="Next episode">
               <SettingRow
                 id="still-watching"
-                label="Ask if you’re still watching"
-                description="After this many episodes untouched, the next one waits for you."
+                label="Ask “Still watching?” between episodes"
+                description="Episodes play back to back; after this many in a row, the next one waits for you."
               >
                 <Choice
                   id="still-watching"
