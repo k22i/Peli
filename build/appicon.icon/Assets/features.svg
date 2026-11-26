@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024"><g transform="translate(512 520) scale(9.6) translate(-31.6 -29.5)"><g fill="#7a3a05"><rect x="22.6" y="13.2" width="4" height="7.4" rx="2"/></g><g stroke="#7a3a05"><path d="M32.5 24.8C40 27.6 46 30.4 51 32.6" fill="none" stroke-width="2.6" stroke-linecap="round"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<!-- The slot eye with the gloss appicon.png has, and the bill line. A separate layer
+     so the eye stays crisp above the pelican layer. -->
+<g transform="translate(512 520) scale(12.6) translate(-31.6 -29.5)">
+ <rect x="22.6" y="13.2" width="4" height="7.4" rx="2" fill="#7a3a05"/>
+ <path d="M32.5 24.8C40 27.6 46 30.4 51 32.6" fill="none" stroke="#7a3a05" stroke-width="2.6" stroke-linecap="round"/>
+ <rect x="23.6" y="14.2" width="1.3" height="2.4" rx=".65" fill="#fff" opacity=".7"/>
+</g>
+</svg>
