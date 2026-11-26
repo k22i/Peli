@@ -113,5 +113,5 @@
 - [iOS player adjustments](ios-player-adjustments.md) — 2026-11-23 Picture & sound sheet on iOS: playback/adjust.go shared rules, iosplayer subset, per-part features, what stays desktop-only and why
 - [Subtitle AutoSync](subtitle-autosync.md) — ADR-0065: internal/subsync Cues reference, AddSubtitle retimes before sub-add, Player.SubtitleSync, autoSyncSubtitles (on), Use original timing, spike recipe
 - [Seek previews](seek-previews.md) — spike + built 2026-11-24: internal/previews, OpenPreview per OS, lib/previews.ts, debrid only, ±2 s smaller copy, request_size 1 MiB; never burst small requests at TorBox
-- [Nuvio party RPC surface](nuvio-party-rpc-surface.md) — live probe: no account party listing, join needs the code, link_profile + topic_allowed unimplemented
+- [Nuvio party RPC surface](nuvio-party-rpc-surface.md) — live probe: no account party listing, join needs the code, no account-wide realtime channel (spike 2026-11-26); link_profile + topic_allowed
 - [Live TV](live-tv.md) — ADR-0066 built 2026-11-25: internal/livetv (M3U, streaming XMLTV, service), livetv bucket + keychain URLs, lib/livetv.ts, /live list + guide, LivePlayer, Settings pane, conditional nav; profile-query gotcha, desktop live-check rig, open items

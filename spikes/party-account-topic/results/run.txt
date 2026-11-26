@@ -1,0 +1,116 @@
+== backend
+https://api.nuvio.tv
+
+== sessions
+A and B are separate password grants on account <user-uuid>
+
+== openapi
+  68 paths, 1 with "party" in the name
+  /rpc/watch_party_enabled
+
+== watch_party_topic_allowed's signature and edges
+  no arguments at all              404 {"code":"PGRST202","details":"Searched for the function public.watch_party_topic_allowed without parameters or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,"message":"Could not find the function public.watch_party_topic_allowed without parameters in the schema cache"}
+  a parameter it doesn't have      404 {"code":"PGRST202","details":"Searched for the function public.watch_party_topic_allowed with parameters p_bogus, p_topic or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":"Perhaps you meant to call the function public.watch_party_topic_allowed(p_topic)","message":"Could not find the function public.watch_party_topic_allowed(p_bogus, p_topic) in the schema cache"}
+  p_topic null                     200 false
+  an empty topic                   200 false
+  a bare prefix                    200 false
+
+== party
+id <party-id>, code <code> (6 characters), 8 seats, host member <member-id>
+
+== watch_party_topic_allowed
+asked from A and from B, as {"p_topic": "<topic>"}
+  a real party               watch-party:<party-id> A 200 true     B 200 true
+  a party that doesn't exist watch-party:<uuid> A 200 false    B 200 false
+  the account                account:<user-uuid> A 200 false    B 200 false
+  the user                   user:<user-uuid> A 200 false    B 200 false
+  Peli's own namespace       peli:<user-uuid> A 200 false    B 200 false
+  a profile                  profile:<user-uuid>:1 A 200 false    B 200 false
+  account + parties          account:<user-uuid>:parties A 200 false    B 200 false
+  parties + account          parties:<user-uuid> A 200 false    B 200 false
+  watch-parties + account    watch-parties:<user-uuid> A 200 false    B 200 false
+  peli + parties             peli:parties:<user-uuid> A 200 false    B 200 false
+
+== the party's own topic: watch-party:<party-id>
+  A (the host, member <member-id>) private join: phx_reply ok {"postgres_changes":[]}
+  socket alive after the join: alive
+  A track: <nil>
+  A broadcast: <nil>
+  A got its own back (self:false should stop this): {"joins":{"peli-spike-a":{"metas":[{"phx_ref":"GOuKYMeLgrMYxsGD","at":1795681024501,"code":"TEST","marker":"m-a15fbc","member_id":"<uuid>","status":"live"}]}},"leaves":{}…
+  B (never called watch_party_join, no seat) private join: phx_reply ok {"postgres_changes":[]}
+  B's initial presence_state: {"peli-spike-a":{"metas":[{"phx_ref":"GOuKYMeLgrMYxsGD","at":1795681024501,"code":"TEST","marker":"m-a15fbc","member_id":"<uuid>","status":"live"}]}}
+  B track: <nil>
+  A sees B's presence (presence_diff): {"joins":{"peli-spike-b":{"metas":[{"phx_ref":"GOuKYVb4W3MYxsOD","marker":"m-3a610f","member_id":"b-not-a-member","status":"loaded"}]}},"leaves":{}}
+  B receives A's broadcast: {"event":"party_live","payload":{"code":"TEST","marker":"m-ff4679"},"type":"broadcast"}
+  8192 bytes: B got it (8295 bytes of payload)
+  102400 bytes: B got it: no
+
+== joins
+socket topic = realtime: + the topic above, presence key peli-spike-a / peli-spike-b
+  watch-party:<uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: watch-party:<uuid>"}
+    B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: watch-party:<uuid>"}
+    A public (private:false, the contrast): phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  account:<user-uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: account:<user-uuid>"}
+    B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: account:<user-uuid>"}
+    A public (private:false, the contrast): phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  user:<user-uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: user:<user-uuid>"}
+    B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: user:<user-uuid>"}
+    A public (private:false, the contrast): phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  peli:<user-uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: peli:<user-uuid>"}
+    B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: peli:<user-uuid>"}
+    A public (private:false, the contrast): phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  profile:<user-uuid>:1
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: profile:<user-uuid>:1"}
+    B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: profile:<user-uuid>:1"}
+    A public (private:false, the contrast): phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  account:<user-uuid>:parties
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: account:<user-uuid>:parties"}
+    B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: account:<user-uuid>:parties"}
+    A public (private:false, the contrast): phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  parties:<user-uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: parties:<user-uuid>"}
+    B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: parties:<user-uuid>"}
+    A public (private:false, the contrast): phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  watch-parties:<user-uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: watch-parties:<user-uuid>"}
+    B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: watch-parties:<user-uuid>"}
+    A public (private:false, the contrast): phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  peli:parties:<user-uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: peli:parties:<user-uuid>"}
+    B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: peli:parties:<user-uuid>"}
+    A public (private:false, the contrast): phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+
+== the two spellings of the party topic
+  watch_party_topic_allowed(watch-party:<party-id>) = true, <nil>
+  watch_party_topic_allowed(realtime:watch-party:<party-id>) = false, <nil>
+  joining the unprefixed socket topic (no realtime: prefix):
+    phx_reply error {"reason":"unmatched topic"} (got a reply: true)
+
+== frames
+the join frame sent, token redacted
+  {"topic":"realtime:<topic>","event":"phx_join","payload":{"config":{"broadcast":{"ack":false,"self":false},"presence":{"key":"peli-spike-a","enabled":true},"postgres_changes":[],"private":true},"access_token":"<token>"},"ref":"1","join_ref":"1"}
+  on watch-party:<party-id>:
+    A <- event "phx_reply" ref 1 payload {"status":"ok","response":{"postgres_changes":[]}}
+    A <- event "presence_state" ref  payload {}
+    A <- event "phx_reply" ref 2 payload {"status":"ok","response":{}}
+    A <- event "phx_reply" ref 3 payload {"status":"ok","response":{}}
+    A <- event "presence_diff" ref  payload {"joins":{"peli-spike-a":{"metas":[{"phx_ref":"GOuKYMeLgrMYxsGD","at":1795681024501,"code":"TEST","marker":"m-a15fbc","member_id":"<uuid>","status":"live"}]}},"leaves":{}}
+    A <- event "presence_diff" ref  payload {"joins":{"peli-spike-b":{"metas":[{"phx_ref":"GOuKYVb4W3MYxsOD","marker":"m-3a610f","member_id":"b-not-a-member","status":"loaded"}]}},"leaves":{}}
+    A <- event "presence_diff" ref  payload {"joins":{},"leaves":{"peli-spike-b":{"metas":[{"phx_ref":"GOuKYVb4W3MYxsOD","marker":"m-3a610f","member_id":"b-not-a-member","status":"loaded"}]}}}
+    A <- socket ended: failed to get reader: received close frame: status = StatusNormalClosure and reason = ""
+    B <- event "phx_reply" ref 1 payload {"status":"ok","response":{"postgres_changes":[]}}
+    B <- event "presence_state" ref  payload {"peli-spike-a":{"metas":[{"phx_ref":"GOuKYMeLgrMYxsGD","at":1795681024501,"code":"TEST","marker":"m-a15fbc","member_id":"<uuid>","status":"live"}]}}
+    B <- event "phx_reply" ref 2 payload {"status":"ok","response":{}}
+    B <- event "presence_diff" ref  payload {"joins":{"peli-spike-b":{"metas":[{"phx_ref":"GOuKYVb4W3MYxsOD","marker":"m-3a610f","member_id":"b-not-a-member","status":"loaded"}]}},"leaves":{}}
+    B <- event "broadcast" ref  payload {"event":"party_live","payload":{"code":"TEST","marker":"m-ff4679"},"type":"broadcast"}
+    B <- event "broadcast" ref  payload {"event":"party_live","payload":{"code":"TEST","marker":"size-a2c846","padding":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx…
+    B <- socket ended: failed to get reader: failed to read frame header: EOF
+
+== cleanup
+party ended: ok=true, error ""
+signed out B
+signed out A

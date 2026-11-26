@@ -1,0 +1,94 @@
+== backend
+https://api.nuvio.tv
+
+== sessions
+A and B are separate password grants on account <user-uuid>
+
+== openapi
+  watch_party_topic_allowed: not in the document (68 paths, none with party+topic)
+  watch_party_link_profile: not in the document (68 paths, none with party+topic)
+
+== watch_party_topic_allowed's signature and edges
+  no arguments at all              404 {"code":"PGRST202","details":"Searched for the function public.watch_party_topic_allowed without parameters or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,"message":"Could not find the function public.watch_party_topic_allowed without param…
+  a parameter it doesn't have      404 {"code":"PGRST202","details":"Searched for the function public.watch_party_topic_allowed with parameters p_bogus, p_topic or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":"Perhaps you meant to call the function public.watch_party_topic_allowed(p_t…
+  p_topic null                     200 false
+  an empty topic                   200 false
+  a bare prefix                    200 false
+
+== party
+id <party-id>, code <code> (6 characters), 8 seats, host member <uuid>
+
+== watch_party_topic_allowed
+asked from A and from B, as {"p_topic": "<topic>"}
+  a real party               watch-party:<party-id> A true     B true     (true / true)
+  a party that doesn't exist watch-party:<uuid> A false    B false    (false / false)
+  the account                account:<user-uuid> A false    B false    (false / false)
+  the user                   user:<user-uuid> A false    B false    (false / false)
+  Peli's own namespace       peli:<user-uuid> A false    B false    (false / false)
+  a profile                  profile:<user-uuid>:1 A false    B false    (false / false)
+  account + parties          account:<user-uuid>:parties A false    B false    (false / false)
+  parties + account          parties:<user-uuid> A false    B false    (false / false)
+  watch-parties + account    watch-parties:<user-uuid> A false    B false    (false / false)
+  peli + parties             peli:parties:<user-uuid> A false    B false    (false / false)
+
+== joins
+socket topic = realtime: + the topic above, presence key peli-spike-a / peli-spike-b
+  watch-party:<party-id>
+    A private: phx_reply ok {"postgres_changes":[]}           B private: phx_reply ok {"postgres_changes":[]}
+  watch-party:<uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: watch-party:<uuid>"} B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: watch-party:<uuid>"}
+    A public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"} B public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  account:<user-uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: account:<user-uuid>"} B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: account:<user-uuid>"}
+    A public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"} B public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  user:<user-uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: user:<user-uuid>"} B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: user:<user-uuid>"}
+    A public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"} B public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  peli:<user-uuid>
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: peli:<user-uuid>"} B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: peli:<user-uuid>"}
+    A public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"} B public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+  profile:<user-uuid>:1
+    A private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: profile:<user-uuid>:1"} B private: phx_reply error {"reason":"Unauthorized: You do not have permissions to read from this Channel topic: profile:<user-uuid>:1"}
+    A public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"} B public: phx_reply error {"reason":"PrivateOnly: This project only allows private channels"}
+
+== broadcast and presence, A sending to B
+  watch-party:<party-id> (private)
+    A track: failed to write msg: failed to write frame: failed to flush: write tcp <ip:port>-><ip:port>: write: broken pipe
+    A broadcast: failed to write msg: failed to write frame: failed to write frame header: write tcp <ip:port>-><ip:port>: write: broken pipe
+    broadcast A->B: no
+    presence A->B (presence_diff): no
+    A sees its own back (self:false): false
+  watch-party:<uuid> skipped: not both joined
+  account:<user-uuid> skipped: not both joined
+  user:<user-uuid> skipped: not both joined
+  peli:<user-uuid> skipped: not both joined
+  profile:<user-uuid>:1 skipped: not both joined
+
+== late join
+A joins and tracks first, then B joins the same topic and must get A in the initial presence_state
+  watch-party:<party-id> B (late) join: phx_reply ok {"postgres_changes":[]}
+    presence_state: yes {}
+  watch-party:<uuid> skipped: A couldn't join
+  account:<user-uuid> skipped: A couldn't join
+  user:<user-uuid> skipped: A couldn't join
+  peli:<user-uuid> skipped: A couldn't join
+  profile:<user-uuid>:1 skipped: A couldn't join
+
+== payload size
+  on watch-party:<party-id> (private)
+    8192 bytes: send: failed to write msg: failed to write frame: failed to write frame header: write tcp <ip:port>-><ip:port>: write: broken pipe
+    102400 bytes: send: failed to write msg: failed to write frame: failed to write frame header: write tcp <ip:port>-><ip:port>: write: broken pipe
+
+== frames
+the join frame sent, token redacted
+  {"topic":"realtime:<topic>","event":"phx_join","payload":{"config":{"broadcast":{"ack":false,"self":false},"presence":{"key":"peli-spike-a","enabled":true},"postgres_changes":[],"private":true},"access_token":"<token>"},"ref":"1","join_ref":"1"}
+  watch-party:<party-id>
+    A <- event "phx_reply" ref 1 payload {"status":"ok","response":{"postgres_changes":[]}}
+    A <- event "presence_state" ref  payload {}
+    B <- event "phx_reply" ref 1 payload {"status":"ok","response":{"postgres_changes":[]}}
+    B <- event "presence_state" ref  payload {}
+
+== cleanup
+party ended: ok=true, error ""
+signed out B
+signed out A
