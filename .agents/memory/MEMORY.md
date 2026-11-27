@@ -122,3 +122,4 @@
 - [Layout overflow check](layout-overflow-check.md) — jsdom DOM dump → real WebKit at 393 pt: find what scrolls sideways when there is no browser tool; input intrinsic width vs `auto` grid tracks
 - [UI snapshot rig](ui-snapshot-rig.md) — see a component with no browser tool: .shot scene + vp dev + swiftc WKWebView PNG; stacked translucent surfaces and popup-under-trigger ghosts
 - [Releasing](releasing.md) — bump the 7 build files, chore(release) + annotated tag, push main then tag; release.yml drafts get published ~8 min later, tag push leaves ci/ios cancelled, re-run ios:sideload
+- [iPad black screen](ipad-black-screen.md) — 2026-11-27 diagnosis: black screen with all processes alive, hwdec OFF on the iPad, profile-0 bug, devicectl probe recipes, ranked hypotheses
