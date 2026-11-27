@@ -159,3 +159,17 @@ func (w *watchdog) recover(action Action, n int) {
 	Flush(w.s)
 	w.s.loadWebview(url)
 }
+
+// RecoverWebview reloads the page by hand: iPadOS can stop presenting the
+// webview with every process, its JS, its touch delivery and an offscreen
+// snapshot still working (the black screen, seen on a real device), so no
+// in-app probe can see it happen — but a reload was verified on the device
+// to bring the screen back. The two-finger triple tap fires this, with the
+// route it was on, like a watchdog recovery.
+func RecoverWebview(s *Service, why string) {
+	route := Route(s)
+	slog.Error("webview: recovered by hand, reloading", "why", why, "route", route)
+	logMemory(s, why)
+	Flush(s)
+	s.loadWebview(recoveryURL("", route, Reload))
+}

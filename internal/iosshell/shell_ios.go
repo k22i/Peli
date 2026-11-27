@@ -28,6 +28,9 @@ type Handlers struct {
 	NavigationFailed func(kind, url, reason string)
 	// MemoryWarning is UIApplicationDidReceiveMemoryWarningNotification.
 	MemoryWarning func()
+	// PanicGesture is the two-finger triple tap, the panic handle for the
+	// iPad black screen (see InstallPanicGesture).
+	PanicGesture func()
 }
 
 var handlers Handlers
@@ -61,6 +64,13 @@ func peliMemoryWarning() {
 	if handlers.MemoryWarning != nil {
 		// Off the main thread: it runs a GC.
 		go handlers.MemoryWarning()
+	}
+}
+
+//export peliPanicGesture
+func peliPanicGesture() {
+	if handlers.PanicGesture != nil {
+		go handlers.PanicGesture()
 	}
 }
 
@@ -140,4 +150,13 @@ func (Platform) LoadWebview(url string) {
 	cs := C.CString(url)
 	defer C.free(unsafe.Pointer(cs))
 	C.peli_shell_webview_load(cs)
+}
+
+// InstallPanicGesture puts the two-finger triple tap on the window: the
+// panic handle for the iPad black screen, where iPadOS stops presenting
+// the page with everything alive and no in-app probe can see it, but taps
+// still reach the app. It fires Handlers.PanicGesture. Idempotent; ok is
+// false while there is no window yet.
+func (Platform) InstallPanicGesture() (ok bool) {
+	return C.peli_shell_install_panic_gesture() == 0
 }

@@ -45,6 +45,13 @@ int peli_shell_webview_probe(uint8_t *mean);
 // the error page. The string is copied before the call returns.
 void peli_shell_webview_load(const char *url);
 
+// peli_shell_install_panic_gesture puts the two-finger triple tap on the
+// window, the panic gesture for the iPad black screen: a tap run reaches
+// the app even when the page stopped presenting, so the gesture reloads the
+// page (shell_ios.go's peliPanicGesture → diagnostics.RecoverWebview).
+// Idempotent. Returns 0 once installed, -1 while there is no window.
+int peli_shell_install_panic_gesture(void);
+
 // Exported from shell_ios.go.
 // peliWebContentTerminated returns the address to load next (malloc'd, the
 // caller frees it) and sets *action: 0 reload, 1 home, 2 the error page
@@ -52,5 +59,6 @@ void peli_shell_webview_load(const char *url);
 char *peliWebContentTerminated(char *current, int *action);
 void peliNavigationFailed(char *kind, char *url, char *reason);
 void peliMemoryWarning(void);
+void peliPanicGesture(void);
 
 #endif

@@ -1,6 +1,7 @@
 package diagnostics
 
 import (
+	"net/url"
 	"testing"
 	"time"
 )
@@ -145,5 +146,35 @@ func TestWatchdogEscalatesWithinTheWindow(t *testing.T) {
 	// not another error page.
 	if a, n := recover(now.Add(16 * time.Minute)); a != Reload || n != 1 {
 		t.Fatalf("recovery after the window: action=%v n=%d, want Reload 1", a, n)
+	}
+}
+
+// A Platform whose LoadWebview records the address, for RecoverWebview.
+type recordingLoader struct {
+	fakePlatform
+	loaded []string
+}
+
+func (p *recordingLoader) LoadWebview(url string)       { p.loaded = append(p.loaded, url) }
+func (p *recordingLoader) MakeWebviewTransparent() bool { return true }
+
+func TestRecoverWebviewReloadsTheRoute(t *testing.T) {
+	p := &recordingLoader{}
+	s := New(Options{Dir: t.TempDir(), Ring: NewRing(4), Platform: p})
+	Start(s, time.Now())
+	s.SetRoute("/title/movie/tt123")
+	RecoverWebview(s, "test")
+	if len(p.loaded) != 1 {
+		t.Fatalf("loaded %d addresses, want 1", len(p.loaded))
+	}
+	u, err := url.Parse(p.loaded[0])
+	if err != nil {
+		t.Fatalf("loaded %q: %v", p.loaded[0], err)
+	}
+	if u.RawQuery != RecoveredParam+"=reload" {
+		t.Errorf("query %q, want the reload marker", u.RawQuery)
+	}
+	if u.Fragment != "/title/movie/tt123" {
+		t.Errorf("route %q, want the route the page was on", u.Fragment)
 	}
 }

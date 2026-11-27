@@ -161,6 +161,16 @@ func main() {
 		Busy:   func() bool { return engine.Snapshot().Active },
 	})
 
+	// The panic gesture goes on the window as soon as there is one: it is
+	// the only handle on the black screen a probe cannot see (the watchdog
+	// comment), because a two-finger triple tap still reaches the app when
+	// nothing else about the webview works.
+	safego.Go("panic gesture", func() {
+		for !plat.InstallPanicGesture() {
+			time.Sleep(time.Second)
+		}
+	})
+
 	if err := app.Run(); err != nil {
 		log.Fatal(err)
 	}
@@ -214,7 +224,8 @@ func (p *peli) enterBackground(engine *iosplayer.Engine) {
 
 // recoverWebview connects the native shell's handlers (internal/iosshell)
 // to diagnostics: a content-process kill reloads the page by the loop
-// guard's rules, failed loads and memory warnings are logged.
+// guard's rules, failed loads and memory warnings are logged, and the
+// panic gesture (the iPad black screen) reloads the page by hand.
 func recoverWebview(diag *diagnostics.Service) {
 	iosshell.Handle(iosshell.Handlers{
 		Terminated: func(current string) (int, string) {
@@ -222,7 +233,8 @@ func recoverWebview(diag *diagnostics.Service) {
 			return int(action), url
 		},
 		NavigationFailed: diagnostics.NavigationFailed,
-		MemoryWarning:    func() { diagnostics.MemoryWarning(diag) },
+		MemoryWarning:   func() { diagnostics.MemoryWarning(diag) },
+		PanicGesture:    func() { diagnostics.RecoverWebview(diag, "panic") },
 	})
 }
 

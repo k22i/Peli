@@ -206,6 +206,47 @@ void peli_shell_webview_load(const char *url) {
     });
 }
 
+// The panic gesture of the iPad black screen: iPadOS can stop presenting
+// the page with every process, its JS, its touch delivery and an offscreen
+// snapshot working (2026-11-27), so nothing in the app can see it happen.
+// Touches still reach the app, though — so a two-finger triple tap
+// anywhere reloads the page, which was verified on the device to bring the
+// screen back. One finger stays free of it (the player's double-tap skip),
+// as do two-finger taps of any other count.
+@interface PeliPanic : NSObject
+@end
+
+@implementation PeliPanic
+- (void)fired:(UITapGestureRecognizer *)tap {
+    (void)tap;
+    peliPanicGesture();
+}
+@end
+
+int peli_shell_install_panic_gesture(void) {
+    static BOOL installed = NO;
+    static PeliPanic *target = nil;
+    __block int rc = -1;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        id delegate = UIApplication.sharedApplication.delegate;
+        UIWindow *window = nil;
+        @try { window = [delegate valueForKey:@"window"]; } @catch (NSException *e) {}
+        if (installed) { rc = 0; return; }
+        if (!window) return;
+        if (!target) target = [[PeliPanic alloc] init];
+        UITapGestureRecognizer *tap =
+            [[UITapGestureRecognizer alloc] initWithTarget:target action:@selector(fired:)];
+        tap.numberOfTapsRequired = 3;
+        tap.numberOfTouchesRequired = 2;
+        tap.cancelsTouchesInView = NO;
+        [window addGestureRecognizer:tap];
+        installed = YES;
+        rc = 0;
+    });
+    return rc;
+}
+
+
 int peli_shell_share(const char **paths, int n) {
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:n];
     for (int i = 0; i < n; i++) {
