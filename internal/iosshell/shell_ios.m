@@ -109,6 +109,103 @@ static UIViewController *peliTopController(void) {
     return vc;
 }
 
+// The webview, however Wails nests it: the root view controller's KVC
+// "webView". nil before the view loads, or on a shell without one.
+static WKWebView *peliWebview(void) {
+    id delegate = UIApplication.sharedApplication.delegate;
+    UIWindow *window = nil;
+    @try { window = [delegate valueForKey:@"window"]; } @catch (NSException *e) {}
+    UIViewController *root = window.rootViewController;
+    if (!root) return nil;
+    @try { return [root isKindOfClass:NSClassFromString(@"WailsViewController")] ? [root valueForKey:@"webView"] : nil; }
+    @catch (NSException *e) {}
+    return nil;
+}
+
+// peli_shell_webview_transparent makes the webview and its scroll view
+// see-through, idempotently: the video plays in a UIKit view under the
+// webview. Returns -1 while the webview isn't loaded yet, 0 once it is
+// transparent (whether or not it already was).
+int peli_shell_webview_transparent(void) {
+    __block int rc = -1;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        WKWebView *web = peliWebview();
+        if (!web) return;
+        web.opaque = NO;
+        web.backgroundColor = UIColor.clearColor;
+        UIScrollView *sv = [web respondsToSelector:@selector(scrollView)] ? [(id)web scrollView] : nil;
+        if (sv) {
+            sv.opaque = NO;
+            sv.backgroundColor = UIColor.clearColor;
+        }
+        rc = 0;
+    });
+    return rc;
+}
+
+// peli_shell_webview_probe draws what the webview shows now, small, and
+// writes the mean luma (0-255) of it into *mean. The shell paints #0e0d0c,
+// a mean of about 13; a page that stopped painting is the black behind
+// the transparent webview: 0. Returns -1 while there is no webview, 0
+// once *mean means something.
+int peli_shell_webview_probe(uint8_t *mean) {
+    *mean = 0;
+    __block uint8_t m = 0;
+    __block int rc = -1;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        WKWebView *web = peliWebview();
+        if (!web || !web.window || web.bounds.size.width < 1 || web.bounds.size.height < 1) return;
+        const NSInteger w = 64, h = 48;
+        UIGraphicsImageRendererFormat *f = [[UIGraphicsImageRendererFormat alloc] init];
+        f.opaque = YES;
+        f.scale = 1;
+        UIGraphicsImageRenderer *r = [[UIGraphicsImageRenderer alloc] initWithSize:CGSizeMake(w, h) format:f];
+        UIImage *img = [r imageWithActions:^(UIGraphicsImageRendererContext *ic) {
+            CGContextRef c = ic.CGContext;
+            CGContextScaleCTM(c, (CGFloat)w / web.bounds.size.width, (CGFloat)h / web.bounds.size.height);
+            [web drawViewHierarchyInRect:web.bounds afterScreenUpdates:NO];
+        }];
+        if (!img) return;
+        uint8_t *px = (uint8_t *)malloc((size_t)(w * h * 4));
+        if (!px) return;
+        CGColorSpaceRef cs = CGColorSpaceCreateDeviceRGB();
+        CGContextRef bm = CGBitmapContextCreate(px, w, h, 8, w * 4, cs, kCGBitmapByteOrder32Little | kCGImageAlphaNoneSkipFirst);
+        CGColorSpaceRelease(cs);
+        if (!bm) { free(px); return; }
+        CGContextDrawImage(bm, CGRectMake(0, 0, w, h), img.CGImage);
+        uint64_t sum = 0;
+        for (NSInteger i = 0; i < w * h; i++) {
+            const uint8_t *p = px + i * 4;
+            sum += (uint64_t)p[0] + p[1] + p[2];
+        }
+        m = (uint8_t)(sum / (3 * (uint64_t)(w * h)));
+        CGContextRelease(bm);
+        free(px);
+        rc = 0;
+    });
+    *mean = m;
+    return rc;
+}
+
+// peli_shell_webview_load loads url in the webview; the empty string shows
+// the error page. The string is copied before this returns, so the caller
+// may free it as soon as the call is over.
+void peli_shell_webview_load(const char *url) {
+    char *copy = strdup(url ?: "");
+    if (!copy) return;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        WKWebView *web = peliWebview();
+        if (!web) { free(copy); return; }
+        if (copy[0] == '\0') {
+            [web loadHTMLString:peliErrorPage baseURL:[NSURL URLWithString:@"wails://localhost/"]];
+        } else {
+            NSURL *u = [NSURL URLWithString:[NSString stringWithUTF8String:copy]];
+            if (u) [web loadRequest:[NSURLRequest requestWithURL:u]];
+        }
+        free(copy);
+    });
+}
+
 int peli_shell_share(const char **paths, int n) {
     NSMutableArray *items = [NSMutableArray arrayWithCapacity:n];
     for (int i = 0; i < n; i++) {

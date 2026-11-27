@@ -29,6 +29,22 @@ int peli_shell_cellular(void);
 // with it), on the main thread. The disk cache stays.
 void peli_shell_trim_web_cache(void);
 
+// peli_shell_webview_transparent makes the webview and its scroll view
+// see-through, idempotently: the video plays in a UIKit view under the
+// webview, and this way the player never flips its opacity mid-session.
+// Returns 0 once transparent, -1 while the webview isn't loaded yet.
+int peli_shell_webview_transparent(void);
+
+// peli_shell_webview_probe draws what the webview shows now, small, and
+// writes the mean luma (0-255) into *mean: the shell paints #0e0d0c
+// (about 13), a page that stopped painting is 0. Returns 0 once *mean
+// means something, -1 while there is no webview.
+int peli_shell_webview_probe(uint8_t *mean);
+
+// peli_shell_webview_load loads url in the webview; the empty string shows
+// the error page. The string is copied before the call returns.
+void peli_shell_webview_load(const char *url);
+
 // Exported from shell_ios.go.
 // peliWebContentTerminated returns the address to load next (malloc'd, the
 // caller frees it) and sets *action: 0 reload, 1 home, 2 the error page

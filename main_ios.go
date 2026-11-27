@@ -150,6 +150,17 @@ func main() {
 	})
 	diagnostics.Breadcrumbs(diag)
 
+	// The webview can stop painting with everything alive (the iPad black
+	// screen): the watchdog samples it while the app browses and recovers
+	// it by the same actions as a content-process kill. Making the webview
+	// see-through once, here, also takes the player's mid-session opacity
+	// flip away: the moment the compositor was most often lost.
+	plat := iosshell.Platform{}
+	diagnostics.Watch(diag, diagnostics.WatchOptions{
+		Sample: plat.ProbeWebview,
+		Busy:   func() bool { return engine.Snapshot().Active },
+	})
+
 	if err := app.Run(); err != nil {
 		log.Fatal(err)
 	}

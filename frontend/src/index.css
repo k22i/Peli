@@ -831,7 +831,10 @@
 }
 
 /* A film-grain veil over the canvas: barely there, but it keeps large dark
-   areas from banding and gives the room some texture. */
+   areas from banding and gives the room some texture. Off on iOS: it is a
+   full-screen blend running at all times, and iPadOS's compositor has been
+   seen to stop painting under that load (the black screen), so the shell
+   keeps its flat background there instead. */
 .grain::after {
   content: "";
   position: fixed;
@@ -841,6 +844,10 @@
   opacity: 0.045;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 1.4 -0.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   mix-blend-mode: overlay;
+}
+
+:root[data-platform="ios"] .grain::after {
+  content: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -284,6 +284,35 @@ func (s *Service) DevCrash(kind string) error {
 // nothing there.
 type webCacheTrimmer interface{ TrimWebCache() }
 
+// webviewTransparer is a Platform that can make the webview see-through
+// (iOS): the video plays in a UIKit view under it. Transparent from the
+// start, the player no longer flips the webview's opacity mid-session.
+type webviewTransparer interface{ MakeWebviewTransparent() (ok bool) }
+
+// webviewLoader is a Platform that can load an address in the webview
+// (iOS): the watchdog's recovery.
+type webviewLoader interface{ LoadWebview(url string) }
+
+// makeWebviewTransparent makes the webview see-through, once it is there.
+// True when there is nothing to wait for: the webview is transparent, or
+// the platform has no webview to make transparent at all.
+func (s *Service) makeWebviewTransparent() bool {
+	t, ok := s.platform.(webviewTransparer)
+	if !ok {
+		return true
+	}
+	return t.MakeWebviewTransparent()
+}
+
+// loadWebview loads url in the webview ("" shows the error page). It does
+// nothing on a platform that cannot (the desktop, which never starts the
+// watchdog either).
+func (s *Service) loadWebview(url string) {
+	if l, ok := s.platform.(webviewLoader); ok {
+		l.LoadWebview(url)
+	}
+}
+
 // TrimWebCache drops WebKit's in-memory cache, decoded images with it (#128).
 // The frontend calls it on iOS when the page changes and on a memory
 // warning; WebKit's content process is killed for memory before the app

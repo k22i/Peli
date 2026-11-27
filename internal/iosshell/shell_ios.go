@@ -113,3 +113,31 @@ func Cellular() bool { return C.peli_shell_cellular() == 1 }
 // TrimWebCache drops WebKit's memory cache, decoded images included (#128):
 // images come back from the disk cache when shown again.
 func (Platform) TrimWebCache() { C.peli_shell_trim_web_cache() }
+
+// MakeWebviewTransparent makes the webview and its scroll view see-through,
+// idempotently. The video plays in a UIKit view under the webview, which
+// the player used to make transparent on every play, mid-session: the
+// moment the iPad's compositor was most often lost. Done here, from the
+// first opportunity, that flip never happens. ok is false while the
+// webview isn't loaded yet.
+func (Platform) MakeWebviewTransparent() (ok bool) {
+	return C.peli_shell_webview_transparent() == 0
+}
+
+// ProbeWebview is what the webview shows right now: a small drawing of its
+// pixels, as the mean luma 0-255. ok is false while there is no webview.
+func (Platform) ProbeWebview() (mean uint8, ok bool) {
+	var m C.uint8_t
+	if C.peli_shell_webview_probe(&m) != 0 {
+		return 0, false
+	}
+	return uint8(m), true
+}
+
+// LoadWebview loads url in the webview ("" shows the error page). The url
+// is copied before this returns; the load happens on the main thread.
+func (Platform) LoadWebview(url string) {
+	cs := C.CString(url)
+	defer C.free(unsafe.Pointer(cs))
+	C.peli_shell_webview_load(cs)
+}
