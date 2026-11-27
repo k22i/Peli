@@ -476,6 +476,10 @@ func (e *Engine) Stop() error {
 	e.mu.Lock()
 	e.s = nil
 	e.watching = nil
+	// The closed file's track list (mpv's raw node tree, copied into Go) and
+	// its size go with it; nothing of the session it came from is kept.
+	e.trackList, e.subHidden = nil, false
+	e.videoW, e.videoH = 0, 0
 	e.state = idle()
 	e.mu.Unlock()
 	e.flush(nil)
@@ -485,19 +489,56 @@ func (e *Engine) Stop() error {
 // closeSession follows the binding rules from M0: stop the event loop, free
 // the render context (detach), then destroy the handle. Stop goes through
 // here, so no look for bars is left with a handle going away.
+//
+// A session's native memory, and where each part of it goes:
+//
+//   - the decoder's frame pools and reference frames, its filter graph and
+//     the demuxer cache, inside the handle (a 3840x2160 10-bit software
+//     play is 300 MiB or more of it). The unload below ends the file while
+//     mpv can still act on it, and mpv_terminate_destroy frees the rest;
+//     iOS's allocator hands freed pages back to the process's footprint
+//     straight away (measured: 500 MiB freed drops to 2 MiB on the iOS
+//     runtime, the same memory stays counted on macOS);
+//   - mpv's GL textures, shaders and buffers: with the render context, in
+//     detach;
+//   - this host's framebuffer, renderbuffer and the layer's drawable, and
+//     the EAGL context that made them: in detach too (releaseGL);
+//   - the audio output's I/O thread and buffers: peli_audio_release, below.
+//
+// The footprint on either side of the teardown is logged, so a device's log
+// says whether closing a session gave its memory back (ios/README.md).
 func (e *Engine) closeSession(ses *session) {
 	e.stopAutoCrop()
 	e.stopSync()
+	// A file that still plays is ended while mpv is alive, as the desktop
+	// player does: the decoder, the filter graph and the demuxer cache go
+	// here rather than inside mpv_terminate_destroy, which then has no
+	// decoding to join and no frame in flight to wait for.
+	_ = ses.m.command("stop")
 	ses.closing.Store(true)
 	ses.m.wakeup()
 	<-ses.done
+	before := C.peli_footprint()
 	C.peli_host_detach()
 	C.peli_host_awake(0)
 	ses.m.destroy()
 	if ses.subDir != "" {
 		os.RemoveAll(ses.subDir)
 	}
+	// The player's claim on the sound goes: the audio output's thread and
+	// buffers with it, and another app's audio can have the route back. The
+	// next play takes the session again (peli_audio_session, in open).
+	if rc := C.peli_audio_release(); rc != 0 {
+		slog.Warn("iosplayer: audio session not released", "step", int(rc))
+	}
+	slog.Info("iosplayer: session closed",
+		"footprint_before_detach_mib", megabytes(before),
+		"footprint_after_destroy_mib", megabytes(C.peli_footprint()),
+		"handles", liveHandles.Load())
 }
+
+// megabytes is b (a byte count from C) in whole MiB, for the log lines.
+func megabytes(b C.ulonglong) int64 { return int64(b) / (1 << 20) }
 
 func (e *Engine) current() *session {
 	e.mu.Lock()

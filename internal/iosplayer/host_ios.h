@@ -11,6 +11,8 @@
 // -3 render context). Must run on a thread that may block on the main queue.
 int peli_host_attach(void *viewController, void *handle);
 // peli_host_detach frees the render context (before mpv_terminate_destroy),
+// deletes the GL objects the host made and lets go of the EAGL context (so
+// the layer's drawable and the driver's memory for the session go too),
 // removes the view and gives the webview its backing back.
 void peli_host_detach(void);
 // peli_host_awake keeps the screen on (1) or lets it sleep (0).
@@ -36,6 +38,13 @@ void peliLifecycle(int kind);
 void peli_lifecycle_observe(void);
 // peli_audio_session sets the .playback category and activates it.
 int peli_audio_session(void);
+// peli_audio_release deactivates the session when the player closes, so the
+// audio output's thread and buffers go and other apps' audio comes back. 0,
+// or -1 when iOS refuses.
+int peli_audio_release(void);
+// peli_footprint is the process's phys_footprint in bytes (0 when it can't
+// be read), what iOS kills by.
+unsigned long long peli_footprint(void);
 // peli_is_simulator is 1 in the iOS simulator, whose software OpenGL ES
 // can't map VideoToolbox frames.
 int peli_is_simulator(void);

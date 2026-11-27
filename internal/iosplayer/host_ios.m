@@ -21,6 +21,7 @@
 #import <QuartzCore/QuartzCore.h>
 #include <dlfcn.h>
 #include <stdatomic.h>
+#include <mach/mach.h>
 #include <mpv/client.h>
 #include <mpv/render_gl.h>
 #include "host_ios.h"
@@ -34,6 +35,7 @@ static mpv_render_context *g_rctx;
 @property(nonatomic) GLint w, h;
 - (void)requestDraw;
 - (void)teardown;
+- (void)releaseGL;
 - (void)park;
 - (void)unpark;
 @end
@@ -157,6 +159,38 @@ static mpv_render_context *g_rctx;
 	if (_fgObs) [nc removeObserver:_fgObs];
 	_bgObs = _fgObs = nil;
 }
+
+// releaseGL deletes the framebuffer and the renderbuffer that draws into the
+// layer, and lets go of the EAGL context. On the render queue, after
+// mpv_render_context_free and before the view is removed from the screen.
+//
+// Deleting the renderbuffer is what releases the CAEAGLLayer's drawable
+// (three colour surfaces of 2732x2048 on an iPad Pro: ~66 MB that otherwise
+// stay until the layer is deallocated), and letting go of the context here
+// takes the driver's own allocations for a session with it now, rather than
+// whenever ARC gets to the view: one context was made per session, for a
+// picture that could be 3840x2160.
+- (void)releaseGL { // on rq
+	if (_glctx) [EAGLContext setCurrentContext:_glctx];
+	if (_fbo) {
+		glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
+		glDeleteFramebuffers(1, &_fbo);
+		_fbo = 0;
+	}
+	if (_rbo) {
+		glBindRenderbuffer(GL_RENDERBUFFER, _rbo);
+		glDeleteRenderbuffers(1, &_rbo);
+		_rbo = 0;
+	}
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glBindRenderbuffer(GL_RENDERBUFFER, 0);
+	glFinish();
+	_w = _h = 0;
+	atomic_store(&_needsResize, 1);
+	atomic_store(&_pending, 0);
+	[EAGLContext setCurrentContext:nil];
+	self.glctx = nil;
+}
 @end
 
 static PeliVideoView *g_view;
@@ -229,7 +263,9 @@ int peli_host_attach(void *vcHandle, void *mpvHandle) {
 void peli_host_detach(void) {
 	PeliVideoView *v = g_view;
 	if (!v) return;
-	// The render context goes first, on the render queue that draws with it.
+	// The render context goes first, on the render queue that draws with it
+	// (mpv's textures and buffers for the session go with it), then the GL
+	// objects this host made and the context that made them.
 	dispatch_sync(v.rq, ^{
 		if (g_rctx) {
 			mpv_render_context_set_update_callback(g_rctx, NULL, NULL);
@@ -238,7 +274,7 @@ void peli_host_detach(void) {
 			g_rctx = NULL;
 		}
 		glFinish();
-		[EAGLContext setCurrentContext:nil];
+		[v releaseGL];
 	});
 	void (^work)(void) = ^{
 		[v teardown];
@@ -252,6 +288,7 @@ void peli_host_detach(void) {
 		}
 		g_web = nil;
 		g_view = nil;
+		g_rootBackground = nil;
 	};
 	if (NSThread.isMainThread) work(); else dispatch_sync(dispatch_get_main_queue(), work);
 }
@@ -342,6 +379,32 @@ int peli_audio_session(void) {
 	if (![s setCategory:AVAudioSessionCategoryPlayback mode:AVAudioSessionModeMoviePlayback options:0 error:&err]) return -1;
 	if (![s setActive:YES error:&err]) return -2;
 	return 0;
+}
+
+// peli_audio_release gives the audio session back when the player closes: the
+// output's I/O thread, its buffers and the app's claim on the route go with
+// it, and another app's audio can have the sound again (which an app that
+// keeps .playback active is not allowed to do). The next peli_audio_session,
+// at the next play, takes it again.
+int peli_audio_release(void) {
+	NSError *err = nil;
+	if (![AVAudioSession.sharedInstance setActive:NO
+	                                 withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation
+	                                       error:&err]) {
+		return -1;
+	}
+	return 0;
+}
+
+// peli_footprint is the process's phys_footprint, the number iOS kills by
+// (the same one diagnostics' `memory:` line logs). The engine reads it on
+// either side of a teardown, so a device's log says what closing a session
+// actually gave back.
+unsigned long long peli_footprint(void) {
+	task_vm_info_data_t info;
+	mach_msg_type_number_t count = TASK_VM_INFO_COUNT;
+	if (task_info(mach_task_self(), TASK_VM_INFO, (task_info_t)&info, &count) != KERN_SUCCESS) return 0;
+	return (unsigned long long)info.phys_footprint;
 }
 
 int peli_is_simulator(void) {
