@@ -48,6 +48,10 @@
   @media (prefers-contrast: more) {
     @slot;
   }
+  /* The gallery's toggle: the same rules, without the OS setting. */
+  &:where([data-transparency="reduced"], [data-transparency="reduced"] *) {
+    @slot;
+  }
 }
 
 @layer base {
@@ -460,6 +464,12 @@
   --warning-foreground: #ffc65c;
   --bar: #0e0d0cc2;
   --pop: #1f1d1ae6;
+  /* The two highlights on the materials (see Materials, below): the specular
+     edge along the top, and the wash falling off the top-left. Hex with alpha,
+     so `contrastPairs` can measure the brightest point of each surface. */
+  --rim-lit: #f4efe729;
+  --sheen-bar: #f4efe710;
+  --sheen-pop: #f4efe714;
 }
 
 /*
@@ -542,13 +552,33 @@
  *  pop     menus, selects, tooltips, toasts
  *  media   controls over artwork or video: always light-on-dark
  * Reduced transparency (or increased contrast) makes them solid.
+ *
+ * A tint and a blur on their own read as a smudge, so each also carries the two
+ * things that make a pane look like a pane: a specular edge along the top
+ * (`--rim-lit`) and a wash falling off the top-left (`--sheen-*`). Both are
+ * background layers, not a box-shadow or a pseudo-element, so a component's own
+ * shadow, border or `before:` can't fight them and neither can a popup's. On a
+ * pill the 1px edge shortens towards the ends of the curve, which is what light
+ * on a rounded edge does anyway.
+ *
+ * Media gets the edge but no wash: it holds white text over video, and its tint
+ * is sized for the worst frame on its own (`contrastPairs`).
  */
 @utility material-bar {
   background-color: var(--bar);
+  background-image:
+    radial-gradient(140% 130% at 12% 0%, var(--sheen-bar), transparent 58%),
+    linear-gradient(var(--rim-lit), var(--rim-lit));
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size:
+    100% 100%,
+    100% 1px;
   backdrop-filter: blur(28px) saturate(1.7);
   -webkit-backdrop-filter: blur(28px) saturate(1.7);
   @variant reduced-transparency {
     background-color: var(--background);
+    background-image: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
@@ -556,12 +586,21 @@
 
 @utility material-pop {
   background-color: var(--pop);
+  background-image:
+    radial-gradient(140% 130% at 12% 0%, var(--sheen-pop), transparent 58%),
+    linear-gradient(var(--rim-lit), var(--rim-lit));
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size:
+    100% 100%,
+    100% 1px;
   backdrop-filter: blur(36px) saturate(1.8);
   -webkit-backdrop-filter: blur(36px) saturate(1.8);
   box-shadow: var(--shadow-pop);
   border: 1px solid var(--border);
   @variant reduced-transparency {
     background-color: var(--popover);
+    background-image: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
@@ -570,11 +609,16 @@
 @utility material-media {
   color: #fff;
   background-color: rgb(28 26 24 / 0.55);
+  background-image: linear-gradient(var(--rim-lit), var(--rim-lit));
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 100% 1px;
   backdrop-filter: blur(24px) saturate(1.6);
   -webkit-backdrop-filter: blur(24px) saturate(1.6);
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12);
   @variant reduced-transparency {
     background-color: rgb(28 26 24);
+    background-image: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }

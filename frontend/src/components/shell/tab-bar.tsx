@@ -24,11 +24,12 @@ function useKeyboardUp(): boolean {
   return up;
 }
 
-// The glass of the capsule and the Search circle: the bar material with a
-// specular top edge and a soft shadow, the CSS stand-in for Liquid Glass
-// (ADR-0046) where the native bar isn't (iOS before 26, tests).
+// The glass of the capsule and the Search circle: the bar material (which
+// brings its own specular top edge, index.css) with a soft shadow, the CSS
+// stand-in for Liquid Glass (ADR-0046) where the native bar isn't (iOS before
+// 26, tests).
 export const capsuleGlass =
-  "material-bar border border-white/12 shadow-[inset_0_1px_0_rgb(255_255_255/0.35),inset_0_-1px_0_rgb(0_0_0/0.06),0_8px_28px_rgb(0_0_0/0.18)] dark:border-white/10 dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.16),0_8px_28px_rgb(0_0_0/0.5)]";
+  "material-bar border border-white/12 shadow-[inset_0_-1px_0_rgb(0_0_0/0.06),0_8px_28px_rgb(0_0_0/0.18)] dark:border-white/10 dark:shadow-[0_8px_28px_rgb(0_0_0/0.5)]";
 
 // The compact shell's navigation (iPhone, a narrow iPad window) when there
 // is no native bar: a floating capsule of sections and a round Search button

@@ -10,19 +10,19 @@ const tiers = [
   {
     utility: "material-bar",
     use: "The top bar and sticky page headers, once content scrolls under them",
-    values: "canvas at 76–82% · 28px blur · 170% saturate",
+    values: "canvas at 76–82% · 28px blur · 170% saturate · specular edge + wash",
     dark: false,
   },
   {
     utility: "material-pop",
     use: "Menus, selects, tooltips, toasts",
-    values: "popup at 88–90% · 36px blur · 180% saturate · hairline",
+    values: "popup at 88–90% · 36px blur · 180% saturate · hairline, edge + wash",
     dark: false,
   },
   {
     utility: "material-media",
     use: "Controls over artwork and video",
-    values: "warm black at 42% · 24px blur · inner hairline",
+    values: "warm black at 42% · 24px blur · inner hairline + specular edge",
     dark: true,
   },
 ] as const;
@@ -108,7 +108,8 @@ export function Materials() {
           />
           Reduced transparency
           <span className="text-muted-foreground">
-            · every tier turns solid; the OS setting and Increase contrast do the same
+            · every material turns solid, without its edge or wash; the OS setting and Increase
+            contrast do the same
           </span>
         </div>
 

@@ -82,6 +82,21 @@ export const contrastPairs: ContrastPair[] = [
     background: ["#ffffff", "bar"],
     min: AA_TEXT,
   },
+  // The materials' highlights (index.css): the wash off the top-left is the
+  // brightest point of the surface, so text that reaches it is measured there,
+  // over the brightest backdrop the material can sit on.
+  {
+    label: "Text on the bar's wash, over white",
+    foreground: "foreground",
+    background: ["#ffffff", "bar", "sheen-bar"],
+    min: AA_TEXT,
+  },
+  {
+    label: "Text on pop's wash, over white",
+    foreground: "foreground",
+    background: ["#ffffff", "pop", "sheen-pop"],
+    min: AA_TEXT,
+  },
   // Buttons.
   {
     label: "Primary button",
