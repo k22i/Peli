@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useSyncExternalStore } from "react";
 
+import { profileKnown } from "@/lib/profile";
 import { profileSettingsQuery } from "@/lib/settings";
 
 // Spoiler protection: with the profile's "Hide spoilers" on, an episode not
@@ -47,9 +48,12 @@ export function resetRevealed() {
 export function useSpoilers(profileId: number | undefined) {
   const settings = useQuery({
     ...profileSettingsQuery(profileId ?? 0),
-    enabled: profileId !== undefined,
+    // A profile the store hasn't named yet is asked nothing about
+    // (profileKnown); the player's chrome has no id for a moment after a
+    // webview reload.
+    enabled: profileKnown(profileId),
   }).data;
-  const on = profileId !== undefined && settings?.hideSpoilers === true;
+  const on = profileKnown(profileId) && settings?.hideSpoilers === true;
   const seen = useSyncExternalStore(subscribe, () => version);
   const hidden = useCallback(
     (id: string, watched: boolean, started: boolean) =>

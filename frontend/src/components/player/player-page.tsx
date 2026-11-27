@@ -136,7 +136,7 @@ import {
   type Track,
 } from "@/lib/player";
 import { useSeekPreviews } from "@/lib/previews";
-import { useCurrentProfile } from "@/lib/profile";
+import { profileKnown, useCurrentProfile } from "@/lib/profile";
 import type { Candidate } from "@/lib/ranking";
 import { attempts, PlayError, resolvePick, sameStream, type Attempt } from "@/lib/resolve";
 import type { Source } from "@bindings/streams";
@@ -413,8 +413,16 @@ function PlayerFile({
   const stoppedAt = useRef(0);
   const torrent = isTorrentSource(playing?.source);
   const torrentStatus = useTorrentStatus(torrent);
+  // The profile in use, or 0 until the store has answered: a launch, or a
+  // webview reload after WebKit kills the page, can land on this screen
+  // before CurrentProfile comes back. Ids start at 1, so 0 is no profile at
+  // all, and every store call below waits for a real one (lib/profile's
+  // profileKnown): asking about 0 is refused ("store: profile not found: 0").
   const profileId = useCurrentProfile().id ?? 0;
-  const settings = useQuery({ ...profileSettingsQuery(profileId), enabled: profileId > 0 }).data;
+  const settings = useQuery({
+    ...profileSettingsQuery(profileId),
+    enabled: profileKnown(profileId),
+  }).data;
   const saveSettings = useSaveProfileSettings(profileId);
   // This device's settings: how hard the renderer works, its output, and its
   // subtitles when they're always on.
@@ -435,7 +443,7 @@ function PlayerFile({
   const downloaded = isDownloadSource(playing?.source);
   const saved = useQuery({
     ...playableQuery(profileId, watching?.videoId ?? ""),
-    enabled: downloaded && profileId > 0 && watching !== undefined,
+    enabled: downloaded && profileKnown(profileId) && watching !== undefined,
   });
   const found = useAddonSubtitles(profileId, downloaded ? undefined : target);
   const savedSubtitles = useMemo<AddonSubtitle[]>(
@@ -639,7 +647,7 @@ function PlayerFile({
   const offline = useConnection() === Connection.Offline;
   const afterThisSaved = useQuery({
     ...playableQuery(profileId, afterThis?.id ?? ""),
-    enabled: offline && afterThis !== undefined && profileId > 0,
+    enabled: offline && afterThis !== undefined && profileKnown(profileId),
   });
   const next = offline && !afterThisSaved.data ? undefined : afterThis;
   const [cancelled, setCancelled] = useState(false);
@@ -1726,7 +1734,7 @@ function PlayerFile({
   // as Go applied it at load. A change shows at once and is kept for the
   // title (a show's id for every episode); a file nothing names keeps it
   // until it ends.
-  const titleKey = watching && profileId > 0 ? watching.contentId : "";
+  const titleKey = watching && profileKnown(profileId) ? watching.contentId : "";
   const adjustments = useQuery({
     ...titleAdjustmentsQuery(profileId, titleKey),
     enabled: titleKey !== "",

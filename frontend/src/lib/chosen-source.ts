@@ -3,6 +3,7 @@ import { queryOptions, type QueryClient } from "@tanstack/react-query";
 import { Service as Store, type ChosenSource } from "@bindings/store";
 import type { Candidate, Remembered } from "@/lib/ranking";
 import type { Attempt } from "@/lib/resolve";
+import { profileKnown } from "@/lib/profile";
 import { isSeriesType } from "@/lib/title";
 
 // The source a profile last played a show from (#58, F19): the addon (or
@@ -17,6 +18,9 @@ export const chosenSourceQuery = (profileId: number, contentId: string) =>
     queryKey: ["chosen-source", profileId, contentId],
     queryFn: () => Store.ChosenSource(profileId, contentId),
     staleTime: Number.POSITIVE_INFINITY,
+    // The next-episode card and the player's switcher ask this; before the
+    // store has named the profile there is nothing to ask (profileKnown).
+    enabled: profileKnown(profileId),
   });
 
 // What ranking matches: none for a film, or a show nothing has played from.

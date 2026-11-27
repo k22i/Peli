@@ -58,6 +58,16 @@ export const currentProfileQuery = queryOptions({
 // the current profile: on first run the store makes a Guest when asked.
 export const beforeProfile = new Set(["/welcome", "/sign-in", "/qr-sign-in", "/profiles"]);
 
+// Whether an id names a profile the store has. It numbers profiles from 1, so
+// 0 and undefined are both "no profile yet": a screen that renders before
+// CurrentProfile answers — a launch, or a webview reload after WebKit kills
+// the page — has no profile to ask about and must wait for one. Go refuses a
+// call about 0 ("store: profile not found: 0"), so every query that asks the
+// store for a profile's things carries `enabled: profileKnown(id)`, and a
+// screen that has no id yet passes none along rather than 0.
+export const profileKnown = (profileId: number | undefined): boolean =>
+  profileId !== undefined && profileId > 0;
+
 export function useCurrentProfile(): Profile {
   const { data } = useQuery(currentProfileQuery);
   const account = useQuery(accountQuery);

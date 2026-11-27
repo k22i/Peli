@@ -13,6 +13,7 @@ import {
   type Video,
 } from "@/lib/addon-protocol";
 import type { PlayTarget } from "@/lib/playback";
+import { profileKnown } from "@/lib/profile";
 
 // The title page (#45): one film or series, its details from the first
 // addon that has them, and its watched state, which follows Nuvio's apps
@@ -90,17 +91,21 @@ export function cachedTitleMeta(
 }
 
 // What a profile has watched of a title, and its progress in it, under the
-// surfaces' prefixes (lib/sync.ts), so a pull or an edit refreshes them.
+// surfaces' prefixes (lib/sync.ts), so a pull or an edit refreshes them. A
+// screen that opens before the store has named the profile waits for its id
+// (profileKnown): asking about 0 is refused.
 export const titleWatchedQuery = (profileId: number, contentId: string) =>
   queryOptions({
     queryKey: ["watched", profileId, contentId],
     queryFn: async () => (await Store.TitleWatched(profileId, contentId)) ?? [],
+    enabled: profileKnown(profileId),
   });
 
 export const titleProgressQuery = (profileId: number, contentId: string) =>
   queryOptions({
     queryKey: ["progress", profileId, contentId],
     queryFn: async () => (await Store.TitleProgress(profileId, contentId)) ?? [],
+    enabled: profileKnown(profileId),
   });
 
 // Nuvio's apps count an item watched at 90 %.

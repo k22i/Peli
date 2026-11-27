@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useCallback, useSyncExternalStore } from "react";
 
 import { batcher } from "@/lib/batch";
+import { profileKnown } from "@/lib/profile";
 import { profileSettingsQuery } from "@/lib/settings";
 
 // Anime out of Movies and Shows (#109, ADR-0045). General catalogs such as
@@ -91,11 +92,11 @@ export const imdbOf = (id: string) => (id.startsWith("tt") ? id.split(":")[0]! :
 export function useLeaveOutAnime(profileId: number | undefined): (id: string) => boolean {
   const settings = useQuery({
     ...profileSettingsQuery(profileId ?? 0),
-    enabled: profileId !== undefined,
+    enabled: profileKnown(profileId),
   });
   const keep = settings.data?.animeInMoviesAndShows ?? false;
   const answers = useSyncExternalStore(subscribe, snapshot, snapshot);
-  const asks = profileId !== undefined && !keep;
+  const asks = profileKnown(profileId) && !keep;
   return useCallback(
     (id: string) => {
       const imdb = asks ? imdbOf(id) : undefined;

@@ -26,6 +26,7 @@ import type { Meta, Stream, Video } from "@/lib/addon-protocol";
 import { openDownloadTray } from "@/lib/download-tray";
 import { errorCode } from "@/lib/error-code";
 import type { PlayTarget } from "@/lib/playback";
+import { profileKnown } from "@/lib/profile";
 import type { Candidate } from "@/lib/ranking";
 import { subtitleLanguage, type AddonSubtitle } from "@/lib/subtitles";
 import { watchingFor } from "@/lib/title";
@@ -109,6 +110,9 @@ export const playableQuery = (profileId: number | undefined, videoId: string) =>
     queryFn: async (): Promise<Playable | null> =>
       profileId === undefined ? null : await Downloads.Playable(profileId, videoId),
     staleTime: 0,
+    // Nothing to ask until the profile is known (profileKnown): the player
+    // and the next-episode card ask this before CurrentProfile answers.
+    enabled: profileKnown(profileId),
   });
 
 // The profile's downloads, empty until Go answers (or with no profile).
@@ -134,7 +138,7 @@ export function useDownloadUsage(): Usage | undefined {
 }
 
 export function usePlayable(profileId: number | undefined, videoId: string) {
-  return useQuery({ ...playableQuery(profileId, videoId), enabled: profileId !== undefined }).data;
+  return useQuery(playableQuery(profileId, videoId)).data;
 }
 
 // --- Speed --------------------------------------------------------------------

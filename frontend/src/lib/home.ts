@@ -12,6 +12,7 @@ import {
   type MetaPreview,
 } from "@/lib/addon-protocol";
 import { visibleAddonsQuery } from "@/lib/addons";
+import { profileKnown } from "@/lib/profile";
 
 // Home's layout and collections, pulled from Nuvio's apps (#35) and read
 // from the local store, so they show offline. Keyed under the surfaces'
@@ -110,7 +111,13 @@ export const catalogVisibilityQuery = (profileId: number, sources: readonly Cata
 // one that fails to load drops out and stays installed. `loading` is true
 // until every manifest has answered. The title page (#45) needs only these.
 export function useLoadedAddons(profileId: number) {
-  const visible = useQuery(visibleAddonsQuery(profileId));
+  // Nothing to ask until the store has named the profile (profileKnown): the
+  // player mounts before CurrentProfile answers after a webview reload, and
+  // asking about 0 is refused.
+  const visible = useQuery({
+    ...visibleAddonsQuery(profileId),
+    enabled: profileKnown(profileId),
+  });
   const manifests = useQueries({
     queries: (visible.data ?? []).map((addon) => manifestQuery(addon.url)),
   });

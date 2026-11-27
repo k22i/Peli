@@ -15,6 +15,7 @@ import { addonsQuery } from "@/lib/addons";
 import { feature } from "@/lib/features";
 import { isIOS } from "@/lib/platform";
 import { pluginSource, usePluginStreams, usePluginTargets } from "@/lib/plugins";
+import { profileKnown } from "@/lib/profile";
 import {
   RankingSession,
   emptyView,
@@ -38,7 +39,9 @@ import { audioLanguagesOf, displayModeOf, maxResolutionOf } from "@/lib/settings
 // Each addon is there as soon as its own manifest loads, so a slow manifest
 // doesn't hold the others back; `loading` is true until every one has.
 export function useStreamAddons(profileId: number) {
-  const installed = useQuery(addonsQuery(profileId));
+  // Nothing to ask until the store has named the profile (profileKnown): the
+  // player mounts before CurrentProfile answers after a webview reload.
+  const installed = useQuery({ ...addonsQuery(profileId), enabled: profileKnown(profileId) });
   const enabled = (installed.data ?? []).filter((addon) => addon.enabled);
   const manifests = useQueries({ queries: enabled.map((addon) => manifestQuery(addon.url)) });
   const addons: LoadedAddon[] = enabled.flatMap((addon, index) => {
