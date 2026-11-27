@@ -22,13 +22,37 @@ export function resetReports() {
   sent = [];
 }
 
+// What Go answers a binding call whose context was cancelled: Wails cancels
+// them when the app goes to the background, and the app cancels the ones a
+// screen no longer needs (ADR-0023).
+const contextCanceled = "context canceled";
+
+// Wails' own words for a *cancelled* call rather than a failed one: its
+// CancelError for the caller's promise, or Go's error for the call itself.
+function cancellation(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  if (error.name === "CancelError" || error.name === "AbortError") return true;
+  return error.name === "RuntimeError" && error.message === contextCanceled;
+}
+
 // Errors that aren't faults: a fetch aborted because the page moved on, a
-// query TanStack cancelled.
+// query TanStack cancelled, a binding call Wails cancelled.
 export function ignorable(error: unknown): boolean {
   if (isCancelledError(error)) return true;
   if (error instanceof DOMException && error.name === "AbortError") return true;
   if (error instanceof Error && error.name === "AbortError") return true;
-  return false;
+  // A cancelled binding call fails twice. The caller's promise rejects with
+  // the CancelError above; the call itself then fails with Go's "context
+  // canceled", which the runtime can only report as an unhandled rejection of
+  // its own — a CancelledRejectionError wrapping that reason, made inside
+  // `Call` after the caller's promise has settled, so no chain of ours can
+  // catch it. Only its cause tells the two apart: a call that failed for a
+  // real reason ("store: profile not found: 0") arrives the same way and is
+  // still reported.
+  if (error instanceof Error && error.name === "CancelledRejectionError") {
+    return cancellation(error.cause);
+  }
+  return cancellation(error);
 }
 
 function describe(error: unknown): { message: string; stack: string } {
@@ -62,7 +86,15 @@ export function reportError(kind: ErrorKind, error: unknown, now = Date.now()): 
 // The window's uncaught errors and unhandled rejections go to reportError.
 // Returns the undo.
 const onError = (event: ErrorEvent) => reportError("js", event.error ?? event.message);
-const onRejection = (event: PromiseRejectionEvent) => reportError("rejection", event.reason);
+// A cancellation is not a fault: it is handled here rather than reported, and
+// claiming it keeps the console's uncaught list quiet too.
+const onRejection = (event: PromiseRejectionEvent) => {
+  if (ignorable(event.reason)) {
+    event.preventDefault();
+    return;
+  }
+  reportError("rejection", event.reason);
+};
 
 export function installErrorHandlers(target: Window = window): () => void {
   target.addEventListener("error", onError);

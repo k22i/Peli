@@ -1,4 +1,5 @@
 import { CancelledError, QueryClient, QueryObserver } from "@tanstack/react-query";
+import { Call, CancellablePromise, CancelledRejectionError } from "@wailsio/runtime";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
 import { Service as Diagnostics } from "@bindings/diagnostics";
@@ -13,6 +14,14 @@ import {
   routeKey,
   trimCaches,
 } from "@/lib/diagnostics";
+
+// Go's answer to a binding call whose context was cancelled (Wails cancels
+// them when the app backgrounds), and the wrapper the runtime puts around it:
+// the caller's promise settles with the cancellation, then the call itself
+// fails, and that late failure is all the runtime can report.
+const contextCanceled = () => new Call.RuntimeError("context canceled");
+const cancelledCall = (reason: Error = contextCanceled()) =>
+  new CancelledRejectionError(CancellablePromise.resolve(undefined), reason);
 
 beforeEach(() => resetReports());
 afterEach(() => {
@@ -33,6 +42,28 @@ describe("reportError", () => {
     expect(Diagnostics.Report).not.toHaveBeenCalled();
   });
 
+  // After a long background, Wails cancels the contexts of the calls still
+  // pending, and both halves of a cancelled call fail: these are not errors.
+  it("drops a binding call Wails cancelled", () => {
+    expect(reportError("rejection", contextCanceled())).toBe(false);
+    expect(reportError("rejection", cancelledCall())).toBe(false);
+    expect(Diagnostics.Report).not.toHaveBeenCalled();
+  });
+
+  // The same wrapper around a call that failed for a real reason is a real
+  // error, and still goes to Go's log.
+  it("still sends a binding call that failed", () => {
+    const notFound = new Call.RuntimeError("store: profile not found: 0");
+    expect(reportError("rejection", notFound)).toBe(true);
+    expect(reportError("rejection", cancelledCall(notFound))).toBe(true);
+    expect(Diagnostics.Report).toHaveBeenCalledWith(
+      "rejection",
+      "RuntimeError: store: profile not found: 0",
+      expect.any(String),
+    );
+    expect(Diagnostics.Report).toHaveBeenCalledTimes(2);
+  });
+
   it("sends at most 20 a minute", () => {
     const now = 1_000_000;
     let sent = 0;
@@ -50,6 +81,26 @@ describe("reportError", () => {
     undo();
     expect(Diagnostics.Report).toHaveBeenCalledWith("js", "Error: thrown", expect.any(String));
     expect(Diagnostics.Report).toHaveBeenCalledWith("rejection", "a string reason", "");
+  });
+
+  it("claims a cancelled call, and reports the one after it", () => {
+    const undo = installErrorHandlers(window);
+    const cancelled = new Event("unhandledrejection", { cancelable: true });
+    Object.assign(cancelled, { reason: cancelledCall() });
+    window.dispatchEvent(cancelled);
+    expect(cancelled.defaultPrevented).toBe(true);
+    expect(Diagnostics.Report).not.toHaveBeenCalled();
+
+    const failed = new Event("unhandledrejection", { cancelable: true });
+    Object.assign(failed, { reason: new Call.RuntimeError("store: profile not found: 0") });
+    window.dispatchEvent(failed);
+    undo();
+    expect(failed.defaultPrevented).toBe(false);
+    expect(Diagnostics.Report).toHaveBeenCalledWith(
+      "rejection",
+      "RuntimeError: store: profile not found: 0",
+      expect.any(String),
+    );
   });
 });
 
