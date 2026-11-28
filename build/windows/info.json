@@ -1,10 +1,10 @@
 {
 	"fixed": {
-		"file_version": "0.1.2"
+		"file_version": "0.1.3"
 	},
 	"info": {
 		"0000": {
-			"ProductVersion": "0.1.2",
+			"ProductVersion": "0.1.3",
 			"CompanyName": "k22i",
 			"FileDescription": "A desktop client for Stremio-compatible addons, with Nuvio sync",
 			"LegalCopyright": "© 2026, k22i",
